@@ -18,8 +18,11 @@ public class NOGraph<E extends Comparable<E>, N extends Comparable<N>> implement
 
 	private HashMap<CPair<N, N>, E> hashMap;
 
+	private TreeSet<N> nodes;
+
 	public NOGraph() {
-		this.hashMap = new HashMap<>();
+	    this.hashMap = new HashMap<>();
+	    this.nodes = new TreeSet<>();
 	}
 
 	/**
@@ -35,14 +38,21 @@ public class NOGraph<E extends Comparable<E>, N extends Comparable<N>> implement
 
 	@Override
 	public Set<N> getNodes() {
-		Set<N> nodes = new TreeSet<>();
-
-		for (CPair<N, N> pair : hashMap.keySet()) {
-			nodes.add(pair.getA());
-			nodes.add(pair.getB());
-		}
-
 		return nodes;
+	}
+
+	@Override
+    public boolean nodeExists(N node){
+	    return nodes.contains(node);
+    }
+
+	@Override
+	public boolean addNode(N node) {
+	    if (this.nodes.contains(node)){
+	        return false;
+        }
+	    nodes.add(node);
+		return true;
 	}
 
 	@Override
@@ -68,6 +78,7 @@ public class NOGraph<E extends Comparable<E>, N extends Comparable<N>> implement
 		Set<CPair<N,N>> set = new HashSet<>(hashMap.keySet());
 		set.stream().filter(p -> p.getA().equals(node) || p.getB().equals(node))
 				.forEach(p -> hashMap.remove(p));
+		nodes.remove(node);
 	}
 
 	@Override
