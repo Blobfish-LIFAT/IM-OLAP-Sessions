@@ -9,207 +9,145 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements Graph<E,N> {
-    HashMap<Pair<N,N>, E> hashMap;
 
-    HashMap<N,Set<N>> edgeMap;
+    private TreeMap<N,Pair<TreeSet<N>,TreeSet<N>>> nodes; // A Pair<X,Y> = Pair<From X to A,From A to Y>
 
-    public OGraph() {
-        this.hashMap = new HashMap<>();
-        this.edgeMap = new HashMap<>();
-    }
+    private HashMap<Pair<N,N>,E> edges;
 
-    public OGraph(HashMap<Pair<N,N>, E> edges) {
-        this.hashMap = new HashMap<>(edges);
-        this.edgeMap = new HashMap<>(hashMap.size());
-        for (Pair<N,N> p : hashMap.keySet()){
-            edgeMap.compute(p.getA(), (k,v) -> {
-                if (k == null || v == null){
-                    v = new HashSet<>();
-                }
-                v.add(p.getB());
-                return v;
-            });
-        }
-    }
-
-    @Override
-    public int nodeCount() {
-        return getNodes().size();
+    public OGraph(){
+        nodes = new TreeMap<>();
+        edges = new HashMap<>();
     }
 
     @Override
     public int edgeCount() {
-        return hashMap.size();
+        return edges.size();
+    }
+
+    @Override
+    public int nodeCount() {
+        return nodes.size();
     }
 
     @Override
     public Set<N> getNodes() {
-        Set<N> set = new HashSet<>();
+        return nodes.keySet();
+    }
 
-        for (Pair<N,N> p : hashMap.keySet()){
-            set.add(p.getA());
-            set.add(p.getB());
+    @Override
+    public boolean addNode(N node) {
+        if (nodes.containsKey(node)){
+            return false;
         }
-
-        return set;
+        nodes.put(node, new Pair<>(new TreeSet<>(), new TreeSet<>()));
+        return true;
     }
 
     @Override
     public Set<Edge<N, E>> getEdges() {
-        return hashMap.entrySet()
+        return edges.entrySet()
                 .stream()
-                .map(x -> new Edge<>(x.getKey().getA(), x.getKey().getB(), x.getValue()))
-                .collect(Collectors.toSet());
+                .map(e -> new Edge<N,E>(e.getKey().getA(), e.getKey().getB(), e.getValue()))
+                .collect(Collectors.toCollection(TreeSet::new));
     }
 
     @Override
-    public void setEdge(N node1, N node2, E value) {
-        hashMap.put(new Pair<>(node1, node2), value);
-        edgeMap.compute(node1, (k,v) -> {
-            if (k == null || v == null){
-                Set<N> set = new HashSet<>();
-                set.add(node2);
-                return set;
-            }
-            else {
-                v.add(node2);
-                return v;
-            }
-        });
+    public void setEdge(N from, N to, E value) {
+        if (value == null){
+            removeEdge(from, to);
+        }
+        else {
+            this.addNode(from);
+            this.addNode(to);
+            nodes.get(from).getB().add(to);
+            nodes.get(to).getA().add(from);
+            edges.put(new Pair<>(from, to), value);
+        }
+    }
+
+    private void unsafeRemoveEdgeInNodes(N from, N to){
+        nodes.get(from).getB().remove(to);
+        nodes.get(to).getA().remove(from);
     }
 
     @Override
-    public void removeEdge(N node1, N node2) {
-        hashMap.remove(new Pair<>(node1, node2));
-        edgeMap.compute(node1, (k,v) -> {
-            if (k == null || v == null){
-                return null;
-            }
-            else {
-                v.remove(v);
-                return v;
-            }
-        });
+    public void removeEdge(N from, N to) {
+        edges.remove(new Pair<>(from,to));
+        unsafeRemoveEdgeInNodes(from, to);
     }
 
     @Override
     public boolean nodeExists(N node) {
-        return getNodes().contains(node);
+        return nodes.containsKey(node);
     }
 
     @Override
     public void deleteNodeAndItsEdges(N node) {
-        hashMap.replaceAll((x,v) -> x.getA().equals(node) || x.getB().equals(node) ? null : v);
-        edgeMap.replaceAll((k,v) -> {
-            if (k == null || v == null){
-                return null;
-            }
-            else if (k.equals(node)){
-                return null;
-            }
-            else {
-                v.remove(node);
-                if (v.isEmpty()){
-                    return null;
-                }
+        Pair<TreeSet<N>,TreeSet<N>> p = nodes.get(node);
+        p.getA().forEach(from -> {
+            edges.remove(new Pair<>(from, node));
+        });
+        p.getB().forEach(to -> {
+            edges.remove(new Pair<>(node, to));
+        });
+        nodes.remove(node);
 
-                return v;
+    }
+
+    @Override
+    public void safeComputeEdge(N from, N to, Function<Optional<E>, Optional<E>> f) {
+        addNode(from);
+        addNode(to);
+        edges.compute(new Pair<>(from, to), (k,v) -> {
+            E res = f.apply(Optional.ofNullable(v)).orElse(null);
+
+            if (res == null){
+                unsafeRemoveEdgeInNodes(from, to);
             }
+
+            return res;
         });
     }
 
-    private void checkRemoveNode(N node, Set<N> nodes){
-        if (!nodes.contains(node)){
-            edgeMap.remove(node);
-            edgeMap.replaceAll((k,v) -> {
-                if (k.equals(node)){
-                    return null;
-                }
-                else {
-                    v.remove(node);
-                    if (v.isEmpty()){
-                        return null;
-                    }
-                    else return v;
-                }
-            });
-        }
-
-    }
-
     @Override
-    public void safeComputeEdge(N node1, N node2, Function<Optional<E>, Optional<E>> f) {
-        Pair<N,N> p = new Pair<>(node1, node2);
-        E v = hashMap.get(p);
-        E newV = f.apply(Optional.ofNullable(v)).orElse(null);
-        if (newV == null){
-            hashMap.remove(p);
-            Set<N> nodes = getNodes();
-            checkRemoveNode(node1, nodes);
-            checkRemoveNode(node2, nodes);
-        }
-        else {
-            hashMap.put(p, newV);
-            edgeMap.compute(node1, (k,old_v) -> {
-                if (node1 == null | old_v == null){
-                    old_v = new HashSet<>();
-                }
-                old_v.add(node2);
-                return old_v;
-            });
-        }
-    }
-
-    @Override
-    public E getEdge(N node1, N node2) {
-        return hashMap.get(new Pair<>(node1, node2));
+    public E getEdge(N from, N to) {
+        return edges.get(new Pair<>(from, to));
     }
 
     @Override
     public List<CPair<N, E>> fromNode(N node) {
-        return edgeMap.get(node)
+        return nodes.get(nodes)
+                .getB()
                 .stream()
-                .map(to -> new CPair<>(to, this.hashMap.get(new Pair<>(node, to)) ) )
+                .map(to -> {
+                    E v = edges.get(new Pair<>(node, to));
+                    return new CPair<>(node, v);
+                })
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
     public List<CPair<N, E>> toNode(N node) {
-        return hashMap.entrySet()
+        return nodes.get(nodes)
+                .getA()
                 .stream()
-                .filter(e -> e.getKey().getB().equals(node))
-                .map(e -> new CPair<>(e.getKey().getA(), e.getValue()))
+                .map(from -> {
+                    E v = edges.get(new Pair<>(from, node));
+                    return new CPair<>(node, v);
+                })
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
     public <F extends Comparable<F>> Graph<F, N> mapEdges(Function<Edge<N, E>, F> edgeFunction) {
-        OGraph<F,N> newGraph = new OGraph();
-
-        for (Map.Entry<Pair<N,N>, E> entry : hashMap.entrySet()){
-            N from = entry.getKey().getA();
-            N to = entry.getKey().getB();
-            newGraph.setEdge(from, to, edgeFunction.apply(new Edge<>(from, to, entry.getValue())));
-        }
+        Graph<F,N> newGraph = new OGraph<>();
+        newGraph.getNodes().addAll(this.getNodes());
+        this.getEdges().forEach(e -> {
+            F newVal = edgeFunction.apply(e);
+            newGraph.setEdge(e.from, e.to, newVal);
+        });
 
         return newGraph;
-    }
-
-    public static void main(String[] args){
-
-        OGraph<Double, String> graph = new OGraph<>();
-
-        graph.setEdge("A", "B", 2.0);
-        graph.safeComputeEdge("A", "B", x -> x.map(y -> y-1));
-        graph.safeComputeEdge("B", "C", x -> Optional.of(2.0));
-        graph.setEdge("D", "D", 0.0);
-        graph.safeComputeEdge("D","D", x -> Optional.empty());
-
-        System.out.println(graph.hashMap);
-        System.out.println(graph.getEdges());
-        System.out.println(graph.getNodes());
-        System.out.println(graph.edgeMap);
-
     }
 
 }
