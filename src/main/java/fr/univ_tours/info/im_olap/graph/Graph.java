@@ -91,12 +91,19 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
      */
     Set<N> getNodes();
 
+    /**
+     *
+     * @param node
+     * @return true if node was added, false if it was already present
+     */
+    boolean addNode(N node);
+
     Set<Edge<N,E>> getEdges();
 
-    void setEdge(N node1, N node2, E value);
+    void setEdge(N from, N to, E value);
 
-    default void removeEdge(N node1, N node2){
-        this.safeComputeEdge(node1, node2, ignored -> Optional.empty());
+    default void removeEdge(N from, N to){
+        this.safeComputeEdge(from, to, ignored -> Optional.empty());
     }
 
     default boolean nodeExists(N node){
@@ -105,20 +112,26 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
 
     void deleteNodeAndItsEdges(N node);
 
-    default void computeEdge(N node1, N node2, Function<E, E> f){
-        safeComputeEdge(node1, node2, val -> val.map(f));
+    default void computeEdge(N from, N to, Function<E, E> f){
+        safeComputeEdge(from, to, val -> val.map(f));
     }
 
-    void safeComputeEdge(N node1, N node2, Function<Optional<E>, Optional<E>> f);
+    void safeComputeEdge(N from, N to, Function<Optional<E>, Optional<E>> f);
 
-    E getEdge(N node1, N node2);
+    /**
+     *
+     * @param from
+     * @param to
+     * @return value on edge or Null if the edge is not present
+     */
+    E getEdge(N from, N to);
 
     List<CPair<N, E>> fromNode(N node);
 
     List<CPair<N, E>> toNode(N node);
 
-    default Optional<E> safeGetEdge(N node1, N node2) {
-        return Optional.ofNullable(this.getEdge(node1, node2));
+    default Optional<E> safeGetEdge(N from, N to) {
+        return Optional.ofNullable(this.getEdge(from, to));
     }
 
     <F extends Comparable<F>> Graph<F,N> mapEdges(Function<Edge<N, E>, F> edgeFunction);
