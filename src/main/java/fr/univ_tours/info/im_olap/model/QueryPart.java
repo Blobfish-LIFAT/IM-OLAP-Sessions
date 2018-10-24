@@ -2,7 +2,7 @@ package fr.univ_tours.info.im_olap.model;
 
 import java.util.HashMap;
 
-public class QueryPart {
+public class QueryPart implements Comparable<QueryPart>{
     enum Type {
         DIMENSION, FILTER, MEASURE
     }
@@ -36,5 +36,18 @@ public class QueryPart {
         if (obj.getClass() != this.getClass())
             return false;
         return this.t == ((QueryPart)obj).t && ((QueryPart)obj).value.equals(this.value);
+    }
+
+    @Override
+    public int compareTo(QueryPart o) {
+        if (this.equals(o))
+            return 0;
+        else
+            return this.value.compareTo(o.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return t.hashCode()+value.hashCode();
     }
 }
