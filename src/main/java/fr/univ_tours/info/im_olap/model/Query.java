@@ -14,5 +14,12 @@ public class Query {
         measures = new HashSet<>();
     }
 
-
+    @Override
+    public String toString() {
+        return "Query {" +
+                "\ndimensions=" + dimensions +
+                "\nfilters=" + filters +
+                "\nmeasures=" + measures +
+                '}';
+    }
 }

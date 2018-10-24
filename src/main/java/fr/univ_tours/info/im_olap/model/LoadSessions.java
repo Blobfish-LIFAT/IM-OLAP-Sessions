@@ -42,8 +42,10 @@ public class LoadSessions {
                         for (String dimension : line.split(", "))
                             q.dimensions.add(new QueryPart(Type.DIMENSION, dimension));
                     } else if (n == 3){
-                        for (String filter : line.split(", "))
-                            q.filters.add(new QueryPart(Type.FILTER, filter));
+                        for (String filter : line.split(", ")) {
+                            if (!filter.equals(""))
+                                q.filters.add(new QueryPart(Type.FILTER, filter));
+                        }
                     } else if (n == 4){
                         for (String measure : line.split(", "))
                             q.measures.add(new QueryPart(Type.MEASURE, measure));
