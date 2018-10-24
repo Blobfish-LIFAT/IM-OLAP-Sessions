@@ -14,6 +14,19 @@ public class Query {
         measures = new HashSet<>();
     }
 
+    public QueryPart[] flat(){
+        QueryPart[] result = new QueryPart[dimensions.size()+ filters.size()+measures.size()];
+        int i = 0;
+        for (QueryPart p : dimensions){
+            result[i++] = p;
+        }for (QueryPart p : filters){
+            result[i++] = p;
+        }for (QueryPart p : measures){
+            result[i++] = p;
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Query {" +

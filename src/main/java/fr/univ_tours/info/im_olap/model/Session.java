@@ -10,4 +10,9 @@ public class Session {
         this.queries = queries;
         this.type = type;
     }
+
+    public int length() {
+        return queries.size();
+    }
+
 }
