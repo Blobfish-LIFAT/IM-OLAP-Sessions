@@ -1,12 +1,15 @@
 package fr.univ_tours.info.im_olap;
 
+import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.model.LoadSessions;
 import fr.univ_tours.info.im_olap.model.QueryPart;
 import fr.univ_tours.info.im_olap.model.Session;
 import fr.univ_tours.info.im_olap.model.SessionGraph;
+import org.nd4j.linalg.api.ndarray.INDArray;
 
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Dev {
@@ -25,6 +28,10 @@ public class Dev {
 
         System.out.printf("Node count in Topology + nodes from Usage: %d %nEdges: %d %n", base.nodeCount(), base.edgeCount());
 
+        INDArray topology = Graphs.sortedINDMatrix(base);
+        INDArray tp = Graphs.sortedINDMatrix(usage);
+        System.out.println(Arrays.toString(topology.shape()));
+        System.out.println(Arrays.toString(tp.shape()));
 
 
     }

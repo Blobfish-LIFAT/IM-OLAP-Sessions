@@ -51,7 +51,7 @@ public class SessionGraph {
                 if (f1.value.split(" = ")[0].equals(f2.value.split(" = ")[0])){
                     result.safeComputeEdge(f1, f2, o -> Optional.of(1.0));
                     result.safeComputeEdge(f2, f1, o -> Optional.of(1.0));
-                    System.out.println(f1 + " | " + f2);
+                    //System.out.println(f1 + " | " + f2);
                 }
             }
         }
