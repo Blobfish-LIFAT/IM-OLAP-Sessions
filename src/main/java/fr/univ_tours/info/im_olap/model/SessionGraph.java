@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class SessionGraph {
-    public static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
+    private static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
         OGraph<Double, QueryPart> result = new OGraph<>();
         Set<QueryPart> filters = new HashSet<>(); //will need those later
         //int  t = 0;
@@ -25,7 +25,7 @@ public class SessionGraph {
                 for (int j = 0; j < q1parts.length; j++) {
                     if (q1parts[j].isFilter())
                         filters.add(q1parts[j]);
-                    for (int k = j + 1; k < q1parts.length; k++) {
+                    for (int k = j ; k < q1parts.length; k++) {
                         result.safeComputeEdge(q1parts[j], q1parts[k], o -> Optional.of(o.orElse(1.0)));
                         result.safeComputeEdge(q1parts[k], q1parts[j], o -> Optional.of(o.orElse(1.0)));
                     }
@@ -67,7 +67,7 @@ public class SessionGraph {
      * @param mondrianFile
      * @return
      */
-    public static OGraph<Double, QueryPart> injectSchema(OGraph<Double, QueryPart> base, String mondrianFile){
+    private static OGraph<Double, QueryPart> injectSchema(OGraph<Double, QueryPart> base, String mondrianFile){
         SAXReader reader = new SAXReader();
         try {
             Document schema = reader.read(Paths.get(mondrianFile).toFile());
@@ -97,6 +97,13 @@ public class SessionGraph {
             System.err.printf("Could not parse schema in '%s', verify file permission/format.");
             return base;
         }
+    }
+
+    public static OGraph<Double, QueryPart> buildTopologyGraph(List<Session> sessions, String schemaPath){
+        OGraph<Double, QueryPart> base = buildBaseGraph(sessions);
+        injectSchema(base, schemaPath);
+        base.getNodes().forEach(n -> base.setEdge(n, n, 1.0));
+        return base;
     }
 
     public static OGraph<Double, QueryPart> buildUsageGraph(Set<QueryPart> previousQPs, List<Session> sessions){
@@ -130,6 +137,8 @@ public class SessionGraph {
                 }
             }
         }
+
+        result.getNodes().forEach(n -> result.setEdge(n,n,1.0));
 
         return result;
     }

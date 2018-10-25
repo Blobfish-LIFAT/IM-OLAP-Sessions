@@ -21,17 +21,13 @@ public class Dev {
         List<Session> sessions = LoadSessions.loadFromDir("data/session_set_1");
         System.out.printf("Working on %d sessions%n", sessions.size());
 
-        OGraph<Double, QueryPart> base = SessionGraph.buildBaseGraph(sessions.subList(0,39));
-        //System.out.println(base.getNodes());
-        System.out.printf("Node count in Base: %d%nEdges: %d %n", base.nodeCount(), base.edgeCount());
-        SessionGraph.injectSchema(base, "data/schema.xml");
-        System.out.printf("Node count in Topology (Base + Schema): %d %nEdges: %d %n", base.nodeCount(), base.edgeCount());
+        OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(sessions.subList(0,39), "data/schema.xml");
+
         OGraph<Double, QueryPart> usage = SessionGraph.buildUsageGraph(base.getNodes(), sessions.subList(40,50));
-        System.out.printf("Node count in Usage: %d %nEdges: %d %n", usage.nodeCount(), usage.edgeCount());
 
         usage.getNodes().forEach(base::addNode);
+        base.getNodes().forEach(n -> base.setEdge(n,n,1.0));
 
-        System.out.printf("Node count in Topology + nodes from Usage: %d %nEdges: %d %n", base.nodeCount(), base.edgeCount());
 
         INDArray topology = Graphs.sortedINDMatrix(base);
         INDArray tp = Graphs.sortedINDMatrix(usage);
@@ -45,8 +41,8 @@ public class Dev {
         normalizeRowsi(uniform);
 
         // (1-e)*((1-a)*topo - a*tp) + e*uniform
-        INDArray pr = topology.mul(1-alpha).sub(tp.mul(alpha)).mul(1 - epsilon).add(uniform.mul(epsilon));
-        System.out.println(pr);
+        INDArray pr = topology.mul(1-alpha).sub(tp.mul(alpha)).mul(1 - epsilon);//.add(uniform.mul(epsilon));
+        System.out.println(pr.sum(1));
 
     }
 }
