@@ -15,9 +15,10 @@ public class SessionGraph {
     public static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
         OGraph<Double, QueryPart> result = new OGraph<>();
         Set<QueryPart> filters = new HashSet<>(); //will need those later
+        int  t = 0;
         for (Session session : sessions){
+            System.out.printf("Session %d has %d queries%n", t++, session.length());
             for (int i = 0; i < session.length(); i++) {
-
                 Query q1 = session.queries.get(i);
                 QueryPart[] q1parts = q1.flat();
 
