@@ -51,7 +51,7 @@ public class SessionGraph {
      * @param mondrianFile
      * @return
      */
-    public static OGraph<Integer, QueryPart> injectSchema(OGraph<Integer, QueryPart> base, String mondrianFile){
+    public static OGraph<Double, QueryPart> injectSchema(OGraph<Double, QueryPart> base, String mondrianFile){
         SAXReader reader = new SAXReader();
         try {
             Document schema = reader.read(Paths.get(mondrianFile).toFile());
@@ -69,8 +69,8 @@ public class SessionGraph {
                 for (int i = 0; i < levels.size() - 1; i++) {
                     QueryPart p1 = new QueryPart(QueryPart.Type.DIMENSION, prefix + "." + levels.get(i));
                     QueryPart p2 = new QueryPart(QueryPart.Type.DIMENSION, prefix + "." + levels.get(i+1));
-                    base.safeComputeEdge(p1, p2, o -> Optional.of(1));
-                    base.safeComputeEdge(p2, p1, o -> Optional.of(1));
+                    base.safeComputeEdge(p1, p2, o -> Optional.of(1.0));
+                    base.safeComputeEdge(p2, p1, o -> Optional.of(1.0));
                 }
 
             }
