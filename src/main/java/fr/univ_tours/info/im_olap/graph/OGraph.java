@@ -128,7 +128,7 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     @Override
     public List<CPair<N, E>> toNode(N node) {
-        return nodes.get(nodes)
+        return nodes.get(node)
                 .getA()
                 .stream()
                 .map(from -> {
