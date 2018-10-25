@@ -85,8 +85,30 @@ public class SessionGraph {
     public static OGraph<Integer, QueryPart> buildUsageGraph(List<Session> sessions){
         OGraph<Integer, QueryPart> result = new OGraph<>();
 
+        for (Session session : sessions){
+            for (int i = 0; i < session.length(); i++) {
 
-        //TODO Ben you need to build this
+                Query q1 = session.queries.get(i);
+                QueryPart[] q1parts = q1.flat();
+
+                for (int j = 0; j < q1parts.length; j++) {
+                    for (int k = j + 1; k < q1parts.length; k++) {
+                        result.safeComputeEdge(q1parts[j], q1parts[k], o -> Optional.of(o.map(n -> n+1).orElse(1)));
+                        result.safeComputeEdge(q1parts[k], q1parts[j], o -> Optional.of(o.map(n -> n+1).orElse(1)));
+                    }
+                }
+
+                if (i < session.length() - 1){
+                    Query q2 = session.queries.get(i + 1);
+                    QueryPart[] q2parts = q2.flat();
+                    for (int j = 0; j < q1parts.length; j++) {
+                        for (QueryPart q2part : q2parts) {
+                            result.safeComputeEdge(q1parts[j], q2part, o -> Optional.of(o.map(n -> n+1).orElse(1)));
+                        }
+                    }
+                }
+            }
+        }
 
         return result;
     }
