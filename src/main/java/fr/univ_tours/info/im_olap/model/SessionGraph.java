@@ -58,7 +58,7 @@ public class SessionGraph {
 
             //For each dimensions we must add father/child links in the graph
             for (Node dimension : nodes){
-                Element hierarchy = (Element) dimension.selectSingleNode("/Hierarchy");
+                Element hierarchy = (Element) dimension.selectSingleNode("Hierarchy");
                 String prefix = ((Element)dimension).attributeValue("name");
 
                 List<String> levels = new ArrayList<>();
