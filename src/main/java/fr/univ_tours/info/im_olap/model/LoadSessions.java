@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,7 @@ public class LoadSessions {
             System.err.printf("Warning '%s' is not a valid directory !", path);
         }
         try {
-            return Files.walk(Paths.get(path)).filter(p -> p.toFile().isFile()).map(LoadSessions::loadSession).collect(Collectors.toList());
+            return Files.walk(Paths.get(path)).filter(p -> p.toFile().isFile()).map(LoadSessions::loadSession).sorted(Comparator.comparing(a -> a.filename)).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
@@ -32,7 +33,7 @@ public class LoadSessions {
             int n = 0;
             for (String line : lines){
                 if (line.startsWith("Session")){
-                    current = new Session(new ArrayList<>(), line.split("template: ")[1]);
+                    current = new Session(new ArrayList<>(), line.split("template: ")[1], p.getFileName().toString());
                     q = new Query();
                     n = 1;
                 }else {
