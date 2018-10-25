@@ -5,6 +5,7 @@ import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,6 +41,32 @@ public final class Graphs {
         }
 
         return new Pair<>(matrix, indexes);
+    }
+
+    public static <N extends Comparable<N>> INDArray sortedINDMatrix(Graph<Double, N> graph){
+        List<N> nodes = new ArrayList<>();
+        nodes.addAll(graph.getNodes());
+        nodes.sort(Comparator.naturalOrder());
+
+        HashMap<N, Integer> indexes = new HashMap<>();
+
+        for (int i = 0; i < nodes.size(); i++) {
+            indexes.put(nodes.get(i), i);
+        }
+
+        int size = nodes.size();
+
+        INDArray matrix = Nd4j.zeros(size,size);
+
+        for (int i = 0; i < size; i++) {
+            N from = nodes.get(i);
+            for (CPair<N, Double> to : graph.fromNode(from)){
+                int toIndex = indexes.get(to.getA());
+                matrix.put(i, toIndex, to.getB());
+            }
+        }
+
+        return matrix;
     }
 
     public static <N extends Comparable<N>> double degree(Graph<Double, N> graph, N n){
