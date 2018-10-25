@@ -7,6 +7,7 @@ import fr.univ_tours.info.im_olap.model.QueryPart;
 import fr.univ_tours.info.im_olap.model.Session;
 import fr.univ_tours.info.im_olap.model.SessionGraph;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.factory.Nd4j;
 
 
 import java.util.Arrays;
@@ -31,7 +32,9 @@ public class Dev {
         INDArray topology = Graphs.sortedINDMatrix(base);
         INDArray tp = Graphs.sortedINDMatrix(usage);
         System.out.println(Arrays.toString(topology.shape()));
+        System.out.println(topology.sumNumber());
         System.out.println(Arrays.toString(tp.shape()));
+        System.out.println(tp.sumNumber());
 
 
     }
