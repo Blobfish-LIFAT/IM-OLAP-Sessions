@@ -12,10 +12,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public class SessionGraph {
-    public static OGraph<Integer, QueryPart> buildBaseGraph(List<Session> sessions){
-        OGraph<Integer, QueryPart> result = new OGraph<>();
+    public static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
+        OGraph<Double, QueryPart> result = new OGraph<>();
         for (Session session : sessions){
             for (int i = 0; i < session.length(); i++) {
 
@@ -24,8 +25,8 @@ public class SessionGraph {
 
                 for (int j = 0; j < q1parts.length; j++) {
                     for (int k = j + 1; k < q1parts.length; k++) {
-                        result.safeComputeEdge(q1parts[j], q1parts[k], o -> Optional.of(o.orElse(1)));
-                        result.safeComputeEdge(q1parts[k], q1parts[j], o -> Optional.of(o.orElse(1)));
+                        result.safeComputeEdge(q1parts[j], q1parts[k], o -> Optional.of(o.orElse(1.0)));
+                        result.safeComputeEdge(q1parts[k], q1parts[j], o -> Optional.of(o.orElse(1.0)));
                     }
                 }
 
@@ -34,7 +35,7 @@ public class SessionGraph {
                     QueryPart[] q2parts = q2.flat();
                     for (int j = 0; j < q1parts.length; j++) {
                         for (QueryPart q2part : q2parts) {
-                            result.safeComputeEdge(q1parts[j], q2part, o -> Optional.of(o.orElse(1)));
+                            result.safeComputeEdge(q1parts[j], q2part, o -> Optional.of(o.orElse(1.0)));
                         }
                     }
                 }
@@ -82,8 +83,12 @@ public class SessionGraph {
         }
     }
 
-    public static OGraph<Integer, QueryPart> buildUsageGraph(List<Session> sessions){
-        OGraph<Integer, QueryPart> result = new OGraph<>();
+    public static OGraph<Double, QueryPart> buildUsageGraph(Set<QueryPart> previousQPs, List<Session> sessions){
+        OGraph<Double, QueryPart> result = new OGraph<>();
+
+        for (QueryPart qp : previousQPs){
+            result.addNode(qp);
+        }
 
         for (Session session : sessions){
             for (int i = 0; i < session.length(); i++) {
@@ -93,8 +98,8 @@ public class SessionGraph {
 
                 for (int j = 0; j < q1parts.length; j++) {
                     for (int k = j + 1; k < q1parts.length; k++) {
-                        result.safeComputeEdge(q1parts[j], q1parts[k], o -> Optional.of(o.map(n -> n+1).orElse(1)));
-                        result.safeComputeEdge(q1parts[k], q1parts[j], o -> Optional.of(o.map(n -> n+1).orElse(1)));
+                        result.safeComputeEdge(q1parts[j], q1parts[k], o -> Optional.of(o.map(n -> n+1).orElse(1.0)));
+                        result.safeComputeEdge(q1parts[k], q1parts[j], o -> Optional.of(o.map(n -> n+1).orElse(1.0)));
                     }
                 }
 
@@ -103,7 +108,7 @@ public class SessionGraph {
                     QueryPart[] q2parts = q2.flat();
                     for (int j = 0; j < q1parts.length; j++) {
                         for (QueryPart q2part : q2parts) {
-                            result.safeComputeEdge(q1parts[j], q2part, o -> Optional.of(o.map(n -> n+1).orElse(1)));
+                            result.safeComputeEdge(q1parts[j], q2part, o -> Optional.of(o.map(n -> n+1).orElse(1.0)));
                         }
                     }
                 }
