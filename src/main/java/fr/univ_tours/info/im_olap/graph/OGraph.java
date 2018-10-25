@@ -51,16 +51,20 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
                 .collect(Collectors.toCollection(TreeSet::new));
     }
 
+    private void unsafeAddEdgeInNodes(N from, N to){
+        this.addNode(from);
+        this.addNode(to);
+        nodes.get(from).getB().add(to);
+        nodes.get(to).getA().add(from);
+    }
+
     @Override
     public void setEdge(N from, N to, E value) {
         if (value == null){
             removeEdge(from, to);
         }
         else {
-            this.addNode(from);
-            this.addNode(to);
-            nodes.get(from).getB().add(to);
-            nodes.get(to).getA().add(from);
+            unsafeAddEdgeInNodes(from, to);
             edges.put(new Pair<>(from, to), value);
         }
     }
@@ -104,6 +108,9 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
             if (res == null){
                 unsafeRemoveEdgeInNodes(from, to);
             }
+            else {
+                unsafeAddEdgeInNodes(from, to);
+            }
 
             return res;
         });
@@ -116,6 +123,14 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     @Override
     public List<CPair<N, E>> fromNode(N node) {
+
+        /*
+        nodes.entrySet().forEach(e -> {
+            System.out.println(e.getKey());
+            System.out.println("B:");
+            e.getValue().getB().forEach(System.out::println);
+        });*/
+
         return nodes.get(node)
                 .getB()
                 .stream()
