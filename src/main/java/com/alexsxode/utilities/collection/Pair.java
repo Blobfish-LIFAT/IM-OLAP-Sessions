@@ -40,7 +40,7 @@ public class Pair<L, R> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Pair<?, ?> pair = (CPair<?, ?>) o;
+        Pair<?, ?> pair = (Pair<?, ?>) o;
         return Objects.equals(getA(), pair.getA()) &&
                 Objects.equals(getB(), pair.getB());
     }
