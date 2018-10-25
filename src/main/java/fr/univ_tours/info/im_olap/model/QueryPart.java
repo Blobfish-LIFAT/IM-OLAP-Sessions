@@ -1,6 +1,7 @@
 package fr.univ_tours.info.im_olap.model;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 public class QueryPart implements Comparable<QueryPart>{
     enum Type {
@@ -21,6 +22,12 @@ public class QueryPart implements Comparable<QueryPart>{
     public QueryPart(Type t, String value) {
         this.t = t;
         this.value = value;
+    }
+
+    public Optional<String> getHierarchy(){
+        if (t == Type.MEASURE)
+            return Optional.empty();
+        return Optional.of(value.split("\\.")[0]);
     }
 
     @Override
