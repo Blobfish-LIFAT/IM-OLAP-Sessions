@@ -124,19 +124,12 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     @Override
     public List<CPair<N, E>> fromNode(N node) {
 
-        /*
-        nodes.entrySet().forEach(e -> {
-            System.out.println(e.getKey());
-            System.out.println("B:");
-            e.getValue().getB().forEach(System.out::println);
-        });*/
-
         return nodes.get(node)
                 .getB()
                 .stream()
                 .map(to -> {
                     E v = edges.get(new Pair<>(node, to));
-                    return new CPair<>(node, v);
+                    return new CPair<>(to, v);
                 })
                 .collect(Collectors.toCollection(ArrayList::new));
     }
@@ -148,7 +141,7 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
                 .stream()
                 .map(from -> {
                     E v = edges.get(new Pair<>(from, node));
-                    return new CPair<>(node, v);
+                    return new CPair<>(from, v);
                 })
                 .collect(Collectors.toCollection(ArrayList::new));
     }
@@ -163,6 +156,24 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
         });
 
         return newGraph;
+    }
+
+    public static void main(String[] args){
+
+        OGraph<Double, String> g = new OGraph<>();
+
+        g.safeComputeEdge("A", "B", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
+        g.safeComputeEdge("A", "B", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
+        g.safeComputeEdge("B", "B", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
+        g.safeComputeEdge("B", "A", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
+        g.safeComputeEdge("A", "C", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
+
+        g.fromNode("A").forEach(System.out::println);
+
+        System.out.println(Graphs.sortedINDMatrix(g));
+
+        System.out.println(g.fromNode("A"));
+
     }
 
 }
