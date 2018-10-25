@@ -9,14 +9,12 @@ import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class SessionGraph {
     public static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
         OGraph<Double, QueryPart> result = new OGraph<>();
+        Set<QueryPart> filters = new HashSet<>(); //will need those later
         for (Session session : sessions){
             for (int i = 0; i < session.length(); i++) {
 
@@ -24,6 +22,8 @@ public class SessionGraph {
                 QueryPart[] q1parts = q1.flat();
 
                 for (int j = 0; j < q1parts.length; j++) {
+                    if (q1parts[j].isFilter())
+                        filters.add(q1parts[j]);
                     for (int k = j + 1; k < q1parts.length; k++) {
                         result.safeComputeEdge(q1parts[j], q1parts[k], o -> Optional.of(o.orElse(1.0)));
                         result.safeComputeEdge(q1parts[k], q1parts[j], o -> Optional.of(o.orElse(1.0)));
@@ -38,6 +38,20 @@ public class SessionGraph {
                             result.safeComputeEdge(q1parts[j], q2part, o -> Optional.of(o.orElse(1.0)));
                         }
                     }
+                }
+            }
+        }
+
+        //we will link filters with different filter value but on same attribute
+        List<QueryPart> filtersList = new ArrayList<>(filters);
+        for (int i = 0; i < filtersList.size(); i++) {
+            for (int j = i + 1; j < filtersList.size(); j++) {
+                QueryPart f1 = filtersList.get(i);
+                QueryPart f2 = filtersList.get(j);
+                if (f1.value.split(" = ")[0].equals(f2.value.split(" = ")[0])){
+                    result.safeComputeEdge(f1, f2, o -> Optional.of(1.0));
+                    result.safeComputeEdge(f2, f1, o -> Optional.of(1.0));
+                    System.out.println(f1 + " | " + f2);
                 }
             }
         }

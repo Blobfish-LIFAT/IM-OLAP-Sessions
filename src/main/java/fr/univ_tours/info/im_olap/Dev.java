@@ -17,13 +17,13 @@ public class Dev {
         OGraph<Double, QueryPart> base = SessionGraph.buildBaseGraph(sessions.subList(0,39));
         System.out.printf("Node count in Base: %d%nEdges: %d %n", base.nodeCount(), base.edgeCount());
         SessionGraph.injectSchema(base, "data/schema.xml");
-        System.out.printf("Node count in Base + Schema: %d %nEdges: %d %n", base.nodeCount(), base.edgeCount());
+        System.out.printf("Node count in Topology (Base + Schema): %d %nEdges: %d %n", base.nodeCount(), base.edgeCount());
         OGraph<Double, QueryPart> usage = SessionGraph.buildUsageGraph(base.getNodes(), sessions.subList(40,50));
         System.out.printf("Node count in Usage: %d %nEdges: %d %n", usage.nodeCount(), usage.edgeCount());
 
         usage.getNodes().forEach(base::addNode);
 
-        System.out.printf("Node count in Base + Topology + nodes from Usage: %d %nEdges: %d %n", base.nodeCount(), base.edgeCount());
+        System.out.printf("Node count in Topology + nodes from Usage: %d %nEdges: %d %n", base.nodeCount(), base.edgeCount());
 
 
 

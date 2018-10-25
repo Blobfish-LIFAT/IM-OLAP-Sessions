@@ -30,6 +30,10 @@ public class QueryPart implements Comparable<QueryPart>{
         return Optional.of(value.split("\\.")[0]);
     }
 
+    public boolean isFilter(){
+        return t == Type.FILTER;
+    }
+
     @Override
     public String toString() {
         return "QueryPart{" +
