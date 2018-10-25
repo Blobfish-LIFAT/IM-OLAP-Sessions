@@ -59,6 +59,6 @@ public class QueryPart implements Comparable<QueryPart>{
 
     @Override
     public int hashCode() {
-        return t.hashCode()+value.hashCode();
+        return t.hashCode() * value.hashCode();
     }
 }

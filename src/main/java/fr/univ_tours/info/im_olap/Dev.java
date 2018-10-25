@@ -7,7 +7,6 @@ import fr.univ_tours.info.im_olap.model.QueryPart;
 import fr.univ_tours.info.im_olap.model.Session;
 import fr.univ_tours.info.im_olap.model.SessionGraph;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.factory.Nd4j;
 
 
 import java.util.Arrays;
@@ -19,6 +18,7 @@ public class Dev {
         System.out.printf("Working on %d sessions%n", sessions.size());
 
         OGraph<Double, QueryPart> base = SessionGraph.buildBaseGraph(sessions.subList(0,39));
+        System.out.println(base.getNodes());
         System.out.printf("Node count in Base: %d%nEdges: %d %n", base.nodeCount(), base.edgeCount());
         SessionGraph.injectSchema(base, "data/schema.xml");
         System.out.printf("Node count in Topology (Base + Schema): %d %nEdges: %d %n", base.nodeCount(), base.edgeCount());
