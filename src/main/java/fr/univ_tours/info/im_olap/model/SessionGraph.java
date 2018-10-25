@@ -74,11 +74,6 @@ public class SessionGraph {
 
             }
 
-
-
-
-
-
             return base;
 
         } catch (DocumentException e) {

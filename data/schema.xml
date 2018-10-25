@@ -1,0 +1,89 @@
+<Schema name="SCHEMA_SSB">
+  <Cube name="SSB" visible="true" cache="true" enabled="true">
+    <!--<Table name="lineorder_bis" schema="ssb">-->
+    <Table name="lineorder" schema="ssb">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="lo_custkey" highCardinality="false" name="CUSTOMER">
+      <Hierarchy name="CUSTOMER" visible="true" hasAll="true" allMemberName="All" allLevelName="ALLCUSTOMER" primaryKey="c_custkey">
+        <Table name="customer" schema="ssb">
+        </Table>
+        <Level name="REGION" visible="true" column="c_region" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="NATION" visible="true" column="c_nation" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="CITY" visible="true" column="c_city" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <!--<Level name="NAME" visible="true" column="c_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>-->
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="lo_suppkey" highCardinality="false" name="SUPPLIER">
+      <Hierarchy name="SUPPLIER" visible="true" hasAll="true" allMemberName="All" allLevelName="ALLSUPPLIER" primaryKey="s_suppkey">
+        <Table name="supplier" schema="ssb">
+        </Table>
+        <Level name="REGION" visible="true" column="s_region" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="NATION" visible="true" column="s_nation" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="CITY" visible="true" column="s_city" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <!--<Level name="NAME" visible="true" column="s_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>-->
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="lo_partkey" highCardinality="false" name="PART">
+      <Hierarchy name="PART" visible="true" hasAll="true" allMemberName="All" allLevelName="ALLPART" primaryKey="p_partkey">
+        <Table name="part" schema="ssb">
+        </Table>
+        <Level name="MFGR" visible="true" column="p_mfgr" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="CATEGORY" visible="true" column="p_category" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="BRAND" visible="true" column="p_brand" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="lo_commitdate" highCardinality="false" name="COMMIT_TIME">
+      <Hierarchy name="COMMIT_TIME" visible="true" hasAll="true" allMemberName="All" allLevelName="ALLCOMMIT_TIME" primaryKey="d_datekey">
+        <Table name="date" schema="ssb">
+        </Table>
+        <Level name="YEAR" visible="true" column="d_year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="YEARMONTHNUM" visible="true" column="d_yearmonthnum" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="lo_orderdate" highCardinality="false" name="TIME">
+      <Hierarchy name="TIME" visible="true" hasAll="true" allMemberName="All" allLevelName="ALLTIME" primaryKey="d_datekey">
+        <Table name="date" schema="ssb">
+        </Table>
+        <Level name="YEAR" visible="true" column="d_year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="YEARMONTHNUM" visible="true" column="d_yearmonthnum" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <!--
+    <Dimension type="StandardDimension" visible="true" foreignKey="lo_discount" highCardinality="false" name="Discount">
+      <Hierarchy name="DISCOUNT" visible="true" hasAll="true" allMemberName="All" allLevelName="ALL_DISCOUNT" primaryKey="lo_orderkey">
+        <Table name="lineorder" schema="ssb">
+        </Table>
+        <Level name="DiscountLevel" visible="true" column="lo_discount" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="lo_quantity" highCardinality="false" name="Quantity">
+      <Hierarchy name="QUANTITY" visible="true" hasAll="true" allMemberName="All" allLevelName="ALL_QUANTITY" primaryKey="lo_orderkey">
+        <Table name="lineorder" schema="ssb">
+        </Table>
+        <Level name="Quantity Level" visible="true" column="lo_quantity" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    -->
+    <!-- JE DOIS LAISSER LES MESURES CAR CUBELOAD LES UTILISE... -->
+    <!-- j'ai cree une copie de lo_revenue avec un type double... -->
+    <Measure name="SUMrevenue" column="lo_revenue" aggregator="sum" visible="true" datatype=""></Measure>
+    <Measure name="AVGrevenue" column="lo_revenue" aggregator="avg" visible="true"></Measure>
+  </Cube>
+</Schema>
