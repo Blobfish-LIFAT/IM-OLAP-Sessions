@@ -41,8 +41,10 @@ public class Dev {
         normalizeRowsi(uniform);
 
         // (1-e)*((1-a)*topo - a*tp) + e*uniform
-        INDArray pr = topology.mul(1-alpha).sub(tp.mul(alpha)).mul(1 - epsilon);//.add(uniform.mul(epsilon));
-        System.out.println(pr.sum(1));
+        INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha)).mul(1 - epsilon).add(uniform.mul(epsilon));
+
+        INDArray pinf = PageRank.pageRank(pr, 42);
+
 
     }
 }

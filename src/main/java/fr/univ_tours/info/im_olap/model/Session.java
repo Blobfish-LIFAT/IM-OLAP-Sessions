@@ -17,4 +17,11 @@ public class Session {
         return queries.size();
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
 }
