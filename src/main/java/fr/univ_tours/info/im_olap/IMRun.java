@@ -60,12 +60,11 @@ public class IMRun {
         List<Session> toEval = LoadSessions.loadFromDir(evalSet);
 
         TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
-        List<QueryPart> baseParts = new ArrayList<>();
-        for (Session session : learning){
-            session.queries.forEach(query -> baseParts.addAll(Arrays.asList(query.flat())));
-        }
+        List<QueryPart> baseParts = new ArrayList<>(base.getNodes());
 
         Collections.sort(baseParts);
+
+        //baseParts.forEach(System.out::println);
 
         for (int i = 0; i < baseParts.size(); i++) {
             querryMap.putIfAbsent(baseParts.get(i), i);
