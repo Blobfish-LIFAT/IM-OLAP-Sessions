@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Profile>
+  <Name value="md"/>
+  <NumberOfSessionSeedQueries value="20"/>
+  <MinSessionLength value="5"/>
+  <MaxSessionLength value="50"/>
+  <NumberOfSessions value="150"/>
+  <YearPrompt value="0.3"/>
+  <SegregationPredicate value="false"/>
+</Profile>

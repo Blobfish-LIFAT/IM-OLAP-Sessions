@@ -17,8 +17,8 @@ import static org.nd4j.linalg.util.MathUtils.log2;
 
 public class IMRun {
     static String sessionsDir = "data/session_set_1", schemaPath = "data/schema.xml",
-            userProfile = "Slice and Drill", evalSet = "data/session_set_2";
-    static int userSize = 5;
+            userProfile = "Explorative", evalSet = "data/session_set_2";
+    static int userSize = 7;
     static double alpha = 0.5, epsilon = 0.05;
 
     public static void main(String[] args) {
