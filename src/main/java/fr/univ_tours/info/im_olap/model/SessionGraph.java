@@ -14,7 +14,6 @@ import java.util.*;
 public class SessionGraph {
     private static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
         OGraph<Double, QueryPart> result = new OGraph<>();
-        Set<QueryPart> filters = new HashSet<>(); //will need those later
         //int  t = 0;
         for (Session session : sessions){
             //System.out.printf("Session %d has %d queries%n", t++, session.length());
@@ -23,8 +22,6 @@ public class SessionGraph {
                 QueryPart[] q1parts = q1.flat();
 
                 for (int j = 0; j < q1parts.length; j++) {
-                    if (q1parts[j].isFilter())
-                        filters.add(q1parts[j]);
                     for (int k = j ; k < q1parts.length; k++) {
                         result.safeComputeEdge(q1parts[j], q1parts[k], o -> Optional.of(o.orElse(1.0)));
                         result.safeComputeEdge(q1parts[k], q1parts[j], o -> Optional.of(o.orElse(1.0)));
@@ -43,6 +40,23 @@ public class SessionGraph {
             }
         }
 
+
+        return result;
+    }
+
+    public static OGraph<Double, QueryPart> injectCousins(OGraph<Double, QueryPart> base, List<Session> sessions){
+        Set<QueryPart> filters = new HashSet<>();
+
+        for (Session session : sessions){
+            for (Query q : session.queries){
+                QueryPart[] q1parts = q.flat();
+                for (QueryPart q1part : q1parts) {
+                    if (q1part.isFilter())
+                        filters.add(q1part);
+                }
+            }
+        }
+
         //we will link filters with different filter value but on same attribute
         List<QueryPart> filtersList = new ArrayList<>(filters);
         for (int i = 0; i < filtersList.size(); i++) {
@@ -50,14 +64,14 @@ public class SessionGraph {
                 QueryPart f1 = filtersList.get(i);
                 QueryPart f2 = filtersList.get(j);
                 if (f1.value.split(" = ")[0].equals(f2.value.split(" = ")[0])){
-                    result.safeComputeEdge(f1, f2, o -> Optional.of(1.0));
-                    result.safeComputeEdge(f2, f1, o -> Optional.of(1.0));
+                    base.safeComputeEdge(f1, f2, o -> Optional.of(1.0));
+                    base.safeComputeEdge(f2, f1, o -> Optional.of(1.0));
                     //System.out.println(f1 + " | " + f2);
                     //System.out.println(f1 + " | " + f1.t.hashCode());
                 }
             }
         }
-        return result;
+        return base;
     }
 
     /**
