@@ -21,20 +21,23 @@ public class IMRun {
     static String[] explos = new String[]{explo, sliceDrill, goal, sliceAll};
 
     static String sessionsDir = "data/session_set_1", schemaPath = "data/schema.xml",
-            userProfile = explo, evalProfile = sliceDrill;
+            userProfile = goal, evalProfile = sliceDrill;
     static int baseSize = 40, userSize = 7;
-    static double alpha = 0.5, epsilon = 0.05;
+    static double alpha = 0.5, epsilon = 0.005;
 
     public static void main(String[] args) {
         ArrayList<String> profiles = new ArrayList<>(Arrays.asList(explos));
-        profiles.remove(userProfile);
+        //profiles.remove(userProfile);
 
-        System.out.println("sessionFilename;userProfile;evalProfile;alpha;IM");
-        for (String profile : profiles){
-            evalProfile = profile;
-            for (int i = 1; i < 10; i++) {
-                alpha = i/10.0;
-                runTest();
+        System.out.println("userProfile;evalProfile;alpha;IM");
+        for (String p : profiles){
+            userProfile = p;
+            for (String profile : profiles){
+                evalProfile = profile;
+                for (int i = 1; i < 10; i++) {
+                    alpha = i/10.0;
+                    runTest();
+                }
             }
         }
 
@@ -114,7 +117,7 @@ public class IMRun {
                 }
             }
 
-            System.out.printf("%s;%s;%s;%f;%s%n", session.getFilename(), userProfile, evalProfile, alpha, String.valueOf(-sum/size));
+            System.out.printf("%s;%s;%f;%s%n", userProfile, evalProfile, alpha, String.valueOf(-sum/size));
         }
     }
 }
