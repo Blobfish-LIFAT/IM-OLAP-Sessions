@@ -16,6 +16,9 @@ import static fr.univ_tours.info.im_olap.graph.PageRank.normalizeRowsi;
 import static org.nd4j.linalg.util.MathUtils.log2;
 
 public class IMRun {
+    static String explo = "Explorative", sliceDrill = "Slice and Drill", goal = "Goal Oriented", sliceAll = "Slice All";
+    static String[] explos = new String[]{explo, sliceDrill, goal, sliceAll};
+
     static String sessionsDir = "data/session_set_1", schemaPath = "data/schema.xml",
             userProfile = "Explorative", evalSet = "data/session_set_2";
     static int userSize = 7;
