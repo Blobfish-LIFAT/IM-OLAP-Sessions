@@ -10,40 +10,52 @@ import fr.univ_tours.info.im_olap.model.SessionGraph;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 import static fr.univ_tours.info.im_olap.graph.PageRank.normalizeRowsi;
+import static org.nd4j.linalg.util.MathUtils.entropy;
 import static org.nd4j.linalg.util.MathUtils.log2;
 
 public class IMRun {
     static String explo = "Explorative", sliceDrill = "Slice and Drill", goal = "Goal Oriented", sliceAll = "Slice All";
     static String[] explos = new String[]{explo, sliceDrill, goal, sliceAll};
-
-    static String sessionsDir = "data/session_set_1", schemaPath = "data/schema.xml",
-            userProfile = goal, evalProfile = sliceDrill;
-    static int baseSize = 40, userSize = 7;
+    static String sessionsDir = "data/session_set_1", schemaPath = "data/schema.xml", userProfile = goal;
+    static int baseSize = 40, userSize = 9;
     static double alpha = 0.5, epsilon = 0.005;
 
-    public static void main(String[] args) {
-        ArrayList<String> profiles = new ArrayList<>(Arrays.asList(explos));
-        //profiles.remove(userProfile);
+    static PrintWriter output = null;
+    static String outputPath = "data/kullback.csv";
+
+    public static void main(String[] args) throws Exception{
+        OutputStream out = Files.newOutputStream(Paths.get(outputPath));
+        output = new PrintWriter(out);
 
         System.out.println("userProfile;evalProfile;alpha;IM");
-        for (String p : profiles){
-            userProfile = p;
-            for (String profile : profiles){
-                evalProfile = profile;
-                for (int i = 1; i < 10; i++) {
-                    alpha = i/10.0;
-                    runTest();
+        for (int k = 0; k < 50; k++) {
+            for (int j = 0; j < explos.length; j++) {
+                userProfile = explos[j];
+                for (int l = 0; l < explos.length; l++) {
+
+                    for (int i = 1; i < 10; i++) {
+                        alpha = i / 10.0;
+                        runTest(explos[l]);
+                    }
                 }
             }
         }
 
+        output.close();
+        out.close();
     }
 
-    private static void runTest() {
+    private static void runTest(String evalProfile) {
         List<Session> sessions = LoadSessions.loadFromDir(sessionsDir);
         Collections.shuffle(sessions);
 
@@ -53,13 +65,14 @@ public class IMRun {
 
         int qota = userSize, qota2 = sessions.size() - userSize - baseSize;
         for (Session session : sessions){
-            if (session.getType().equals(userProfile) && qota > 0) {
-                user.add(session);
-                qota--;
-            } else if (session.getType().equals(evalProfile) && qota2 > 0) {
+             if (session.getType().equals(evalProfile) && qota2 > 0) {
                 eval.add(session);
                 qota2--;
-            } else
+            }else if (session.getType().equals(userProfile) && qota > 0) {
+                user.add(session);
+                qota--;
+            }
+            else
                 learning.add(session);
         }
 
@@ -87,7 +100,10 @@ public class IMRun {
         // (1-e)*((1-a)*topo - a*tp) + e*uniform
         INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha)).mul(1 - epsilon).add(uniform.mul(epsilon));
 
+        //TODO could do 15 iterations and check if converged ?
         INDArray pinf = PageRank.pageRank(pr, 42);
+
+        runDivergenceTest(pinf.getRow(0), evalProfile);
 
 
         TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
@@ -117,7 +133,14 @@ public class IMRun {
                 }
             }
 
-            System.out.printf("%s;%s;%f;%s%n", userProfile, evalProfile, alpha, String.valueOf(-sum/size));
+            System.out.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), String.valueOf(-sum/size));
         }
+    }
+
+    private static void runDivergenceTest(INDArray distribution, String evalProfile) {
+        double divergence = log2(distribution.columns()) - distribution.shannonEntropyNumber().doubleValue();
+
+        output.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), divergence);
+
     }
 }
