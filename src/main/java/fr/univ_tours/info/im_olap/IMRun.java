@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import static fr.univ_tours.info.im_olap.graph.PageRank.normalizeRowsi;
+import static org.nd4j.linalg.ops.transforms.Transforms.sqrt;
 import static org.nd4j.linalg.util.MathUtils.entropy;
 import static org.nd4j.linalg.util.MathUtils.log2;
 
@@ -31,7 +32,7 @@ public class IMRun {
     static double alpha = 0.5, epsilon = 0.005;
 
     static PrintWriter output = null;
-    static String outputPath = "data/kullback.csv";
+    static String outputPath = "data/hellinger_uniform.csv";
 
     public static void main(String[] args) throws Exception{
         OutputStream out = Files.newOutputStream(Paths.get(outputPath));
@@ -99,12 +100,19 @@ public class IMRun {
 
         // (1-e)*((1-a)*topo - a*tp) + e*uniform
         INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha)).mul(1 - epsilon).add(uniform.mul(epsilon));
+        // without user
+        INDArray pru = topology.mul(1 - epsilon).add(uniform.mul(epsilon));
 
         //TODO could do 15 iterations and check if converged ?
         INDArray pinf = PageRank.pageRank(pr, 42);
+        INDArray pinfu = PageRank.pageRank(pru, 42);
 
         runDivergenceTest(pinf.getRow(0), evalProfile);
 
+        INDArray rootp = sqrt(pinfu.getRow(0));
+        INDArray rootq = sqrt(pinf.getRow(0));
+
+        //System.out.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), String.valueOf(rootp.sub(rootq).norm2Number().doubleValue()* 1.0/Math.sqrt(2)));
 
         TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
         List<QueryPart> baseParts = new ArrayList<>(base.getNodes());
@@ -133,14 +141,15 @@ public class IMRun {
                 }
             }
 
-            System.out.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), String.valueOf(-sum/size));
+            //System.out.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), String.valueOf(-sum/size));
         }
     }
 
     private static void runDivergenceTest(INDArray distribution, String evalProfile) {
         double divergence = log2(distribution.columns()) - distribution.shannonEntropyNumber().doubleValue();
-
-        output.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), divergence);
+        INDArray uniform = Nd4j.ones(distribution.shape());
+        normalizeRowsi(uniform);
+        output.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), Nd4jUtils.hellinger(distribution, uniform));
 
     }
 }
