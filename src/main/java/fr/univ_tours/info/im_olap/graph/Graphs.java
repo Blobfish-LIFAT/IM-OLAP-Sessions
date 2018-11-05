@@ -47,6 +47,7 @@ public final class Graphs {
         List<N> nodes = new ArrayList<>();
         nodes.addAll(graph.getNodes());
         nodes.sort(Comparator.naturalOrder());
+        //System.out.println(nodes);
 
         HashMap<N, Integer> indexes = new HashMap<>();
 

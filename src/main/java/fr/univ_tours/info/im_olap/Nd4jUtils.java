@@ -3,6 +3,7 @@ package fr.univ_tours.info.im_olap;
 import org.apache.commons.math3.exception.MathIllegalArgumentException;
 import org.nd4j.linalg.api.ndarray.INDArray;
 
+import static org.nd4j.linalg.ops.transforms.Transforms.relu;
 import static org.nd4j.linalg.ops.transforms.Transforms.sqrt;
 import static org.nd4j.linalg.util.MathUtils.log2;
 
@@ -39,6 +40,15 @@ public final class Nd4jUtils {
             sum += p.getDouble(i)*log2(pi/qi);
         }
         return sum;
+    }
+
+    public static double normalizedEntropy(INDArray p){
+        double sum = 0;
+        for (int i = 0; i < p.columns(); i++) {
+            sum += p.getDouble(i)*log2(p.getDouble(i));
+        }
+        sum = - sum;
+        return sum/log2(p.columns());
     }
 
     public static boolean isZero(double value){

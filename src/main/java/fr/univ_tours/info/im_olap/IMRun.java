@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import static fr.univ_tours.info.im_olap.graph.PageRank.normalizeRowsi;
@@ -28,17 +29,21 @@ public class IMRun {
     static String explo = "Explorative", sliceDrill = "Slice and Drill", goal = "Goal Oriented", sliceAll = "Slice All";
     static String[] explos = new String[]{explo, sliceDrill, goal, sliceAll};
     static String sessionsDir = "data/session_set_1", schemaPath = "data/schema.xml", userProfile = goal;
-    static int baseSize = 40, userSize = 9;
+    static int baseSize = 43, userSize = 7;
     static double alpha = 0.5, epsilon = 0.005;
 
+    static DecimalFormat df = new DecimalFormat("#.##");
+
     static PrintWriter output = null;
-    static String outputPath = "data/hellinger_uniform.csv";
+    static String outputPath = "data/hellinger.csv";
 
     public static void main(String[] args) throws Exception{
         OutputStream out = Files.newOutputStream(Paths.get(outputPath));
         output = new PrintWriter(out);
 
-        System.out.println("userProfile;evalProfile;alpha;IM");
+        //System.out.println("userProfile;evalProfile;alpha;IM");
+        output.println("userProfile;evalProfile;alpha;hellinger");
+
         for (int k = 0; k < 50; k++) {
             for (int j = 0; j < explos.length; j++) {
                 userProfile = explos[j];
@@ -78,6 +83,10 @@ public class IMRun {
         }
 
         //System.out.printf("sessions=%d, user=%d, learning=%d, eval=%d%n", sessions.size(), user.size(), learning.size(), eval.size());
+        /**
+         * WARNING THIS IS ONLY FOR DOLAP
+         */
+        learning.addAll(eval);
 
         OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(learning, schemaPath);
         SessionGraph.injectCousins(base, sessions);
@@ -99,20 +108,21 @@ public class IMRun {
         normalizeRowsi(uniform);
 
         // (1-e)*((1-a)*topo - a*tp) + e*uniform
-        INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha)).mul(1 - epsilon).add(uniform.mul(epsilon));
+        //INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha)).mul(1 - epsilon).add(uniform.mul(epsilon));
+        INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha));
         // without user
         INDArray pru = topology.mul(1 - epsilon).add(uniform.mul(epsilon));
 
         //TODO could do 15 iterations and check if converged ?
         INDArray pinf = PageRank.pageRank(pr, 42);
+        System.out.println(userProfile + ";" + df.format(alpha) + ";" + pinf.mul(1000).toString().replace("[", "").replace("]", "").replace("  ", ""));
         INDArray pinfu = PageRank.pageRank(pru, 42);
+        System.out.println("Page Rank" + ";" + df.format(alpha) + ";" + pinfu.mul(1000).toString().replace("[", "").replace("]", "").replace("  ", ""));
+        runDivergenceTest(pinfu.getRow(0), pinf.getRow(0), evalProfile);
 
-        runDivergenceTest(pinf.getRow(0), evalProfile);
+        //System.out.println(pinfu.sum(1));
 
-        INDArray rootp = sqrt(pinfu.getRow(0));
-        INDArray rootq = sqrt(pinf.getRow(0));
-
-        //System.out.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), String.valueOf(rootp.sub(rootq).norm2Number().doubleValue()* 1.0/Math.sqrt(2)));
+        /*
 
         TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
         List<QueryPart> baseParts = new ArrayList<>(base.getNodes());
@@ -141,15 +151,16 @@ public class IMRun {
                 }
             }
 
-            //System.out.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), String.valueOf(-sum/size));
+            System.out.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), String.valueOf(-sum/size));
         }
+        */
     }
 
-    private static void runDivergenceTest(INDArray distribution, String evalProfile) {
-        double divergence = log2(distribution.columns()) - distribution.shannonEntropyNumber().doubleValue();
-        INDArray uniform = Nd4j.ones(distribution.shape());
-        normalizeRowsi(uniform);
-        output.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), Nd4jUtils.hellinger(distribution, uniform));
+    private static void runDivergenceTest(INDArray pr, INDArray bpr, String evalProfile) {
+        //double divergence = log2(distribution.columns()) - distribution.shannonEntropyNumber().doubleValue();
+        //INDArray uniform = Nd4j.ones(distribution.shape());
+        //normalizeRowsi(uniform);
+        output.printf("%s;%s;%s;%s%n", userProfile, evalProfile, String.valueOf(alpha), Nd4jUtils.hellinger(pr, bpr));
 
     }
 }

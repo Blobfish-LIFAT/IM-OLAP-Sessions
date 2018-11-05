@@ -3,10 +3,7 @@ package fr.univ_tours.info.im_olap;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.graph.PageRank;
-import fr.univ_tours.info.im_olap.model.LoadSessions;
-import fr.univ_tours.info.im_olap.model.QueryPart;
-import fr.univ_tours.info.im_olap.model.Session;
-import fr.univ_tours.info.im_olap.model.SessionGraph;
+import fr.univ_tours.info.im_olap.model.*;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
@@ -20,6 +17,13 @@ public class Dev {
     public static void main(String[] args) {
         List<Session> sessions = LoadSessions.loadFromDir("data/session_set_1");
         System.out.printf("Working on %d sessions%n", sessions.size());
+
+        for (Session s : sessions){
+            int n = 0;
+            for (Query q : s.queries)
+                n += q.flat().length;
+            System.out.printf("%s;%s%n", s.getType(), n);
+        }
 
         OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(sessions.subList(0,39), "data/schema.xml");
 
