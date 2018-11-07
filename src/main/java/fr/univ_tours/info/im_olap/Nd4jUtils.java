@@ -51,6 +51,16 @@ public final class Nd4jUtils {
         return sum/log2(p.columns());
     }
 
+    public static String vecToString(INDArray vector, String delimiter){
+        StringBuilder builder = new StringBuilder();
+        builder.append(vector.getDouble(0));
+        for (int i = 1; i < vector.columns(); i++) {
+            builder.append(delimiter);
+            builder.append(vector.getDouble(i));
+        }
+        return builder.toString();
+    }
+
     public static boolean isZero(double value){
         return value >= -threshold && value <= threshold;
     }

@@ -49,6 +49,8 @@ public class Dev {
 
         INDArray pinf = PageRank.pageRank(pr, 42);
 
+        System.out.println(Nd4jUtils.vecToString(pinf.getRow(0), ","));
+
 
     }
 }

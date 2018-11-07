@@ -115,9 +115,9 @@ public class IMRun {
 
         //TODO could do 15 iterations and check if converged ?
         INDArray pinf = PageRank.pageRank(pr, 42);
-        System.out.println(userProfile + ";" + df.format(alpha) + ";" + pinf.mul(1000).toString().replace("[", "").replace("]", "").replace("  ", ""));
+        System.out.println(userProfile + ";" + df.format(alpha) + ";" + Nd4jUtils.vecToString(pinf, ","));
         INDArray pinfu = PageRank.pageRank(pru, 42);
-        System.out.println("Page Rank" + ";" + df.format(alpha) + ";" + pinfu.mul(1000).toString().replace("[", "").replace("]", "").replace("  ", ""));
+        System.out.println("Page Rank" + ";" + df.format(alpha) + ";" + Nd4jUtils.vecToString(pinfu, ","));
         runDivergenceTest(pinfu.getRow(0), pinf.getRow(0), evalProfile);
 
         //System.out.println(pinfu.sum(1));

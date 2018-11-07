@@ -5,13 +5,16 @@ import sys
 import math
 
 selected = sys.argv[1]
+fontsize = 18
+if len(sys.argv) > 2:
+    fontsize = int(sys.argv[2])
 #colors = { 0.1:"blue", 0.2:"blue", 0.3:"yellow", 0.4:"red", 0.5:"orange", 0.5:"cyan", 0.6:"black", 0.7:"magenta", 0.8:"grey", 0.9:"green"}
 explos = ["Explorative", "Slice and Drill", "Goal Oriented", "Slice All", "Page Rank"]
 colors = {"Explorative":"green", "Slice and Drill":"yellow", "Goal Oriented":"orange", "Slice All":"cyan", "Page Rank":"grey"}
 index = {"Explorative":0, "Slice and Drill":1, "Goal Oriented":2, "Slice All":3, "Page Rank": 4}
 matrix = [[],[],[],[], []]
 
-with open("log1.txt") as f:
+with open("../logs/log1.csv") as f:
 	for line in f:
 		line = line.split(";")
 		if line[1] == selected:
@@ -20,7 +23,7 @@ with open("log1.txt") as f:
 			p = line[2].split(",")
 			tmp = []
 			for i in range(len(p)):
-				tmp.append(float(p[i])/1000.0)
+				tmp.append(float(p[i]))
 
 			tmp.sort()
 			tmp.reverse()
@@ -39,10 +42,11 @@ patches = []
 for explo in explos:
 	patches.append(mpatches.Patch(color=colors[explo], label=explo))
 
-plt.legend(handles=patches)
-plt.ylabel("PR Probability")
-plt.xlabel("alpha = " + selected)
-#plt.ylim(0.0, 0.07)
+plt.legend(handles=patches, prop={'size':fontsize})
+plt.ylabel("User Belief Probabilities", fontsize=fontsize)
+plt.xlabel("Query parts", fontsize=fontsize)
+plt.ylim(0.0, 0.07)
 ax  = plt.gca()
 ax.set_xticklabels([])
+ax.yaxis.set_tick_params(labelsize=fontsize)
 plt.show()
