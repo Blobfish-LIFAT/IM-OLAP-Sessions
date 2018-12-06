@@ -2,9 +2,9 @@
 <Profile>
   <Name value="md"/>
   <NumberOfSessionSeedQueries value="20"/>
-  <MinSessionLength value="5"/>
-  <MaxSessionLength value="50"/>
-  <NumberOfSessions value="70"/>
+  <MinSessionLength value="25"/>
+  <MaxSessionLength value="25"/>
+  <NumberOfSessions value="500"/>
   <YearPrompt value="0.3"/>
   <SegregationPredicate value="false"/>
 </Profile>

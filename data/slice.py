@@ -1,5 +1,5 @@
-outDir = "session_set_1/"
-inFile = "sessions.txt"
+outDir = "session_set_2/"
+inFile = "/home/alex/stage/IM-OLAP/lib/Sessions.txt"
 
 n = 1
 init = False

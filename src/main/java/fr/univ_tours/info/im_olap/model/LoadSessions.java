@@ -66,6 +66,8 @@ public class LoadSessions {
                 n++;
             }
         }
+        if (current == null)
+            System.err.printf("Error reading file '%s' at '%s'.%n", p.getFileName(), p.getParent().toString());
         return current;
 
     }
