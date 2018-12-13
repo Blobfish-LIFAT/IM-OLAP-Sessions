@@ -62,34 +62,16 @@ public class Connection {
      */
     public Connection(String filename) {
         this.fp= new falseto_params(filename);
-
-            try {
-                provider    = fp.getProvider();
-                dbms        = fp.getDbms();
-                jdbc        = fp.getJdbc();
-                schema      = fp.getSchema();
-                driver      = fp.getDriver();
-                user        = fp.getUser();
-                password    = fp.getPassword();
-                cubeName    = fp.getCubeName();
-                ncube       = fp.getNcube();
-                connectionString = fp.getConnectionString();
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("OLAP connection failed. Please check in the class falseto_params if the given informations are correct.");
-            }
-
         
     }
-
     /**Open a new Mondrian connection*/
     public void open()
     {
         System.out.println(connectionString);
-        System.out.println("Connecting ...");
+        System.out.println("connecting...");
         cnx = DriverManager.getConnection(connectionString, null);
         System.out.println(cnx.getConnectString());
-        System.out.println("Connected.");
+        System.out.println("connected.");
         cube = cnx.getSchema().getCubes()[Integer.valueOf(ncube)];
         getHierarchy();
     }
