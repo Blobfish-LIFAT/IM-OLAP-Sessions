@@ -107,7 +107,7 @@ public class SessionGraph {
 
             return base;
 
-        } catch (DocumentException e) {
+        } catch (Exception e) {
             System.err.printf("Could not parse schema in '%s', verify file permission/format.");
             return base;
         }
