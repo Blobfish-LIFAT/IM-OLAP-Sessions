@@ -27,7 +27,7 @@
       </Hierarchy>
     </Dimension>
     <Dimension type="StandardDimension" visible="true" foreignKey="lo_partkey" highCardinality="false" name="PART">
-      <Hierarchy name="PART" visible="true" hasAll="true" allMemberName="All" allLevelName="ALLPART" primaryKey="p_partkey">
+      <Hierarchy visible="true" hasAll="true" allMemberName="All" allLevelName="ALLPART" primaryKey="p_partkey">
         <Table name="part">
         </Table>
         <Level name="MFGR" visible="true" column="p_mfgr" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">

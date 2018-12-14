@@ -36,19 +36,22 @@ public class falseto_params {
         this.cubeName       =  "SSB";
         this.ncube          =  "0";
         this.testFilePath   =  "test/";
-        this.jdbc           =  "jdbc:mysql://home.alexc.ovh:3306/tp_mondrian";
-        this.provider       =  "Mondrian";
-        this.password       =  "***REMOVED***";
-        this.driver         =  "com.mysql.jdbc.Driver";
-        
-       this.connectionString="Provider=" + this.provider
+        this.jdbc           =  "jdbc:mysql://10.10.1.75:3306/tp_mondrian";
+        this.provider       =  "Mondrian";//
+        this.password       =  "1598alex";//
+        this.driver         =  "com.mysql.jdbc.Driver";//
+        finish();
+    }
+
+    private void finish() {
+        this.connectionString="Provider=" + this.provider
                 + ";Jdbc=" + this.jdbc
                 + ";Catalog=" + this.schema
                 + ";JdbcDrivers=" + this.driver
                 + ";JdbcUser=" + this.user
                 + ";JdbcPassword=" + this.password;
-        
     }
+
     /**
      * Constructeur permettant de charger les paramètres de connexion à partir
      * du fichier olapConnection
@@ -60,8 +63,8 @@ public class falseto_params {
         
         try {
             Properties p = new Properties();
-          FileInputStream fs = new FileInputStream(Generics.CONNECTION_PROPERTIES);
-          p.load(fs);
+            FileInputStream fs = new FileInputStream(Generics.CONNECTION_PROPERTIES);
+            p.load(fs);
 
             provider = p.getProperty("provider");
             dbms = p.getProperty("dbms");
@@ -72,17 +75,13 @@ public class falseto_params {
             password = p.getProperty("password");
             cubeName = p.getProperty("cubeName");
             ncube=p.getProperty("ncube");
-            connectionString = "Provider=" + provider
-                    + ";Jdbc=" + jdbc
-                    + ";Catalog=" + schema
-                    + ";JdbcDrivers=" + driver
-                    + ";JdbcUser=" + user
-                    + ";JdbcPassword=" + password;
+            this.testFilePath = p.getProperty("testPath");
             fs.close();
+
+            finish();
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("OLAP connection failed. Please check olapConnection.properties exists or given information are correct.");
-            //System.exit(2);
         }
     }
     
