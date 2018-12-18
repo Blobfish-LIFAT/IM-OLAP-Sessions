@@ -71,11 +71,6 @@ public class TestsAlex {
                 learning.add(session);
         }
 
-        //System.out.printf("sessions=%d, user=%d, learning=%d, eval=%d%n", sessions.size(), user.size(), learning.size(), eval.size());
-        /**
-         * WARNING THIS IS ONLY FOR DOLAP
-         */
-
         OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(learning, schemaPath);
         SessionGraph.injectCousins(base, sessions);
 
@@ -104,8 +99,6 @@ public class TestsAlex {
         List<QueryPart> baseParts = new ArrayList<>(base.getNodes());
 
         Collections.sort(baseParts);
-
-        //baseParts.forEach(System.out::println);
 
         for (int i = 0; i < baseParts.size(); i++) {
             querryMap.putIfAbsent(baseParts.get(i), i);
