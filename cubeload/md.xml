@@ -4,7 +4,7 @@
   <NumberOfSessionSeedQueries value="20"/>
   <MinSessionLength value="25"/>
   <MaxSessionLength value="25"/>
-  <NumberOfSessions value="50"/>
+  <NumberOfSessions value="200"/>
   <YearPrompt value="0.3"/>
   <SegregationPredicate value="false"/>
 </Profile>
