@@ -1,7 +1,6 @@
 package fr.univ_tours.info.im_olap.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Query {
     Set<QueryPart> dimensions;
@@ -12,6 +11,11 @@ public class Query {
         dimensions = new HashSet<>();
         filters = new HashSet<>();
         measures = new HashSet<>();
+    }
+
+    public Query(Collection<QueryPart> parts){
+        this();
+        this.addAll(parts);
     }
 
     public QueryPart[] flat(){
@@ -34,5 +38,21 @@ public class Query {
                 "\nfilters=" + filters +
                 "\nmeasures=" + measures +
                 '}';
+    }
+
+    public void addAll(Collection<QueryPart> parts){
+        parts.forEach(queryPart -> {
+            switch (queryPart.t){
+                case DIMENSION:
+                    this.dimensions.add(queryPart);
+                    break;
+                case FILTER:
+                    this.filters.add(queryPart);
+                    break;
+                case MEASURE:
+                    this.measures.add(queryPart);
+                    break;
+            }
+        });
     }
 }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 public class QueryPart implements Comparable<QueryPart>{
-    enum Type {
+    public enum Type {
         DIMENSION, FILTER, MEASURE
     }
 
