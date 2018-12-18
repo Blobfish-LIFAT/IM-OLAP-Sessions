@@ -1,17 +1,27 @@
 package fr.univ_tours;
 
-import fr.univ_tours.info.im_olap.model.Query;
-import fr.univ_tours.info.im_olap.model.QueryPart;
+import com.alexsxode.utilities.collection.MultiSet;
+import com.alexsxode.utilities.math.Distribution;
+import fr.univ_tours.info.im_olap.Nd4jUtils;
+import fr.univ_tours.info.im_olap.graph.Graphs;
+import fr.univ_tours.info.im_olap.graph.OGraph;
+import fr.univ_tours.info.im_olap.graph.PageRank;
+import fr.univ_tours.info.im_olap.model.*;
 import fr.univ_tours.info.im_olap.model.Session;
 import fr.univ_tours.li.jaligon.falseto.Generics.Connection;
 import fr.univ_tours.li.jaligon.falseto.Generics.falseto_params;
 import fr.univ_tours.li.jaligon.falseto.QueryStructure.*;
 import fr.univ_tours.li.jaligon.falseto.Recommendation.ASRA;
 import fr.univ_tours.li.jaligon.falseto.test.XmlLogParsing;
+import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.factory.Nd4j;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
+
+import static fr.univ_tours.info.im_olap.graph.PageRank.normalizeRowsi;
 
 public class TestsAlex {
     /**
@@ -31,7 +41,79 @@ public class TestsAlex {
         ASRA recommender = new ASRA(learn, test);
         QuerySession recommended = recommender.computeASRA();
 
+        //type conversion
         Session ourtype = fromJulien(recommended);
+
+        //Compute empirical distribution
+        MultiSet<QueryPart> parts = new MultiSet<>();
+        parts.addAll(ourtype.allParts());
+        Distribution<QueryPart> empirical = new Distribution<>(parts);
+
+
+        //TODO run getBelief and code divergence
+
+    }
+
+    private static Distribution<QueryPart> getBeliefs(String sessionsDir, String schemaPath, String userProfile, int userSize, double alpha) {
+        List<Session> sessions = LoadSessions.loadFromDir(sessionsDir);
+        Collections.shuffle(sessions);
+
+        List<Session> user = new ArrayList<>();
+        List<Session> learning = new ArrayList<>();
+
+        int qota = userSize;
+        for (Session session : sessions){
+            if (session.getType().equals(userProfile) && qota > 0) {
+                user.add(session);
+                qota--;
+            }
+            else
+                learning.add(session);
+        }
+
+        //System.out.printf("sessions=%d, user=%d, learning=%d, eval=%d%n", sessions.size(), user.size(), learning.size(), eval.size());
+        /**
+         * WARNING THIS IS ONLY FOR DOLAP
+         */
+
+        OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(learning, schemaPath);
+        SessionGraph.injectCousins(base, sessions);
+
+        OGraph<Double, QueryPart> usage = SessionGraph.buildUsageGraph(base.getNodes(), user);
+
+        usage.getNodes().forEach(base::addNode);
+        base.getNodes().forEach(n -> base.setEdge(n,n,1.0));
+
+
+        INDArray topology = Graphs.sortedINDMatrix(base);
+        INDArray tp = Graphs.sortedINDMatrix(usage);
+
+
+        INDArray uniform = Nd4j.ones(topology.shape());
+
+        normalizeRowsi(topology);
+        normalizeRowsi(tp);
+        normalizeRowsi(uniform);
+
+        INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha));
+        INDArray pinf = PageRank.pageRank(pr, 42);
+
+
+
+        TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
+        List<QueryPart> baseParts = new ArrayList<>(base.getNodes());
+
+        Collections.sort(baseParts);
+
+        //baseParts.forEach(System.out::println);
+
+        for (int i = 0; i < baseParts.size(); i++) {
+            querryMap.putIfAbsent(baseParts.get(i), i);
+        }
+
+        Distribution<QueryPart> partDistribution = new Distribution<>();
+        querryMap.forEach((queryPart, integer) -> partDistribution.setProba(queryPart, pinf.getDouble(0, integer)));
+        return partDistribution;
     }
 
     /**

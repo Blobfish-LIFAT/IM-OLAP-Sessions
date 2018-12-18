@@ -1,5 +1,7 @@
 package fr.univ_tours.info.im_olap.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Session {
@@ -23,5 +25,13 @@ public class Session {
 
     public String getFilename() {
         return filename;
+    }
+
+    public List<QueryPart> allParts(){
+        List<QueryPart> parts = new ArrayList<>();
+        for (Query q : queries){
+            parts.addAll(Arrays.asList(q.flat()));
+        }
+        return parts;
     }
 }
