@@ -16,10 +16,7 @@ import fr.univ_tours.li.jaligon.falseto.test.XmlLogParsing;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 import static fr.univ_tours.info.im_olap.graph.PageRank.normalizeRowsi;
 
@@ -32,42 +29,69 @@ public class TestsAlex {
 
     static String[] falsetoProfiles = new String[]{"data/falseto/explorative.xml", "data/falseto/goal_oriented.xml", "data/falseto/slice_all.xml", "data/falseto/slice_and_drill.xml"};
     static String[] cubeloadProfiles = new String[]{"Explorative", "Goal Oriented", "Slice All", "Slice and Drill"};
+    static HashMap<String, String> prettyName = new HashMap<>();
+    static Random rd = new Random();
+    static {
+        for (int i = 0; i < falsetoProfiles.length; i++) prettyName.put(falsetoProfiles[i], cubeloadProfiles[i]);
+    }
 
     public static void main(String[] args) throws Exception{
-        String falsetoProfile = falsetoProfiles[1];
-        String beliefProfile = cubeloadProfiles[1];
-
-        System.out.println("falsetolog;falsetoseed;beliefProfile;jensen");
 
         // Needs to have a database withe the star schema, configured to use mine
         Connection c = new Connection(); //Can't figure out why the config file doesn't work
         c.open();
 
-        XmlLogParsing log = new XmlLogParsing(falsetoProfile);
-        List<QuerySession> sessions = log.readSessionListLog();
-        List<QuerySession> learn = sessions.subList(0,40);
-        QuerySession test = sessions.get(41).extractSubsequence(1,10);
-        ASRA recommender = new ASRA(learn, test);
-        QuerySession recommended = recommender.computeASRA();
+        System.out.println("[LOG] Begin xml sessions loading, this can take up to 30 minutes");
+        HashMap<String, List<QuerySession>> falsetoSessions = new HashMap<>();
+        for (String file : falsetoProfiles){
+            XmlLogParsing log = new XmlLogParsing(file);
+            falsetoSessions.put(file, log.readSessionListLog());
+        }
+        System.out.println("[LOG] completed xml loading");
 
-        //type conversion
-        Session ourtype = fromJulien(recommended);
+        System.out.println("falsetolog;falsetoseed;beliefProfile;jensen");
 
-        //Compute empirical distribution
-        MultiSet<QueryPart> parts = new MultiSet<>();
-        parts.addAll(ourtype.allParts());
-        Distribution<QueryPart> empirical = new Distribution<>(parts);
+        for (String falsetoProfile : falsetoProfiles) {
 
-        for (String cb : cubeloadProfiles) {
-            beliefProfile = cb;
-            Distribution<QueryPart> belief = getBeliefs(
-                    "data/session_set_3",
-                    "data/schema.xml",
-                    beliefProfile,
-                    7,
-                    0.8);
+            List<QuerySession> sessions = falsetoSessions.get(falsetoProfile);
+            Collections.shuffle(sessions);
 
-            System.out.printf("%s;%s;%s;%s%n", falsetoProfile, "Goal Oriented", beliefProfile, Distribution.jensenShannon(empirical, belief));
+            List<QuerySession> learn = sessions.subList(0, sessions.size()-2);
+
+            for (String falsetoSeed : falsetoProfiles) {
+                QuerySession test;
+                if (!falsetoSeed.equals(falsetoProfile))
+                    test = falsetoSessions.get(falsetoSeed).get(rd.nextInt(falsetoSessions.get(falsetoSeed).size()-1)).extractSubsequence(1, 10);
+                else
+                    test = sessions.get(sessions.size()-1).extractSubsequence(1, 10);
+
+                ASRA recommender = new ASRA(learn, test);
+                QuerySession recommended = recommender.computeASRA();
+
+                //type conversion
+                Session ourtype = fromJulien(recommended);
+
+                //Compute empirical distribution
+                MultiSet<QueryPart> parts = new MultiSet<>();
+                parts.addAll(ourtype.allParts());
+                Distribution<QueryPart> empirical = new Distribution<>(parts);
+
+                for (String beliefProfile : cubeloadProfiles) {
+
+                    Distribution<QueryPart> belief = getBeliefs(
+                            "data/session_set_3",
+                            "data/schema.xml",
+                            beliefProfile,
+                            7,
+                            0.8);
+
+                    System.out.printf("%s;%s;%s;%s%n",
+                            prettyName.get(falsetoProfile),
+                            prettyName.get(falsetoSeed),
+                            beliefProfile,
+                            Distribution.jensenShannon(empirical, belief));
+                }
+            }
         }
     }
 
