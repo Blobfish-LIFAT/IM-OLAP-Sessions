@@ -36,8 +36,8 @@ public class TestsAlex {
         c.open();
         XmlLogParsing log = new XmlLogParsing("data/falseto/goal_oriented.xml");
         List<QuerySession> sessions = log.readSessionListLog();
-        List<QuerySession> learn = sessions.subList(0,30);
-        QuerySession test = sessions.get(32).extractSubsequence(1,10);
+        List<QuerySession> learn = sessions.subList(0,40);
+        QuerySession test = sessions.get(41).extractSubsequence(1,10);
         ASRA recommender = new ASRA(learn, test);
         QuerySession recommended = recommender.computeASRA();
 
@@ -49,8 +49,14 @@ public class TestsAlex {
         parts.addAll(ourtype.allParts());
         Distribution<QueryPart> empirical = new Distribution<>(parts);
 
+        Distribution<QueryPart> belief = getBeliefs(
+                "data/session_set_3",
+                "data/schema.xml",
+                "Goal Oriented",
+                7,
+                0.8);
 
-        //TODO run getBelief and code divergence
+        System.out.println("KL:" + Distribution.kullbackLeibler(empirical, belief));
 
     }
 

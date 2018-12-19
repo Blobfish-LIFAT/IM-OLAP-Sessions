@@ -13,6 +13,8 @@ import java.util.Set;
  * @param <T> the type of x € X
  */
 public class Distribution<T> {
+    public static final double log2 = Math.log(2.0);
+
     private HashMap<T, Double> map;
 
     public Distribution() {
@@ -62,7 +64,7 @@ public class Distribution<T> {
         for (E e : universe){
             if (q.getProba(e) == 0 && p.getProba(e) != 0)
                 throw new IllegalArgumentException("Absolute continuity is required ! If q(i) = 0 then p(i) must be 0.");
-            sum += p.getProba(e)*(p.getProba(e)/q.getProba(e));
+            sum += p.getProba(e)*log2(p.getProba(e)/q.getProba(e));
         }
         return sum;
     }
@@ -77,6 +79,10 @@ public class Distribution<T> {
         }
 
         return avg;
+    }
+
+    public static double log2(double a) {
+        return a == 0.0D ? 0.0D : Math.log(a) / log2;
     }
 
 }
