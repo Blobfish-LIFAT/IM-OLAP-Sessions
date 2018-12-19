@@ -50,4 +50,16 @@ public class Distribution<T> {
         return map.keySet();
     }
 
+    public static <E> Distribution<E> average(Distribution<E> a, Distribution<E> b){
+        Set<E> universe = a.map.keySet();
+        universe.addAll(b.map.keySet());
+
+        Distribution<E> avg = new Distribution<>();
+        for (E e : universe){
+            avg.setProba(e, 0.5*(a.getProba(e)+b.getProba(e)));
+        }
+
+        return avg;
+    }
+
 }
