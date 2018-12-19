@@ -63,9 +63,11 @@ public class Distribution<T> {
         universe.addAll(q.map.keySet());
         double sum = 0;
         for (E e : universe){
-            if (q.getProba(e) == 0 && p.getProba(e) != 0)
+            if (q.getProba(e) == 0 && p.getProba(e) != 0) {
+                System.out.println(e);
                 continue;
                 //throw new IllegalArgumentException("Absolute continuity is required ! If q(i) = 0 then p(i) must be 0.");
+            }
             sum += p.getProba(e)*log2(p.getProba(e)/q.getProba(e));
         }
         return sum;

@@ -56,7 +56,7 @@ public class TestsAlex {
                 7,
                 0.8);
 
-        System.out.println("KL:" + Distribution.kullbackLeibler(empirical, belief));
+        System.out.println("JS:" + Distribution.jensenShannon(empirical, belief));
 
     }
 
