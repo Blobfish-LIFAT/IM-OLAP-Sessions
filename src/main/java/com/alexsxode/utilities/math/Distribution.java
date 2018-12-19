@@ -50,6 +50,23 @@ public class Distribution<T> {
         return map.keySet();
     }
 
+    public static <E> double jensenShannon(Distribution<E> p, Distribution<E> q){
+        Distribution<E> m = average(p, q);
+        return 0.5*kullbackLeibler(p, m) + 0.5*kullbackLeibler(q, m);
+    }
+
+    public static <E> double kullbackLeibler(Distribution<E> p, Distribution<E> q){
+        Set<E> universe = p.map.keySet();
+        universe.addAll(q.map.keySet());
+        double sum = 0;
+        for (E e : universe){
+            if (q.getProba(e) == 0 && p.getProba(e) != 0)
+                throw new IllegalArgumentException("Absolute continuity is required ! If q(i) = 0 then p(i) must be 0.");
+            sum += p.getProba(e)*(p.getProba(e)/q.getProba(e));
+        }
+        return sum;
+    }
+
     public static <E> Distribution<E> average(Distribution<E> a, Distribution<E> b){
         Set<E> universe = a.map.keySet();
         universe.addAll(b.map.keySet());
