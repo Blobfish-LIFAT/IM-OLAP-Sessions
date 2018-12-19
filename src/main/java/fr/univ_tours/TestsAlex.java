@@ -30,11 +30,20 @@ public class TestsAlex {
      * data/falseto/ profiles de log pour train falseto
      */
 
+    static String[] falsetoProfiles = new String[]{"data/falseto/explorative.xml", "data/falseto/goal_oriented.xml", "data/falseto/slice_all.xml", "data/falseto/slice_and_drill.xml"};
+    static String[] cubeloadProfiles = new String[]{"Explorative", "Goal Oriented", "Slice All", "Slice and Drill"};
+
     public static void main(String[] args) throws Exception{
+        String falsetoProfile = falsetoProfiles[1];
+        String beliefProfile = cubeloadProfiles[1];
+
+        System.out.println("falsetolog;falsetoseed;beliefProfile;jensen");
+
         // Needs to have a database withe the star schema, configured to use mine
         Connection c = new Connection(); //Can't figure out why the config file doesn't work
         c.open();
-        XmlLogParsing log = new XmlLogParsing("data/falseto/goal_oriented.xml");
+
+        XmlLogParsing log = new XmlLogParsing(falsetoProfile);
         List<QuerySession> sessions = log.readSessionListLog();
         List<QuerySession> learn = sessions.subList(0,40);
         QuerySession test = sessions.get(41).extractSubsequence(1,10);
@@ -49,15 +58,17 @@ public class TestsAlex {
         parts.addAll(ourtype.allParts());
         Distribution<QueryPart> empirical = new Distribution<>(parts);
 
-        Distribution<QueryPart> belief = getBeliefs(
-                "data/session_set_3",
-                "data/schema.xml",
-                "Goal Oriented",
-                7,
-                0.8);
+        for (String cb : cubeloadProfiles) {
+            beliefProfile = cb;
+            Distribution<QueryPart> belief = getBeliefs(
+                    "data/session_set_3",
+                    "data/schema.xml",
+                    beliefProfile,
+                    7,
+                    0.8);
 
-        System.out.println("JS:" + Distribution.jensenShannon(empirical, belief));
-
+            System.out.printf("%s;%s;%s;%s%n", falsetoProfile, "Goal Oriented", beliefProfile, Distribution.jensenShannon(empirical, belief));
+        }
     }
 
     private static Distribution<QueryPart> getBeliefs(String sessionsDir, String schemaPath, String userProfile, int userSize, double alpha) {
