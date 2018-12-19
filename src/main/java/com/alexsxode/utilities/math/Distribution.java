@@ -5,6 +5,7 @@ package com.alexsxode.utilities.math;
 import com.alexsxode.utilities.collection.MultiSet;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -58,7 +59,7 @@ public class Distribution<T> {
     }
 
     public static <E> double kullbackLeibler(Distribution<E> p, Distribution<E> q){
-        Set<E> universe = p.map.keySet();
+        Set<E> universe = new HashSet<>(p.map.keySet());
         universe.addAll(q.map.keySet());
         double sum = 0;
         for (E e : universe){
@@ -70,7 +71,7 @@ public class Distribution<T> {
     }
 
     public static <E> Distribution<E> average(Distribution<E> a, Distribution<E> b){
-        Set<E> universe = a.map.keySet();
+        Set<E> universe = new HashSet<>(a.map.keySet());
         universe.addAll(b.map.keySet());
 
         Distribution<E> avg = new Distribution<>();
