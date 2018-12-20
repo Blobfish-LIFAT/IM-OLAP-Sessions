@@ -17,6 +17,7 @@ import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static fr.univ_tours.info.im_olap.graph.PageRank.normalizeRowsi;
 
@@ -79,6 +80,7 @@ public class TestsAlex {
                 for (String beliefProfile : cubeloadProfiles) {
 
                     Distribution<QueryPart> belief = getBeliefs(
+                            learn.stream().map(TestsAlex::fromJulien).collect(Collectors.toList()),
                             "data/session_set_3",
                             "data/schema.xml",
                             beliefProfile,
@@ -95,7 +97,7 @@ public class TestsAlex {
         }
     }
 
-    private static Distribution<QueryPart> getBeliefs(String sessionsDir, String schemaPath, String userProfile, int userSize, double alpha) {
+    private static Distribution<QueryPart> getBeliefs(List<Session> toInject, String sessionsDir, String schemaPath, String userProfile, int userSize, double alpha) {
         List<Session> sessions = LoadSessions.loadFromDir(sessionsDir);
         Collections.shuffle(sessions);
 
@@ -112,6 +114,7 @@ public class TestsAlex {
                 learning.add(session);
         }
 
+        learning.addAll(toInject);
         OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(learning, schemaPath);
         SessionGraph.injectCousins(base, sessions);
 
