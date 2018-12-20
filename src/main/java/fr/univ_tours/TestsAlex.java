@@ -2,6 +2,7 @@ package fr.univ_tours;
 
 import com.alexsxode.utilities.collection.MultiSet;
 import com.alexsxode.utilities.math.Distribution;
+import com.google.common.collect.Lists;
 import fr.univ_tours.info.im_olap.Nd4jUtils;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
@@ -73,18 +74,21 @@ public class TestsAlex {
                 Session ourtype = fromJulien(recommended);
 
                 //Compute empirical distribution
+                /*
                 MultiSet<QueryPart> parts = new MultiSet<>();
                 parts.addAll(ourtype.allParts());
-                Distribution<QueryPart> empirical = new Distribution<>(parts);
+                Distribution<QueryPart> empirical = new Distribution<>(parts);*/
+
+                Distribution<QueryPart> empirical = getBeliefs(learn.stream().map(TestsAlex::fromJulien).collect(Collectors.toList()), Arrays.asList(ourtype), "data/schema.xml", 0.8);
 
                 for (String beliefProfile : cubeloadProfiles) {
 
-                    Distribution<QueryPart> belief = getBeliefs(
+                    Distribution<QueryPart> belief = getBeliefs2(
                             learn.stream().map(TestsAlex::fromJulien).collect(Collectors.toList()),
                             "data/session_set_3",
                             "data/schema.xml",
                             beliefProfile,
-                            7,
+                            5,
                             0.8);
 
                     System.out.printf("%s;%s;%s;%s%n",
@@ -117,6 +121,104 @@ public class TestsAlex {
         learning.addAll(toInject);
         OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(learning, schemaPath);
         SessionGraph.injectCousins(base, sessions);
+
+        OGraph<Double, QueryPart> usage = SessionGraph.buildUsageGraph(base.getNodes(), user);
+
+        usage.getNodes().forEach(base::addNode);
+        base.getNodes().forEach(n -> base.setEdge(n,n,1.0));
+
+
+        INDArray topology = Graphs.sortedINDMatrix(base);
+        INDArray tp = Graphs.sortedINDMatrix(usage);
+
+
+        INDArray uniform = Nd4j.ones(topology.shape());
+
+        normalizeRowsi(topology);
+        normalizeRowsi(tp);
+        normalizeRowsi(uniform);
+
+        INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha));
+        INDArray pinf = PageRank.pageRank(pr, 42);
+
+
+
+        TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
+        List<QueryPart> baseParts = new ArrayList<>(base.getNodes());
+
+        Collections.sort(baseParts);
+
+        for (int i = 0; i < baseParts.size(); i++) {
+            querryMap.putIfAbsent(baseParts.get(i), i);
+        }
+
+        Distribution<QueryPart> partDistribution = new Distribution<>();
+        querryMap.forEach((queryPart, integer) -> partDistribution.setProba(queryPart, pinf.getDouble(0, integer)));
+        return partDistribution;
+    }
+
+    private static Distribution<QueryPart> getBeliefs2(List<Session> log, String sessionsDir, String schemaPath, String userProfile, int userSize, double alpha) {
+        List<Session> sessions = LoadSessions.loadFromDir(sessionsDir);
+        Collections.shuffle(sessions);
+
+        List<Session> user = new ArrayList<>();
+        List<Session> learning = new ArrayList<>();
+
+        int qota = userSize;
+        for (Session session : sessions){
+            if (session.getType().equals(userProfile) && qota > 0) {
+                user.add(session);
+                qota--;
+            }
+            else
+                learning.add(session);
+        }
+
+        //learning.addAll(toInject);
+        OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(log, schemaPath);
+        SessionGraph.injectCousins(base, sessions);
+
+        OGraph<Double, QueryPart> usage = SessionGraph.buildUsageGraph(base.getNodes(), user);
+
+        usage.getNodes().forEach(base::addNode);
+        base.getNodes().forEach(n -> base.setEdge(n,n,1.0));
+
+
+        INDArray topology = Graphs.sortedINDMatrix(base);
+        INDArray tp = Graphs.sortedINDMatrix(usage);
+
+
+        INDArray uniform = Nd4j.ones(topology.shape());
+
+        normalizeRowsi(topology);
+        normalizeRowsi(tp);
+        normalizeRowsi(uniform);
+
+        INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha));
+        INDArray pinf = PageRank.pageRank(pr, 42);
+
+
+
+        TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
+        List<QueryPart> baseParts = new ArrayList<>(base.getNodes());
+
+        Collections.sort(baseParts);
+
+        for (int i = 0; i < baseParts.size(); i++) {
+            querryMap.putIfAbsent(baseParts.get(i), i);
+        }
+
+        Distribution<QueryPart> partDistribution = new Distribution<>();
+        querryMap.forEach((queryPart, integer) -> partDistribution.setProba(queryPart, pinf.getDouble(0, integer)));
+        return partDistribution;
+    }
+
+    private static Distribution<QueryPart> getBeliefs(List<Session> log, List<Session> user, String schemaPath, double alpha) {
+
+        OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(log, schemaPath);
+        List<Session> all = new ArrayList<>(log);
+        all.addAll(user);
+        SessionGraph.injectCousins(base, all);
 
         OGraph<Double, QueryPart> usage = SessionGraph.buildUsageGraph(base.getNodes(), user);
 
