@@ -51,7 +51,7 @@ public class TestsAlex {
         }
         System.out.println("[LOG] completed xml loading");
 
-        System.out.println("falsetolog;falsetoseed;beliefProfile;jensen");
+        System.out.println("falsetolog;falsetoseed;beliefProfile;jensen;kullback");
 
         for (String falsetoProfile : falsetoProfiles) {
 
@@ -91,11 +91,12 @@ public class TestsAlex {
                             5,
                             0.8);
 
-                    System.out.printf("%s;%s;%s;%s%n",
+                    System.out.printf("%s;%s;%s;%s;%s%n",
                             prettyName.get(falsetoProfile),
                             prettyName.get(falsetoSeed),
                             beliefProfile,
-                            Distribution.jensenShannon(empirical, belief));
+                            Distribution.jensenShannon(belief, empirical),
+                            Distribution.kullbackLeibler(empirical, belief));
                 }
             }
         }

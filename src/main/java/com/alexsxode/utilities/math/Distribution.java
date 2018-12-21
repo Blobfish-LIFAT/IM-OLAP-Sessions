@@ -64,7 +64,7 @@ public class Distribution<T> {
         double sum = 0;
         for (E e : universe){
             if (q.getProba(e) == 0 && p.getProba(e) != 0) {
-                System.out.println(e);
+                //System.out.println(e);
                 continue;
                 //throw new IllegalArgumentException("Absolute continuity is required ! If q(i) = 0 then p(i) must be 0.");
             }
