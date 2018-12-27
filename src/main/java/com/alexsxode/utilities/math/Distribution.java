@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public class Distribution<T> {
     public static final double log2 = Math.log(2.0);
-    public static final double oneOverRootTwo = (1/Math.sqrt(2.0));
+    public static final double oneOverRootTwo = (1.0/Math.sqrt(2.0));
 
     private HashMap<T, Double> map;
 
@@ -61,7 +61,7 @@ public class Distribution<T> {
         for (E e: universe){
             sum += Math.pow(Math.sqrt(p.getProba(e)) - Math.sqrt(q.getProba(e)), 2);
         }
-        return oneOverRootTwo*sum;
+        return oneOverRootTwo*Math.sqrt(sum);
     }
 
     public static <E> double jensenShannon(Distribution<E> p, Distribution<E> q){

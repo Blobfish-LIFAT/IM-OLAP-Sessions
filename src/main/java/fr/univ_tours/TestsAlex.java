@@ -101,15 +101,13 @@ public class TestsAlex {
                                 7,
                                 0.8);
 
-                        System.out.printf("%s;%s;%s;%s;%s;%s;%s;%s%n",
+                        System.out.printf("%s;%s;%s;%s;%s;%s%n",
                                 prettyName.get(falsetoProfile),
                                 prettyName.get(falsetoSeed),
                                 beliefProfile,
                                 Distribution.jensenShannon(belief, empirical),
                                 Distribution.kullbackLeibler(empirical, belief),
-                                Distribution.hellinger(empirical, belief),
-                                empirical.isProba(0.001),
-                                belief.isProba(0.001));
+                                Distribution.hellinger(empirical, belief));
                     }
                 }
             }
