@@ -51,58 +51,72 @@ public class TestsAlex {
         }
         System.out.println("[LOG] completed xml loading");
 
-        System.out.println("falsetolog;falsetoseed;beliefProfile;jensen;kullback");
+        System.out.println("falsetolog;falsetoseed;beliefProfile;jensen;kullback;hellinger");
+        for (int i = 0; i < 10; i++) {
 
-        for (String falsetoProfile : falsetoProfiles) {
 
-            List<QuerySession> sessions = falsetoSessions.get(falsetoProfile);
-            Collections.shuffle(sessions);
+            for (String falsetoProfile : falsetoProfiles) {
 
-            List<QuerySession> learn = sessions.subList(0, sessions.size()-2);
+                List<QuerySession> sessions = falsetoSessions.get(falsetoProfile);
+                Collections.shuffle(sessions);
 
-            for (String falsetoSeed : falsetoProfiles) {
-                QuerySession test;
-                if (!falsetoSeed.equals(falsetoProfile))
-                    test = falsetoSessions.get(falsetoSeed).get(rd.nextInt(falsetoSessions.get(falsetoSeed).size()-1)).extractSubsequence(1, 10);
-                else
-                    test = sessions.get(sessions.size()-1).extractSubsequence(1, 10);
+                //length of falseto log
+                List<QuerySession> learn = sessions.subList(0, 10);//sessions.subList(0, sessions.size() - 2);
 
-                ASRA recommender = new ASRA(learn, test);
-                QuerySession recommended = recommender.computeASRA();
+                for (String falsetoSeed : falsetoProfiles) {
+                    QuerySession test;
+                    if (!falsetoSeed.equals(falsetoProfile))
+                        test = falsetoSessions.get(falsetoSeed).get(rd.nextInt(falsetoSessions.get(falsetoSeed).size() - 1)).extractSubsequence(1, 10);
+                    else
+                        test = sessions.get(sessions.size() - 1).extractSubsequence(1, 10);
 
-                //type conversion
-                Session ourtype = fromJulien(recommended);
+                    ASRA recommender = new ASRA(learn, test);
+                    QuerySession recommended = recommender.computeASRA();
 
-                //Compute empirical distribution
+                    //type conversion
+                    Session ourtype = fromJulien(recommended);
+
+                    //Compute empirical distribution
                 /*
                 MultiSet<QueryPart> parts = new MultiSet<>();
                 parts.addAll(ourtype.allParts());
                 Distribution<QueryPart> empirical = new Distribution<>(parts);*/
 
-                Distribution<QueryPart> empirical = getBeliefs(learn.stream().map(TestsAlex::fromJulien).collect(Collectors.toList()), Arrays.asList(ourtype), "data/schema.xml", 0.8);
+                    Distribution<QueryPart> empirical = getBeliefs(learn.stream().map(TestsAlex::fromJulien).collect(Collectors.toList()), Arrays.asList(ourtype), "data/schema.xml", 0.8);
 
-                for (String beliefProfile : cubeloadProfiles) {
+                    for (String beliefProfile : cubeloadProfiles) {
 
-                    Distribution<QueryPart> belief = getBeliefs2(
+                      /*Distribution<QueryPart> belief = getBeliefs2(
                             learn.stream().map(TestsAlex::fromJulien).collect(Collectors.toList()),
                             "data/session_set_3",
                             "data/schema.xml",
                             beliefProfile,
-                            5,
-                            0.8);
+                            7,
+                            0.8);*/
 
-                    System.out.printf("%s;%s;%s;%s;%s%n",
-                            prettyName.get(falsetoProfile),
-                            prettyName.get(falsetoSeed),
-                            beliefProfile,
-                            Distribution.jensenShannon(belief, empirical),
-                            Distribution.kullbackLeibler(empirical, belief));
+                        Distribution<QueryPart> belief = getBeliefs(
+                                "data/session_set_3",
+                                "data/schema.xml",
+                                beliefProfile,
+                                7,
+                                0.8);
+
+                        System.out.printf("%s;%s;%s;%s;%s;%s;%s;%s%n",
+                                prettyName.get(falsetoProfile),
+                                prettyName.get(falsetoSeed),
+                                beliefProfile,
+                                Distribution.jensenShannon(belief, empirical),
+                                Distribution.kullbackLeibler(empirical, belief),
+                                Distribution.hellinger(empirical, belief),
+                                empirical.isProba(0.001),
+                                belief.isProba(0.001));
+                    }
                 }
             }
         }
     }
 
-    private static Distribution<QueryPart> getBeliefs(List<Session> toInject, String sessionsDir, String schemaPath, String userProfile, int userSize, double alpha) {
+    private static Distribution<QueryPart> getBeliefs(String sessionsDir, String schemaPath, String userProfile, int userSize, double alpha) {
         List<Session> sessions = LoadSessions.loadFromDir(sessionsDir);
         Collections.shuffle(sessions);
 
@@ -119,7 +133,6 @@ public class TestsAlex {
                 learning.add(session);
         }
 
-        learning.addAll(toInject);
         OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(learning, schemaPath);
         SessionGraph.injectCousins(base, sessions);
 

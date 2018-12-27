@@ -15,6 +15,7 @@ import java.util.Set;
  */
 public class Distribution<T> {
     public static final double log2 = Math.log(2.0);
+    public static final double oneOverRootTwo = (1/Math.sqrt(2.0));
 
     private HashMap<T, Double> map;
 
@@ -51,6 +52,16 @@ public class Distribution<T> {
 
     public Set<T> getSet(){
         return map.keySet();
+    }
+
+    public static <E> double hellinger(Distribution<E> p, Distribution <E> q){
+        Set<E> universe = new HashSet<>(p.map.keySet());
+        universe.addAll(q.map.keySet());
+        double sum = 0;
+        for (E e: universe){
+            sum += Math.pow(Math.sqrt(p.getProba(e)) - Math.sqrt(q.getProba(e)), 2);
+        }
+        return oneOverRootTwo*sum;
     }
 
     public static <E> double jensenShannon(Distribution<E> p, Distribution<E> q){
