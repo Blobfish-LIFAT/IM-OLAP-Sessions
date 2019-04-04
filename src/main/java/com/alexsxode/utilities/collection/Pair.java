@@ -1,7 +1,5 @@
 package com.alexsxode.utilities.collection;
 
-import fr.univ_tours.info.im_olap.graph.CPair;
-
 import java.util.Objects;
 
 public class Pair<L, R> {

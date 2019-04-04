@@ -59,7 +59,6 @@ public class TestsAlex {
 
                 List<QuerySession> sessions = falsetoSessions.get(falsetoProfile);
                 Collections.shuffle(sessions);
-
                 //length of falseto log
                 List<QuerySession> learn = sessions.subList(0, 10);//sessions.subList(0, sessions.size() - 2);
 
