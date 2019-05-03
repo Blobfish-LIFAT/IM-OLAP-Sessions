@@ -1,16 +1,12 @@
 package fr.univ_tours;
 
-import com.alexsxode.utilities.collection.MultiSet;
 import com.alexsxode.utilities.math.Distribution;
-import com.google.common.collect.Lists;
-import fr.univ_tours.info.im_olap.Nd4jUtils;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.graph.PageRank;
-import fr.univ_tours.info.im_olap.model.*;
 import fr.univ_tours.info.im_olap.model.Session;
+import fr.univ_tours.info.im_olap.model.*;
 import fr.univ_tours.li.jaligon.falseto.Generics.Connection;
-import fr.univ_tours.li.jaligon.falseto.Generics.falseto_params;
 import fr.univ_tours.li.jaligon.falseto.QueryStructure.*;
 import fr.univ_tours.li.jaligon.falseto.Recommendation.ASRA;
 import fr.univ_tours.li.jaligon.falseto.test.XmlLogParsing;
@@ -33,11 +29,12 @@ public class TestsAlex {
     static String[] cubeloadProfiles = new String[]{"Explorative", "Goal Oriented", "Slice All", "Slice and Drill"};
     static HashMap<String, String> prettyName = new HashMap<>();
     static Random rd = new Random();
+
     static {
         for (int i = 0; i < falsetoProfiles.length; i++) prettyName.put(falsetoProfiles[i], cubeloadProfiles[i]);
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         // Needs to have a database withe the star schema, configured to use mine
         Connection c = new Connection(); //Can't figure out why the config file doesn't work
@@ -45,7 +42,7 @@ public class TestsAlex {
 
         System.out.println("[LOG] Begin xml sessions loading, this can take up to 30 minutes");
         HashMap<String, List<QuerySession>> falsetoSessions = new HashMap<>();
-        for (String file : falsetoProfiles){
+        for (String file : falsetoProfiles) {
             XmlLogParsing log = new XmlLogParsing(file);
             falsetoSessions.put(file, log.readSessionListLog());
         }
@@ -121,12 +118,11 @@ public class TestsAlex {
         List<Session> learning = new ArrayList<>();
 
         int qota = userSize;
-        for (Session session : sessions){
+        for (Session session : sessions) {
             if (session.getType().equals(userProfile) && qota > 0) {
                 user.add(session);
                 qota--;
-            }
-            else
+            } else
                 learning.add(session);
         }
 
@@ -136,7 +132,7 @@ public class TestsAlex {
         OGraph<Double, QueryPart> usage = SessionGraph.buildUsageGraph(base.getNodes(), user);
 
         usage.getNodes().forEach(base::addNode);
-        base.getNodes().forEach(n -> base.setEdge(n,n,1.0));
+        base.getNodes().forEach(n -> base.setEdge(n, n, 1.0));
 
 
         INDArray topology = Graphs.sortedINDMatrix(base);
@@ -149,9 +145,8 @@ public class TestsAlex {
         normalizeRowsi(tp);
         normalizeRowsi(uniform);
 
-        INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha));
+        INDArray pr = topology.mul(1 - alpha).add(tp.mul(alpha));
         INDArray pinf = PageRank.pageRank(pr, 42);
-
 
 
         TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
@@ -176,12 +171,11 @@ public class TestsAlex {
         List<Session> learning = new ArrayList<>();
 
         int qota = userSize;
-        for (Session session : sessions){
+        for (Session session : sessions) {
             if (session.getType().equals(userProfile) && qota > 0) {
                 user.add(session);
                 qota--;
-            }
-            else
+            } else
                 learning.add(session);
         }
 
@@ -192,7 +186,7 @@ public class TestsAlex {
         OGraph<Double, QueryPart> usage = SessionGraph.buildUsageGraph(base.getNodes(), user);
 
         usage.getNodes().forEach(base::addNode);
-        base.getNodes().forEach(n -> base.setEdge(n,n,1.0));
+        base.getNodes().forEach(n -> base.setEdge(n, n, 1.0));
 
 
         INDArray topology = Graphs.sortedINDMatrix(base);
@@ -205,9 +199,8 @@ public class TestsAlex {
         normalizeRowsi(tp);
         normalizeRowsi(uniform);
 
-        INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha));
+        INDArray pr = topology.mul(1 - alpha).add(tp.mul(alpha));
         INDArray pinf = PageRank.pageRank(pr, 42);
-
 
 
         TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
@@ -234,7 +227,7 @@ public class TestsAlex {
         OGraph<Double, QueryPart> usage = SessionGraph.buildUsageGraph(base.getNodes(), user);
 
         usage.getNodes().forEach(base::addNode);
-        base.getNodes().forEach(n -> base.setEdge(n,n,1.0));
+        base.getNodes().forEach(n -> base.setEdge(n, n, 1.0));
 
 
         INDArray topology = Graphs.sortedINDMatrix(base);
@@ -247,9 +240,8 @@ public class TestsAlex {
         normalizeRowsi(tp);
         normalizeRowsi(uniform);
 
-        INDArray pr = topology.mul(1-alpha).add(tp.mul(alpha));
+        INDArray pr = topology.mul(1 - alpha).add(tp.mul(alpha));
         INDArray pinf = PageRank.pageRank(pr, 42);
-
 
 
         TreeMap<QueryPart, Integer> querryMap = new TreeMap<>();
@@ -268,27 +260,28 @@ public class TestsAlex {
 
     /**
      * Hey, nicolas, this should convert Julien's session object to our session object
+     *
      * @param in Session in Julien's format
      * @return The same session in our format
      */
-    public static Session fromJulien(QuerySession in){
+    public static Session fromJulien(QuerySession in) {
         List<Qfset> queriesJulien = in.getQueries();
         List<Query> ourQueries = new ArrayList<>();
 
-        for (Qfset qfset : queriesJulien){
+        for (Qfset qfset : queriesJulien) {
             List<QueryPart> parts = new ArrayList<>();
-            for (MeasureFragment fragment : qfset.getMeasures()){
+            for (MeasureFragment fragment : qfset.getMeasures()) {
                 parts.add(new QueryPart(QueryPart.Type.MEASURE, fragment.getAttribute().getName()));
             }
-            for (ProjectionFragment pf : qfset.getAttributes()){
+            for (ProjectionFragment pf : qfset.getAttributes()) {
                 parts.add(new QueryPart(QueryPart.Type.DIMENSION, pf.getLevel().getHierarchy().getName() + "." + pf.getLevel().getName()));
             }
-            for (SelectionFragment sf : qfset.getSelectionPredicates()){
+            for (SelectionFragment sf : qfset.getSelectionPredicates()) {
                 parts.add(new QueryPart(QueryPart.Type.FILTER, sf.getLevel().getHierarchy().getName() + "." + sf.getLevel().getName() + "=\"" + sf.getValue().getName()));
             }
             ourQueries.add(new Query(parts));
         }
 
-        return new Session(ourQueries,in.getTemplate(),in.getId());
+        return new Session(ourQueries, in.getTemplate(), in.getId());
     }
 }
