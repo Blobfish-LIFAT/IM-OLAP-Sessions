@@ -1,0 +1,351 @@
+----------------------------------------
+----- dibstudent09, Johnatann, groupe2
+----- Cube mobpro
+----- Analyse de la hiérarchie communale
+----------------------------------------
+
+2016-09-23 15:07:57,569 DEBUG [mondrian.mdx] 26671: select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:07:57,585 DEBUG [mondrian.mdx] 26671: exec: 16 ms
+2016-09-23 15:08:10,007 DEBUG [mondrian.mdx] 26688: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Distance trajet domicile - travail (min)]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:08:10,069 DEBUG [mondrian.mdx] 26688: exec: 62 ms
+2016-09-23 15:08:41,538 DEBUG [mondrian.mdx] 26710: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (min)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:08:41,710 DEBUG [mondrian.mdx] 26710: exec: 172 ms
+2016-09-23 15:08:44,882 DEBUG [mondrian.mdx] 26766: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (min)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:08:44,913 DEBUG [mondrian.mdx] 26766: exec: 31 ms
+2016-09-23 15:08:49,460 DEBUG [mondrian.mdx] 26819: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:08:49,600 DEBUG [mondrian.mdx] 26819: exec: 140 ms
+2016-09-23 15:09:53,678 DEBUG [mondrian.mdx] 26865: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:09:53,725 DEBUG [mondrian.mdx] 26865: exec: 47 ms
+2016-09-23 15:10:12,366 DEBUG [mondrian.mdx] 26896: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:10:18,272 DEBUG [mondrian.mdx] 26896: exec: 5906 ms
+2016-09-23 15:11:54,163 DEBUG [mondrian.mdx] 27150: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAILLES]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAMPIGNY-EN-BEAUCE]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[LANCOME]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[MESLAND]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[RILLY-SUR-LOIRE]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[SAINT-CYR-DU-GAULT]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[SAINT-ETIENNE-DES-GUERETS]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))), Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[VALAIRE]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0)))))))))))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:11:54,257 DEBUG [mondrian.mdx] 27150: exec: 94 ms
+2016-09-23 15:12:16,600 DEBUG [mondrian.mdx] 27220: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (max)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Filter({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAILLES], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAMPIGNY-EN-BEAUCE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[LANCOME], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[MESLAND], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[RILLY-SUR-LOIRE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[SAINT-CYR-DU-GAULT], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[SAINT-ETIENNE-DES-GUERETS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[VALAIRE]}}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:12:16,632 DEBUG [mondrian.mdx] 27220: exec: 32 ms
+2016-09-23 15:13:14,053 DEBUG [mondrian.mdx] 27281: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (max)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Filter({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAILLES]}}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0))})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:13:14,100 DEBUG [mondrian.mdx] 27281: exec: 47 ms
+2016-09-23 15:14:13,460 DEBUG [mondrian.mdx] 27323: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (max)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}))) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Commune de travail.CNELOCC_Hierarchie_administrative].[Departement].Members), Crossjoin(Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAILLES]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count > 0)), [Commune de travail.CNELOCC_Hierarchie_administrative].[Departement].Members))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:14:14,085 DEBUG [mondrian.mdx] 27323: exec: 625 ms
+2016-09-23 15:18:10,866 DEBUG [mondrian.mdx] 27426: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:18:10,882 DEBUG [mondrian.mdx] 27426: exec: 16 ms
+2016-09-23 15:18:15,132 DEBUG [mondrian.mdx] 27442: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:18:15,147 DEBUG [mondrian.mdx] 27442: exec: 15 ms
+2016-09-23 15:18:22,257 DEBUG [mondrian.mdx] 27459: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:18:22,272 DEBUG [mondrian.mdx] 27459: exec: 15 ms
+2016-09-23 15:18:25,460 DEBUG [mondrian.mdx] 27475: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:18:25,491 DEBUG [mondrian.mdx] 27475: exec: 31 ms
+2016-09-23 15:18:49,350 DEBUG [mondrian.mdx] 27495: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:18:49,428 DEBUG [mondrian.mdx] 27495: exec: 78 ms
+2016-09-23 15:19:03,757 DEBUG [mondrian.mdx] 27592: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:19:03,803 DEBUG [mondrian.mdx] 27592: exec: 46 ms
+2016-09-23 15:19:34,460 DEBUG [mondrian.mdx] 27620: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members), Crossjoin({[Measures].[Nombre total d'individus]}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members))) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:19:34,710 DEBUG [mondrian.mdx] 27620: exec: 250 ms
+2016-09-23 15:19:36,444 DEBUG [mondrian.mdx] 27638: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:19:36,632 DEBUG [mondrian.mdx] 27638: exec: 188 ms
+2016-09-23 15:19:38,866 DEBUG [mondrian.mdx] 27656: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:19:38,866 DEBUG [mondrian.mdx] 27656: exec: 0 ms
+2016-09-23 15:19:41,741 DEBUG [mondrian.mdx] 27682: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:19:42,319 DEBUG [mondrian.mdx] 27682: exec: 578 ms
+2016-09-23 15:19:59,194 DEBUG [mondrian.mdx] 27711: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:19:59,210 DEBUG [mondrian.mdx] 27711: exec: 16 ms
+2016-09-23 15:20:03,913 DEBUG [mondrian.mdx] 27733: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:20:03,913 DEBUG [mondrian.mdx] 27733: exec: 0 ms
+2016-09-23 15:20:14,569 DEBUG [mondrian.mdx] 27756: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:20:14,585 DEBUG [mondrian.mdx] 27756: exec: 16 ms
+2016-09-23 15:20:19,303 DEBUG [mondrian.mdx] 27774: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:20:19,366 DEBUG [mondrian.mdx] 27774: exec: 63 ms
+2016-09-23 15:20:23,069 DEBUG [mondrian.mdx] 27802: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:20:23,085 DEBUG [mondrian.mdx] 27802: exec: 16 ms
+2016-09-23 15:20:25,288 DEBUG [mondrian.mdx] 27822: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:20:25,350 DEBUG [mondrian.mdx] 27822: exec: 62 ms
+2016-09-23 15:20:30,382 DEBUG [mondrian.mdx] 27856: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:20:30,413 DEBUG [mondrian.mdx] 27856: exec: 31 ms
+2016-09-23 15:20:34,272 DEBUG [mondrian.mdx] 27889: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:20:34,335 DEBUG [mondrian.mdx] 27889: exec: 63 ms
+2016-09-23 15:20:44,850 DEBUG [mondrian.mdx] 27964: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:20:44,866 DEBUG [mondrian.mdx] 27964: exec: 16 ms
+2016-09-23 15:20:47,022 DEBUG [mondrian.mdx] 28038: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:20:47,038 DEBUG [mondrian.mdx] 28038: exec: 16 ms
+2016-09-23 15:21:13,585 DEBUG [mondrian.mdx] 28088: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members), Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:21:14,522 DEBUG [mondrian.mdx] 28088: exec: 937 ms
+2016-09-23 15:21:20,757 DEBUG [mondrian.mdx] 29042: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:21:21,225 DEBUG [mondrian.mdx] 29042: exec: 468 ms
+2016-09-23 15:21:31,350 DEBUG [mondrian.mdx] 29101: select NON EMPTY Hierarchize(Union(Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:21:31,382 DEBUG [mondrian.mdx] 29101: exec: 32 ms
+2016-09-23 15:21:33,678 DEBUG [mondrian.mdx] 29160: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:21:33,710 DEBUG [mondrian.mdx] 29160: exec: 32 ms
+2016-09-23 15:21:56,960 DEBUG [mondrian.mdx] 29229: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin(Filter({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}, (Exists({Ancestor([Statut d'emploi.STATEMPL_Hierarchie].CurrentMember, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2])}, {[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation]}).Count > 0)), {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin({[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation]}, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:21:57,100 DEBUG [mondrian.mdx] 29229: exec: 140 ms
+2016-09-23 15:22:20,132 DEBUG [mondrian.mdx] 29258: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation]}, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:22:20,147 DEBUG [mondrian.mdx] 29258: exec: 15 ms
+2016-09-23 15:22:21,678 DEBUG [mondrian.mdx] 29278: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:22:21,741 DEBUG [mondrian.mdx] 29278: exec: 63 ms
+2016-09-23 15:22:30,085 DEBUG [mondrian.mdx] 29297: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:22:30,460 DEBUG [mondrian.mdx] 29297: exec: 375 ms
+2016-09-23 15:26:00,975 DEBUG [mondrian.mdx] 29326: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:26:00,991 DEBUG [mondrian.mdx] 29326: exec: 16 ms
+2016-09-23 15:26:23,522 DEBUG [mondrian.mdx] 29345: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:26:23,991 DEBUG [mondrian.mdx] 29345: exec: 469 ms
+2016-09-23 15:26:30,413 DEBUG [mondrian.mdx] 29379: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:26:30,975 DEBUG [mondrian.mdx] 29379: exec: 562 ms
+2016-09-23 15:26:45,975 DEBUG [mondrian.mdx] 29445: select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d'individus]}})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:26:45,991 DEBUG [mondrian.mdx] 29445: exec: 16 ms
+2016-09-23 15:26:48,147 DEBUG [mondrian.mdx] 29505: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Nombre total d'individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:26:48,272 DEBUG [mondrian.mdx] 29505: exec: 125 ms
+2016-09-23 15:26:54,382 DEBUG [mondrian.mdx] 29542: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:26:54,819 DEBUG [mondrian.mdx] 29542: exec: 437 ms
+2016-09-23 15:27:35,757 DEBUG [mondrian.mdx] 29584: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:27:35,788 DEBUG [mondrian.mdx] 29584: exec: 31 ms
+2016-09-23 15:27:37,491 DEBUG [mondrian.mdx] 29618: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:27:37,538 DEBUG [mondrian.mdx] 29618: exec: 47 ms
+2016-09-23 15:27:44,288 DEBUG [mondrian.mdx] 29641: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:27:44,991 DEBUG [mondrian.mdx] 29641: exec: 703 ms
+2016-09-23 15:27:47,413 DEBUG [mondrian.mdx] 29673: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:27:48,194 DEBUG [mondrian.mdx] 29673: exec: 781 ms
+2016-09-23 15:27:54,413 DEBUG [mondrian.mdx] 29732: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:27:55,928 DEBUG [mondrian.mdx] 29732: exec: 1515 ms
+2016-09-23 15:28:11,053 DEBUG [mondrian.mdx] 29834: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:28:12,569 DEBUG [mondrian.mdx] 29834: exec: 1516 ms
+2016-09-23 15:28:14,600 DEBUG [mondrian.mdx] 29934: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:28:14,663 DEBUG [mondrian.mdx] 29934: exec: 63 ms
+2016-09-23 15:28:27,710 DEBUG [mondrian.mdx] 30031: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:28:28,569 DEBUG [mondrian.mdx] 30031: exec: 859 ms
+2016-09-23 15:28:37,710 DEBUG [mondrian.mdx] 30114: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:28:37,757 DEBUG [mondrian.mdx] 30114: exec: 47 ms
+2016-09-23 15:28:47,850 DEBUG [mondrian.mdx] 30221: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}, (Exists({Ancestor([Niveau d'instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count > 0)), [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:28:48,272 DEBUG [mondrian.mdx] 30221: exec: 422 ms
+2016-09-23 15:28:55,163 DEBUG [mondrian.mdx] 30286: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, (Exists({Ancestor([Niveau d'instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count > 0)), [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:28:55,303 DEBUG [mondrian.mdx] 30286: exec: 140 ms
+2016-09-23 15:29:11,319 DEBUG [mondrian.mdx] 30342: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}))) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, (Exists({Ancestor([Niveau d'instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count > 0)), [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:29:11,538 DEBUG [mondrian.mdx] 30342: exec: 219 ms
+2016-09-23 15:30:54,272 DEBUG [mondrian.mdx] 30400: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}))) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, (Exists({Ancestor([Niveau d'instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count > 0)), [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:30:54,319 DEBUG [mondrian.mdx] 30400: exec: 47 ms
+2016-09-23 15:30:57,241 DEBUG [mondrian.mdx] 30458: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}))) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, (Exists({Ancestor([Niveau d'instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count > 0)), [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:30:57,288 DEBUG [mondrian.mdx] 30458: exec: 47 ms
+2016-09-23 15:30:59,163 DEBUG [mondrian.mdx] 30505: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:30:59,319 DEBUG [mondrian.mdx] 30505: exec: 156 ms
+2016-09-23 15:31:02,038 DEBUG [mondrian.mdx] 30543: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:31:02,350 DEBUG [mondrian.mdx] 30543: exec: 312 ms
+2016-09-23 15:31:16,053 DEBUG [mondrian.mdx] 30580: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre de voitures des menages (moyenne)]})))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:31:16,444 DEBUG [mondrian.mdx] 30580: exec: 391 ms
+2016-09-23 15:31:24,210 DEBUG [mondrian.mdx] 30615: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre de voitures des menages (moyenne)]}))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:31:24,241 DEBUG [mondrian.mdx] 30615: exec: 31 ms
+2016-09-23 15:31:30,350 DEBUG [mondrian.mdx] 30644: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:31:30,678 DEBUG [mondrian.mdx] 30644: exec: 328 ms
+2016-09-23 15:31:35,022 DEBUG [mondrian.mdx] 30665: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:31:35,382 DEBUG [mondrian.mdx] 30665: exec: 360 ms
+2016-09-23 15:31:49,210 DEBUG [mondrian.mdx] 30694: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:31:49,257 DEBUG [mondrian.mdx] 30694: exec: 47 ms
+2016-09-23 15:31:56,913 DEBUG [mondrian.mdx] 30715: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:31:56,944 DEBUG [mondrian.mdx] 30715: exec: 31 ms
+2016-09-23 15:32:22,475 DEBUG [mondrian.mdx] 30755: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:32:22,538 DEBUG [mondrian.mdx] 30755: exec: 47 ms
+2016-09-23 15:32:27,413 DEBUG [mondrian.mdx] 30798: select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}))) ON COLUMNS,
+  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, {[Statut d'emploi.STATEMPL_Hierarchie].[Non salariés]}) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-23 15:32:27,663 DEBUG [mondrian.mdx] 30798: exec: 250 ms

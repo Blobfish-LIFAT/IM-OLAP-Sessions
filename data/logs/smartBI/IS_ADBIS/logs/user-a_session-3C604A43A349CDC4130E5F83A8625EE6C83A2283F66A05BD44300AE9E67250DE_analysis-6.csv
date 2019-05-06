@@ -1,0 +1,5 @@
+rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
+5;3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE;6;a;Sales;[Sales Revenue];[Month];[Year=>[EQUAL 2010], Retailer=>[EQUAL Decathlon], Region=>[EQUAL North America]];95
+6;3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE;6;a;Sales;[Sales Revenue];[Month];[Year=>[EQUAL 2010], Retailer=>[EQUAL Decathlon], Region=>[EQUAL Europe & Central Asia]];95
+7;3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE;6;a;Sales;[Sales Revenue];[Month];[Year=>[EQUAL 2010], Retailer=>[EQUAL Decathlon], Region=>[EQUAL East Asia & Pacific]];95
+8;3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE;6;a;Sales;[Sales Revenue];[Month];[Year=>[EQUAL 2010], Retailer=>[EQUAL Decathlon], Region=>[EQUAL Latin America & Caribbean]];95

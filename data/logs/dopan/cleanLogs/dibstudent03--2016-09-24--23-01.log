@@ -1,0 +1,188 @@
+----------------------------------------------------------------------------------------------------
+----- dibstudent03, Ophelie, groupe1
+----- Cube chauffage
+----- Analyse de surfaces de logements et consomation en chauffage
+----- Obs: dibstudent03 et dibstudent07 sont connéctés en parallèle, mais il y a changement de cube. 
+----- Je parie pour dibstudent03 
+----------------------------------------------------------------------------------------------------
+
+2016-09-24 23:01:39,753 DEBUG [mondrian.mdx] 53073: select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type d'activite du referent.REF_TYPACT_Hierarchie_1].[Type d'actvite].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:01:39,768 DEBUG [mondrian.mdx] 53073: exec: 15 ms
+2016-09-24 23:01:44,128 DEBUG [mondrian.mdx] 53087: select NON EMPTY {Hierarchize({[Type d'activite du referent.REF_TYPACT_Hierarchie_1].[Type d'actvite].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:01:44,128 DEBUG [mondrian.mdx] 53087: exec: 0 ms
+2016-09-24 23:01:46,940 DEBUG [mondrian.mdx] 53109: select NON EMPTY {Hierarchize({[Type d'activite du referent.REF_TYPACT_Hierarchie_1].[Type d'actvite].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:01:46,940 DEBUG [mondrian.mdx] 53109: exec: 0 ms
+2016-09-24 23:01:58,081 DEBUG [mondrian.mdx] 53127: select NON EMPTY {Hierarchize({[Temps d'emploi du referent.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:01:58,237 DEBUG [mondrian.mdx] 53127: exec: 156 ms
+2016-09-24 23:02:18,424 DEBUG [mondrian.mdx] 53152: select NON EMPTY Crossjoin([Temps d'emploi du referent.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:02:18,784 DEBUG [mondrian.mdx] 53152: exec: 360 ms
+2016-09-24 23:02:23,315 DEBUG [mondrian.mdx] 53313: select NON EMPTY Crossjoin([Temps d'emploi du referent.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:02:23,346 DEBUG [mondrian.mdx] 53313: exec: 31 ms
+2016-09-24 23:03:09,018 DEBUG [mondrian.mdx] 53473: select NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:03:09,065 DEBUG [mondrian.mdx] 53473: exec: 47 ms
+2016-09-24 23:03:59,268 DEBUG [mondrian.mdx] 53517: select NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:03:59,753 DEBUG [mondrian.mdx] 53517: exec: 485 ms
+2016-09-24 23:04:04,315 DEBUG [mondrian.mdx] 53577: select NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:04,378 DEBUG [mondrian.mdx] 53577: exec: 63 ms
+2016-09-24 23:04:06,018 DEBUG [mondrian.mdx] 53623: select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:06,174 DEBUG [mondrian.mdx] 53623: exec: 156 ms
+2016-09-24 23:04:09,331 DEBUG [mondrian.mdx] 53711: select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:09,362 DEBUG [mondrian.mdx] 53711: exec: 31 ms
+2016-09-24 23:04:10,784 DEBUG [mondrian.mdx] 53798: select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:10,799 DEBUG [mondrian.mdx] 53798: exec: 15 ms
+2016-09-24 23:04:18,862 DEBUG [mondrian.mdx] 53887: select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:18,878 DEBUG [mondrian.mdx] 53887: exec: 16 ms
+2016-09-24 23:04:21,596 DEBUG [mondrian.mdx] 53979: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members)))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:21,690 DEBUG [mondrian.mdx] 53979: exec: 94 ms
+2016-09-24 23:04:23,049 DEBUG [mondrian.mdx] 54057: select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:23,253 DEBUG [mondrian.mdx] 54057: exec: 204 ms
+2016-09-24 23:04:34,893 DEBUG [mondrian.mdx] 54149: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:34,940 DEBUG [mondrian.mdx] 54149: exec: 47 ms
+2016-09-24 23:04:39,471 DEBUG [mondrian.mdx] 54195: select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:39,518 DEBUG [mondrian.mdx] 54195: exec: 47 ms
+2016-09-24 23:04:40,909 DEBUG [mondrian.mdx] 54287: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:04:40,971 DEBUG [mondrian.mdx] 54287: exec: 62 ms
+2016-09-24 23:05:02,737 DEBUG [mondrian.mdx] 54342: select NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (max)]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (total)]}))))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:05:03,174 DEBUG [mondrian.mdx] 54342: exec: 437 ms
+2016-09-24 23:05:14,346 DEBUG [mondrian.mdx] 54398: select NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (max)]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (total)]}))))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:05:14,424 DEBUG [mondrian.mdx] 54398: exec: 78 ms
+2016-09-24 23:05:15,534 DEBUG [mondrian.mdx] 54451: select NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (max)]})))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:05:15,565 DEBUG [mondrian.mdx] 54451: exec: 31 ms
+2016-09-24 23:05:39,331 DEBUG [mondrian.mdx] 54497: select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:05:39,346 DEBUG [mondrian.mdx] 54497: exec: 15 ms
+2016-09-24 23:05:40,987 DEBUG [mondrian.mdx] 54589: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members)))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:05:41,065 DEBUG [mondrian.mdx] 54589: exec: 78 ms
+2016-09-24 23:05:45,987 DEBUG [mondrian.mdx] 54667: select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:05:46,003 DEBUG [mondrian.mdx] 54667: exec: 16 ms
+2016-09-24 23:05:49,612 DEBUG [mondrian.mdx] 54759: select NON EMPTY Hierarchize(Union(Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Consomattion chauffage annuelle (max)]})))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:05:49,674 DEBUG [mondrian.mdx] 54759: exec: 62 ms
+2016-09-24 23:05:57,565 DEBUG [mondrian.mdx] 54841: select NON EMPTY Hierarchize(Union(Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Consomattion chauffage annuelle (max)]})))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:05:57,643 DEBUG [mondrian.mdx] 54841: exec: 78 ms
+2016-09-24 23:05:59,487 DEBUG [mondrian.mdx] 54919: select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:05:59,518 DEBUG [mondrian.mdx] 54919: exec: 31 ms
+2016-09-24 23:06:12,440 DEBUG [mondrian.mdx] 55006: select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)]}})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:06:12,487 DEBUG [mondrian.mdx] 55006: exec: 47 ms
+2016-09-24 23:06:13,081 DEBUG [mondrian.mdx] 55091: select NON EMPTY {Hierarchize({[Measures].[Surface du logement (moyenne)]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:06:13,112 DEBUG [mondrian.mdx] 55091: exec: 31 ms
+2016-09-24 23:06:31,362 DEBUG [mondrian.mdx] 55177: select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:06:31,549 DEBUG [mondrian.mdx] 55177: exec: 187 ms
+2016-09-24 23:06:37,846 DEBUG [mondrian.mdx] 55323: select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:06:37,862 DEBUG [mondrian.mdx] 55323: exec: 16 ms
+2016-09-24 23:06:39,221 DEBUG [mondrian.mdx] 55461: select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:06:39,237 DEBUG [mondrian.mdx] 55461: exec: 16 ms
+2016-09-24 23:06:42,065 DEBUG [mondrian.mdx] 55493: select NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:06:42,081 DEBUG [mondrian.mdx] 55493: exec: 16 ms
+2016-09-24 23:07:07,784 DEBUG [mondrian.mdx] 55581: select NON EMPTY {Hierarchize({{[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[1 pièce], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[2 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[3 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[4 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[5 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[6 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[7 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[8 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[9 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[10 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[11 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[12 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[13 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[14 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[15 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[16 pièces]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:07:07,799 DEBUG [mondrian.mdx] 55581: exec: 15 ms
+2016-09-24 23:07:27,096 DEBUG [mondrian.mdx] 55642: select NON EMPTY {Hierarchize({{[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[1 pièce], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[2 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[3 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[4 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[5 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[6 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[7 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[8 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[9 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[10 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[11 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[12 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[13 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[14 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[15 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[16 pièces]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Measures].[Nombre de personnes des menages (total)], [Measures].[Depense chauffage annuelle par unite de consommation (total)]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:07:27,237 DEBUG [mondrian.mdx] 55642: exec: 141 ms
+2016-09-24 23:08:01,112 DEBUG [mondrian.mdx] 55702: select NON EMPTY {Hierarchize({{[Measures].[Nombre de personnes des menages (total)], [Measures].[Depense chauffage annuelle par unite de consommation (total)]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[1 pièce], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[2 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[3 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[4 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[5 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[6 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[7 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[8 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[9 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[10 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[11 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[12 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[13 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[14 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[15 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[16 pièces]}})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-24 23:08:01,128 DEBUG [mondrian.mdx] 55702: exec: 16 ms

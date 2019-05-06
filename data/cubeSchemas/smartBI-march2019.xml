@@ -1,0 +1,222 @@
+<Schema name="smartBI">
+  <Cube name="Airports" visible="true" cache="true" enabled="true">
+    <Table name="FACT_AIRPORTS">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="MAIN_AIRPORT" highCardinality="false" name="Airport">
+      <Hierarchy name="Airport" visible="true" hasAll="true" primaryKey="MAIN_AIRPORT" primaryKeyTable="AIRPORTS">
+        <Join leftKey="COUNTRY" rightKey="COUNTRY">
+          <Table name="AIRPORTS">
+          </Table>
+          <Table name="GEO">
+          </Table>
+        </Join>
+        <Level name="Region" visible="true" table="GEO" column="REGION" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Country" visible="true" table="AIRPORTS" column="COUNTRY" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="City" visible="true" table="AIRPORTS" column="CITY" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Main airport" visible="true" table="AIRPORTS" column="MAIN_AIRPORT" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+   <Dimension type="StandardDimension" visible="true" foreignKey="COUNTRY" highCardinality="false" name="Geo">
+      <Hierarchy name="Geo Hierarchy Region" visible="true" hasAll="true" primaryKey="COUNTRY">
+        <Table name="GEO">
+        </Table>
+        <Level name="Region" visible="true" column="REGION" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Country" visible="true" column="COUNTRY" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Geo Hierarchy Income" visible="true" hasAll="true" primaryKey="COUNTRY">
+        <Table name="GEO">
+        </Table>
+        <Level name="Income group" visible="true" column="INCOME_GROUP" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Country" visible="true" column="COUNTRY" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Nb Destinations" column="NB_DESTINATIONS" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Passengers 1990" column="PASSENGERS_1990" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Passengers 1995" column="PASSENGERS_1995" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Passengers 2000" column="PASSENGERS_2000" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Passengers 2005" column="PASSENGERS_2005" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Passengers 2010" column="PASSENGERS_2010" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Population" column="POPULATION" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Economy" visible="true" cache="true" enabled="true">
+    <Table name="FACT_ECONOMY">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COUNTRY" highCardinality="false" name="Geo">
+      <Hierarchy name="Geo Hierarchy Region" visible="true" hasAll="true" primaryKey="COUNTRY">
+        <Table name="GEO">
+        </Table>
+	<Level name="Type" visible="true" column="TYPE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Region" visible="true" column="REGION" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Country" visible="true" column="COUNTRY" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Geo Hierarchy Income" visible="true" hasAll="true" primaryKey="COUNTRY">
+        <Table name="GEO">
+        </Table>
+        <Level name="Income group" visible="true" column="INCOME_GROUP" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Country" visible="true" column="COUNTRY" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="YEAR" highCardinality="false" name="Year">
+      <Hierarchy name="Year" visible="true" hasAll="true">
+        <Level name="Year" visible="true" column="YEAR" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="GDP" column="GDP" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Population" column="POPULATION" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Films" visible="true" cache="true" enabled="true">
+    <Table name="FACT_FILMS">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="ID" highCardinality="false" name="Box">
+      <Hierarchy name="Box" visible="true" hasAll="true" primaryKey="ID">
+        <Table name="SMART_BI_DATAV5_LIGHT">
+        </Table>
+        <Level name="Retailer" visible="true" column="RETAILER" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Box" visible="true" column="BOX" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="ID" highCardinality="false" name="Film">
+      <Hierarchy name="Film" visible="true" hasAll="true" primaryKey="ID">
+        <Table name="SMART_BI_DATAV5_LIGHT">
+        </Table>
+        <Level name="Genre" visible="true" column="GENRE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Film" visible="true" column="TITLE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="ID" highCardinality="false" name="Media">
+      <Hierarchy name="Media" visible="true" hasAll="true" primaryKey="ID">
+        <Table name="SMART_BI_DATAV5_LIGHT">
+        </Table>
+        <Level name="Media" visible="true" column="MEDIA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="YEAR" highCardinality="false" name="Year">
+      <Hierarchy name="Year" visible="true" hasAll="true">
+        <Level name="Year" visible="true" column="YEAR" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COUNTRY" highCardinality="false" name="Geo">
+      <Hierarchy name="Geo Hierarchy Region" visible="true" hasAll="true" primaryKey="COUNTRY">
+        <Table name="GEO">
+        </Table>
+        <Level name="Type" visible="true" column="TYPE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Region" visible="true" column="REGION" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Country" visible="true" column="COUNTRY" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+	<Hierarchy name="Geo Hierarchy Income" visible="true" hasAll="true" primaryKey="COUNTRY">
+        <Table name="GEO">
+        </Table>
+        <Level name="Income group" visible="true" column="INCOME_GROUP" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Country" visible="true" column="COUNTRY" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Sales Revenue" column="SALESREVENUE" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Sales Target Revenue" column="SALESTARGET" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Sales Target Qty" column="COUNTTARGET" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Margin gross" column="MARGINGROSS" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Sales" visible="true" cache="true" enabled="true">
+    <Table name="FACT_SALES">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="PRODUCT" highCardinality="false" name="Product">
+      <Hierarchy name="Product" visible="true" hasAll="true" primaryKey="PRODUCT">
+        <Level name="Supplier" visible="true" column="SUPPLIER" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Product" visible="true" column="PRODUCT" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COLOR" highCardinality="false" name="Color">
+      <Hierarchy name="Color" visible="true" hasAll="true" primaryKey="COLOR">
+        <Level name="Color" visible="true" column="COLOR" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="GENDER" highCardinality="false" name="Gender">
+      <Hierarchy name="Gender" visible="true" hasAll="true" primaryKey="GENDER">
+        <Level name="Gender" visible="true" column="GENDER" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="RETAILER" highCardinality="false" name="Retailer">
+      <Hierarchy name="Retailer" visible="true" hasAll="true" primaryKey="RETAILER">
+        <Level name="Retailer" visible="true" column="RETAILER" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COUNTRY" highCardinality="false" name="Geo">
+      <Hierarchy name="Geo" visible="true" hasAll="true" primaryKey="COUNTRY">
+        <Table name="GEO">
+        </Table>
+        <Level name="Region" visible="true" column="REGION" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Country" visible="true" column="COUNTRY" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="MONTH" highCardinality="false" name="Month">
+      <Hierarchy name="Month" visible="true" hasAll="true" primaryKey="MONTH">
+        <Level name="Month" visible="true" column="MONTH" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="YEAR" highCardinality="false" name="Year">
+      <Hierarchy name="Year" visible="true" hasAll="true" primaryKey="YEAR">
+        <Level name="Year" visible="true" column="YEAR" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Sales Revenue" column="SALESREVENUE" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Sales Quantity" column="salesQUANTITY" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Sales Target Revenue" column="SALESTARGETREVENUE" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Sales Target Qty" column="SALESTARGETQTY" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Inventory" column="INVENTORY" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Planned Qty Ordered" column="PLANNEDQTYORDERED" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Shortage" column="SHORTAGE" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

@@ -1,0 +1,2 @@
+rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
+70;29AF06B372FD52129AAB65DA477E308EC73CF0D44087D05DA8D39C7BE425D30E;11;a;Economy;[GDP];[Country, Income group];[];21

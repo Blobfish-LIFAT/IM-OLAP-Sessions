@@ -1,0 +1,66 @@
+----------------------------------------------------------------------------------------------------
+----- dibstudent03, Ophelie, groupe1
+----- Cube mobpro
+----- Analyse des individus par type de menage
+----------------------------------------------------------------------------------------------------
+
+2016-09-25 17:37:39,725 DEBUG [mondrian.mdx] 68855: select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:37:39,741 DEBUG [mondrian.mdx] 68855: exec: 16 ms
+2016-09-25 17:37:52,803 DEBUG [mondrian.mdx] 68898: select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:37:52,959 DEBUG [mondrian.mdx] 68898: exec: 156 ms
+2016-09-25 17:38:11,319 DEBUG [mondrian.mdx] 68923: select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:38:11,334 DEBUG [mondrian.mdx] 68923: exec: 15 ms
+2016-09-25 17:38:22,303 DEBUG [mondrian.mdx] 68966: select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:38:22,553 DEBUG [mondrian.mdx] 68966: exec: 250 ms
+2016-09-25 17:40:04,022 DEBUG [mondrian.mdx] 68999: select NON EMPTY Hierarchize(Union(Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}), Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Duree trajet domicile - travail (moyenne)]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:40:04,272 DEBUG [mondrian.mdx] 68999: exec: 250 ms
+2016-09-25 17:40:21,381 DEBUG [mondrian.mdx] 69033: select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:40:21,428 DEBUG [mondrian.mdx] 69033: exec: 47 ms
+2016-09-25 17:40:29,522 DEBUG [mondrian.mdx] 69065: select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}) ON COLUMNS,
+  NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:40:29,975 DEBUG [mondrian.mdx] 69065: exec: 453 ms
+2016-09-25 17:40:34,491 DEBUG [mondrian.mdx] 69138: select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]})) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:40:34,694 DEBUG [mondrian.mdx] 69138: exec: 203 ms
+2016-09-25 17:41:03,272 DEBUG [mondrian.mdx] 69212: select NON EMPTY Hierarchize(Union(Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]})), Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Nombre total d'individus]})))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:41:03,428 DEBUG [mondrian.mdx] 69212: exec: 156 ms
+2016-09-25 17:41:04,866 DEBUG [mondrian.mdx] 69330: select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Nombre total d'individus]})) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:41:04,928 DEBUG [mondrian.mdx] 69330: exec: 62 ms
+2016-09-25 17:41:14,709 DEBUG [mondrian.mdx] 69353: select NON EMPTY Hierarchize(Union(Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Nombre total d'individus]})), Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]})))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:41:14,803 DEBUG [mondrian.mdx] 69353: exec: 94 ms
+2016-09-25 17:41:48,631 DEBUG [mondrian.mdx] 69471: select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Nombre total d'individus]})) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 17:41:48,694 DEBUG [mondrian.mdx] 69471: exec: 63 ms

@@ -1,0 +1,2 @@
+rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
+509;9A785E6798E260C46352A7B90FAD29CFA536F5C7109F2A80E5CD5DA05E495CB8;1;I051881;Films;[];[Film, Retailer];[Country=>[EQUAL Spain]];40

@@ -1,0 +1,67 @@
+---------------------------------------------
+----- dibstudent06, Clement, groupe 2
+----- Cube chauffage
+----- Analyse logements par diverses critères
+---------------------------------------------
+
+2016-09-25 22:30:12,629 DEBUG [mondrian.mdx] 86919: select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:30:12,879 DEBUG [mondrian.mdx] 86919: exec: 250 ms
+2016-09-25 22:30:26,223 DEBUG [mondrian.mdx] 86959: select NON EMPTY {Hierarchize({[Type de construction du logement.LOGT_TYPECONSTR_Hierarchie_1].[Type de construction].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:30:26,520 DEBUG [mondrian.mdx] 86959: exec: 297 ms
+2016-09-25 22:30:40,614 DEBUG [mondrian.mdx] 87003: select NON EMPTY Crossjoin([Type de construction du logement.LOGT_TYPECONSTR_Hierarchie_1].[Type de construction].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:30:41,426 DEBUG [mondrian.mdx] 87003: exec: 812 ms
+2016-09-25 22:30:42,864 DEBUG [mondrian.mdx] 87103: select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:30:42,942 DEBUG [mondrian.mdx] 87103: exec: 78 ms
+2016-09-25 22:31:13,098 DEBUG [mondrian.mdx] 87202: select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:31:13,332 DEBUG [mondrian.mdx] 87202: exec: 234 ms
+2016-09-25 22:31:26,239 DEBUG [mondrian.mdx] 87243: select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:31:26,442 DEBUG [mondrian.mdx] 87243: exec: 203 ms
+2016-09-25 22:33:33,223 DEBUG [mondrian.mdx] 90891: select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin([Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:33:34,098 DEBUG [mondrian.mdx] 90891: exec: 875 ms
+2016-09-25 22:33:35,348 DEBUG [mondrian.mdx] 90972: select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:33:35,535 DEBUG [mondrian.mdx] 90972: exec: 187 ms
+2016-09-25 22:36:28,614 DEBUG [mondrian.mdx] 91946: select NON EMPTY {Hierarchize({[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:36:28,785 DEBUG [mondrian.mdx] 91946: exec: 171 ms
+2016-09-25 22:36:41,676 DEBUG [mondrian.mdx] 91985: select NON EMPTY {Hierarchize({[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:36:41,864 DEBUG [mondrian.mdx] 91985: exec: 188 ms
+2016-09-25 22:36:51,864 DEBUG [mondrian.mdx] 92057: select NON EMPTY {Hierarchize({[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:36:52,114 DEBUG [mondrian.mdx] 92057: exec: 250 ms
+2016-09-25 22:37:56,254 DEBUG [mondrian.mdx] 92403: select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube4Chauffage]
+
+2016-09-25 22:37:56,457 DEBUG [mondrian.mdx] 92403: exec: 203 ms
+
