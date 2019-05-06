@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class XMLFilter {
+public class XMLFilterLegacy {
     static String target = "Goal Oriented";
     static String inputFile = "cubeload/Workload-1545151556.xml";
     static String outfile = "data/falseto/goal_oriented.xml";

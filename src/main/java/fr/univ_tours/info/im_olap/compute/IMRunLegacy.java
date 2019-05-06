@@ -3,7 +3,7 @@ package fr.univ_tours.info.im_olap.compute;
 import com.alexsxode.utilities.Nd4jUtils;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
-import fr.univ_tours.info.im_olap.model.LoadSessions;
+import fr.univ_tours.info.im_olap.model.LoadSessionsLegacy;
 import fr.univ_tours.info.im_olap.model.QueryPart;
 import fr.univ_tours.info.im_olap.model.Session;
 import fr.univ_tours.info.im_olap.model.SessionGraph;
@@ -21,7 +21,7 @@ import static fr.univ_tours.info.im_olap.compute.PageRank.normalizeRowsi;
 import static org.nd4j.linalg.ops.transforms.Transforms.sqrt;
 import static org.nd4j.linalg.util.MathUtils.log2;
 
-public class IMRun {
+public class IMRunLegacy {
     static String explo = "Explorative", sliceDrill = "Slice and Drill", goal = "Goal Oriented", sliceAll = "Slice All";
     static String[] explos = new String[]{explo, sliceDrill, goal, sliceAll};
     static String sessionsDir = "data/session_set_1", schemaPath = "data/schema.xml", userProfile = goal;
@@ -58,7 +58,7 @@ public class IMRun {
     }
 
     private static void runTest(String evalProfile) {
-        List<Session> sessions = LoadSessions.loadFromDir(sessionsDir);
+        List<Session> sessions = LoadSessionsLegacy.loadFromDir(sessionsDir);
         Collections.shuffle(sessions);
 
         List<Session> user = new ArrayList<>();

@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class LoadSessions {
+public class LoadSessionsLegacy {
 
     public static  List<Session> loadFromDir(String path){
         if (!Files.isDirectory(Paths.get(path))){
             System.err.printf("Warning '%s' is not a valid directory !", path);
         }
         try {
-            return Files.walk(Paths.get(path)).filter(p -> p.toFile().isFile()).map(LoadSessions::loadSession).sorted(Comparator.comparing(a -> a.filename)).collect(Collectors.toList());
+            return Files.walk(Paths.get(path)).filter(p -> p.toFile().isFile()).map(LoadSessionsLegacy::loadSession).sorted(Comparator.comparing(a -> a.filename)).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
