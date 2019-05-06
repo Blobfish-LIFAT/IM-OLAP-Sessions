@@ -118,6 +118,10 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
 
     void safeComputeEdge(N from, N to, Function<Optional<E>, Optional<E>> f);
 
+    default void safePutEdge(N from, N to, Function<Optional<E>, E> f) {
+        this.safeComputeEdge(from, to, x -> Optional.ofNullable(f.apply(x)));
+    }
+
     /**
      *
      * @param from
@@ -135,4 +139,21 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
     }
 
     <F extends Comparable<F>> Graph<F,N> mapEdges(Function<Edge<N, E>, F> edgeFunction);
+
+    default String toPrettyString(String name) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(name+":");
+
+        for (Edge<N,E> edge : this.getEdges()) {
+            sb.append("\n\t");
+            sb.append(edge.toString());
+        }
+
+        return sb.toString();
+    }
+
+    default boolean equal(Graph<E,N> other) {
+        return this.getEdges().equals(other.getEdges());
+    }
 }
