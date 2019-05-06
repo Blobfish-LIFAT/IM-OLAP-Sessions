@@ -41,10 +41,9 @@ public class PageRank {
      * Calculate the probability distribution for each node after convergence
      * @param weights the line-normalized transition matrix
      * @param iter number of iterration
-     * @param <N> type of nodes
      * @return a mapping from nodes to their probability of apparition after iter iterations
      */
-    public static <N extends Comparable<N>> INDArray pageRank(
+    public static INDArray pageRank(
             INDArray weights,
             int iter){
 
@@ -58,6 +57,39 @@ public class PageRank {
         }
 
         return vector;
+    }
+
+    /**
+     * Compute pageRank results for a compatible graph object
+     * @param graph
+     * @param iter number of page rank iterations (for convergence)
+     * @param <N> type of graph node, used for node mapping
+     * @return distribution vector with node to index mapping
+     */
+    public static <N extends Comparable<N>> Pair<INDArray, HashMap<N, Integer>> pagerank(
+            Graph<Double, N> graph,
+            int iter) {
+
+        Pair<INDArray, HashMap<N, Integer>> temp = Graphs.toINDMatrix(graph);
+
+
+        Pair<INDArray, HashMap<N, Integer>> pair = new Pair<>(pageRank(temp.left, iter), temp.right);
+
+        return pair;
+    }
+
+    // utility
+
+
+    public static <N extends Comparable<N>> HashMap<N, Double> mappedINDarrayToMap(INDArray array, HashMap<N, Integer> map) {
+
+        HashMap<N, Double> ret = new HashMap<>();
+
+        for (Map.Entry<N, Integer> entry : map.entrySet()) {
+            ret.put(entry.getKey(), array.getDouble(entry.getValue()));
+        }
+
+        return ret;
     }
 
     public static void main(String[] args){
