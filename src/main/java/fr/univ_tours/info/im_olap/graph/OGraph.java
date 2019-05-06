@@ -158,15 +158,20 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
         return newGraph;
     }
 
+    @Override
+    public String toString() {
+        return this.toPrettyString("Directed Graph");
+    }
+
     public static void main(String[] args){
 
         OGraph<Double, String> g = new OGraph<>();
 
-        g.safeComputeEdge("A", "B", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
-        g.safeComputeEdge("A", "B", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
-        g.safeComputeEdge("B", "B", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
-        g.safeComputeEdge("B", "A", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
-        g.safeComputeEdge("A", "C", o -> Optional.of(o.map(x -> x+1.0).orElse(1.0)));
+        g.safePutEdge("A", "B", o -> o.map(x -> x+1.0).orElse(1.0));
+        g.safePutEdge("A", "B", o -> o.map(x -> x+1.0).orElse(1.0));
+        g.safePutEdge("B", "B", o -> o.map(x -> x+1.0).orElse(1.0));
+        g.safePutEdge("B", "A", o -> o.map(x -> x+1.0).orElse(1.0));
+        g.safePutEdge("A", "C", o -> o.map(x -> x+1.0).orElse(1.0));
 
         g.fromNode("A").forEach(System.out::println);
 
