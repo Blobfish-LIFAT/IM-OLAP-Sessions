@@ -52,11 +52,11 @@ public class GraphUpdate {
         return null;
     }
 
-
-
-
-
-
+    public static BiFunction<Session, Integer, Graph<Double, QueryPart>> alsoUseSchema(Graph<Double, QueryPart> schema, double schemaWeight) {
+        return ((session, index) -> {
+            return null;
+        });
+    }
 
 
     // Interpolation update
