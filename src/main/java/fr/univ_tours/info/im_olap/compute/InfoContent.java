@@ -1,21 +1,20 @@
-package fr.univ_tours.info.im_olap;
+package fr.univ_tours.info.im_olap.compute;
 
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
-import fr.univ_tours.info.im_olap.graph.PageRank;
+import fr.univ_tours.info.im_olap.compute.PageRank;
 import fr.univ_tours.info.im_olap.model.*;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
 import java.io.BufferedWriter;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.*;
 
-import static fr.univ_tours.info.im_olap.graph.PageRank.normalizeRowsi;
+import static fr.univ_tours.info.im_olap.compute.PageRank.normalizeRowsi;
 import static org.nd4j.linalg.util.MathUtils.log2;
 
 public class InfoContent {

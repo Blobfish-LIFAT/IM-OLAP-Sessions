@@ -1,6 +1,9 @@
-package fr.univ_tours.info.im_olap.graph;
+package fr.univ_tours.info.im_olap.compute;
 
 import com.alexsxode.utilities.collection.Pair;
+import fr.univ_tours.info.im_olap.graph.Graph;
+import fr.univ_tours.info.im_olap.graph.Graphs;
+import fr.univ_tours.info.im_olap.graph.NOGraph;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
