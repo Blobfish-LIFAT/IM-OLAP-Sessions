@@ -4,10 +4,7 @@ import com.alexsxode.utilities.collection.Pair;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public final class Graphs {
     private Graphs(){}
@@ -41,6 +38,40 @@ public final class Graphs {
         }
 
         return new Pair<>(matrix, indexes);
+    }
+
+    /**
+     * Create graph from a transition matrix
+     * @param graphMatrix transition matrix
+     * @param mapper mapping from Nodes to position in matrix
+     * @param <N> Node type
+     * @return Graph with nodes of type N and edges of type Double
+     */
+    public static <N extends Comparable<N>> Graph<Double, N> fromINDMatrix(INDArray graphMatrix, HashMap<N, Integer> mapper) {
+
+        Graph<Double, N> graph = new OGraph<>();
+
+        HashMap<Integer, N> reverseMapper = new HashMap<>();
+
+        for (Map.Entry<N, Integer> entry : mapper.entrySet()) {
+            reverseMapper.put(entry.getValue(),entry.getKey());
+        }
+
+
+        for (int i = 0; i < graphMatrix.size(0); i++) {
+            for (int j = 0; j < graphMatrix.size(1); j++) {
+                N from = reverseMapper.get(i);
+                N to = reverseMapper.get(j);
+                double val = graphMatrix.getDouble(i,j);
+                graph.setEdge(from, to, val);
+            }
+        }
+
+        return null;
+    }
+
+    public static <N extends Comparable<N>> Graph<Double, N> fromINDMatrix(Pair<INDArray, HashMap<N, Integer>> matrixMapperPair) {
+        return fromINDMatrix(matrixMapperPair.left, matrixMapperPair.right);
     }
 
     public static <N extends Comparable<N>> INDArray sortedINDMatrix(Graph<Double, N> graph){
