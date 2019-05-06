@@ -47,7 +47,7 @@ public final class Graphs {
      * @param <N> Node type
      * @return Graph with nodes of type N and edges of type Double
      */
-    public static <N extends Comparable<N>> Graph<Double, N> fromINDMatrix(INDArray graphMatrix, HashMap<N, Integer> mapper) {
+    public static <N extends Comparable<N>> OGraph<Double, N> fromINDMatrix(INDArray graphMatrix, HashMap<N, Integer> mapper) {
 
         Graph<Double, N> graph = new OGraph<>();
 
@@ -55,6 +55,7 @@ public final class Graphs {
 
         for (Map.Entry<N, Integer> entry : mapper.entrySet()) {
             reverseMapper.put(entry.getValue(),entry.getKey());
+            graph.addNode(entry.getKey());
         }
 
 
@@ -63,14 +64,16 @@ public final class Graphs {
                 N from = reverseMapper.get(i);
                 N to = reverseMapper.get(j);
                 double val = graphMatrix.getDouble(i,j);
-                graph.setEdge(from, to, val);
+                if (val != 0.0) {
+                    graph.setEdge(from, to, val);
+                }
             }
         }
 
         return null;
     }
 
-    public static <N extends Comparable<N>> Graph<Double, N> fromINDMatrix(Pair<INDArray, HashMap<N, Integer>> matrixMapperPair) {
+    public static <N extends Comparable<N>> OGraph<Double, N> fromINDMatrix(Pair<INDArray, HashMap<N, Integer>> matrixMapperPair) {
         return fromINDMatrix(matrixMapperPair.left, matrixMapperPair.right);
     }
 
