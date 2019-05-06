@@ -1,17 +1,17 @@
 package fr.univ_tours.info.im_olap;
 
+import com.alexsxode.utilities.Nd4jUtils;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
-import fr.univ_tours.info.im_olap.graph.PageRank;
+import fr.univ_tours.info.im_olap.compute.PageRank;
 import fr.univ_tours.info.im_olap.model.*;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
 
-import java.util.Arrays;
 import java.util.List;
 
-import static fr.univ_tours.info.im_olap.graph.PageRank.normalizeRowsi;
+import static fr.univ_tours.info.im_olap.compute.PageRank.normalizeRowsi;
 
 public class Dev {
     public static void main(String[] args) {

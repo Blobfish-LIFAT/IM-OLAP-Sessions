@@ -1,4 +1,4 @@
-package fr.univ_tours;
+package fr.univ_tours.info.im_olap.compute;
 
 import org.dom4j.Document;
 import org.dom4j.Element;

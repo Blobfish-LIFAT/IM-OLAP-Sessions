@@ -1,4 +1,4 @@
-package fr.univ_tours.info.im_olap;
+package com.alexsxode.utilities;
 
 import org.apache.commons.math3.exception.MathIllegalArgumentException;
 import org.nd4j.linalg.api.ndarray.INDArray;
