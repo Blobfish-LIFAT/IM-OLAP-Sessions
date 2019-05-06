@@ -2,6 +2,10 @@ package com.alexsxode.utilities;
 
 import org.apache.commons.math3.exception.MathIllegalArgumentException;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.factory.Nd4j;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.nd4j.linalg.ops.transforms.Transforms.relu;
 import static org.nd4j.linalg.ops.transforms.Transforms.sqrt;
@@ -40,6 +44,35 @@ public final class Nd4jUtils {
             sum += p.getDouble(i)*log2(pi/qi);
         }
         return sum;
+    }
+
+    /**
+     * Computes the Kullback Leibler divergence between two distribution represented by Hashmaps
+     * @param p starting distribution
+     * @param q destination distribution
+     * @param <N> type of discrete events
+     * @return
+     */
+    public static <N extends Comparable<N>> double kullbackLeibler(HashMap<N, Double> p, HashMap<N, Double> q) {
+
+        HashMap<N, Integer> mapper = new HashMap<>();
+
+        int i = 0;
+        for (Map.Entry<N, Double> entry : p.entrySet()) {
+            mapper.put(entry.getKey(), i);
+            i++;
+        }
+
+        INDArray pArr = Nd4j.create(mapper.size());
+
+        INDArray qArr = pArr.dup();
+
+        for (Map.Entry<N, Integer> entry : mapper.entrySet()) {
+            pArr.putScalar(entry.getValue(), p.get(entry.getKey()));
+            qArr.putScalar(entry.getValue(), q.get(entry.getKey()));
+        }
+
+        return kullbackLeibler(pArr, qArr);
     }
 
     public static double normalizedEntropy(INDArray p){
