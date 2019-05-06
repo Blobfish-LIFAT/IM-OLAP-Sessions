@@ -1,0 +1,2755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Schema name="DOPAn DW3">
+  <!-- Shared dimensions -->
+	<Dimension name="Commune de residence">
+      <Hierarchy hasAll="true" name="CNERES_Hierarchie_intercommunale" primaryKey="commune_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNERES_Hierarchie_intercommunale">
+        <Table name="commune" />
+		<Level type="String" name="Region" column="region_id" nameColumn="region_nom" ordinalColumn = "region_nom"/>
+        <Level type="String" name="Pays" column="pays_id" nameColumn="pays_nom" ordinalColumn = "pays_nom"/>
+        <Level type="String" name="Communaute de communes" column="communaute_communes_id" nameColumn="communaute_communes_nom" ordinalColumn = "communaute_communes_nom"/>
+		<Level type="String" name="Commune de residence" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/>
+      </Hierarchy>
+      
+      <Hierarchy hasAll="true" name="CNERES_Hierarchie_administrative" primaryKey="commune_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNERES_Hierarchie_administrative">
+        <Table name="commune" />
+		<Level type="String" name="Region" column="region_id" nameColumn="region_nom" ordinalColumn = "region_nom"/>
+        <Level type="String" name="Departement" column="departement_id" nameColumn="departement_nom" ordinalColumn = "departement_nom"/>
+	    <Level type="String" name="Commune de residence" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/>
+      </Hierarchy>
+		
+      <Hierarchy hasAll="true" name="CNERES_Hierarchie_vulnerabilite" primaryKey="commune_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNERES_Hierarchie_vulnerabilite">
+        <Table name="commune" />
+        <Level type="String" name="Classe de vulnerabilite energetique Insee" column="classe_vulnerabilite_insee_id" nameColumn="classe_vulnerabilite_insee_nom" ordinalColumn = "classe_vulnerabilite_insee_nom"/>
+        <Level type="String" name="Commune de residence" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/> 
+      </Hierarchy>
+	  
+      <Hierarchy hasAll="true" name="CNERES_Hierarchie_depense" primaryKey="commune_id"
+	  allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNERES_Hierarchie_depense">
+        <Table name="commune" />
+        <Level type="String" name="Classe de depense energetique Insee" column="classe_depense_insee_id" nameColumn="classe_depense_insee_nom" ordinalColumn = "classe_depense_insee_nom"/>
+        <Level type="String" name="Commune de residence" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/> 
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Commune du lieu d'occupation" >
+      <Hierarchy hasAll="true" name="CNELOCC_Hierarchie_intercommunale" primaryKey="commune_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNLEOCC_Hierarchie_intercommunale">
+        <Table name="commune" />
+		<Level type="String" name="Region" column="region_id" nameColumn="region_nom" ordinalColumn = "region_nom"/>
+        <Level type="String" name="Pays" column="pays_id" nameColumn="pays_nom" ordinalColumn = "pays_nom"/>
+        <Level type="String" name="Communaute de communes" column="communaute_communes_id" nameColumn="communaute_communes_nom" ordinalColumn = "communaute_communes_nom"/>
+        <Level type="String" name="Commune d'occupation" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/> 
+      </Hierarchy>
+      <Hierarchy hasAll="true" name="CNELOCC_Hierarchie_administrative" primaryKey="commune_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNELOCC_Hierarchie_administrative">
+        <Table name="commune" />
+		<Level type="String" name="Region" column="region_id" nameColumn="region_nom" ordinalColumn = "region_nom"/>
+        <Level type="String" name="Departement" column="departement_id" nameColumn="departement_nom" ordinalColumn = "departement_nom"/>
+		<Level type="String" name="Commune d'occupation" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/>
+      </Hierarchy>
+    </Dimension>
+  
+	<Dimension name="Categorie socioprofessionnelle">
+      <Hierarchy hasAll="true" name="CSP_Hierarchie_1" primaryKey="csp3_id"
+		allMemberName = "toutes les csp" allLevelName = "Tout" caption ="CSP_Hierarchie_1">
+        <Table name="csp" />
+		<Level type="String" name="CSP1" column="csp1_id" nameColumn="csp1_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (csp.csp1_id != '-9' and csp.csp1_id != 'Z') then CAST (csp.csp1_id as integer) else 
+						case when (csp.csp1_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Annee du recensement">
+      <Hierarchy hasAll="true" name="Annee_rencesement_Hierarchie_1" primaryKey="annee"
+		allMemberName = "toutes les annees" allLevelName = "Tout" caption ="Annee_rencesement_Hierarchie_1">
+        <Table name="annee_recensement" />
+        <Level type="Integer" name="Annee" column="annee" ordinalColumn = "annee"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Indicateur de lieu d'occupation">
+      <Hierarchy hasAll="true" name="ILOCC_Hierarchie_1" primaryKey="indicateur_id"
+		allMemberName = "tous les lieux confondus" allLevelName = "Tout" caption ="ILOCC_Hierarchie_1">
+        <Table name="indicateur_lieu" />
+		<Level type="String" name="Categorie" column="categorie_id" nameColumn="categorie_nom" ordinalColumn = "categorie_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (indicateur_lieu.categorie_id != '-9' and indicateur_lieu.categorie_id != 'Z') then CAST (indicateur_lieu.categorie_id as integer) else 
+						case when (indicateur_lieu.categorie_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Indicateur de lieu" column="indicateur_id" nameColumn="indicateur_nom" ordinalColumn = "indicateur_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Lien avec la personne de reference">
+      <Hierarchy hasAll="true" name="LPRM_Hierarchie_1" primaryKey="lien_id"
+		allMemberName = "tous les liens confondus" allLevelName = "Tout" caption ="LPRM_Hierarchie_1">
+        <Table name="lien_avec_perrefm" />
+		<Level type="String" name="Categorie" column="categorie_id" nameColumn="categorie_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (lien_avec_perrefm.categorie_id != '-9' and lien_avec_perrefm.categorie_id != 'Z') then CAST (lien_avec_perrefm.categorie_id as integer) else 
+						case when (lien_avec_perrefm.categorie_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Lien avec la personne de reference" column="lien_id" nameColumn="lien_nom" ordinalColumn = "lien_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Mode de cohabitation">
+      <Hierarchy hasAll="true" name="MODCOHAB_Hierarchie_1" primaryKey="mode_id"
+		allMemberName = "tous les modes confondus" allLevelName = "Tout" caption ="MODCOHAB_Hierarchie_1">
+        <Table name="mode_cohabitation" />
+        <Level type="String" name="Mode de cohabitation" column="mode_id" nameColumn="mode_nom" ordinalColumn = "mode_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Mode de transport">
+      <Hierarchy hasAll="true" name="MODTRANS_Hierarchie" primaryKey="mode_id"
+		allMemberName = "tous les modes confondus" allLevelName = "Tout" caption ="MODTRANS_Hierarchie">
+        <Table name="mode_transport" />
+        <Level type="String" name="Categorie" column="categorie_id" nameColumn="categorie_nom" ordinalColumn = "categorie_nom">
+		<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (mode_transport.categorie_id != '-9' and mode_transport.categorie_id != 'Z') then CAST (mode_transport.categorie_id as integer) else 
+						case when (mode_transport.categorie_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Mode de transport" column="mode_id" nameColumn="mode_nom" ordinalColumn = "mode_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Motif de deplacement">
+      <Hierarchy hasAll="true" name="MOTIFDEP_Hierarchie_1" primaryKey="motif_id"
+		allMemberName = "tous les motifs confondus" allLevelName = "Tout" caption ="MOTIFDEP_Hierarchie_1">
+        <Table name="motif_deplacement" />
+		<Level type="String" name="Categorie 1" column="categorie1_id" nameColumn="categorie1_nom">
+		<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (motif_deplacement.categorie1_id != '-9' and motif_deplacement.categorie1_id != 'Z') then CAST (motif_deplacement.categorie1_id as integer) else 
+						case when (motif_deplacement.categorie1_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Categorie 2" column="categorie2_id" nameColumn="categorie2_nom">
+		<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (motif_deplacement.categorie2_id != '-9' and motif_deplacement.categorie2_id != 'Z') then CAST (motif_deplacement.categorie2_id as integer) else 
+						case when (motif_deplacement.categorie2_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Motif de deplacement" column="motif_id" nameColumn="motif_nom" ordinalColumn = "motif_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Nature l'activite economique">
+      <Hierarchy hasAll="true" name="NATACTECO_Hierarchie" primaryKey="na17_id"
+		allMemberName = "toutes les natures confondues" allLevelName = "Tout" caption ="NATACTECO_Hierarchie" >
+        <Table name="activite_economique" />
+		<Level type="String" name="Nature de l'activite" column="na5_id" nameColumn="na5_lib" ordinalColumn = "na5_lib"/>
+        </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Niveau d'instruction">
+      <Hierarchy hasAll="true" name="Niveau_Instruction_Hierarchie" primaryKey="niveau_inst_id"
+		allMemberName = "tous les niveaux confondus" allLevelName = "Tout" caption ="Niveau_Instruction_Hierarchie">
+        <Table name="niveau_instruction" />
+		<Level type="String" name="Categorie 1" column="categorie1_id" nameColumn="categorie1_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (niveau_instruction.categorie1_id != '-9' and niveau_instruction.categorie1_id != 'Z') then CAST (niveau_instruction.categorie1_id as integer) else 
+						case when (niveau_instruction.categorie1_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Categorie 2" column="categorie2_id" nameColumn="categorie2_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (niveau_instruction.categorie2_id != '-9' and niveau_instruction.categorie2_id != 'Z') then CAST (niveau_instruction.categorie2_id as integer) else 
+						case when (niveau_instruction.categorie2_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Niveau d'instruction" column="niveau_inst_id" nameColumn="niveau_nom" ordinalColumn = "niveau_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Niveau de motorisation du menage">
+      <Hierarchy hasAll="true" name="Niveau_motorisation_Hierarchie" primaryKey="niveau_id"
+		allMemberName = "tous les niveaux confondus" allLevelName = "Tout" caption ="Niveau_motorisation_Hierarchie">
+        <Table name="niveau_motorisation" />
+        <Level type="String" name="Niveau de motorisation" column="niveau_id" nameColumn="niveau_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					case when (niveau_motorisation.niveau_id != '-9' and niveau_motorisation.niveau_id != 'Z' and niveau_motorisation.niveau_id != 'X') 
+						then niveau_motorisation.niveau_id 
+						else  case when (niveau_motorisation.niveau_id = '-9') then '999' else niveau_id end 
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Sexe">
+      <Hierarchy hasAll="true" name="Sexe_Hierarchie" primaryKey="sexe_id"
+		allMemberName = "tous les sexes confondus" allLevelName = "Tout" caption ="Sexe_Hierarchie">
+        <Table name="sexe" />
+        <Level type="String" name="Sexe" column="sexe_id" nameColumn="sexe_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					case when (sexe.sexe_id != '-9' and sexe.sexe_id != 'Z') 
+						then sexe.sexe_id 
+						else  case when (sexe.sexe_id = '-9') then '999' else sexe.sexe_id end 
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Statut d'emploi">
+      <Hierarchy hasAll="true" name="STATEMPL_Hierarchie" primaryKey="stat3_id"
+		allMemberName = "tous les statuts confondus" allLevelName = "Tout" caption ="STATEMPL_Hierarchie">
+        <Table name="statut_emploi" />
+		<Level type="String" name="Statut d'emploi de niveau 1" column="stat1_id" nameColumn="stat1_nom" >
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					case when (statut_emploi.stat1_id != '-9' and statut_emploi.stat1_id != 'Z') 
+						then statut_emploi.stat1_id 
+						else  case when (statut_emploi.stat1_id = '-9') then '999' else statut_emploi.stat1_id end 
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Statut d'emploi de niveau 2" column="stat2_id" nameColumn="stat2_nom" ordinalColumn = "stat2_nom"/>
+        <Level type="String" name="Statut d'emploi de niveau 3" column="stat3_id" nameColumn="stat3_nom" ordinalColumn = "stat3_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Statut d'occupation du logement">
+      <Hierarchy hasAll="true" name="STOCLOGT_Hierarchie" primaryKey="statut_id"
+		allMemberName = "tous les statuts confondus" allLevelName = "Tout" caption ="STOCLOGT_Hierarchie" >
+        <Table name="statut_occupation_lgt" />
+		<Level type="String" name="Categorie" column="categorie_id" nameColumn="categorie_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					case when (statut_occupation_lgt.categorie_id = '1' or statut_occupation_lgt.categorie_id = '2' or statut_occupation_lgt.categorie_id = '3') 
+						then statut_occupation_lgt.categorie_id 
+						else  case when (statut_occupation_lgt.categorie_id = '-9') then '999' 
+							else case when (statut_occupation_lgt.categorie_id = 'Z') then '99999' else '9999' end 
+						end 
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Statut d'occupation" column="statut_id" nameColumn="statut_nom" ordinalColumn = "statut_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Temps d'emploi">
+      <Hierarchy hasAll="true" name="TEMPSEMP_Hierarchie" primaryKey="temps_id"
+		allMemberName = "tous les temps confondus" allLevelName = "Tout" caption ="TEMPSEMP_Hierarchie" >
+        <Table name="temps_emploi" />
+        <Level type="String" name="Temps d'emploi" column="temps_id" nameColumn="temps_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					case when (temps_emploi.temps_id = '-9') then '999'  else  temps_emploi.temps_id end 				
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Type de logement">
+      <Hierarchy hasAll="true" name="TYPLOGT_Hierarchie" primaryKey="type_logt_id"
+		allMemberName = "tous les types confondus" allLevelName = "Tout" caption ="TYPLOGT_Hierarchie" >
+        <Table name="type_logt" />
+		<Level type="String" name="Type regroupe">
+			<KeyExpression>
+				<SQL dialect="mssql"> (case when type_logt.type_logt_id = '1' then '1'
+					when type_logt.type_logt_id = '2' then '2' else '3' end) 
+				</SQL>
+			</KeyExpression>
+			<NameExpression>
+				<SQL dialect="mssql"> (case when type_logt.type_logt_id = '1' then 'Maison'
+					when type_logt.type_logt_id = '2' then 'Appartement' else 'Autres' end) 
+				</SQL>
+			</NameExpression>
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when type_logt.type_logt_id = '1' then '1'
+					when type_logt.type_logt_id = '2' then '2' else '3' end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Type de logement" column="type_logt_id" nameColumn="type_logt_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					case when (type_logt.type_logt_id = '-9') then '999'  else  type_logt.type_logt_id end 				
+				</SQL>
+			</OrdinalExpression>
+		</Level>		
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Type de menage">
+      <Hierarchy hasAll="true" name="TYPMEN_Hierarchie" primaryKey="typemr9_id"
+		allMemberName = "tous les types confondus" allLevelName = "Tout" caption ="TYPMEN_Hierarchie" >
+        <Table name="type_menage" />
+		<Level type="String" name="Type regroupe en 4 categories" column="typemr4_id" nameColumn="typemr4_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					case when (type_menage.typemr4_id = '-9') then '999'  else  type_menage.typemr4_id end 				
+				</SQL>
+			</OrdinalExpression>
+		</Level>		
+        <Level type="String" name="Type regroupe en 9 categories" column="typemr9_id" nameColumn="typemr9_nom" ordinalColumn = "typemr9_nom" />
+      </Hierarchy>
+    </Dimension>
+	
+ ------------------------------------------------------------------------------
+ 
+  <!--Cube Cube1MobProInd -->
+  <Cube name="Cube1MobProInd" caption = "Cube 1 - Mobilite professionnelle des individus">
+   <Table name="mobpro_ind_1">
+			<AggName name="DOPAn_DW3_Cube1MobPr_1">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="niveau_instruction_Categorie_1" name="[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_2">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_depense_ener" name="[Commune de residence.CNERES_Hierarchie_depense].[Classe de depense energetique Insee]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Categori" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Statut_d" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Statut d'occupation]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_3">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="motif_deplacement_Categorie_1_" name="[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1]">
+				</AggLevel>
+				<AggLevel column="motif_deplacement_Categorie_2_" name="[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 2]">
+				</AggLevel>
+				<AggLevel column="type_logt_Type_regroupe_(Key)" name="[Type de logement.TYPLOGT_Hierarchie].[Type regroupe]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_4">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_vulnerabilit" name="[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnerabilite energetique Insee]">
+				</AggLevel>
+				<AggLevel column="commune_Classe_de_depense_ener" name="[Commune de residence.CNERES_Hierarchie_depense].[Classe de depense energetique Insee]">
+				</AggLevel>
+				<AggLevel column="indicateur_lieu_Categorie_(Key" name="[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="mode_cohabitation_Mode_de_coha" name="[Mode de cohabitation.MODCOHAB_Hierarchie_1].[Mode de cohabitation]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_5">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="indicateur_lieu_Categorie_(Key" name="[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="indicateur_lieu_Indicateur_de_" name="[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu]">
+				</AggLevel>
+				<AggLevel column="type_menage_Type_regroupe_en_4" name="[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_6">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="activite_economique_Nature_de_" name="[Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite]">
+				</AggLevel>
+				<AggLevel column="type_menage_Type_regroupe_en_4" name="[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]">
+				</AggLevel>
+				<AggLevel column="type_menage_Type_regroupe_en_9" name="[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_7">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_vulnerabilit" name="[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnerabilite energetique Insee]">
+				</AggLevel>
+				<AggLevel column="niveau_motorisation_Niveau_de_" name="[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]">
+				</AggLevel>
+				<AggLevel column="sexe_Sexe_(Key)" name="[Sexe.Sexe_Hierarchie].[Sexe]">
+				</AggLevel>
+				<AggLevel column="temps_emploi_Temps_d'emploi_(K" name="[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_8">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="motif_deplacement_Categorie_1_" name="[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1]">
+				</AggLevel>
+				<AggLevel column="motif_deplacement_Categorie_2_" name="[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 2]">
+				</AggLevel>
+				<AggLevel column="temps_emploi_Temps_d'emploi_(K" name="[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi]">
+				</AggLevel>
+				<AggLevel column="type_menage_Type_regroupe_en_4" name="[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_9">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_vulnerabilit" name="[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnerabilite energetique Insee]">
+				</AggLevel>
+				<AggLevel column="sexe_Sexe_(Key)" name="[Sexe.Sexe_Hierarchie].[Sexe]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_10">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Region_(Key)" name="[Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Categorie_(Key)" name="[Mode de transport.MODTRANS_Hierarchie].[Categorie]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_11">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="mode_transport_Categorie_(Key)" name="[Mode de transport.MODTRANS_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="statut_emploi_Statut_d'emploi_" name="[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_12">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="csp_CSP1_(Key)" name="[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Categori" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Categorie]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube1MobPr_13">
+				<AggFactCount column="mobpro_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobpro_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_domi" name="[Measures].[Duree trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom0" name="[Measures].[Duree trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Duree_trajet_dom1" name="[Measures].[Duree trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_carb" name="[Measures].[Consommation carborant trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car0" name="[Measures].[Consommation carborant trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Consommation_car1" name="[Measures].[Consommation carborant trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_do" name="[Measures].[Depense trajet domicile - travail (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d0" name="[Measures].[Depense trajet domicile - travail (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Depense_trajet_d1" name="[Measures].[Depense trajet domicile - travail (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobpro_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_depense_ener" name="[Commune de residence.CNERES_Hierarchie_depense].[Classe de depense energetique Insee]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Categori" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Statut_d" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Statut d'occupation]">
+				</AggLevel>
+			</AggName>
+		</Table>
+
+    <!--The Cube1MobProInd data cube dimensions -->
+	<Dimension name="Age revolu quinquenal" foreignKey="agerev">
+      <Hierarchy hasAll="true" name="AgeRevQ_Hierarchie_1" primaryKey="agerev_id"
+		allMemberName = "tous les ages revolus" allLevelName = "Tout" caption ="AgeRevQ_Hierarchie_1">
+        <Table name="age_revolu" />
+		<Level type="String" name="Age revolu quinquenal" column="agerev_id" nameColumn="agerevq_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					CAST (age_revolu.agerevq_id as integer)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Commune de residence" source="Commune de residence" foreignKey="commune_res"/>
+	<DimensionUsage name="Commune de travail" caption="Commune de travail" source="Commune du lieu d'occupation" foreignKey="commune_t"/>
+	<DimensionUsage name="Categorie socioprofessionnelle" source="Categorie socioprofessionnelle" foreignKey="csp3_id"/>
+	<DimensionUsage name="Annee du recensement" source="Annee du recensement" foreignKey="annee_recensement"/>
+	<DimensionUsage name="Indicateur de lieu de travail" source="Indicateur de lieu d'occupation" foreignKey="ilt"/>
+	<DimensionUsage name="Lien avec la personne de reference" source="Lien avec la personne de reference" foreignKey="lien_prm"/>
+	<DimensionUsage name="Mode de cohabitation" source="Mode de cohabitation" foreignKey="modecohab_id"/>
+	<DimensionUsage name="Mode de transport" source="Mode de transport" foreignKey="mode_trans"/>
+	<DimensionUsage name="Motif de deplacement" source="Motif de deplacement" foreignKey="motif_deplacement"/>
+	<DimensionUsage name="Nature l'activite economique" source="Nature l'activite economique" foreignKey="na17_id"/>
+	<DimensionUsage name="Niveau d'instruction" source="Niveau d'instruction" foreignKey="dipl"/>
+	<DimensionUsage name="Niveau de motorisation du menage" source="Niveau de motorisation du menage" foreignKey="motorisation_men"/>
+	<DimensionUsage name="Sexe" source="Sexe" foreignKey="sexe_id"/>
+	<DimensionUsage name="Statut d'emploi" source="Statut d'emploi" foreignKey="stat_empl"/>
+	<DimensionUsage name="Statut d'occupation du logement" source="Statut d'occupation du logement" foreignKey="stoc_lgt"/>
+	<DimensionUsage name="Temps d'emploi" source="Temps d'emploi" foreignKey="temps_emploi"/>
+	<DimensionUsage name="Type de logement" source="Type de logement" foreignKey="type_logt"/>
+	<DimensionUsage name="Type de menage" source="Type de menage" foreignKey="type_menage"/>
+		
+	<!--The Mondrian Definition Of The Cube1MobProInd Indicators -->
+	
+	<!-- Le nombre d'individus ponderee -->
+	--Nombre total d'individus
+	<Measure name="Nombre total d'individus" column="coef_pond" aggregator="sum" visible="true" formatString="0#,###.00" />
+	
+	<!-- Les indicateurs de base de distance -->
+	--Distances
+	<measure name="Distance trajet domicile - travail (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobpro_ind_1.distance_chemin_court * mobpro_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+	<Measure name="Distance trajet domicile - travail (max)" column="distance_chemin_court" aggregator="max" visible="true" formatString="0#,###.00" />
+	<Measure name="Distance trajet domicile - travail (min)" column="distance_chemin_court" aggregator="min" visible="true" formatString="0#,###.00" />
+	
+	--Durees
+	<measure name="Duree trajet domicile - travail (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobpro_ind_1.duree_courtchemin_dep * mobpro_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+	<Measure name="Duree trajet domicile - travail (max)" column="duree_courtchemin_dep" aggregator="max" visible="true" formatString="0#,###.00" />
+	<Measure name="Duree trajet domicile - travail (min)" column="duree_courtchemin_dep" aggregator="min" visible="true" formatString="0#,###.00" />
+
+	--Consommations
+	<measure name="Consommation carborant trajet domicile - travail (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobpro_ind_1.consocarb_courtchemin_dep * mobpro_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+	<Measure name="Consommation carborant trajet domicile - travail (max)" column="consocarb_courtchemin_dep" aggregator="max" visible="true" formatString="0#,###.00" />
+	<Measure name="Consommation carborant trajet domicile - travail (min)" column="consocarb_courtchemin_dep" aggregator="min" visible="true" formatString="0#,###.00" />
+	
+    --Depenses
+	<measure name="Depense trajet domicile - travail (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobpro_ind_1.depense_courtchemin_dep * mobpro_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+	<Measure name="Depense trajet domicile - travail (max)" column="depense_courtchemin_dep" aggregator="max" visible="true" formatString="0#,###.00" />
+	<Measure name="Depense trajet domicile - travail (min)" column="depense_courtchemin_dep" aggregator="min" visible="true" formatString="0#,###.00" />
+
+	<!-- Les indicateurs de base de comptage des menages -->
+	--Nombre de personnes scolarisees
+	<measure name="Nombre de personnes scolarisees des menages (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobpro_ind_1.nbperscomen * mobpro_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de personnes scolarisees des menages (max)" column="nbperscomen" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de personnes scolarisees des menages (min)" column="nbperscomen" aggregator="min" visible="true" formatString="0#,###.##"/>
+	<!-- arrondi a integer. pourqoui ???
+	<measure name="Nombre de personnes scolarisees (moyenne)" column="nbperscomen" aggregator="avg" datatype = "Numeric" visible="true" formatString="0#,###.00"/>
+	-->
+	
+	--Nombre de personnes scolarisees de plus de 14 ans
+	<measure name="Nombre de personnes scolarisees de plus de 14 ans (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobpro_ind_1.nbpersco14men * mobpro_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de personnes scolarisees de plus de 14 ans (max)" column="nbpersco14men" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de personnes scolarisees de plus de 14 ans (min)" column="nbpersco14men" aggregator="min" visible="true" formatString="0#,###.##"/>
+	
+	--Nombre de personnes actives occupees
+	<!--Les donnees sont erronnees, il correspondent au nombre de personnes du menage. Il faut recharger la table depuis la source 
+	<measure name="Nombre de personnes actives occupees (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobpro_ind_1.nbperactoccmen * mobpro_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de personnes actives occupees (max)" column="nbperactoccmen" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de personnes actives occupees (min)" column="nbperactoccmen" aggregator="min" visible="true" formatString="0#,###.##"/>
+	-->
+	
+    --Nombre de personnes du menage
+	<measure name="Nombre de personnes des menages (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobpro_ind_1.nbpermen * mobpro_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de personnes des menages (max)" column="nbpermen" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de personnes des menages (min)" column="nbpermen" aggregator="min" visible="true" formatString="0#,###.##"/>
+
+	--Nombre de voitures du menage
+	<measure name="Nombre de voitures des menages (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobpro_ind_1.nbvoitmen * mobpro_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de voitures des menages (max)" column="nbvoitmen" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de voitures des menages (min)" column="nbvoitmen" aggregator="min" visible="true" formatString="0#,###.##"/>
+	
+	<!--Moyennes ponderees -->
+	
+	<CalculatedMember name="Distance trajet domicile - travail (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Distance trajet domicile - travail (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Duree trajet domicile - travail (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Duree trajet domicile - travail (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Consommation carborant trajet domicile - travail (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Consommation carborant trajet domicile - travail (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Depense trajet domicile - travail (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Depense trajet domicile - travail (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Nombre de personnes scolarisees des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes scolarisees des menages (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Nombre de personnes scolarisees de plus de 14 ans (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>	
+
+	<!--
+	<CalculatedMember name="Nombre de personnes actives occupees (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes actives occupees (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>	
+	-->
+
+	<CalculatedMember name="Nombre de personnes des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes des menages (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>	
+
+	<CalculatedMember name="Nombre de voitures des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de voitures des menages (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>	
+		
+  </Cube>
+ 
+ ------------------------------------------------------------------------------
+ 
+  <!-- Cube Cube2MobScoInd -->
+  <Cube name="Cube2MobScoInd" caption = "Cube 2 - Mobilite scolaire des individus">
+	<Table name="mobsco_ind_1">
+			<AggName name="DOPAn_DW3_Cube2MobSc_1">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="niveau_motorisation_Niveau_de_" name="[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_2">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="indicateur_lieu_Categorie_(Key" name="[Indicateur de lieu d'etudes.ILOCC_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="sexe_Sexe_(Key)" name="[Sexe.Sexe_Hierarchie].[Sexe]">
+				</AggLevel>
+				<AggLevel column="type_menage_Type_regroupe_en_4" name="[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_3">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="lien_avec_perrefm_Categorie_(K" name="[Lien avec la personne de reference.LPRM_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="niveau_instruction_Categorie_1" name="[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1]">
+				</AggLevel>
+				<AggLevel column="niveau_instruction_Categorie_2" name="[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_4">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_vulnerabilit" name="[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnerabilite energetique Insee]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Categorie_(Key)" name="[Mode de transport.MODTRANS_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Mode_de_transpo" name="[Mode de transport.MODTRANS_Hierarchie].[Mode de transport]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_5">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="indicateur_lieu_Categorie_(Key" name="[Indicateur de lieu d'etudes.ILOCC_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Categorie_(Key)" name="[Mode de transport.MODTRANS_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Mode_de_transpo" name="[Mode de transport.MODTRANS_Hierarchie].[Mode de transport]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_6">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_depense_ener" name="[Commune de residence.CNERES_Hierarchie_depense].[Classe de depense energetique Insee]">
+				</AggLevel>
+				<AggLevel column="csp_CSP1_(Key)" name="[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_7">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="lien_avec_perrefm_Categorie_(K" name="[Lien avec la personne de reference.LPRM_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Categorie_(Key)" name="[Mode de transport.MODTRANS_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="sexe_Sexe_(Key)" name="[Sexe.Sexe_Hierarchie].[Sexe]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_8">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_vulnerabilit" name="[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnerabilite energetique Insee]">
+				</AggLevel>
+				<AggLevel column="niveau_instruction_Categorie_1" name="[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Categori" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Statut_d" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Statut d'occupation]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_9">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_depense_ener" name="[Commune de residence.CNERES_Hierarchie_depense].[Classe de depense energetique Insee]">
+				</AggLevel>
+				<AggLevel column="lien_avec_perrefm_Categorie_(K" name="[Lien avec la personne de reference.LPRM_Hierarchie_1].[Categorie]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_10">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_vulnerabilit" name="[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnerabilite energetique Insee]">
+				</AggLevel>
+				<AggLevel column="niveau_instruction_Categorie_1" name="[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1]">
+				</AggLevel>
+				<AggLevel column="type_menage_Type_regroupe_en_4" name="[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]">
+				</AggLevel>
+				<AggLevel column="type_menage_Type_regroupe_en_9" name="[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_11">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="annee_recensement_Annee" name="[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee]">
+				</AggLevel>
+				<AggLevel column="indicateur_lieu_Categorie_(Key" name="[Indicateur de lieu d'etudes.ILOCC_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="motif_deplacement_Categorie_1_" name="[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Categori" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Categorie]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_12">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="age_revolu_10_Classe_d'ages_re" name="[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus]">
+				</AggLevel>
+				<AggLevel column="motif_deplacement_Categorie_1_" name="[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1]">
+				</AggLevel>
+				<AggLevel column="motif_deplacement_Categorie_2_" name="[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 2]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_13">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="mode_transport_Categorie_(Key)" name="[Mode de transport.MODTRANS_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Mode_de_transpo" name="[Mode de transport.MODTRANS_Hierarchie].[Mode de transport]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_14">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_depense_ener" name="[Commune de residence.CNERES_Hierarchie_depense].[Classe de depense energetique Insee]">
+				</AggLevel>
+				<AggLevel column="niveau_instruction_Categorie_1" name="[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1]">
+				</AggLevel>
+				<AggLevel column="niveau_instruction_Categorie_2" name="[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_15">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_depense_ener" name="[Commune de residence.CNERES_Hierarchie_depense].[Classe de depense energetique Insee]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Categori" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="statut_occupation_lgt_Statut_d" name="[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Statut d'occupation]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_16">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="indicateur_lieu_Categorie_(Key" name="[Indicateur de lieu d'etudes.ILOCC_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="niveau_motorisation_Niveau_de_" name="[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]">
+				</AggLevel>
+				<AggLevel column="sexe_Sexe_(Key)" name="[Sexe.Sexe_Hierarchie].[Sexe]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_17">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="lien_avec_perrefm_Categorie_(K" name="[Lien avec la personne de reference.LPRM_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="niveau_instruction_Categorie_1" name="[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 1]">
+				</AggLevel>
+				<AggLevel column="niveau_instruction_Categorie_2" name="[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_18">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="commune_Classe_de_vulnerabilit" name="[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnerabilite energetique Insee]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Categorie_(Key)" name="[Mode de transport.MODTRANS_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Mode_de_transpo" name="[Mode de transport.MODTRANS_Hierarchie].[Mode de transport]">
+				</AggLevel>
+			</AggName>
+			<AggName name="DOPAn_DW3_Cube2MobSc_19">
+				<AggFactCount column="mobsco_ind_1_fact_count">
+				</AggFactCount>
+				<AggMeasure column="mobsco_ind_1_Nombre_total_d'in" name="[Measures].[Nombre total d'individus]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_d" name="[Measures].[Distance trajet domicile - etudes (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_0" name="[Measures].[Distance trajet domicile - etudes (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Distance_trajet_1" name="[Measures].[Distance trajet domicile - etudes (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_personn" name="[Measures].[Nombre de personnes scolarisees des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person0" name="[Measures].[Nombre de personnes scolarisees des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person1" name="[Measures].[Nombre de personnes scolarisees des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person2" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person3" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person4" name="[Measures].[Nombre de personnes scolarisees de plus de 14 ans (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person5" name="[Measures].[Nombre de personnes des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person6" name="[Measures].[Nombre de personnes des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_person7" name="[Measures].[Nombre de personnes des menages (min)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voiture" name="[Measures].[Nombre de voitures des menages (total)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur0" name="[Measures].[Nombre de voitures des menages (max)]">
+				</AggMeasure>
+				<AggMeasure column="mobsco_ind_1_Nombre_de_voitur1" name="[Measures].[Nombre de voitures des menages (min)]">
+				</AggMeasure>
+				<AggLevel column="indicateur_lieu_Categorie_(Key" name="[Indicateur de lieu d'etudes.ILOCC_Hierarchie_1].[Categorie]">
+				</AggLevel>
+				<AggLevel column="mode_transport_Categorie_(Key)" name="[Mode de transport.MODTRANS_Hierarchie].[Categorie]">
+				</AggLevel>
+				<AggLevel column="type_menage_Type_regroupe_en_4" name="[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]">
+				</AggLevel>
+			</AggName>
+		</Table>
+	
+    <!--The Cube2MobScoInd data cube dimensions -->
+	
+	<Dimension name="Age revolu en 10 classes" foreignKey="agerev10">
+      <Hierarchy hasAll="true" name="AgeRev10_Hierarchie_1" primaryKey="agerev10_id"
+		allMemberName = "toutes les classes d'ages revolus" allLevelName = "Tout" caption ="AgeRev10_Hierarchie_1">
+        <Table name="age_revolu_10" />
+        <Level type="String" name="Classe d'ages revolus" column="agerev10_id" nameColumn="agerev10_lib" ordinalColumn = "agerev10_id" />
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Commune de residence" source="Commune de residence" foreignKey="commune_res"/>
+	<DimensionUsage name="Commune d'etudes" source="Commune du lieu d'occupation" foreignKey="commune_etud_fr"/>
+	<DimensionUsage name="Categorie socioprofessionnelle de la personne de reference" source="Categorie socioprofessionnelle" foreignKey="csp_prm"/>
+	<DimensionUsage name="Annee du recensement" source="Annee du recensement" foreignKey="annee_recensement"/>
+	<DimensionUsage name="Indicateur de lieu d'etudes" source="Indicateur de lieu d'occupation" foreignKey="iletud"/>
+	<DimensionUsage name="Lien avec la personne de reference" source="Lien avec la personne de reference" foreignKey="lien_prm"/>
+	<DimensionUsage name="Mode de transport" source="Mode de transport" foreignKey="mode_trans"/>
+	<DimensionUsage name="Motif de deplacement" source="Motif de deplacement" foreignKey="motif_deplacement"/>
+	<DimensionUsage name="Niveau d'instruction" source="Niveau d'instruction" foreignKey="dipl"/>
+	<DimensionUsage name="Niveau de motorisation du menage" source="Niveau de motorisation du menage" foreignKey="motorisation_men"/>
+	<DimensionUsage name="Sexe" source="Sexe" foreignKey="sexe_id"/>
+	<DimensionUsage name="Statut d'occupation du logement" source="Statut d'occupation du logement" foreignKey="stoc_lgt"/>
+	<DimensionUsage name="Type de menage" source="Type de menage" foreignKey="type_menage"/>
+	
+	<!--The Mondrian Definition Of The Cube2MobScoInd Indicators -->
+	
+	<!-- Le nombre d'individus ponderee -->
+	--Nombre total d'individus
+	<Measure name="Nombre total d'individus" column="coef_pond" aggregator="sum" visible="true" formatString="0#,###.00" />
+	
+	<!-- Les indicateurs de base de distance -->
+	--Distances
+	<!-- avant ces mesures faissaient reference a une colonne distance_chemin_court innexistante -->
+	<measure name="Distance trajet domicile - etudes (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobsco_ind_1.distance_centroid_detud * mobsco_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <Measure name="Distance trajet domicile - etudes (max)" column="distance_centroid_detud" aggregator="max" visible="true" formatString="0#,###.00" />
+	<Measure name="Distance trajet domicile - etudes (min)" column="distance_centroid_detud" aggregator="min" visible="true" formatString="0#,###.00" />
+	
+	--Durees
+	<!-- Ce sont des indicateurs â future, pas calculees encore. Colonnes a modifier 
+	<Measure name="Duree trajet domicile - etudes (moyenne)" column="dureemoydep" aggregator="avg" visible="true" formatString="0#,###.00" />
+	<Measure name="Duree trajet domicile - etudes (max)" column="dureemoydep" aggregator="max" visible="true" formatString="0#,###.00" />
+	<Measure name="Duree trajet domicile - etudes (min)" column="dureemoydep" aggregator="min" visible="true" formatString="0#,###.00" />
+	-->
+	
+	--Consommations
+	<!-- Ce sont des indicateurs â future, pas calculees encore. Colonnes a modifier 
+	<Measure name="Consommation carborant trajet domicile - etudes (moyenne)" column="concaranmoy" aggregator="avg" visible="true" formatString="0#,###.00" />
+	<Measure name="Consommation carborant trajet domicile - etudes (max)" column="concaranmoy" aggregator="max" visible="true" formatString="0#,###.00" />
+	<Measure name="Consommation carborant trajet domicile - etudes (min)" column="concaranmoy" aggregator="min" visible="true" formatString="0#,###.00" />
+	-->
+	
+	--Depenses
+	<!-- Ce sont des indicateurs â future, pas calculees encore. Colonnes a modifier 
+	<Measure name="Depense trajet domicile - etudes (moyenne)" column="depanmoy" aggregator="avg" visible="true" formatString="0#,###.00" />
+	<Measure name="Depense trajet domicile - etudes (max)" column="depanmoy" aggregator="max" visible="true" formatString="0#,###.00" />
+	<Measure name="Depense trajet domicile - etudes (min)" column="depanmoy" aggregator="min" visible="true" formatString="0#,###.00" />
+	-->
+	
+	<!-- Les indicateurs de base de comptage des menages -->
+	--Nombre de personnes scolarisees
+	<measure name="Nombre de personnes scolarisees des menages (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobsco_ind_1.nbperscomen * mobsco_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de personnes scolarisees des menages (max)" column="nbperscomen" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de personnes scolarisees des menages (min)" column="nbperscomen" aggregator="min" visible="true" formatString="0#,###.##"/>
+	<!-- arrondi a integer. pourqoui ???
+	<measure name="Nombre de personnes scolarisees (moyenne)" column="nbperscomen" aggregator="avg" datatype = "Numeric" visible="true" formatString="0#,###.00"/>
+	-->
+	
+	--Nombre de personnes scolarisees de plus de 14 ans
+	<measure name="Nombre de personnes scolarisees de plus de 14 ans (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobsco_ind_1.nbperscomen14etplus * mobsco_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de personnes scolarisees de plus de 14 ans (max)" column="nbperscomen14etplus" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de personnes scolarisees de plus de 14 ans (min)" column="nbperscomen14etplus" aggregator="min" visible="true" formatString="0#,###.##"/>
+	
+	--Nombre de personnes actives occupees
+	<!--Les donnees sont erronnees, il correspondent au nombre de personnes du menage. Il faut recharger la constellation 
+	<measure name="Nombre de personnes actives occupees (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobsco_ind_1.nbperactoccmen * mobsco_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de personnes actives occupees (max)" column="nbperactoccmen" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de personnes actives occupees (min)" column="nbperactoccmen" aggregator="min" visible="true" formatString="0#,###.##"/>
+	-->
+	
+    --Nombre de personnes du menage
+	<measure name="Nombre de personnes des menages (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobsco_ind_1.nbpermen * mobsco_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de personnes des menages (max)" column="nbpermen" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de personnes des menages (min)" column="nbpermen" aggregator="min" visible="true" formatString="0#,###.##"/>
+	
+	--Nombre de voitures du menage
+	<measure name="Nombre de voitures des menages (total)" aggregator="sum" visible="false" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> mobsco_ind_1.nbvehmen * mobsco_ind_1.coef_pond </SQL> </MeasureExpression>
+	</measure> 
+    <measure name="Nombre de voitures des menages (max)" column="nbvehmen" aggregator="max" visible="true" formatString="0#,###.##"/>
+	<measure name="Nombre de voitures des menages (min)" column="nbvehmen" aggregator="min" visible="true" formatString="0#,###.##"/>
+	
+	<!--Moyennes ponderees -->
+	<CalculatedMember name="Distance trajet domicile - etudes (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Distance trajet domicile - etudes (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Nombre de personnes scolarisees des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes scolarisees des menages (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Nombre de personnes scolarisees de plus de 14 ans (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>	
+
+	<!--
+	<CalculatedMember name="Nombre de personnes actives occupees (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes actives occupees (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>	
+	-->
+
+	<CalculatedMember name="Nombre de personnes des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes des menages (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>	
+
+	<CalculatedMember name="Nombre de voitures des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de voitures des menages (total)] / [Measures].[Nombre total d'individus]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>	
+	
+ </Cube>
+ 
+ ------------------------------------------------------------------------------
+  
+ <!-- Cube 4 Chauffage -->
+ <Cube name="Cube4Chauffage" caption = "Cube 4 - Chauffage">
+    <Table name="logements" />
+    
+	<!--The Cube4Chauffage data cube dimensions -->
+	<DimensionUsage name="Annee du recensement" source="Annee du recensement" foreignKey="annee_recensement"/>
+	
+	<!-- Dimensions decrivant le menage -->
+	<DimensionUsage name="Commune de residence" source="Commune de residence" foreignKey="commune_residence"/>
+	
+	<Dimension name="Annee d'emmenagement" foreignKey="annee_emmenagement">
+      <Hierarchy hasAll="true" name="MENAGE_ANNEE_EMM_Hierarchie_1" primaryKey="annee"
+		allMemberName = "toutes les annees" allLevelName = "Tout" caption ="MENAGE_ANNEE_EMM_Hierarchie_1">
+        <Table name="annee_emmenagement" />
+		<Level type="String" name="Annee regroupee" column="annee_regroupee" nameColumn="annee_regroupee_libelle" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> 
+					(case when annee_emmenagement.annee_regroupee = '-9' then 99993  
+						when annee_emmenagement.annee_regroupee = 'Z' then 99992 
+						when annee_emmenagement.annee_regroupee = '0' then 99991 
+						else CAST (annee_emmenagement.annee_regroupee as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+		<Level type="String" name="Annee" column="annee" nameColumn="annee_libelle" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> 
+					(case when annee_emmenagement.annee = '-9' then 99993 
+					when annee_emmenagement.annee = 'ZZZZ' then 99992 
+					when annee_emmenagement.annee = '0000' then 99991 
+					else CAST (annee_emmenagement.annee as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Anciennete d'emmenagement" foreignKey="anciennete_emmenagement">
+      <Hierarchy hasAll="true" name="MENAGE_ANCIENNETE_EMM_Hierarchie_1" primaryKey="anciennete"
+		allMemberName = "toutes les anciennetes" allLevelName = "Tout" caption ="MENAGE_ANCIENNETE_EMM_Hierarchie_1">
+        <Table name="anciennete_emmenagement" />
+		<Level type="String" name="Anciennete regroupee" column="anciennete_regroupee" nameColumn="anciennete_regroupee_libelle" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> 
+					(case when anciennete_emmenagement.anciennete_regroupee = '-9'  then 99993 
+					when anciennete_emmenagement.anciennete_regroupee = 'ZZ'  then 99992
+					when anciennete_emmenagement.anciennete_regroupee = '99'  then 99991
+					else CAST (anciennete_emmenagement.anciennete_regroupee as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+		<Level type="String" name="Anciennete" column="anciennete" nameColumn="anciennete_libelle" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> 
+					(case when anciennete_emmenagement.anciennete = '-9' then 99993 
+					when anciennete_emmenagement.anciennete = 'ZZZ' then 99992 
+					when anciennete_emmenagement.anciennete = '999' then 99991 
+					else CAST (anciennete_emmenagement.anciennete as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Categorie du logement" foreignKey="categorie_logt">
+      <Hierarchy hasAll="true" name="LOGT_CATEGORIE_Hierarchie_1" primaryKey="categorie_id"
+		allMemberName = "toutes les categories" allLevelName = "Tout" caption ="LOGT_CATEGORIE_Hierarchie_1">
+        <Table name="categorie_logement" />
+		<Level type="String" name="Categorie regroupee">
+			<KeyExpression>
+				<SQL dialect="mssql"> (case when categorie_logement.categorie_id = '1' then '1' else '2' end) </SQL>
+			</KeyExpression>
+			<NameExpression>
+				<SQL dialect="mssql"> (case when categorie_logement.categorie_id = '1' then 'Residences principales' else 'Autres' end) </SQL>
+			</NameExpression>
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when categorie_logement.categorie_id = '1' then '1' else '2' end) </SQL>
+			</OrdinalExpression>
+		</Level>
+		<Level type="String" name="Categorie" column="categorie_id" nameColumn="categorie_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> 
+				(case when categorie_logement.categorie_id = '-9' then 992
+				when categorie_logement.categorie_id = 'Z' then 991
+				else CAST (categorie_logement.categorie_id as integer)  end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Stationnement reserve" foreignKey="stationnement">
+      <Hierarchy hasAll="true" name="LOGT_STATIONNEMENT_Hierarchie_1" primaryKey="stationnement_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_STATIONNEMENT_Hierarchie_1">
+        <Table name="stationnement" />
+		<Level type="String" name="Stationnement" column="stationnement_id" nameColumn="stationnement_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> 
+					(case when stationnement.stationnement_id != '-9' then 992
+					when stationnement.stationnement_id != 'Z' then 991
+					else  CAST (stationnement.stationnement_id as integer)end) 
+					</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Appartenance du logement a un HLM" foreignKey="logement_hlm">
+      <Hierarchy hasAll="true" name="LOGT_HLM_Hierarchie_1" primaryKey="appartenance_hlm_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_HLM_Hierarchie_1">
+        <Table name="logement_hlm" />
+		<Level type="String" name="Appartenance a un HLM" column="appartenance_hlm_id" nameColumn="appartenance_hlm_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when logement_hlm.appartenance_hlm_id = '-9' then 992
+					when logement_hlm.appartenance_hlm_id = 'Z' then 991
+					else  CAST (logement_hlm.appartenance_hlm_id as integer) end) </SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Nombre de pieces du logement" foreignKey="nombre_pieces">
+      <Hierarchy hasAll="true" name="LOGT_NBPIECE_Hierarchie_1" primaryKey="nombre_pieces_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_NBPIECE_Hierarchie_1">
+        <Table name="nombre_pieces" />
+		<Level type="String" name="Nombre de pieces" column="nombre_pieces_id" nameColumn="nombre_pieces_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> 
+					(case when nombre_pieces.nombre_pieces_id = '-9' then 992
+					when nombre_pieces.nombre_pieces_id = 'ZZ' then 991 					
+					else CAST (nombre_pieces.nombre_pieces_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Statut d'occupation du logement" source="Statut d'occupation du logement" foreignKey="statut_occup_logt"/>
+	
+	<Dimension name="Surface du logement" foreignKey="surface_logt">
+      <Hierarchy hasAll="true" name="LOGT_SURFACE_Hierarchie_1" primaryKey="surface_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_SURFACE_Hierarchie_1">
+        <Table name="surface_logt" />
+		<Level type="String" name="Surface" column="surface_id" nameColumn="surface_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when surface_logt.surface_id = '-9' then 992 
+					when surface_logt.surface_id = 'Z' then 991 
+					else CAST (surface_logt.surface_id as integer)   end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Type de construction du logement" foreignKey="type_construction">
+      <Hierarchy hasAll="true" name="LOGT_TYPECONSTR_Hierarchie_1" primaryKey="type_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_TYPECONSTR_Hierarchie_1">
+        <Table name="type_construction_logt" />
+		<Level type="String" name="Type de construction" column="type_id" nameColumn="type_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when type_construction_logt.type_id = '-9' then 992 
+					when type_construction_logt.type_id = 'Z' then 991 
+					else CAST (type_construction_logt.type_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Type de logement" source="Type de logement" foreignKey="type_logt"/>
+	
+	<DimensionUsage name="Niveau de motorisation du menage" source="Niveau de motorisation du menage" foreignKey="niveau_nbvoit_menage"/>
+	
+	<Dimension name="Periode de construction du logement" foreignKey="periode_construction">
+      <Hierarchy hasAll="true" name="LOGT_PERIODECONSTR_Hierarchie_1" primaryKey="periode_id"
+		allMemberName = "toutes les periodes confondues" allLevelName = "Tout" caption ="LOGT_PERIODECONSTR_Hierarchie_1" >
+        <Table name="periode_construction" />
+        <Level type="String" name="Periode de construction" column="periode_id" nameColumn="periode_lib">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					case when (periode_construction.periode_id = '-9') then '99'  else  periode_construction.periode_id end 				
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	<!-- Dimensions decrivant le chauffage -->
+	<Dimension name="Type de chauffage du logement" foreignKey="type_chauffage">
+      <Hierarchy hasAll="true" name="LOGT_TYPECHAUF_Hierarchie_1" primaryKey="type_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_TYPECHAUF_Hierarchie_1">
+        <Table name="type_chauffage" />
+		<Level type="String" name="Type" column="type_id" nameColumn="type_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when type_chauffage.type_id = 'Z' then 993 
+					when type_chauffage.type_id = '-9' then 992 
+					when type_chauffage.type_id = 'X' then 991 
+					else CAST (type_chauffage.type_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+		
+	<Dimension name="Energie de chauffage du logement" foreignKey="energie_chauffage">
+      <Hierarchy hasAll="true" name="LOGT_ENERGIECHAUF_Hierarchie_1" primaryKey="energie_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_ENERGIECHAUF_Hierarchie_1">
+        <Table name="energie_chauffage" />
+		<Level type="String" name="Energie" column="energie_id" nameColumn="energie_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when energie_chauffage.energie_id = 'Z' then 993 
+					when energie_chauffage.energie_id = '-9' then 992 
+					when energie_chauffage.energie_id = 'X' then 992 
+					else CAST (energie_chauffage.energie_id as integer)  end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+		
+	<!-- Dimensions decrivant la personne de reference -->
+	<Dimension name="Age du referent" foreignKey="ref_age_regroupe">
+      <Hierarchy hasAll="true" name="REF_AGE_Hierarchie_1" primaryKey="age_regroupe_id"
+		allMemberName = "tous les ages regroupes" allLevelName = "Tout" caption ="REF_AGE_Hierarchie_1">
+        <Table name="age_regroupe" />
+		<Level type="String" name="Age regroupe" column="age_regroupe_id" nameColumn="age_regroupe_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when age_regroupe.age_regroupe_id = '-9' then 993
+					when age_regroupe.age_regroupe_id = 'ZZ' then 992
+					when age_regroupe.age_regroupe_id = 'YY' then 991
+					else CAST (age_regroupe.age_regroupe_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Niveau d'instruction du referent" source="Niveau d'instruction" foreignKey="ref_niveau_instruction"/>
+	
+	<DimensionUsage name="Statut d'emploi du referent" source="Statut d'emploi" foreignKey="ref_statut_emploi"/> 
+	
+	<!--J-ai du definir une vieu de la table indicateur lieu sinon Mondrian gere mal ces alias et les expressions MDX-->
+	<Dimension name="Indicateur du lieu d'etudes du referent" foreignKey="ref_indicateur_lieu_etud">
+      <Hierarchy hasAll="true" name="REF_INDLIEUETUD_Hierarchie_1" primaryKey="indicateur_id"
+		allMemberName = "tous les lieux confondus" allLevelName = "Tout" caption ="REF_INDLIEUETUD_Hierarchie_1">
+        <Table name="indicateur_lieu_alias" />
+		<Level type="String" name="Categorie" column="categorie_id" nameColumn="categorie_nom" ordinalColumn = "categorie_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (indicateur_lieu_alias.categorie_id = '-9') then 993  
+					when (indicateur_lieu_alias.categorie_id = 'Y') then 992
+					when (indicateur_lieu_alias.categorie_id = 'Z') then 991
+					else CAST (indicateur_lieu_alias.categorie_id as integer)	end )			
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Indicateur de lieu" column="indicateur_id" nameColumn="indicateur_nom" ordinalColumn = "indicateur_nom">
+			<OrdinalExpression>
+				<SQL dialect="mssql">
+					(case when (indicateur_lieu_alias.indicateur_id = '-9') then  993
+					when (indicateur_lieu_alias.indicateur_id = 'Y') then  992 
+					when (indicateur_lieu_alias.indicateur_id = 'Z') then  991
+					else CAST (indicateur_lieu_alias.indicateur_id as integer) end )				
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	<DimensionUsage name="Indicateur de lieu de travail du referent" source="Indicateur de lieu d'occupation" foreignKey="ref_indicateur_lieu_trav"/> 
+	
+	<Dimension name="Etat matrimonial du referent" foreignKey="ref_etat_matrimonial">
+      <Hierarchy hasAll="true" name="REF_ETATMATRIMONIAL_Hierarchie_1" primaryKey="etat_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="REF_ETATMATRIMONIAL_Hierarchie_1">
+        <Table name="etat_matrimonial" />
+		<Level type="String" name="Etat matrimonial" column="etat_id" nameColumn="etat_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when etat_matrimonial.etat_id = '-9'  then 993
+					when etat_matrimonial.etat_id = 'Z'  then 992 
+					when etat_matrimonial.etat_id = 'Y'  then 991 
+					else CAST (etat_matrimonial.etat_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Anciennete de recherche d'emploi du referent" foreignKey="ref_anciennete_recherche_emploi">
+      <Hierarchy hasAll="true" name="REF_RECHEMPLOI_Hierarchie_1" primaryKey="anciennete_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="REF_RECHEMPLOI_Hierarchie_1">
+        <Table name="anciennete_recherche_emploi" />
+		<Level type="String" name="Anciennete" column="anciennete_id" nameColumn="anciennete_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when anciennete_recherche_emploi.anciennete_id = '-9' then 993  
+					when anciennete_recherche_emploi.anciennete_id = 'Y' then 992
+					when anciennete_recherche_emploi.anciennete_id = 'Z' then 991
+					else CAST (anciennete_recherche_emploi.anciennete_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Sexe du referent" source="Sexe" foreignKey="ref_sexe"/> 
+		
+	<Dimension name="Type d'activite du referent" foreignKey="ref_type_activite">
+      <Hierarchy hasAll="true" name="REF_TYPACT_Hierarchie_1" primaryKey="type_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="REF_TYPACT_Hierarchie_1">
+        <Table name="type_activite" />
+		<Level type="String" name="Type d'actvite" column="type_id" nameColumn="type_lib" >
+			<OrdinalExpression>
+				<SQL dialect="mssql"> (case when type_activite.type_id = '-9' then 993  
+					when type_activite.type_id = 'ZZ' then 992
+					when type_activite.type_id = 'YY' then 991
+					else CAST (type_activite.type_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Temps d'emploi du referent" source="Temps d'emploi" foreignKey="ref_temps_emploi"/> -->
+	
+	<DimensionUsage name="Mode de transport domcile-travail du referent" source="Mode de transport" foreignKey="ref_transport_domicile_trav"/> -->
+		
+	<!--The Mondrian Definition Of The Cube4Chauffage Indicators -->
+	
+	<!-- Le nombre de menages ponderee -->
+	--Nombre total de menages
+	<Measure name="Nombre total de menages" column="nbmen" aggregator="sum" visible="true" formatString="0#,###.00" />
+	
+	<!-- Les indicateurs de base de chauffage -->
+	--Consomattion chauffage annuelle 
+	<Measure name="Consomattion chauffage annuelle (total)" aggregator="sum" visible="true" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.consoannuelchauf </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Consomattion chauffage annuelle (max)" column="consoannuelchauf" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Consomattion chauffage annuelle (min)" column="consoannuelchauf" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	--Consomattion chauffage annuelle par unite de consommation
+	<Measure name="Consomattion chauffage annuelle par unite de consommation (total)" aggregator="sum" visible="true" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.consoannuelchaufparuc </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Consomattion chauffage annuelle par unite de consommation (max)" column="consoannuelchaufparuc" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Consomattion chauffage annuelle par unite de consommation (min)" column="consoannuelchaufparuc" aggregator="min" visible="true" formatString="0#,###.##" />
+
+	--Depense chauffage annuelle 
+	<Measure name="Depense chauffage annuelle (total)" aggregator="sum" visible="true" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.depenseannuelchauf </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Depense chauffage annuelle (max)" column="depenseannuelchauf" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Depense chauffage annuelle (min)" column="depenseannuelchauf" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	--Depense chauffage annuelle par unite de consommation 
+	<Measure name="Depense chauffage annuelle par unite de consommation (total)" aggregator="sum" visible="true" formatString="0#,###.00">
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.depenseannuelchaufparuc </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Depense chauffage annuelle par unite de consommation (max)" column="depenseannuelchaufparuc" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Depense chauffage annuelle par unite de consommation (min)" column="depenseannuelchaufparuc" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	<!-- Les indicateurs de base de comptage du confort des logements -->
+	--Surface du logement
+	<Measure name="Surface du logement (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.surfacelogt </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Surface du logement (max)" column="surfacelogt" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Surface du logement (min)" column="surfacelogt" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	--Nombre de pieces du logement
+	<Measure name="Nombre de pieces du logement (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbpiecelogt </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre de pieces du logement (max)" column="nbpiecelogt" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre de pieces du logement (min)" column="nbpiecelogt" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	<!-- Les indicateurs de base de comptage des personnes des menages -->
+	--Nombre d'unites de consommation
+	<Measure name="Nombre d'unites de consommation (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbucmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre d'unites de consommation (max)" column="nbucmen" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre d'unites de consommation (min)" column="nbucmen" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	--Nombre de personnes des menages
+	<Measure name="Nombre de personnes des menages (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbpermen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre de personnes des menages (max)" column="nbpermen" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre de personnes des menages (min)" column="nbpermen" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	--Nombre de personnes actives des menages
+	<Measure name="Nombre de personnes actives des menages (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbperactmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre de personnes actives des menages (max)" column="nbperactmen" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre de personnes actives des menages (min)" column="nbperactmen" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	--Nombre de personnes actives occupees des menages
+	<Measure name="Nombre de personnes actives occupees des menages (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbperactoccmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre de personnes actives occupees des menages (max)" column="nbperactoccmen" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre de personnes actives occupees des menages (min)" column="nbperactoccmen" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	--Nombre de personnes scolarisees des menages
+	<Measure name="Nombre de personnes scolarisees des menages (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbperscomen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre de personnes scolarisees des menages (max)" column="nbperscomen" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre de personnes scolarisees des menages (min)" column="nbperscomen" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	--Nombre de personnes scolarisees de plus de 14 ans
+	<Measure name="Nombre de personnes scolarisees de plus de 14 ans (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbpersco14men </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre de personnes scolarisees de plus de 14 ans (max)" column="nbpersco14men" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre de personnes scolarisees de plus de 14 ans (min)" column="nbpersco14men" aggregator="min" visible="true" formatString="0#,###.##" />
+
+	--Nombre de personnes du sexe masculin des menages
+	<Measure name="Nombre de personnes du sexe masculin des menages (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbpersexmasmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre de personnes du sexe masculin des menages (max)" column="nbpersexmasmen" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre de personnes du sexe masculin des menages (min)" column="nbpersexmasmen" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	--Nombre de personnes du sexe femenin des menages
+	<Measure name="Nombre de personnes du sexe femenin des menages (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbpersexfemmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre de personnes du sexe femenin des menages (max)" column="nbpersexfemmen" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre de personnes du sexe femenin des menages (min)" column="nbpersexfemmen" aggregator="min" visible="true" formatString="0#,###.##" />
+	
+	<!-- Les indicateurs de base de comptage de voitures -->
+	--Nombre de voitures des menages
+	<Measure name="Nombre de voitures des menages (total)" aggregator="sum" visible="true" formatString="0#,###.00" >
+		<MeasureExpression> <SQL dialect="mssql"> logements.poids_statistique_logt * logements.nbvoitmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="Nombre de voitures des menages (max)" column="nbvoitmen" aggregator="max" visible="true" formatString="0#,###.##" />
+	<Measure name="Nombre de voitures des menages (min)" column="nbvoitmen" aggregator="min" visible="true" formatString="0#,###.##" />
+		
+	<!--Moyennes ponderees -->
+	
+	<CalculatedMember name="Consomattion chauffage annuelle (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Consomattion chauffage annuelle (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Consomattion chauffage annuelle par unite de consommation (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Consomattion chauffage annuelle par unite de consommation (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Depense chauffage annuelle (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Depense chauffage annuelle (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Depense chauffage annuelle par unite de consommation (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Depense chauffage annuelle par unite de consommation (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Surface du logement (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Surface du logement (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Nombre de pieces du logement (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de pieces du logement (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Nombre d'unites de consommation (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre d'unites de consommation (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Nombre de personnes des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes des menages (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Nombre de personnes actives des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes actives des menages (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Nombre de personnes actives occupees des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes actives occupees des menages (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+	
+	<CalculatedMember name="Nombre de personnes scolarisees des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes scolarisees des menages (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Nombre de personnes scolarisees de plus de 14 ans (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes scolarisees de plus de 14 ans (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Nombre de personnes du sexe masculin des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes du sexe masculin des menages (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Nombre de personnes du sexe femenin des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de personnes du sexe femenin des menages (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+
+	<CalculatedMember name="Nombre de voitures des menages (moyenne)" dimension="Measures">
+       <Formula>[Measures].[Nombre de voitures des menages (total)] / [Measures].[Nombre total de menages]</Formula>
+       <CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+	   <CalculatedMemberProperty name="FORMAT_STRING" value="0#,###.00"/>
+    </CalculatedMember>
+		
+  </Cube>
+   	
+  
+</Schema>
+

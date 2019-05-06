@@ -1,0 +1,234 @@
+----------------------------------------------------------
+----- dibstudent12, Salim, groupe3
+----- Cube mobsco
+----- Mobilité d'individus ayant differentes CSP
+----- Analyse 2 listé par l'étudiant
+----- Obs: au milieu, repète plusieurs fois la même requête
+----------------------------------------------------------
+
+2016-09-26 07:49:15,812 DEBUG [mondrian.mdx] 129969: select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:49:15,906 DEBUG [mondrian.mdx] 129969: exec: 94 ms
+2016-09-26 07:49:36,062 DEBUG [mondrian.mdx] 130022: select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Marche à pied]}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:49:36,093 DEBUG [mondrian.mdx] 130022: exec: 31 ms
+2016-09-26 07:49:50,640 DEBUG [mondrian.mdx] 130067: select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Marche à pied]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:49:50,656 DEBUG [mondrian.mdx] 130067: exec: 16 ms
+2016-09-26 07:50:06,624 DEBUG [mondrian.mdx] 130104: select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode inconnu].[Mode inconnu]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:50:06,624 DEBUG [mondrian.mdx] 130104: exec: 0 ms
+2016-09-26 07:50:23,609 DEBUG [mondrian.mdx] 130154: select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:50:23,609 DEBUG [mondrian.mdx] 130154: exec: 0 ms
+2016-09-26 07:50:32,874 DEBUG [mondrian.mdx] 130192: select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:50:32,874 DEBUG [mondrian.mdx] 130192: exec: 0 ms
+2016-09-26 07:50:57,718 DEBUG [mondrian.mdx] 130245: select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[25-29 ans], [Age revolu en 10 classes.AgeRev10_Hierarchie_1].[15-17 ans]}})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:50:57,749 DEBUG [mondrian.mdx] 130245: exec: 31 ms
+2016-09-26 07:51:10,468 DEBUG [mondrian.mdx] 130284: select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[25-29 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[15-17 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:51:10,562 DEBUG [mondrian.mdx] 130284: exec: 94 ms
+2016-09-26 07:52:10,140 DEBUG [mondrian.mdx] 130333: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[25-29 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[15-17 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:52:10,343 DEBUG [mondrian.mdx] 130333: exec: 203 ms
+2016-09-26 07:53:42,890 DEBUG [mondrian.mdx] 130411: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:53:42,984 DEBUG [mondrian.mdx] 130411: exec: 94 ms
+2016-09-26 07:54:27,421 DEBUG [mondrian.mdx] 130479: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:54:27,546 DEBUG [mondrian.mdx] 130479: exec: 125 ms
+2016-09-26 07:54:55,374 DEBUG [mondrian.mdx] 130523: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:54:55,390 DEBUG [mondrian.mdx] 130523: exec: 16 ms
+2016-09-26 07:55:04,702 DEBUG [mondrian.mdx] 130567: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:55:04,718 DEBUG [mondrian.mdx] 130567: exec: 16 ms
+2016-09-26 07:55:09,999 DEBUG [mondrian.mdx] 130611: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:55:09,999 DEBUG [mondrian.mdx] 130611: exec: 0 ms
+2016-09-26 07:55:13,640 DEBUG [mondrian.mdx] 130655: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:55:13,656 DEBUG [mondrian.mdx] 130655: exec: 16 ms
+2016-09-26 07:55:17,796 DEBUG [mondrian.mdx] 130699: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:55:17,812 DEBUG [mondrian.mdx] 130699: exec: 16 ms
+2016-09-26 07:55:19,499 DEBUG [mondrian.mdx] 130744: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre de personnes scolarisees des menages (min)]}) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:55:19,671 DEBUG [mondrian.mdx] 130744: exec: 172 ms
+2016-09-26 07:55:24,156 DEBUG [mondrian.mdx] 130773: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:55:24,171 DEBUG [mondrian.mdx] 130773: exec: 15 ms
+2016-09-26 07:55:30,718 DEBUG [mondrian.mdx] 130818: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:55:30,827 DEBUG [mondrian.mdx] 130818: exec: 109 ms
+2016-09-26 07:56:07,937 DEBUG [mondrian.mdx] 130854: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)))) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:56:08,218 DEBUG [mondrian.mdx] 130854: exec: 281 ms
+2016-09-26 07:56:15,671 DEBUG [mondrian.mdx] 130901: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)))) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:56:15,749 DEBUG [mondrian.mdx] 130901: exec: 78 ms
+2016-09-26 07:56:59,452 DEBUG [mondrian.mdx] 130945: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:56:59,749 DEBUG [mondrian.mdx] 130945: exec: 297 ms
+2016-09-26 07:57:50,046 DEBUG [mondrian.mdx] 131002: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members))) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:57:50,452 DEBUG [mondrian.mdx] 131002: exec: 406 ms
+2016-09-26 07:58:07,327 DEBUG [mondrian.mdx] 131473: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}))) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:58:07,452 DEBUG [mondrian.mdx] 131473: exec: 125 ms
+2016-09-26 07:58:34,999 DEBUG [mondrian.mdx] 131539: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]})) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 07:58:35,156 DEBUG [mondrian.mdx] 131539: exec: 157 ms
+2016-09-26 07:58:40,718 DEBUG [mondrian.mdx] 131598: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 07:58:40,906 DEBUG [mondrian.mdx] 131598: exec: 188 ms
+2016-09-26 08:00:51,499 DEBUG [mondrian.mdx] 131662: select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}))), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Measures].[Nombre total d'individus]}))))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:00:51,859 DEBUG [mondrian.mdx] 131662: exec: 360 ms
+2016-09-26 08:01:10,093 DEBUG [mondrian.mdx] 131752: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members))), Crossjoin({[Measures].[Nombre total d'individus]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members))))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:01:10,218 DEBUG [mondrian.mdx] 131752: exec: 125 ms
+2016-09-26 08:01:29,031 DEBUG [mondrian.mdx] 131840: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)), Crossjoin({[Measures].[Nombre total d'individus]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:01:29,187 DEBUG [mondrian.mdx] 131840: exec: 156 ms
+2016-09-26 08:01:53,531 DEBUG [mondrian.mdx] 131907: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:01:53,609 DEBUG [mondrian.mdx] 131907: exec: 78 ms
+2016-09-26 08:04:33,224 DEBUG [mondrian.mdx] 131962: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:04:33,286 DEBUG [mondrian.mdx] 131962: exec: 62 ms
+2016-09-26 08:05:33,130 DEBUG [mondrian.mdx] 132017: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+
+2016-09-26 08:05:33,443 DEBUG [mondrian.mdx] 132017: exec: 313 ms
+2016-09-26 08:05:55,474 DEBUG [mondrian.mdx] 132077: select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:05:55,521 DEBUG [mondrian.mdx] 132077: exec: 47 ms
+2016-09-26 08:06:25,161 DEBUG [mondrian.mdx] 132143: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:06:25,255 DEBUG [mondrian.mdx] 132143: exec: 94 ms
+2016-09-26 08:10:55,786 DEBUG [mondrian.mdx] 132197: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]})
+
+2016-09-26 08:10:56,021 DEBUG [mondrian.mdx] 132197: exec: 235 ms
+2016-09-26 08:11:07,021 DEBUG [mondrian.mdx] 132239: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:11:07,161 DEBUG [mondrian.mdx] 132239: exec: 140 ms
+2016-09-26 08:11:13,990 DEBUG [mondrian.mdx] 132287: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]}))), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]}))))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:11:14,083 DEBUG [mondrian.mdx] 132287: exec: 93 ms
+2016-09-26 08:11:19,302 DEBUG [mondrian.mdx] 132333: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:11:19,333 DEBUG [mondrian.mdx] 132333: exec: 31 ms
+2016-09-26 08:11:34,161 DEBUG [mondrian.mdx] 132381: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d'ages revolus]})) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:11:34,255 DEBUG [mondrian.mdx] 132381: exec: 94 ms
+2016-09-26 08:11:37,833 DEBUG [mondrian.mdx] 132427: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d'ages revolus]}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]})
+
+2016-09-26 08:11:37,849 DEBUG [mondrian.mdx] 132427: exec: 16 ms
+2016-09-26 08:11:41,849 DEBUG [mondrian.mdx] 132475: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d'ages revolus]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]}))), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d'ages revolus]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]}))))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:11:41,927 DEBUG [mondrian.mdx] 132475: exec: 78 ms
+2016-09-26 08:11:49,005 DEBUG [mondrian.mdx] 132519: select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS,
+  NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube2MobScoInd]
+where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}
+
+2016-09-26 08:11:49,052 DEBUG [mondrian.mdx] 132519: exec: 47 ms

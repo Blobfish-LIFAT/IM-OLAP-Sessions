@@ -1,0 +1,93 @@
+---------------------------------------------------------------------
+----- dibstudent04, Willeme, groupe1 
+----- Cube mobpro
+----- Analyse de distances par niveau d'instruction et type de menage
+----- Obs: realisé cote à cote de dibstudent10
+---------------------------------------------------------------------
+
+2016-09-20 15:33:50,424 DEBUG [mondrian.mdx] 7347: select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:33:50,487 DEBUG [mondrian.mdx] 7347: exec: 63 ms
+2016-09-20 15:34:14,862 DEBUG [mondrian.mdx] 7454: select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:34:15,221 DEBUG [mondrian.mdx] 7454: exec: 359 ms
+2016-09-20 15:34:21,612 DEBUG [mondrian.mdx] 7514: select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:34:21,628 DEBUG [mondrian.mdx] 7514: exec: 16 ms
+2016-09-20 15:36:41,268 DEBUG [mondrian.mdx] 7774: select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:36:41,440 DEBUG [mondrian.mdx] 7774: exec: 172 ms
+2016-09-20 15:36:41,784 DEBUG [mondrian.mdx] 7825: select NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:36:41,893 DEBUG [mondrian.mdx] 7825: exec: 109 ms
+2016-09-20 15:36:53,956 DEBUG [mondrian.mdx] 7843: select NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:36:53,971 DEBUG [mondrian.mdx] 7843: exec: 15 ms
+2016-09-20 15:37:08,565 DEBUG [mondrian.mdx] 7896: select NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:37:08,581 DEBUG [mondrian.mdx] 7896: exec: 16 ms
+2016-09-20 15:37:47,268 DEBUG [mondrian.mdx] 8095: select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:37:47,284 DEBUG [mondrian.mdx] 8095: exec: 16 ms
+2016-09-20 15:37:56,378 DEBUG [mondrian.mdx] 8132: select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:37:56,409 DEBUG [mondrian.mdx] 8132: exec: 31 ms
+2016-09-20 15:38:00,378 DEBUG [mondrian.mdx] 8172: select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:38:00,409 DEBUG [mondrian.mdx] 8172: exec: 31 ms
+2016-09-20 15:38:05,456 DEBUG [mondrian.mdx] 8224: select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:38:05,471 DEBUG [mondrian.mdx] 8224: exec: 15 ms
+2016-09-20 15:38:26,362 DEBUG [mondrian.mdx] 8317: select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:38:26,378 DEBUG [mondrian.mdx] 8317: exec: 16 ms
+2016-09-20 15:39:02,268 DEBUG [mondrian.mdx] 8484: select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:39:02,284 DEBUG [mondrian.mdx] 8484: exec: 16 ms
+2016-09-20 15:39:04,159 DEBUG [mondrian.mdx] 8565: select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:39:04,174 DEBUG [mondrian.mdx] 8565: exec: 15 ms
+2016-09-20 15:39:38,549 DEBUG [mondrian.mdx] 8732: select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:39:38,596 DEBUG [mondrian.mdx] 8732: exec: 47 ms
+2016-09-20 15:39:40,768 DEBUG [mondrian.mdx] 8840: select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:39:40,799 DEBUG [mondrian.mdx] 8840: exec: 31 ms
+2016-09-20 15:39:47,034 DEBUG [mondrian.mdx] 8900: select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-20 15:39:47,049 DEBUG [mondrian.mdx] 8900: exec: 15 ms
+

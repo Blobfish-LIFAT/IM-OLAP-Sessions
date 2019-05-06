@@ -1,0 +1,78 @@
+-------------------------------------------------------------------------------------------
+----- dibstudent06 et dibstudent08, Clement et Christopher, groupe2
+----- Cube mobpro
+----- Analyse du nombre d'individus par sexe
+----- Obs: Il s'agit d'un seul analyse, les étudiants ayant probablement travaillé ensemble
+-------------------------------------------------------------------------------------------
+
+2016-09-22 10:45:55,651 DEBUG [mondrian.mdx] 19720: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[tous les sexes confondus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:45:55,682 DEBUG [mondrian.mdx] 19720: exec: 31 ms
+2016-09-22 10:45:59,714 DEBUG [mondrian.mdx] 19741: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}, {[Sexe.Sexe_Hierarchie].[Sexe].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:45:59,760 DEBUG [mondrian.mdx] 19741: exec: 46 ms
+2016-09-22 10:46:03,948 DEBUG [mondrian.mdx] 19768: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}, {[Sexe.Sexe_Hierarchie].[Sexe].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:46:03,979 DEBUG [mondrian.mdx] 19768: exec: 31 ms
+2016-09-22 10:46:06,307 DEBUG [mondrian.mdx] 19783: select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:46:06,339 DEBUG [mondrian.mdx] 19783: exec: 32 ms
+2016-09-22 10:46:14,714 DEBUG [mondrian.mdx] 19796: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:46:14,714 DEBUG [mondrian.mdx] 19796: exec: 0 ms
+2016-09-22 10:46:25,542 DEBUG [mondrian.mdx] 19814: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:46:25,620 DEBUG [mondrian.mdx] 19814: exec: 78 ms
+2016-09-22 10:46:56,448 DEBUG [mondrian.mdx] 19842: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:46:56,932 DEBUG [mondrian.mdx] 19842: exec: 484 ms
+2016-09-22 10:47:01,120 DEBUG [mondrian.mdx] 23201: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:47:01,135 DEBUG [mondrian.mdx] 23201: exec: 15 ms
+2016-09-22 10:47:04,120 DEBUG [mondrian.mdx] 23229: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:47:04,495 DEBUG [mondrian.mdx] 23229: exec: 375 ms
+2016-09-22 10:47:28,464 DEBUG [mondrian.mdx] 23453: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:47:28,495 DEBUG [mondrian.mdx] 23453: exec: 31 ms
+2016-09-22 10:47:35,573 DEBUG [mondrian.mdx] 23677: select Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS,
+  {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:47:35,729 DEBUG [mondrian.mdx] 23677: exec: 156 ms
+2016-09-22 10:47:41,698 DEBUG [mondrian.mdx] 25953: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:47:41,714 DEBUG [mondrian.mdx] 25953: exec: 16 ms
+2016-09-22 10:47:43,901 DEBUG [mondrian.mdx] 26177: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:47:43,917 DEBUG [mondrian.mdx] 26177: exec: 16 ms
+2016-09-22 10:48:12,448 DEBUG [mondrian.mdx] 26412: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-22 10:48:12,792 DEBUG [mondrian.mdx] 26412: exec: 344 ms
+

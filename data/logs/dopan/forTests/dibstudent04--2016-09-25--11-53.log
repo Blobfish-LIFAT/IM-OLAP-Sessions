@@ -1,0 +1,71 @@
+------------------------------------------------
+----- dibstudent04, Willeme, groupe1 
+----- Cube mobpro
+----- Analyse de distances par lieu de residence
+------------------------------------------------
+
+2016-09-25 11:53:51,365 DEBUG [mondrian.mdx] 56151: select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 11:53:52,881 DEBUG [mondrian.mdx] 56151: exec: 1516 ms
+2016-09-25 11:54:07,818 DEBUG [mondrian.mdx] 56480: select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 11:54:08,068 DEBUG [mondrian.mdx] 56480: exec: 250 ms
+2016-09-25 11:54:28,068 DEBUG [mondrian.mdx] 56809: select NON EMPTY {Hierarchize({{[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]}, {[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members}})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 11:54:32,943 DEBUG [mondrian.mdx] 56809: exec: 4875 ms
+2016-09-25 11:55:23,474 DEBUG [mondrian.mdx] 57139: select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 11:55:23,709 DEBUG [mondrian.mdx] 57139: exec: 235 ms
+2016-09-25 11:55:57,052 DEBUG [mondrian.mdx] 57464: select NON EMPTY {Hierarchize({[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Statut d'occupation].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 11:56:02,271 DEBUG [mondrian.mdx] 57464: exec: 5219 ms
+2016-09-25 11:56:22,068 DEBUG [mondrian.mdx] 57795: select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 11:56:29,693 DEBUG [mondrian.mdx] 57795: exec: 7625 ms
+2016-09-25 11:57:33,506 DEBUG [mondrian.mdx] 58129: select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 11:57:34,177 DEBUG [mondrian.mdx] 58129: exec: 671 ms
+2016-09-25 12:03:31,043 DEBUG [mondrian.mdx] 58537: select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ROTT]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 12:03:31,090 DEBUG [mondrian.mdx] 58537: exec: 47 ms
+2016-09-25 12:06:36,794 DEBUG [mondrian.mdx] 58601: select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ROTT], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ALTWILLER], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[AMMERZWILLER], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ANDOLSHEIM], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ARTOLSHEIM], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ASPACH], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE].[RAMOUS], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE].[QUINSAC], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE].[REIGNAC]}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 12:06:36,872 DEBUG [mondrian.mdx] 58601: exec: 78 ms
+2016-09-25 12:07:31,669 DEBUG [mondrian.mdx] 58634: select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 12:07:32,309 DEBUG [mondrian.mdx] 58634: exec: 640 ms
+2016-09-25 12:07:31,950 DEBUG [mondrian.mdx] 58645: select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 12:07:32,309 DEBUG [mondrian.mdx] 58645: exec: 359 ms
+2016-09-25 12:11:11,669 DEBUG [mondrian.mdx] 59050: select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 12:11:11,715 DEBUG [mondrian.mdx] 59050: exec: 46 ms
+2016-09-25 12:24:47,587 DEBUG [mondrian.mdx] 59461: select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnérabilité énergétique inconnue].[ABAUCOURT-HAUTECOURT], [Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnérabilité énergétique inconnue].[ABBARETZ]}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 12:24:47,633 DEBUG [mondrian.mdx] 59461: exec: 46 ms

@@ -1,0 +1,2 @@
+rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
+480;97318F64E2F56689865E28573E0884D5F65E7891637D13F3CECDE4C24095CF02;1;I316785;Films;[Sales Target Revenue];[Media, Film];[Country=>[EQUAL Spain]];34

@@ -1,0 +1,105 @@
+----------------------------------------
+----- dibstudent05, Kevin, groupe2
+----- Cube chauffage
+----- Analyse les logements par niveau d'instruction et annee
+----- Analyse listé par l'étudiant
+----- Obs: dibstudent12, dibstudent10 et dibstudent05, sessions en parallelle
+----------------------------------------
+
+2016-09-26 08:16:08,590 DEBUG [mondrian.mdx] 132826: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:16:08,918 DEBUG [mondrian.mdx] 132826: exec: 328 ms
+2016-09-26 08:16:15,887 DEBUG [mondrian.mdx] 132884: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:16:15,903 DEBUG [mondrian.mdx] 132884: exec: 16 ms
+2016-09-26 08:16:35,449 DEBUG [mondrian.mdx] 132925: select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members) ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:16:35,715 DEBUG [mondrian.mdx] 132925: exec: 266 ms
+2016-09-26 08:16:39,762 DEBUG [mondrian.mdx] 132981: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members)) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:16:39,871 DEBUG [mondrian.mdx] 132981: exec: 109 ms
+2016-09-26 08:16:45,590 DEBUG [mondrian.mdx] 133038: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members)) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:16:45,606 DEBUG [mondrian.mdx] 133038: exec: 16 ms
+2016-09-26 08:16:48,574 DEBUG [mondrian.mdx] 133081: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members)) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:16:48,590 DEBUG [mondrian.mdx] 133081: exec: 16 ms
+2016-09-26 08:16:50,793 DEBUG [mondrian.mdx] 133124: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube4Chauffage]
+where {[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members}
+
+2016-09-26 08:16:50,965 DEBUG [mondrian.mdx] 133124: exec: 172 ms
+2016-09-26 08:16:54,231 DEBUG [mondrian.mdx] 133389: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:16:54,387 DEBUG [mondrian.mdx] 133389: exec: 156 ms
+2016-09-26 08:17:22,074 DEBUG [mondrian.mdx] 133511: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS
+from [Cube4Chauffage]
+where {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}
+
+2016-09-26 08:17:22,293 DEBUG [mondrian.mdx] 133511: exec: 219 ms
+2016-09-26 08:17:30,824 DEBUG [mondrian.mdx] 133556: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}))) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:17:31,012 DEBUG [mondrian.mdx] 133556: exec: 188 ms
+2016-09-26 08:17:51,074 DEBUG [mondrian.mdx] 133680: select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, {[Age du referent.REF_AGE_Hierarchie_1].[tous les ages regroupes]}) ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}))) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:17:51,215 DEBUG [mondrian.mdx] 133680: exec: 141 ms
+2016-09-26 08:17:54,856 DEBUG [mondrian.mdx] 133737: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, Crossjoin({[Age du referent.REF_AGE_Hierarchie_1].[tous les ages regroupes]}, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]})))) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:17:54,965 DEBUG [mondrian.mdx] 133737: exec: 109 ms
+2016-09-26 08:17:58,981 DEBUG [mondrian.mdx] 133809: select NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}))) ON ROWS
+from [Cube4Chauffage]
+where {[Age du referent.REF_AGE_Hierarchie_1].[tous les ages regroupes]}
+
+2016-09-26 08:17:58,996 DEBUG [mondrian.mdx] 133809: exec: 15 ms
+2016-09-26 08:18:03,059 DEBUG [mondrian.mdx] 133862: select NON EMPTY Crossjoin({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}, {[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}) ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS
+from [Cube4Chauffage]
+where {[Age du referent.REF_AGE_Hierarchie_1].[tous les ages regroupes]}
+
+2016-09-26 08:18:03,231 DEBUG [mondrian.mdx] 133862: exec: 172 ms
+2016-09-26 08:18:08,449 DEBUG [mondrian.mdx] 133914: select NON EMPTY Crossjoin({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}, {[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}) ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:18:08,465 DEBUG [mondrian.mdx] 133914: exec: 16 ms
+2016-09-26 08:18:16,012 DEBUG [mondrian.mdx] 133977: select NON EMPTY Crossjoin({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}, {[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}) ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS
+from [Cube4Chauffage]
+where {[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members}
+
+2016-09-26 08:18:16,262 DEBUG [mondrian.mdx] 133977: exec: 250 ms
+2016-09-26 08:18:19,168 DEBUG [mondrian.mdx] 134027: select NON EMPTY Crossjoin({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}, {[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}) ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:18:19,356 DEBUG [mondrian.mdx] 134027: exec: 188 ms
+2016-09-26 08:18:29,199 DEBUG [mondrian.mdx] 134100: select NON EMPTY Crossjoin({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, {[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]})) ON COLUMNS,
+  NON EMPTY Crossjoin({[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}, Crossjoin([Sexe du referent.Sexe_Hierarchie].[Sexe].Members, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)) ON ROWS
+from [Cube4Chauffage]
+
+2016-09-26 08:18:29,371 DEBUG [mondrian.mdx] 134100: exec: 172 ms
+
+---------------------------------------------------------------------------------

@@ -1,0 +1,247 @@
+----------------------------------------------------------------------------------------------------
+----- dibstudent03, Ophelie, groupe1
+----- Cube mobpro
+----- Temps d'emploi en fonction du sexe et de la categorie socio-prof
+----- Analyse 3 listé par l'étudiant
+----------------------------------------------------------------------------------------------------
+
+2016-09-25 16:20:09,484 DEBUG [mondrian.mdx] 66242: select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:09,578 DEBUG [mondrian.mdx] 66242: exec: 94 ms
+2016-09-25 16:20:12,124 DEBUG [mondrian.mdx] 66278: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:12,156 DEBUG [mondrian.mdx] 66278: exec: 32 ms
+2016-09-25 16:20:14,171 DEBUG [mondrian.mdx] 66291: select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:14,187 DEBUG [mondrian.mdx] 66291: exec: 16 ms
+2016-09-25 16:20:29,531 DEBUG [mondrian.mdx] 66308: select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:29,578 DEBUG [mondrian.mdx] 66308: exec: 47 ms
+2016-09-25 16:20:31,687 DEBUG [mondrian.mdx] 66324: select NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:31,781 DEBUG [mondrian.mdx] 66324: exec: 94 ms
+2016-09-25 16:20:33,140 DEBUG [mondrian.mdx] 66340: select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Nombre total d'individus]}, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:33,249 DEBUG [mondrian.mdx] 66340: exec: 109 ms
+2016-09-25 16:20:51,562 DEBUG [mondrian.mdx] 66360: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[tous les temps confondus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:51,578 DEBUG [mondrian.mdx] 66360: exec: 16 ms
+2016-09-25 16:20:53,999 DEBUG [mondrian.mdx] 66378: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({{[Temps d'emploi.TEMPSEMP_Hierarchie].[tous les temps confondus]}, {[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members}})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:54,015 DEBUG [mondrian.mdx] 66378: exec: 16 ms
+2016-09-25 16:20:55,124 DEBUG [mondrian.mdx] 66394: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:55,140 DEBUG [mondrian.mdx] 66394: exec: 16 ms
+2016-09-25 16:20:56,999 DEBUG [mondrian.mdx] 66412: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:20:57,140 DEBUG [mondrian.mdx] 66412: exec: 141 ms
+2016-09-25 16:21:03,640 DEBUG [mondrian.mdx] 66440: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:21:04,062 DEBUG [mondrian.mdx] 66440: exec: 422 ms
+2016-09-25 16:21:07,828 DEBUG [mondrian.mdx] 66520: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:21:07,953 DEBUG [mondrian.mdx] 66520: exec: 125 ms
+2016-09-25 16:21:13,015 DEBUG [mondrian.mdx] 66536: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:21:13,015 DEBUG [mondrian.mdx] 66536: exec: 0 ms
+2016-09-25 16:21:17,499 DEBUG [mondrian.mdx] 66616: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, {[Measures].[Nombre total d'individus]})) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:21:17,624 DEBUG [mondrian.mdx] 66616: exec: 125 ms
+2016-09-25 16:21:19,015 DEBUG [mondrian.mdx] 66632: select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:21:19,203 DEBUG [mondrian.mdx] 66632: exec: 188 ms
+2016-09-25 16:21:21,296 DEBUG [mondrian.mdx] 66648: select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:21:21,531 DEBUG [mondrian.mdx] 66648: exec: 235 ms
+2016-09-25 16:21:24,421 DEBUG [mondrian.mdx] 66728: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:21:24,437 DEBUG [mondrian.mdx] 66728: exec: 16 ms
+2016-09-25 16:22:00,531 DEBUG [mondrian.mdx] 66808: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:22:00,749 DEBUG [mondrian.mdx] 66808: exec: 218 ms
+2016-09-25 16:22:33,515 DEBUG [mondrian.mdx] 66824: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:22:33,749 DEBUG [mondrian.mdx] 66824: exec: 234 ms
+2016-09-25 16:22:47,531 DEBUG [mondrian.mdx] 66904: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:22:47,734 DEBUG [mondrian.mdx] 66904: exec: 203 ms
+2016-09-25 16:22:58,156 DEBUG [mondrian.mdx] 66920: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:22:58,171 DEBUG [mondrian.mdx] 66920: exec: 15 ms
+2016-09-25 16:22:59,968 DEBUG [mondrian.mdx] 66933: select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:22:59,984 DEBUG [mondrian.mdx] 66933: exec: 16 ms
+2016-09-25 16:23:01,312 DEBUG [mondrian.mdx] 66946: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:01,312 DEBUG [mondrian.mdx] 66946: exec: 0 ms
+2016-09-25 16:23:19,390 DEBUG [mondrian.mdx] 66974: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,
+  NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:19,515 DEBUG [mondrian.mdx] 66974: exec: 125 ms
+2016-09-25 16:23:21,953 DEBUG [mondrian.mdx] 66990: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:22,359 DEBUG [mondrian.mdx] 66990: exec: 406 ms
+2016-09-25 16:23:25,921 DEBUG [mondrian.mdx] 67122: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,
+  NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:26,124 DEBUG [mondrian.mdx] 67122: exec: 203 ms
+2016-09-25 16:23:27,390 DEBUG [mondrian.mdx] 67141: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:28,015 DEBUG [mondrian.mdx] 67141: exec: 625 ms
+2016-09-25 16:23:30,093 DEBUG [mondrian.mdx] 67765: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:30,406 DEBUG [mondrian.mdx] 67765: exec: 313 ms
+2016-09-25 16:23:37,062 DEBUG [mondrian.mdx] 67845: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:37,078 DEBUG [mondrian.mdx] 67845: exec: 16 ms
+2016-09-25 16:23:37,953 DEBUG [mondrian.mdx] 67925: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:37,968 DEBUG [mondrian.mdx] 67925: exec: 15 ms
+2016-09-25 16:23:39,046 DEBUG [mondrian.mdx] 68005: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:39,062 DEBUG [mondrian.mdx] 68005: exec: 16 ms
+2016-09-25 16:23:41,624 DEBUG [mondrian.mdx] 68085: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:41,671 DEBUG [mondrian.mdx] 68085: exec: 47 ms
+2016-09-25 16:23:44,546 DEBUG [mondrian.mdx] 68101: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:23:44,562 DEBUG [mondrian.mdx] 68101: exec: 16 ms
+2016-09-25 16:24:07,374 DEBUG [mondrian.mdx] 68181: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:24:07,499 DEBUG [mondrian.mdx] 68181: exec: 125 ms
+2016-09-25 16:24:13,343 DEBUG [mondrian.mdx] 68217: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:24:13,359 DEBUG [mondrian.mdx] 68217: exec: 16 ms
+2016-09-25 16:24:14,828 DEBUG [mondrian.mdx] 68253: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:24:14,859 DEBUG [mondrian.mdx] 68253: exec: 31 ms
+2016-09-25 16:24:16,812 DEBUG [mondrian.mdx] 68289: select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:24:16,843 DEBUG [mondrian.mdx] 68289: exec: 31 ms
+2016-09-25 16:24:18,703 DEBUG [mondrian.mdx] 68302: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:24:18,906 DEBUG [mondrian.mdx] 68302: exec: 203 ms
+2016-09-25 16:24:20,015 DEBUG [mondrian.mdx] 68338: select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:24:20,062 DEBUG [mondrian.mdx] 68338: exec: 47 ms
+2016-09-25 16:24:21,921 DEBUG [mondrian.mdx] 68351: select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS,
+  NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:24:21,937 DEBUG [mondrian.mdx] 68351: exec: 16 ms
+2016-09-25 16:24:48,156 DEBUG [mondrian.mdx] 68387: select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS,
+  NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:24:48,171 DEBUG [mondrian.mdx] 68387: exec: 15 ms
+2016-09-25 16:24:49,531 DEBUG [mondrian.mdx] 68400: select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:24:49,546 DEBUG [mondrian.mdx] 68400: exec: 15 ms
+2016-09-25 16:25:00,906 DEBUG [mondrian.mdx] 68440: select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS,
+  NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:25:01,078 DEBUG [mondrian.mdx] 68440: exec: 172 ms
+2016-09-25 16:25:02,281 DEBUG [mondrian.mdx] 68456: select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:25:02,296 DEBUG [mondrian.mdx] 68456: exec: 15 ms
+2016-09-25 16:25:30,562 DEBUG [mondrian.mdx] 68575: select NON EMPTY Hierarchize(Union(Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)), Union(Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)), Union(Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)), Union(Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Construction]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)), Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members))))))) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:25:30,968 DEBUG [mondrian.mdx] 68575: exec: 406 ms
+2016-09-25 16:27:08,687 DEBUG [mondrian.mdx] 68655: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:27:08,859 DEBUG [mondrian.mdx] 68655: exec: 172 ms
+2016-09-25 16:27:12,093 DEBUG [mondrian.mdx] 68683: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS,
+  NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members) ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:27:12,281 DEBUG [mondrian.mdx] 68683: exec: 188 ms
+2016-09-25 16:27:14,093 DEBUG [mondrian.mdx] 68699: select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)) ON COLUMNS,
+  NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS
+from [Cube1MobProInd]
+
+2016-09-25 16:27:14,562 DEBUG [mondrian.mdx] 68699: exec: 453 ms
