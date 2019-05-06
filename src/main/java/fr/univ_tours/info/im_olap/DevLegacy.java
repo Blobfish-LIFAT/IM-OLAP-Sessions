@@ -13,9 +13,9 @@ import java.util.List;
 
 import static fr.univ_tours.info.im_olap.compute.PageRank.normalizeRowsi;
 
-public class Dev {
+public class DevLegacy {
     public static void main(String[] args) {
-        List<Session> sessions = LoadSessions.loadFromDir("data/session_set_1");
+        List<Session> sessions = LoadSessionsLegacy.loadFromDir("data/session_set_1");
         System.out.printf("Working on %d sessions%n", sessions.size());
 
         for (Session s : sessions){

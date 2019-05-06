@@ -2,7 +2,6 @@ package fr.univ_tours.info.im_olap.compute;
 
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
-import fr.univ_tours.info.im_olap.compute.PageRank;
 import fr.univ_tours.info.im_olap.model.*;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
@@ -17,7 +16,7 @@ import java.util.*;
 import static fr.univ_tours.info.im_olap.compute.PageRank.normalizeRowsi;
 import static org.nd4j.linalg.util.MathUtils.log2;
 
-public class InfoContent {
+public class InfoContentLegacy {
     static String explo = "Explorative", sliceDrill = "Slice and Drill", goal = "Goal Oriented", sliceAll = "Slice All";
     static String[] explos = new String[]{explo, sliceDrill, goal, sliceAll};
     static String sessionsDir = "data/session_set_2", schemaPath = "data/schema.xml", userProfile = goal;
@@ -52,7 +51,7 @@ public class InfoContent {
     }
 
     private static void runTest(String evalProfile) {
-        List<Session> sessions = LoadSessions.loadFromDir(sessionsDir);
+        List<Session> sessions = LoadSessionsLegacy.loadFromDir(sessionsDir);
         Collections.shuffle(sessions);
 
         List<Session> user = new ArrayList<>();

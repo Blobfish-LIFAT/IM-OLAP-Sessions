@@ -75,7 +75,7 @@ public class SessionGraph {
     }
 
     /**
-     * This will inject edges in the graph based on a XML mondrian Schema, this is probably not compatible with complex schemas
+     * This will inject edges in the graph based on a XML mondrian (v3) Schema, this is probably not compatible with complex schemas
      * will have to check for that
      * @param base
      * @param mondrianFile
