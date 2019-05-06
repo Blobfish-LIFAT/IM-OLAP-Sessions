@@ -1,0 +1,132 @@
+{
+  "user": {
+    "id": "dibstudent12",
+    "name": "Salim",
+    "group": "groupe3"
+  },
+  "cube": "Cube chauffage",
+  "title": "Consommation de chauffage d'individus non scolarisés",
+  "comment": "Analyse 1 listé par l'étudiant\nObs: en réalité n'utilise pas de mesures",
+  "queries": [
+    {
+      "id": 128576,
+      "query": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 07:28:16,477",
+      "duration": 203
+    },
+    {
+      "id": 128631,
+      "query": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Hommes], [Sexe du referent.Sexe_Hierarchie].[Femmes]}})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 07:28:38,899",
+      "duration": 15
+    },
+    {
+      "id": 128673,
+      "query": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 07:29:00,227",
+      "duration": 31
+    },
+    {
+      "id": 128727,
+      "query": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Femmes], [Sexe du referent.Sexe_Hierarchie].[Hommes]}})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-26 07:30:39,164",
+      "duration": 16
+    },
+    {
+      "id": 128781,
+      "query": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Femmes], [Sexe du referent.Sexe_Hierarchie].[Hommes]}})} ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:31:34,336",
+      "duration": 297
+    },
+    {
+      "id": 128830,
+      "query": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:32:13,805",
+      "duration": 391
+    },
+    {
+      "id": 128917,
+      "query": "select NON EMPTY Crossjoin([Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Femmes], [Sexe du referent.Sexe_Hierarchie].[Hommes]}})} ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:32:23,102",
+      "duration": 140
+    },
+    {
+      "id": 129114,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Femmes], [Sexe du referent.Sexe_Hierarchie].[Hommes]}})} ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:33:21,571",
+      "duration": 109
+    },
+    {
+      "id": 129168,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:34:12,227",
+      "duration": 265
+    },
+    {
+      "id": 129238,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[tous les statuts confondus]})), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[tous les statuts confondus]})))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:35:06,149",
+      "duration": 125
+    },
+    {
+      "id": 129302,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin({[Statut d'emploi du referent.STATEMPL_Hierarchie].[tous les statuts confondus]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members)) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:35:16,852",
+      "duration": 156
+    },
+    {
+      "id": 129362,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:35:21,305",
+      "duration": 16
+    },
+    {
+      "id": 129424,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Statut d'emploi du referent.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Statut d'emploi du referent.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members)))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:35:23,305",
+      "duration": 281
+    },
+    {
+      "id": 129509,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]})))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:35:51,242",
+      "duration": 250
+    },
+    {
+      "id": 129593,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, Filter({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, (Exists({Ancestor([Statut d'emploi du referent.STATEMPL_Hierarchie].CurrentMember, [Statut d'emploi du referent.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1])}, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}).Count > 0)))), Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, Filter({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, (Exists({Ancestor([Statut d'emploi du referent.STATEMPL_Hierarchie].CurrentMember, [Statut d'emploi du referent.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1])}, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}).Count > 0)))))))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:36:16,399",
+      "duration": 500
+    },
+    {
+      "id": 129664,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]})))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:36:24,492",
+      "duration": 16
+    },
+    {
+      "id": 129734,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, Filter({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}, (Exists({Ancestor([Statut d'emploi du referent.STATEMPL_Hierarchie].CurrentMember, [Statut d'emploi du referent.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1])}, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}).Count > 0)))))) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:36:26,680",
+      "duration": 750
+    },
+    {
+      "id": 129806,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, {[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]})) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:36:37,133",
+      "duration": 234
+    },
+    {
+      "id": 129864,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:43:41,280",
+      "duration": 218
+    },
+    {
+      "id": 129920,
+      "query": "select NON EMPTY Crossjoin({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin({[Statut d'emploi du referent.STATEMPL_Hierarchie].[Salariés]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members)) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS from [Cube4Chauffage] where {[Annee d'emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
+      "datetime": "2016-09-26 07:43:46,968",
+      "duration": 219
+    }
+  ]
+}

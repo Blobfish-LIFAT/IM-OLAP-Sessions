@@ -1,0 +1,588 @@
+{
+  "user": {
+    "id": "dibstudent04",
+    "name": "Willeme",
+    "group": "groupe1"
+  },
+  "cube": "Cube mobpro",
+  "title": "Les cadres parcourent plus de distance",
+  "comment": "Suite de l'analyse 1 listé par l'étudiant\nObs: en collaboration avec dibstudent01, dibstudent02 et dibstudent05",
+  "queries": [
+    {
+      "id": 71567,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:46:06,530",
+      "duration": 15
+    },
+    {
+      "id": 71608,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:46:40,014",
+      "duration": 344
+    },
+    {
+      "id": 72036,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:46:42,733",
+      "duration": 250
+    },
+    {
+      "id": 72059,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:46:49,545",
+      "duration": 32
+    },
+    {
+      "id": 72130,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:47:20,670",
+      "duration": 32
+    },
+    {
+      "id": 72143,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:47:21,858",
+      "duration": 187
+    },
+    {
+      "id": 72595,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:47:28,655",
+      "duration": 15
+    },
+    {
+      "id": 73034,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:47:37,186",
+      "duration": 78
+    },
+    {
+      "id": 73127,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:47:41,670",
+      "duration": 16
+    },
+    {
+      "id": 73246,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:48:18,170",
+      "duration": 78
+    },
+    {
+      "id": 73268,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS, NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:48:33,905",
+      "duration": 78
+    },
+    {
+      "id": 73284,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:48:35,780",
+      "duration": 312
+    },
+    {
+      "id": 73361,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members, Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:49:41,092",
+      "duration": 328
+    },
+    {
+      "id": 74084,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:50:50,327",
+      "duration": 78
+    },
+    {
+      "id": 74134,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:50:51,608",
+      "duration": 15
+    },
+    {
+      "id": 74151,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:50:56,936",
+      "duration": 62
+    },
+    {
+      "id": 74201,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})} ON ROWS from [Cube1MobProInd] where {[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members}",
+      "datetime": "2016-09-25 21:51:22,452",
+      "duration": 125
+    },
+    {
+      "id": 74220,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 2].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:51:53,889",
+      "duration": 16
+    },
+    {
+      "id": 74230,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 2].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:51:57,452",
+      "duration": 0
+    },
+    {
+      "id": 74252,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[tous les motifs confondus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:52:03,717",
+      "duration": 31
+    },
+    {
+      "id": 74268,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:52:28,186",
+      "duration": 0
+    },
+    {
+      "id": 74292,
+      "query": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:52:38,342",
+      "duration": 406
+    },
+    {
+      "id": 74458,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (min)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:52:44,608",
+      "duration": 62
+    },
+    {
+      "id": 74478,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:52:49,217",
+      "duration": 47
+    },
+    {
+      "id": 74498,
+      "query": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:52:52,108",
+      "duration": 0
+    },
+    {
+      "id": 74664,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes scolarisees des menages (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:52:59,342",
+      "duration": 16
+    },
+    {
+      "id": 74684,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Consommation carborant trajet domicile - travail (min)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:53:09,733",
+      "duration": 62
+    },
+    {
+      "id": 74704,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:53:17,827",
+      "duration": 15
+    },
+    {
+      "id": 74768,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:53:36,217",
+      "duration": 16
+    },
+    {
+      "id": 74789,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:53:52,358",
+      "duration": 140
+    },
+    {
+      "id": 74952,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:54:41,498",
+      "duration": 16
+    },
+    {
+      "id": 75051,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 21:55:37,983",
+      "duration": 62
+    },
+    {
+      "id": 79913,
+      "query": "select NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:01:09,592",
+      "duration": 172
+    },
+    {
+      "id": 79975,
+      "query": "select NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:01:37,342",
+      "duration": 31
+    },
+    {
+      "id": 79992,
+      "query": "select NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:01:45,889",
+      "duration": 281
+    },
+    {
+      "id": 80012,
+      "query": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:02:07,139",
+      "duration": 16
+    },
+    {
+      "id": 80030,
+      "query": "select NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:02:16,889",
+      "duration": 344
+    },
+    {
+      "id": 81226,
+      "query": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:02:32,233",
+      "duration": 15
+    },
+    {
+      "id": 81244,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:02:36,436",
+      "duration": 297
+    },
+    {
+      "id": 82440,
+      "query": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:02:55,670",
+      "duration": 16
+    },
+    {
+      "id": 82458,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:03:05,530",
+      "duration": 156
+    },
+    {
+      "id": 82553,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Depense trajet domicile - travail (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:03:14,123",
+      "duration": 63
+    },
+    {
+      "id": 82681,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON COLUMNS, NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)]}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:03:33,061",
+      "duration": 94
+    },
+    {
+      "id": 82706,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON COLUMNS, NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:03:44,592",
+      "duration": 31
+    },
+    {
+      "id": 82878,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:04:38,389",
+      "duration": 31
+    },
+    {
+      "id": 83106,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:05:32,498",
+      "duration": 32
+    },
+    {
+      "id": 83127,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:05:33,842",
+      "duration": 16
+    },
+    {
+      "id": 83243,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:05:50,545",
+      "duration": 109
+    },
+    {
+      "id": 83700,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members), Crossjoin({[Measures].[Nombre total d'individus]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:06:43,498",
+      "duration": 188
+    },
+    {
+      "id": 83771,
+      "query": "select NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members})} ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, {[Measures].[Distance trajet domicile - travail (moyenne)]})), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, {[Measures].[Nombre total d'individus]})))) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:06:53,623",
+      "duration": 63
+    },
+    {
+      "id": 83824,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members), Crossjoin({[Measures].[Nombre total d'individus]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:06:55,748",
+      "duration": 32
+    },
+    {
+      "id": 83895,
+      "query": "select NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members})} ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})))) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:06:57,780",
+      "duration": 47
+    },
+    {
+      "id": 84352,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})))) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:09:52,155",
+      "duration": 531
+    },
+    {
+      "id": 84488,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:09:54,639",
+      "duration": 328
+    },
+    {
+      "id": 84549,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:09:56,014",
+      "duration": 31
+    },
+    {
+      "id": 84567,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:09:57,795",
+      "duration": 78
+    },
+    {
+      "id": 84703,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Ouvriers]}), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}), Union(Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order({Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:10:03,014",
+      "duration": 141
+    },
+    {
+      "id": 84742,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:10:08,608",
+      "duration": 62
+    },
+    {
+      "id": 84792,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order({Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:10:34,233",
+      "duration": 31
+    },
+    {
+      "id": 84839,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order({Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members}})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:11:16,186",
+      "duration": 21875
+    },
+    {
+      "id": 86668,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:26:27,239",
+      "duration": 250
+    },
+    {
+      "id": 86715,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:27:02,020",
+      "duration": 15
+    },
+    {
+      "id": 86754,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:27:16,629",
+      "duration": 125
+    },
+    {
+      "id": 86838,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Ouvriers]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members)))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order({Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members}})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:29:43,504",
+      "duration": 18360
+    },
+    {
+      "id": 86909,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order({Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members}})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:30:09,020",
+      "duration": 18406
+    },
+    {
+      "id": 87095,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Order({Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members}})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:30:42,754",
+      "duration": 19844
+    },
+    {
+      "id": 87149,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Order({Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:31:05,785",
+      "duration": 32
+    },
+    {
+      "id": 87182,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:31:12,176",
+      "duration": 47
+    },
+    {
+      "id": 90574,
+      "query": "select NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}) ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:32:28,160",
+      "duration": 1375
+    },
+    {
+      "id": 91009,
+      "query": "select NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}) ON COLUMNS, NON EMPTY Order({Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:34:06,426",
+      "duration": 359
+    },
+    {
+      "id": 91337,
+      "query": "select NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}) ON COLUMNS, NON EMPTY Order({Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:34:14,129",
+      "duration": 250
+    },
+    {
+      "id": 91615,
+      "query": "select NON EMPTY Order({Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:34:24,176",
+      "duration": 250
+    },
+    {
+      "id": 91896,
+      "query": "select NON EMPTY Order({Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VALLÉES LOIR ET BRAYE].[EPUISAY]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:35:17,910",
+      "duration": 16
+    },
+    {
+      "id": 91921,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d'individus]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VALLÉES LOIR ET BRAYE].[EPUISAY]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:35:30,520",
+      "duration": 47
+    },
+    {
+      "id": 92030,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d'individus]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order({Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VALLÉES LOIR ET BRAYE].[EPUISAY]})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:36:47,582",
+      "duration": 47
+    },
+    {
+      "id": 92120,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d'individus]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order({Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:36:54,676",
+      "duration": 20453
+    },
+    {
+      "id": 92501,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d'individus]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order({Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ET FORÊT].[VILLENEUVE-FROUVILLE]})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:39:41,926",
+      "duration": 16
+    },
+    {
+      "id": 92532,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d'individus]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order(Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ET FORÊT].[VILLENEUVE-FROUVILLE]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members), [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:39:53,535",
+      "duration": 125
+    },
+    {
+      "id": 92564,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d'individus]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY Order({Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ET FORÊT].[VILLENEUVE-FROUVILLE]})}, [Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:39:58,660",
+      "duration": 16
+    },
+    {
+      "id": 92786,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:43:58,332",
+      "duration": 16
+    },
+    {
+      "id": 92808,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:46:28,004",
+      "duration": 188
+    },
+    {
+      "id": 93226,
+      "query": "select NON EMPTY Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}) ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:46:30,614",
+      "duration": 218
+    },
+    {
+      "id": 93288,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:47:00,239",
+      "duration": 15
+    },
+    {
+      "id": 93317,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:47:07,660",
+      "duration": 16
+    },
+    {
+      "id": 93334,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de residence.CNERES_Hierarchie_depense].[Commune de residence].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:47:16,785",
+      "duration": 297
+    },
+    {
+      "id": 93877,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de residence.CNERES_Hierarchie_depense].[Commune de residence].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:50:05,582",
+      "duration": 16
+    },
+    {
+      "id": 94411,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de residence.CNERES_Hierarchie_depense].[Commune de residence].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:50:06,348",
+      "duration": 16
+    },
+    {
+      "id": 94948,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[VILLENEUVE-FROUVILLE]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:50:16,489",
+      "duration": 62
+    },
+    {
+      "id": 94969,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[VILLENEUVE-FROUVILLE]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:50:35,848",
+      "duration": 31
+    },
+    {
+      "id": 94993,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[VILLENEUVE-FROUVILLE]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:52:30,848",
+      "duration": 62
+    },
+    {
+      "id": 95026,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[VILLENEUVE-FROUVILLE]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:54:18,317",
+      "duration": 31
+    },
+    {
+      "id": 95069,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[VILLENEUVE-FROUVILLE]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[ABELCOURT]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)))) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:54:25,676",
+      "duration": 63
+    },
+    {
+      "id": 95102,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[VILLENEUVE-FROUVILLE]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[ABELCOURT]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:54:28,879",
+      "duration": 16
+    },
+    {
+      "id": 95143,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[VILLENEUVE-FROUVILLE]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[ABELCOURT]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:54:32,317",
+      "duration": 16
+    },
+    {
+      "id": 95195,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[VILLENEUVE-FROUVILLE]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[ABELCOURT]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Commune de residence.CNERES_Hierarchie_depense].[Classe de dépense énergétique inconnue].[AIBRE]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members))))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:54:40,989",
+      "duration": 78
+    },
+    {
+      "id": 95234,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Order(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin([Commune de residence.CNERES_Hierarchie_depense].[Commune de residence].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 22:54:50,754",
+      "duration": 625
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "user": {
+    "id": "dibstudent07",
+    "name": "Iandry",
+    "group": "groupe2"
+  },
+  "cube": "Cube mobpro",
+  "title": "Analyse exploratoire de deplacements par statut d'emploi et autres criteres",
+  "comment": null,
+  "queries": [
+    {
+      "id": 100267,
+      "query": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:00:20,317",
+      "duration": 453
+    },
+    {
+      "id": 100381,
+      "query": "select NON EMPTY {Hierarchize({[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:00:24,645",
+      "duration": 0
+    },
+    {
+      "id": 100499,
+      "query": "select NON EMPTY Crossjoin([Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members) ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:02:02,035",
+      "duration": 204
+    },
+    {
+      "id": 100531,
+      "query": "select NON EMPTY {Hierarchize({[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:02:05,145",
+      "duration": 94
+    },
+    {
+      "id": 100563,
+      "query": "select NON EMPTY {Hierarchize({[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:02:07,942",
+      "duration": 109
+    },
+    {
+      "id": 100592,
+      "query": "select NON EMPTY {Hierarchize({[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:02:17,801",
+      "duration": 94
+    },
+    {
+      "id": 100640,
+      "query": "select NON EMPTY {Hierarchize({[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:02:20,707",
+      "duration": 16
+    },
+    {
+      "id": 100669,
+      "query": "select NON EMPTY {Hierarchize({[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:02:25,098",
+      "duration": 0
+    },
+    {
+      "id": 100698,
+      "query": "select NON EMPTY {Hierarchize({[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:02:32,785",
+      "duration": 16
+    },
+    {
+      "id": 100727,
+      "query": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:02:35,332",
+      "duration": 235
+    },
+    {
+      "id": 100768,
+      "query": "select NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:03:17,723",
+      "duration": 82061
+    },
+    {
+      "id": 100782,
+      "query": "select NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:04:50,165",
+      "duration": 1641
+    },
+    {
+      "id": 100792,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:04:53,958",
+      "duration": 13010
+    },
+    {
+      "id": 100804,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Categorie].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:05:27,660",
+      "duration": 5302
+    },
+    {
+      "id": 101128,
+      "query": "select NON EMPTY {Hierarchize({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Categorie].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:05:37,385",
+      "duration": 857
+    },
+    {
+      "id": 101463,
+      "query": "select NON EMPTY {Hierarchize({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole]})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:05:50,053",
+      "duration": 255
+    },
+    {
+      "id": 101793,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:06:38,376",
+      "duration": 22
+    },
+    {
+      "id": 101844,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:06:41,213",
+      "duration": 19
+    },
+    {
+      "id": 101908,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:06:48,261",
+      "duration": 29
+    },
+    {
+      "id": 102013,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:06:50,350",
+      "duration": 18
+    },
+    {
+      "id": 102119,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:07:12,830",
+      "duration": 20
+    },
+    {
+      "id": 102225,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:07:18,851",
+      "duration": 12
+    },
+    {
+      "id": 102331,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:07:24,300",
+      "duration": 31
+    },
+    {
+      "id": 102439,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d'individus]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:10:27,011",
+      "duration": 152
+    },
+    {
+      "id": 102460,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, {[Measures].[Nombre total d'individus]}), Union(Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members, {[Measures].[Nombre total d'individus]}), Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, {[Measures].[Nombre total d'individus]})))) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:10:33,087",
+      "duration": 30
+    },
+    {
+      "id": 102476,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:10:34,596",
+      "duration": 12
+    },
+    {
+      "id": 102582,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:12:13,749",
+      "duration": 20
+    },
+    {
+      "id": 102687,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:12:16,230",
+      "duration": 14
+    },
+    {
+      "id": 102762,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:12:17,484",
+      "duration": 13
+    },
+    {
+      "id": 102819,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:12:22,234",
+      "duration": 8
+    },
+    {
+      "id": 102879,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:13:34,666",
+      "duration": 10
+    },
+    {
+      "id": 103061,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AUVERGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BASSE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BOURGOGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BRETAGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ET FORÊT], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE LIGÉRIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ORATORIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[CŒUR DE SOLOGNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES ETANGS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES RIVIÈRES], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[CHER À LA LOIRE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[ROMORANTINAIS ET  MONESTOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[VAL-DE-CHER - CONTROIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[GRAND CHAMBORD], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[BEAUCE ET GÂTINE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PAYS DE VENDÔME], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PERCHE ET HAUT-VENDÔMOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VALLÉES LOIR ET BRAYE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL], [Commune de residence.CNERES_Hierarchie_intercommunale].[CHAMPAGNE-ARDENNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CORSE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[FRANCHE-COMTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUADELOUPE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUYANE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[HAUTE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ILE-DE-FRANCE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LA REUNION].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LANGUEDOC-ROUSSILLON].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LIMOUSIN].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LORRAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MARTINIQUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MAYOTTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MIDI-PYRENEES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[NORD-PAS-DE-CALAIS].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PAYS DE LA LOIRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PICARDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[POITOU-CHARENTES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PROVENCE-ALPES-COTE D'AZUR].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[REG INCONNUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[RHONE-ALPES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[SAINT-MARTIN].[PAYS INCONNU].[SAINT-MARTIN], [Commune de residence.CNERES_Hierarchie_intercommunale].[SANS OBJET].[PAYS INCONNU].[SANS OBJET]}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:13:46,979",
+      "duration": 14
+    },
+    {
+      "id": 103121,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:14:22,362",
+      "duration": 7
+    },
+    {
+      "id": 103158,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[tous les niveaux confondus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:14:57,974",
+      "duration": 6
+    },
+    {
+      "id": 103191,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:15:05,368",
+      "duration": 106
+    },
+    {
+      "id": 103231,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:15:08,131",
+      "duration": 11
+    },
+    {
+      "id": 103274,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:15:34,348",
+      "duration": 9
+    },
+    {
+      "id": 103294,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON COLUMNS, NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:15:53,743",
+      "duration": 9
+    },
+    {
+      "id": 103327,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON COLUMNS, NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:15:59,835",
+      "duration": 12
+    },
+    {
+      "id": 103362,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:16:02,509",
+      "duration": 8
+    },
+    {
+      "id": 103410,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:16:05,244",
+      "duration": 8
+    },
+    {
+      "id": 103503,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]}, Filter({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}}, (Exists({Ancestor([Statut d'emploi.STATEMPL_Hierarchie].CurrentMember, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2])}, {[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]}).Count > 0))})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:16:58,002",
+      "duration": 14
+    },
+    {
+      "id": 103550,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]}, Filter({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}}, (Exists({Ancestor([Statut d'emploi.STATEMPL_Hierarchie].CurrentMember, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2])}, {[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]}).Count > 0))})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:17:00,937",
+      "duration": 14
+    },
+    {
+      "id": 103585,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]})} ON COLUMNS, NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:17:02,564",
+      "duration": 11
+    },
+    {
+      "id": 103764,
+      "query": "select NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AUVERGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BASSE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BOURGOGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BRETAGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ET FORÊT], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE LIGÉRIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ORATORIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[CŒUR DE SOLOGNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES ETANGS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES RIVIÈRES], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[CHER À LA LOIRE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[ROMORANTINAIS ET  MONESTOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[VAL-DE-CHER - CONTROIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[GRAND CHAMBORD], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[BEAUCE ET GÂTINE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PAYS DE VENDÔME], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PERCHE ET HAUT-VENDÔMOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VALLÉES LOIR ET BRAYE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL], [Commune de residence.CNERES_Hierarchie_intercommunale].[CHAMPAGNE-ARDENNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CORSE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[FRANCHE-COMTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUADELOUPE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUYANE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[HAUTE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ILE-DE-FRANCE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LA REUNION].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LANGUEDOC-ROUSSILLON].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LIMOUSIN].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LORRAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MARTINIQUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MAYOTTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MIDI-PYRENEES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[NORD-PAS-DE-CALAIS].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PAYS DE LA LOIRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PICARDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[POITOU-CHARENTES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PROVENCE-ALPES-COTE D'AZUR].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[REG INCONNUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[RHONE-ALPES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[SAINT-MARTIN].[PAYS INCONNU].[SAINT-MARTIN], [Commune de residence.CNERES_Hierarchie_intercommunale].[SANS OBJET].[PAYS INCONNU].[SANS OBJET]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:17:09,360",
+      "duration": 10
+    },
+    {
+      "id": 103902,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AUVERGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BASSE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BOURGOGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BRETAGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ET FORÊT], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE LIGÉRIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ORATORIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[CŒUR DE SOLOGNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES ETANGS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES RIVIÈRES], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[CHER À LA LOIRE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[ROMORANTINAIS ET  MONESTOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[VAL-DE-CHER - CONTROIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[GRAND CHAMBORD], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[BEAUCE ET GÂTINE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PAYS DE VENDÔME], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PERCHE ET HAUT-VENDÔMOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VALLÉES LOIR ET BRAYE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL], [Commune de residence.CNERES_Hierarchie_intercommunale].[CHAMPAGNE-ARDENNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CORSE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[FRANCHE-COMTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUADELOUPE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUYANE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[HAUTE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ILE-DE-FRANCE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LA REUNION].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LANGUEDOC-ROUSSILLON].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LIMOUSIN].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LORRAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MARTINIQUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MAYOTTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MIDI-PYRENEES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[NORD-PAS-DE-CALAIS].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PAYS DE LA LOIRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PICARDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[POITOU-CHARENTES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PROVENCE-ALPES-COTE D'AZUR].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[REG INCONNUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[RHONE-ALPES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[SAINT-MARTIN].[PAYS INCONNU].[SAINT-MARTIN], [Commune de residence.CNERES_Hierarchie_intercommunale].[SANS OBJET].[PAYS INCONNU].[SANS OBJET]}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:17:12,390",
+      "duration": 9
+    },
+    {
+      "id": 104043,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, {[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]}) ON COLUMNS, NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AUVERGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BASSE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BOURGOGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BRETAGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ET FORÊT], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE LIGÉRIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ORATORIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[CŒUR DE SOLOGNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES ETANGS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES RIVIÈRES], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[CHER À LA LOIRE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[ROMORANTINAIS ET  MONESTOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[VAL-DE-CHER - CONTROIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[GRAND CHAMBORD], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[BEAUCE ET GÂTINE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PAYS DE VENDÔME], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PERCHE ET HAUT-VENDÔMOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VALLÉES LOIR ET BRAYE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL], [Commune de residence.CNERES_Hierarchie_intercommunale].[CHAMPAGNE-ARDENNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CORSE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[FRANCHE-COMTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUADELOUPE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUYANE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[HAUTE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ILE-DE-FRANCE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LA REUNION].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LANGUEDOC-ROUSSILLON].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LIMOUSIN].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LORRAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MARTINIQUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MAYOTTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MIDI-PYRENEES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[NORD-PAS-DE-CALAIS].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PAYS DE LA LOIRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PICARDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[POITOU-CHARENTES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PROVENCE-ALPES-COTE D'AZUR].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[REG INCONNUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[RHONE-ALPES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[SAINT-MARTIN].[PAYS INCONNU].[SAINT-MARTIN], [Commune de residence.CNERES_Hierarchie_intercommunale].[SANS OBJET].[PAYS INCONNU].[SANS OBJET]}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:22:03,755",
+      "duration": 11
+    },
+    {
+      "id": 104240,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]})} ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[AUVERGNE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[BASSE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[BOURGOGNE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[BRETAGNE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ET FORÊT]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE LIGÉRIENNE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ORATORIENNE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[CŒUR DE SOLOGNE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES ETANGS]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES RIVIÈRES]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[CHER À LA LOIRE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[ROMORANTINAIS ET  MONESTOIS]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[VAL-DE-CHER - CONTROIS]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[GRAND CHAMBORD]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[BEAUCE ET GÂTINE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PAYS DE VENDÔME]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PERCHE ET HAUT-VENDÔMOIS]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VALLÉES LOIR ET BRAYE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CHAMPAGNE-ARDENNE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CORSE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[FRANCHE-COMTE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[GUADELOUPE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[GUYANE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[HAUTE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[ILE-DE-FRANCE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[LA REUNION].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[LANGUEDOC-ROUSSILLON].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[LIMOUSIN].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[LORRAINE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[MARTINIQUE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[MAYOTTE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[MIDI-PYRENEES].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[NORD-PAS-DE-CALAIS].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[PAYS DE LA LOIRE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[PICARDIE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[POITOU-CHARENTES].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[PROVENCE-ALPES-COTE D'AZUR].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[REG INCONNUE].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[RHONE-ALPES].[PAYS INCONNU].[CC INCONNUE]}), Union(Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[SAINT-MARTIN].[PAYS INCONNU].[SAINT-MARTIN]}), Crossjoin({[Measures].[Nombre total d'individus]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[SANS OBJET].[PAYS INCONNU].[SANS OBJET]})))))))))))))))))))))))))))))))))))))))))))))))) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:22:06,648",
+      "duration": 340
+    },
+    {
+      "id": 104344,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Salariés].[Salariés non précaires]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[COLLINES DU PERCHE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[AUVERGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BASSE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BOURGOGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[BRETAGNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ET FORÊT], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE LIGÉRIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Beauce Val de Loire].[BEAUCE ORATORIENNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[CŒUR DE SOLOGNE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES ETANGS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de Grande Sologne].[SOLOGNE DES RIVIÈRES], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[CHER À LA LOIRE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[ROMORANTINAIS ET  MONESTOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays de la Vallée du Cher et du Romorantinais].[VAL-DE-CHER - CONTROIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[GRAND CHAMBORD], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[BEAUCE ET GÂTINE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PAYS DE VENDÔME], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[PERCHE ET HAUT-VENDÔMOIS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VALLÉES LOIR ET BRAYE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays Vendômois].[VENDÔMOIS RURAL], [Commune de residence.CNERES_Hierarchie_intercommunale].[CHAMPAGNE-ARDENNE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CORSE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[FRANCHE-COMTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUADELOUPE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[GUYANE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[HAUTE-NORMANDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[ILE-DE-FRANCE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LA REUNION].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LANGUEDOC-ROUSSILLON].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LIMOUSIN].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[LORRAINE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MARTINIQUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MAYOTTE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[MIDI-PYRENEES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[NORD-PAS-DE-CALAIS].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PAYS DE LA LOIRE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PICARDIE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[POITOU-CHARENTES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[PROVENCE-ALPES-COTE D'AZUR].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[REG INCONNUE].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[RHONE-ALPES].[PAYS INCONNU].[CC INCONNUE], [Commune de residence.CNERES_Hierarchie_intercommunale].[SAINT-MARTIN].[PAYS INCONNU].[SAINT-MARTIN], [Commune de residence.CNERES_Hierarchie_intercommunale].[SANS OBJET].[PAYS INCONNU].[SANS OBJET]}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 23:22:08,230",
+      "duration": 9
+    }
+  ]
+}

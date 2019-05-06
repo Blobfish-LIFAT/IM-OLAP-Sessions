@@ -1,0 +1,90 @@
+{
+  "user": {
+    "id": "dibstudent04",
+    "name": "Willeme",
+    "group": "groupe1"
+  },
+  "cube": "Cube mobpro",
+  "title": "Analyse de distances par lieu de residence",
+  "comment": null,
+  "queries": [
+    {
+      "id": 56151,
+      "query": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 11:53:51,365",
+      "duration": 1516
+    },
+    {
+      "id": 56480,
+      "query": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 11:54:07,818",
+      "duration": 250
+    },
+    {
+      "id": 56809,
+      "query": "select NON EMPTY {Hierarchize({{[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]}, {[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 11:54:28,068",
+      "duration": 4875
+    },
+    {
+      "id": 57139,
+      "query": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 11:55:23,474",
+      "duration": 235
+    },
+    {
+      "id": 57464,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Statut d'occupation].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 11:55:57,052",
+      "duration": 5219
+    },
+    {
+      "id": 57795,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 11:56:22,068",
+      "duration": 7625
+    },
+    {
+      "id": 58129,
+      "query": "select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 11:57:33,506",
+      "duration": 671
+    },
+    {
+      "id": 58537,
+      "query": "select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ROTT]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 12:03:31,043",
+      "duration": 47
+    },
+    {
+      "id": 58601,
+      "query": "select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ROTT], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ALTWILLER], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[AMMERZWILLER], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ANDOLSHEIM], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ARTOLSHEIM], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ASPACH], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE].[RAMOUS], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE].[QUINSAC], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE].[REIGNAC]}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 12:06:36,794",
+      "duration": 78
+    },
+    {
+      "id": 58634,
+      "query": "select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 12:07:31,669",
+      "duration": 640
+    },
+    {
+      "id": 58645,
+      "query": "select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 12:07:31,950",
+      "duration": 359
+    },
+    {
+      "id": 59050,
+      "query": "select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 12:11:11,669",
+      "duration": 46
+    },
+    {
+      "id": 59461,
+      "query": "select NON EMPTY Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnérabilité énergétique inconnue].[ABAUCOURT-HAUTECOURT], [Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnérabilité énergétique inconnue].[ABBARETZ]}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 12:24:47,587",
+      "duration": 46
+    }
+  ]
+}

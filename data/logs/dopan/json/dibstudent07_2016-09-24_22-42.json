@@ -1,0 +1,294 @@
+{
+  "user": {
+    "id": "dibstudent07",
+    "name": "Iandry",
+    "group": "groupe2"
+  },
+  "cube": "Cube mobsco",
+  "title": "Analyse des déplacement scolaires par diverses critères",
+  "comment": null,
+  "queries": [
+    {
+      "id": 33670,
+      "query": "select NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:42:00,378",
+      "duration": 140
+    },
+    {
+      "id": 33723,
+      "query": "select NON EMPTY Crossjoin([Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members, {[Measures].[Nombre de personnes scolarisees des menages (moyenne)]}) ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:42:51,128",
+      "duration": 531
+    },
+    {
+      "id": 33756,
+      "query": "select NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:42:56,862",
+      "duration": 0
+    },
+    {
+      "id": 33807,
+      "query": "select NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON COLUMNS, NON EMPTY Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:43:15,315",
+      "duration": 422
+    },
+    {
+      "id": 33882,
+      "query": "select NON EMPTY Crossjoin([Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members, [Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:43:20,487",
+      "duration": 141
+    },
+    {
+      "id": 33961,
+      "query": "select NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members})} ON COLUMNS, NON EMPTY Crossjoin([Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:43:26,159",
+      "duration": 109
+    },
+    {
+      "id": 34177,
+      "query": "select NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members}, {[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members}})} ON COLUMNS, NON EMPTY Crossjoin([Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:43:37,862",
+      "duration": 781
+    },
+    {
+      "id": 35263,
+      "query": "select NON EMPTY Crossjoin([Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members}, {[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members}})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:44:03,534",
+      "duration": 109
+    },
+    {
+      "id": 36352,
+      "query": "select NON EMPTY Crossjoin([Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON COLUMNS, NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members}, {[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members}})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:45:11,596",
+      "duration": 985
+    },
+    {
+      "id": 37410,
+      "query": "select NON EMPTY Crossjoin([Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON COLUMNS, NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members}, {[Commune de residence.CNERES_Hierarchie_administrative].[CENTRE].[LOIR-ET-CHER].[BLOIS]}})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:46:13,346",
+      "duration": 47
+    },
+    {
+      "id": 37594,
+      "query": "select NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members}, {[Commune de residence.CNERES_Hierarchie_administrative].[CENTRE].[LOIR-ET-CHER].[BLOIS]}})} ON COLUMNS, NON EMPTY Crossjoin([Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:46:18,565",
+      "duration": 63
+    },
+    {
+      "id": 37789,
+      "query": "select NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members}, {[Commune de residence.CNERES_Hierarchie_administrative].[CENTRE].[LOIR-ET-CHER].[BLOIS]}})} ON COLUMNS, NON EMPTY Crossjoin([Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:46:35,346",
+      "duration": 110
+    },
+    {
+      "id": 37834,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:49:06,393",
+      "duration": 141
+    },
+    {
+      "id": 37853,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:49:19,221",
+      "duration": 172
+    },
+    {
+      "id": 37905,
+      "query": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:49:31,299",
+      "duration": 79
+    },
+    {
+      "id": 37932,
+      "query": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:49:32,753",
+      "duration": 93
+    },
+    {
+      "id": 37984,
+      "query": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:50:07,331",
+      "duration": 0
+    },
+    {
+      "id": 38009,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:50:27,034",
+      "duration": 31
+    },
+    {
+      "id": 38035,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:50:43,409",
+      "duration": 15
+    },
+    {
+      "id": 38072,
+      "query": "select NON EMPTY {Hierarchize({{[Type de menage.TYPMEN_Hierarchie].[Ménages d'une personne seule sans famille], [Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale], [Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille], [Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d'un couple]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:50:51,081",
+      "duration": 15
+    },
+    {
+      "id": 38102,
+      "query": "select NON EMPTY {Hierarchize({{[Type de menage.TYPMEN_Hierarchie].[Ménages d'une personne seule sans famille], [Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale], [Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille], [Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d'un couple]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:51:25,237",
+      "duration": 16
+    },
+    {
+      "id": 38122,
+      "query": "select NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:52:16,737",
+      "duration": 47
+    },
+    {
+      "id": 38144,
+      "query": "select NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, [Statut d'occupation du logement.STOCLOGT_Hierarchie].[Categorie].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:53:24,596",
+      "duration": 125
+    },
+    {
+      "id": 38175,
+      "query": "select NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, [Statut d'occupation du logement.STOCLOGT_Hierarchie].[Categorie].Members), Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, [Statut d'occupation du logement.STOCLOGT_Hierarchie].[Categorie].Members))) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:53:47,159",
+      "duration": 109
+    },
+    {
+      "id": 38205,
+      "query": "select NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:53:57,190",
+      "duration": 0
+    },
+    {
+      "id": 38223,
+      "query": "select NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - etudes (moyenne)]})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:54:10,268",
+      "duration": 16
+    },
+    {
+      "id": 38243,
+      "query": "select NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:54:14,081",
+      "duration": 15
+    },
+    {
+      "id": 38262,
+      "query": "select NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:54:22,549",
+      "duration": 16
+    },
+    {
+      "id": 38281,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:54:31,018",
+      "duration": 31
+    },
+    {
+      "id": 38304,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON COLUMNS, NON EMPTY Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:55:23,643",
+      "duration": 203
+    },
+    {
+      "id": 38344,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:55:26,893",
+      "duration": 63
+    },
+    {
+      "id": 38371,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:55:33,253",
+      "duration": 31
+    },
+    {
+      "id": 38394,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON COLUMNS, NON EMPTY Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, [Statut d'occupation du logement.STOCLOGT_Hierarchie].[Statut d'occupation].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:55:37,862",
+      "duration": 203
+    },
+    {
+      "id": 38486,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Propriétaire].[Propriétaire]}), Union(Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Locataire].[Locataire ou sous-locataire d'un logement loué meublé ou d'une chambre d'hôtel]}), Union(Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Locataire].[Locataire ou sous-locataire d'un logement loué vide HLM]}), Union(Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Locataire].[Locataire ou sous-locataire d'un logement loué vide non HLM]}), Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Logé gratuitement].[Logé gratuitement]})))))) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:55:50,393",
+      "duration": 156
+    },
+    {
+      "id": 38578,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Propriétaire].[Propriétaire]}), Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Locataire].[Locataire ou sous-locataire d'un logement loué meublé ou d'une chambre d'hôtel]}), Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Locataire].[Locataire ou sous-locataire d'un logement loué vide HLM]}), Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Locataire].[Locataire ou sous-locataire d'un logement loué vide non HLM]}), Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Logé gratuitement].[Logé gratuitement]}), Union(Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Propriétaire].[Propriétaire]}), Union(Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Locataire].[Locataire ou sous-locataire d'un logement loué meublé ou d'une chambre d'hôtel]}), Union(Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Locataire].[Locataire ou sous-locataire d'un logement loué vide HLM]}), Union(Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Locataire].[Locataire ou sous-locataire d'un logement loué vide non HLM]}), Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Statut d'occupation du logement.STOCLOGT_Hierarchie].[Logé gratuitement].[Logé gratuitement]}))))))))))) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:55:53,768",
+      "duration": 110
+    },
+    {
+      "id": 38610,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:56:26,362",
+      "duration": 16
+    },
+    {
+      "id": 38633,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON COLUMNS, NON EMPTY Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, [Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:56:52,034",
+      "duration": 187
+    },
+    {
+      "id": 38673,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)]}})} ON COLUMNS, NON EMPTY Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, Crossjoin([Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members, [Commune d'etudes.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:56:58,503",
+      "duration": 546
+    },
+    {
+      "id": 41884,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, Crossjoin([Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members, [Commune d'etudes.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:57:42,706",
+      "duration": 31
+    },
+    {
+      "id": 45093,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, Crossjoin([Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members, [Commune d'etudes.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:58:09,924",
+      "duration": 32
+    },
+    {
+      "id": 48309,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Crossjoin([Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members, Crossjoin([Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members, [Commune d'etudes.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members)) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:58:43,237",
+      "duration": 31
+    },
+    {
+      "id": 51517,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members, [Commune d'etudes.CNELOCC_Hierarchie_intercommunale].[Commune d'occupation].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:58:46,409",
+      "duration": 375
+    },
+    {
+      "id": 52477,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:59:07,784",
+      "duration": 156
+    },
+    {
+      "id": 52497,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members, [Commune d'etudes.CNELOCC_Hierarchie_administrative].[Departement].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:59:11,690",
+      "duration": 297
+    },
+    {
+      "id": 52657,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Order(Crossjoin([Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members, [Commune d'etudes.CNELOCC_Hierarchie_administrative].[Departement].Members), [Measures].[Nombre total d'individus], BASC) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:59:24,846",
+      "duration": 32
+    },
+    {
+      "id": 52817,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Order(Crossjoin([Commune de residence.CNERES_Hierarchie_administrative].[Departement].Members, [Commune d'etudes.CNELOCC_Hierarchie_administrative].[Departement].Members), [Measures].[Nombre total d'individus], BDESC) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:59:27,268",
+      "duration": 47
+    },
+    {
+      "id": 52977,
+      "query": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - etudes (moyenne)], [Measures].[Nombre total d'individus]}})} ON COLUMNS, NON EMPTY Order({Hierarchize({[Commune d'etudes.CNELOCC_Hierarchie_administrative].[Departement].Members})}, [Measures].[Nombre total d'individus], BDESC) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-24 22:59:45,174",
+      "duration": 172
+    }
+  ]
+}

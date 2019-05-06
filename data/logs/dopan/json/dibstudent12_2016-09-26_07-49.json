@@ -1,0 +1,264 @@
+{
+  "user": {
+    "id": "dibstudent12",
+    "name": "Salim",
+    "group": "groupe3"
+  },
+  "cube": "Cube mobsco",
+  "title": "Mobilité d'individus ayant differentes CSP",
+  "comment": "Analyse 2 listé par l'étudiant\nObs: au milieu, repète plusieurs fois la même requête",
+  "queries": [
+    {
+      "id": 129969,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:49:15,812",
+      "duration": 94
+    },
+    {
+      "id": 130022,
+      "query": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Marche à pied]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:49:36,062",
+      "duration": 31
+    },
+    {
+      "id": 130067,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Marche à pied]})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:49:50,640",
+      "duration": 16
+    },
+    {
+      "id": 130104,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode inconnu].[Mode inconnu]})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:50:06,624",
+      "duration": 0
+    },
+    {
+      "id": 130154,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:50:23,609",
+      "duration": 0
+    },
+    {
+      "id": 130192,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d'ages revolus].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:50:32,874",
+      "duration": 0
+    },
+    {
+      "id": 130245,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[25-29 ans], [Age revolu en 10 classes.AgeRev10_Hierarchie_1].[15-17 ans]}})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:50:57,718",
+      "duration": 31
+    },
+    {
+      "id": 130284,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[25-29 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[15-17 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:51:10,468",
+      "duration": 94
+    },
+    {
+      "id": 130333,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[25-29 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[15-17 ans]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:52:10,140",
+      "duration": 203
+    },
+    {
+      "id": 130411,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:53:42,890",
+      "duration": 94
+    },
+    {
+      "id": 130479,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:54:27,421",
+      "duration": 125
+    },
+    {
+      "id": 130523,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:54:55,374",
+      "duration": 16
+    },
+    {
+      "id": 130567,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:04,702",
+      "duration": 16
+    },
+    {
+      "id": 130611,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:09,999",
+      "duration": 0
+    },
+    {
+      "id": 130655,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:13,640",
+      "duration": 16
+    },
+    {
+      "id": 130699,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:17,796",
+      "duration": 16
+    },
+    {
+      "id": 130744,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre de personnes scolarisees des menages (min)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:19,499",
+      "duration": 172
+    },
+    {
+      "id": 130773,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:24,156",
+      "duration": 15
+    },
+    {
+      "id": 130818,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:55:30,718",
+      "duration": 109
+    },
+    {
+      "id": 130854,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:56:07,937",
+      "duration": 281
+    },
+    {
+      "id": 130901,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Ouvriers]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Employés]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:56:15,671",
+      "duration": 78
+    },
+    {
+      "id": 130945,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:56:59,452",
+      "duration": 297
+    },
+    {
+      "id": 131002,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:57:50,046",
+      "duration": 406
+    },
+    {
+      "id": 131473,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}))) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:58:07,327",
+      "duration": 125
+    },
+    {
+      "id": 131539,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]})) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 07:58:34,999",
+      "duration": 157
+    },
+    {
+      "id": 131598,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 07:58:40,718",
+      "duration": 188
+    },
+    {
+      "id": 131662,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Measures].[Distance trajet domicile - etudes (moyenne)]}))), Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Measures].[Nombre total d'individus]}))))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:00:51,499",
+      "duration": 360
+    },
+    {
+      "id": 131752,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members))), Crossjoin({[Measures].[Nombre total d'individus]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members))))) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:01:10,093",
+      "duration": 125
+    },
+    {
+      "id": 131840,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)), Crossjoin({[Measures].[Nombre total d'individus]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:01:29,031",
+      "duration": 156
+    },
+    {
+      "id": 131907,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:01:53,531",
+      "duration": 78
+    },
+    {
+      "id": 131962,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:04:33,224",
+      "duration": 62
+    },
+    {
+      "id": 132017,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd]",
+      "datetime": "2016-09-26 08:05:33,130",
+      "duration": 313
+    },
+    {
+      "id": 132077,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1].Members)) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:05:55,474",
+      "duration": 47
+    },
+    {
+      "id": 132143,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:06:25,161",
+      "duration": 94
+    },
+    {
+      "id": 132197,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]})",
+      "datetime": "2016-09-26 08:10:55,786",
+      "duration": 235
+    },
+    {
+      "id": 132239,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:07,021",
+      "duration": 140
+    },
+    {
+      "id": 132287,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]}))), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]}))))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:13,990",
+      "duration": 93
+    },
+    {
+      "id": 132333,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:19,302",
+      "duration": 31
+    },
+    {
+      "id": 132381,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d'ages revolus]})) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:34,161",
+      "duration": 94
+    },
+    {
+      "id": 132427,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d'ages revolus]}, {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]})",
+      "datetime": "2016-09-26 08:11:37,833",
+      "duration": 16
+    },
+    {
+      "id": 132475,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d'ages revolus]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]}))), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[toutes les classes d'ages revolus]}, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]}))))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:41,849",
+      "duration": 78
+    },
+    {
+      "id": 132519,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Retraités]})), Crossjoin({[Measures].[Distance trajet domicile - etudes (moyenne)]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Professions Intermédiaires]})))) ON COLUMNS, NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube2MobScoInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Avec diplôme].[Bac + 1 et plus].[Diplôme universitaire de 1er cycle, BTS, DUT, diplôme des professions sociales ou de santé, d'infirmier(ère)]}",
+      "datetime": "2016-09-26 08:11:49,005",
+      "duration": 47
+    }
+  ]
+}

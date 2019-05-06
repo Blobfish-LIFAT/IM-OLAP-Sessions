@@ -1,0 +1,114 @@
+{
+  "user": {
+    "id": "dibstudent04",
+    "name": "Willeme",
+    "group": "groupe1"
+  },
+  "cube": "Cube mobpro",
+  "title": "Analyse de distances par niveau d'instruction et type de menage",
+  "comment": "Obs: realisé cote à cote de dibstudent10",
+  "queries": [
+    {
+      "id": 7347,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:33:50,424",
+      "duration": 63
+    },
+    {
+      "id": 7454,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:34:14,862",
+      "duration": 359
+    },
+    {
+      "id": 7514,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:34:21,612",
+      "duration": 16
+    },
+    {
+      "id": 7774,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:36:41,268",
+      "duration": 172
+    },
+    {
+      "id": 7825,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:36:41,784",
+      "duration": 109
+    },
+    {
+      "id": 7843,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:36:53,956",
+      "duration": 15
+    },
+    {
+      "id": 7896,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:37:08,565",
+      "duration": 16
+    },
+    {
+      "id": 8095,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:37:47,268",
+      "duration": 16
+    },
+    {
+      "id": 8132,
+      "query": "select NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:37:56,378",
+      "duration": 31
+    },
+    {
+      "id": 8172,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:38:00,378",
+      "duration": 31
+    },
+    {
+      "id": 8224,
+      "query": "select NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:38:05,456",
+      "duration": 15
+    },
+    {
+      "id": 8317,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 2].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:38:26,362",
+      "duration": 16
+    },
+    {
+      "id": 8484,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:02,268",
+      "duration": 16
+    },
+    {
+      "id": 8565,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:04,159",
+      "duration": 15
+    },
+    {
+      "id": 8732,
+      "query": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:38,549",
+      "duration": 47
+    },
+    {
+      "id": 8840,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members}, {[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:40,768",
+      "duration": 31
+    },
+    {
+      "id": 8900,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON COLUMNS, NON EMPTY {Hierarchize({[Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:39:47,034",
+      "duration": 15
+    }
+  ]
+}
