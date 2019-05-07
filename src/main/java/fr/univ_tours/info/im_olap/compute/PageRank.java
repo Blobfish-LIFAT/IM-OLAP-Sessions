@@ -78,20 +78,6 @@ public class PageRank {
         return pair;
     }
 
-    // utility
-
-
-    public static <N extends Comparable<N>> HashMap<N, Double> mappedINDarrayToMap(INDArray array, HashMap<N, Integer> map) {
-
-        HashMap<N, Double> ret = new HashMap<>();
-
-        for (Map.Entry<N, Integer> entry : map.entrySet()) {
-            ret.put(entry.getKey(), array.getDouble(entry.getValue()));
-        }
-
-        return ret;
-    }
-
     public static void main(String[] args){
 
         INDArray uniform = getStochasticUniformMatrix(5);

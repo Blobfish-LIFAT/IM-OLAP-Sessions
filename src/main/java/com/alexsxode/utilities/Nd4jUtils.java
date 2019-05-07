@@ -1,5 +1,6 @@
 package com.alexsxode.utilities;
 
+import com.alexsxode.utilities.collection.Pair;
 import org.apache.commons.math3.exception.MathIllegalArgumentException;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
@@ -101,4 +102,22 @@ public final class Nd4jUtils {
     public static boolean isDistibution(INDArray vector, double epsilon){
         return Math.abs(vector.sumNumber().doubleValue() - 1) <= epsilon;
     }
+
+    // INDArray utility
+
+    public static <N extends Comparable<N>> HashMap<N, Double> mappedINDarrayToMap(INDArray array, HashMap<N, Integer> map) {
+
+        HashMap<N, Double> ret = new HashMap<>();
+
+        for (Map.Entry<N, Integer> entry : map.entrySet()) {
+            ret.put(entry.getKey(), array.getDouble(entry.getValue()));
+        }
+
+        return ret;
+    }
+
+    public  static <N extends Comparable<N>> HashMap<N, Double> mappedINDarrayToMap(Pair<INDArray, HashMap<N, Integer>> mappedPair) {
+        return mappedINDarrayToMap(mappedPair.left, mappedPair.right);
+    }
+
 }

@@ -1,15 +1,22 @@
 package fr.univ_tours.info.im_olap.model;
 
+import com.alexsxode.utilities.Nd4jUtils;
 import com.alexsxode.utilities.collection.Pair;
-import fr.univ_tours.info.im_olap.compute.PageRank;
 import fr.univ_tours.info.im_olap.graph.Graph;
+import fr.univ_tours.info.im_olap.graph.Graphs;
+import org.nd4j.linalg.api.ndarray.INDArray;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class GraphUpdate {
+
+    public final GraphUpdate SIMPLE_GRAPH_UPDATE = new GraphUpdate(
+            GraphUpdate::simpleInterconnections,
+            GraphUpdate::replaceEdges,
+            GraphUpdate.KLForGraphs()
+            );
 
     private BiFunction<Session, Integer, Graph<Double, QueryPart>> queryGraphBuilder;
     private BiFunction<Graph<Double, QueryPart>,Graph<Double, QueryPart>,Graph<Double, QueryPart>> graphInterpolator;
@@ -69,6 +76,17 @@ public class GraphUpdate {
         };
     }
 
+    public static <E extends Comparable<E>,N extends Comparable<N>> Graph<E, N>
+            replaceEdges(Graph<E, N> source, Graph<E, N> new_edges_graph) {
+
+        Graph<E,N> newGraph = source.clone();
+
+        for (Graph.Edge<N, E> edge : new_edges_graph.getEdges()) {
+            newGraph.setEdge(edge);
+        }
+
+        return newGraph;
+    }
 
 
     // utility
@@ -77,9 +95,13 @@ public class GraphUpdate {
     public static BiFunction<Graph<Double, QueryPart>, Graph<Double, QueryPart>, Double> KLForGraphs() {
 
         return (g1, g2) -> {
+            Pair<INDArray, HashMap<QueryPart, Integer>> p1 = Graphs.toINDMatrix(g1);
+            Pair<INDArray, HashMap<QueryPart, Integer>> p2 = Graphs.toINDMatrix(g2);
 
+            HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(p1);
+            HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(p2);
 
-            return null;
+            return Nd4jUtils.kullbackLeibler(m1, m2);
         };
     }
 
