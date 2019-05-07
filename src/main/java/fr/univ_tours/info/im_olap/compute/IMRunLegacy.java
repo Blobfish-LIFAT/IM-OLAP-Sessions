@@ -3,7 +3,7 @@ package fr.univ_tours.info.im_olap.compute;
 import com.alexsxode.utilities.Nd4jUtils;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
-import fr.univ_tours.info.im_olap.model.LoadSessionsLegacy;
+import fr.univ_tours.info.im_olap.data.LoadSessionsLegacy;
 import fr.univ_tours.info.im_olap.model.QueryPart;
 import fr.univ_tours.info.im_olap.model.Session;
 import fr.univ_tours.info.im_olap.model.SessionGraph;
