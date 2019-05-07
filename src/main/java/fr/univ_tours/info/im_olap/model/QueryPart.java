@@ -18,7 +18,7 @@ public class QueryPart implements Comparable<QueryPart>{
 
     Type t;
     String value;
-    boolean isJson = false;
+    boolean filterIsJson = false;
 
     public QueryPart(Type t, String value) {
         this.t = t;
@@ -28,7 +28,7 @@ public class QueryPart implements Comparable<QueryPart>{
     public QueryPart(Type t, String value, boolean json) {
         this.t = t;
         this.value = value;
-        isJson = json;
+        filterIsJson = json;
     }
 
     public Optional<String> getHierarchy(){
@@ -64,12 +64,12 @@ public class QueryPart implements Comparable<QueryPart>{
             return this.value.compareTo(o.value);
     }
 
-    boolean isJson(){
-        return isJson;
+    boolean isFilterIsJson(){
+        return filterIsJson;
     }
 
-    public void setJson() {
-        isJson = true;
+    public void setFilterJson() {
+        filterIsJson = true;
     }
 
     @Override
