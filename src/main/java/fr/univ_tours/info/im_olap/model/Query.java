@@ -31,6 +31,13 @@ public class Query {
         return result;
     }
 
+    public HashSet<QueryPart> getAllParts() {
+        HashSet<QueryPart> allParts = new HashSet<>(this.getDimensions());
+        allParts.addAll(this.getFilters());
+        allParts.addAll(this.getMeasures());
+        return allParts;
+    }
+
     public Set<QueryPart> getDimensions() {
         return dimensions;
     }

@@ -4,10 +4,10 @@ import com.alexsxode.utilities.Nd4jUtils;
 import com.alexsxode.utilities.collection.Pair;
 import fr.univ_tours.info.im_olap.graph.Graph;
 import fr.univ_tours.info.im_olap.graph.Graphs;
+import fr.univ_tours.info.im_olap.graph.OGraph;
 import org.nd4j.linalg.api.ndarray.INDArray;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.function.BiFunction;
 
 public class GraphUpdate {
@@ -54,9 +54,22 @@ public class GraphUpdate {
 
     public static Graph<Double, QueryPart> simpleInterconnections(Session session, int actualQueryIndex) {
 
+        List<Query> queries = session.queries.subList(0, actualQueryIndex+1);
+
+        Set<QueryPart> parts = queries.stream().map(Query::getAllParts).reduce((x,y) -> {x.addAll(y); return x;} ).get();
+
+        ArrayList<QueryPart> partList = new ArrayList<>(parts);
+
+        OGraph<Double, QueryPart> graph = new OGraph<>();
+
+        for (int i = 0; i < partList.size(); i++) {
+            for (int j = i + 1; j < partList.size(); j++) {
+                graph.setEdge(partList.get(i), partList.get(j), 1.0);
+            }
+        }
 
 
-        return null;
+        return graph;
     }
 
     public static BiFunction<Session, Integer, Graph<Double, QueryPart>> alsoUseSchema(Graph<Double, QueryPart> schema, double schemaWeight) {
