@@ -2,6 +2,7 @@ package fr.univ_tours.info.im_olap.model;
 
 import com.alexsxode.utilities.Nd4jUtils;
 import com.alexsxode.utilities.collection.Pair;
+import fr.univ_tours.info.im_olap.compute.PageRank;
 import fr.univ_tours.info.im_olap.graph.Graph;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
@@ -108,11 +109,14 @@ public class GraphUpdate {
     public static BiFunction<Graph<Double, QueryPart>, Graph<Double, QueryPart>, Double> KLForGraphs() {
 
         return (g1, g2) -> {
-            Pair<INDArray, HashMap<QueryPart, Integer>> p1 = Graphs.toINDMatrix(g1);
-            Pair<INDArray, HashMap<QueryPart, Integer>> p2 = Graphs.toINDMatrix(g2);
+            Graph<Double, QueryPart> ng1 = g1.clone();
+            Graphs.normalizeWeightsi(ng1);
 
-            HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(p1);
-            HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(p2);
+            Graph<Double, QueryPart> ng2 = g2.clone();
+            Graphs.normalizeWeightsi(ng2);
+
+            HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(PageRank.pagerank(ng1, 50));
+            HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(PageRank.pagerank(ng2, 50));;
 
             return Nd4jUtils.kullbackLeibler(m1, m2);
         };
@@ -121,11 +125,14 @@ public class GraphUpdate {
 
     public static double absoluteDiff(Graph<Double, QueryPart> g1, Graph<Double, QueryPart> g2) {
 
-        Pair<INDArray, HashMap<QueryPart, Integer>> p1 = Graphs.toINDMatrix(g1);
-        Pair<INDArray, HashMap<QueryPart, Integer>> p2 = Graphs.toINDMatrix(g2);
+        Graph<Double, QueryPart> ng1 = g1.clone();
+        Graphs.normalizeWeightsi(ng1);
 
-        HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(p1);
-        HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(p2);
+        Graph<Double, QueryPart> ng2 = g2.clone();
+        Graphs.normalizeWeightsi(ng2);
+
+        HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(PageRank.pagerank(ng1, 50));
+        HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(PageRank.pagerank(ng2, 50));
 
         double diff = 0;
         for (Map.Entry<QueryPart, Double> entry : m1.entrySet()) {

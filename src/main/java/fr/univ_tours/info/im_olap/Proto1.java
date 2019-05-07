@@ -36,8 +36,15 @@ public class Proto1 {
         Graph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
 
 
-        List<Pair<Graph<Double, QueryPart>, Double>> liste =  GraphUpdate.SIMPLE_GRAPH_UPDATE.evaluateSession(base, s1);
-        System.out.println(liste);
+        GraphUpdate graphUpdate = new GraphUpdate(GraphUpdate::simpleInterconnections,
+                GraphUpdate::replaceEdges,
+                GraphUpdate.KLForGraphs());
+
+
+        List<Pair<Graph<Double, QueryPart>, Double>> liste =  graphUpdate.evaluateSession(base, s1);
+        liste.stream().forEach(p -> {
+            System.out.println("value : " + p.right);
+        });
 
     }
 
