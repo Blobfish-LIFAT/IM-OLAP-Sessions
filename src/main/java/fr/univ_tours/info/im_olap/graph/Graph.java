@@ -114,6 +114,10 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
      */
     void setEdge(N from, N to, E value);
 
+    default void setEdge(Edge<N, E> edge) {
+        this.setEdge(edge.from, edge.to, edge.value);
+    }
+
     default void removeEdge(N from, N to){
         this.safeComputeEdge(from, to, ignored -> Optional.empty());
     }
