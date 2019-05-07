@@ -21,6 +21,8 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     public void checkSync() throws IllegalStateException {
 
+        // check if all of the nodes edges are present with a value in edges
+
         for (Map.Entry<N, Pair<TreeSet<N>, TreeSet<N>>> entry : nodes.entrySet()) {
 
             for (N from : entry.getValue().left ) {
@@ -50,15 +52,19 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
         }
 
+        // check if all of the edges have values and their nodes are correctly set in nodes
+
         for (Map.Entry<Pair<N,N>, E> entry : edges.entrySet()) {
 
             if (entry.getValue() == null) {
+                System.err.println("An edge value is null");
                 throw new IllegalStateException();
             }
 
             if (!nodes.containsKey(entry.getKey().left)) {
                 throw new IllegalStateException();
             }
+
             if (!nodes.containsKey(entry.getKey().right)) {
                 throw new IllegalStateException();
             }
