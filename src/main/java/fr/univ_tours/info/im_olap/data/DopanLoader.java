@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,11 +19,11 @@ import java.util.stream.Collectors;
 public class DopanLoader {
     static Gson gson = new Gson();
 
-    public static Session loadFile(String path){
+    public static Session loadFile(Path path){
         try {
-            String src = new String(Files.readAllBytes(Paths.get(path)));
+            String src = new String(Files.readAllBytes(path));
             DopanSession in = gson.fromJson(src, DopanSession.class);
-            Session out = new Session(new ArrayList<>(), "USER", Paths.get(path).getFileName().toString());
+            Session out = new Session(new ArrayList<>(), "USER", path.getFileName().toString());
             out.setCubeName(in.getQueries().get(0).getCubeName());
             out.setUserName(in.getUser());
 
@@ -44,7 +45,7 @@ public class DopanLoader {
             System.err.printf("Warning '%s' is not a valid directory !", path);
         }
         try {
-            return Files.walk(Paths.get(path)).filter(p -> p.toFile().isFile()).map(LoadSessionsLegacy::loadSession).sorted(Comparator.comparing(Session::getFilename)).collect(Collectors.toList());
+            return Files.walk(Paths.get(path)).filter(p -> p.toFile().isFile()).map(DopanLoader::loadFile).sorted(Comparator.comparing(Session::getFilename)).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
