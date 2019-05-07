@@ -12,7 +12,7 @@ import java.util.function.BiFunction;
 
 public class GraphUpdate {
 
-    public final GraphUpdate SIMPLE_GRAPH_UPDATE = new GraphUpdate(
+    public final static GraphUpdate SIMPLE_GRAPH_UPDATE = new GraphUpdate(
             GraphUpdate::simpleInterconnections,
             GraphUpdate::replaceEdges,
             GraphUpdate.KLForGraphs()
