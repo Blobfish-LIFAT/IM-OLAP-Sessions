@@ -1,0 +1,84 @@
+{
+  "user": {
+    "id": "dibstudent06",
+    "name": "Clement",
+    "group": "groupe 2"
+  },
+  "cube": "Cube chauffage",
+  "title": "Analyse logements par diverses critères",
+  "comment": null,
+  "queries": [
+    {
+      "id": 86919,
+      "query": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:30:12,629",
+      "duration": 250
+    },
+    {
+      "id": 86959,
+      "query": "select NON EMPTY {Hierarchize({[Type de construction du logement.LOGT_TYPECONSTR_Hierarchie_1].[Type de construction].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:30:26,223",
+      "duration": 297
+    },
+    {
+      "id": 87003,
+      "query": "select NON EMPTY Crossjoin([Type de construction du logement.LOGT_TYPECONSTR_Hierarchie_1].[Type de construction].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:30:40,614",
+      "duration": 812
+    },
+    {
+      "id": 87103,
+      "query": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:30:42,864",
+      "duration": 78
+    },
+    {
+      "id": 87202,
+      "query": "select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:31:13,098",
+      "duration": 234
+    },
+    {
+      "id": 87243,
+      "query": "select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:31:26,239",
+      "duration": 203
+    },
+    {
+      "id": 90891,
+      "query": "select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS, NON EMPTY Crossjoin([Niveau d'instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:33:33,223",
+      "duration": 875
+    },
+    {
+      "id": 90972,
+      "query": "select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:33:35,348",
+      "duration": 187
+    },
+    {
+      "id": 91946,
+      "query": "select NON EMPTY {Hierarchize({[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:36:28,614",
+      "duration": 171
+    },
+    {
+      "id": 91985,
+      "query": "select NON EMPTY {Hierarchize({[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:36:41,676",
+      "duration": 188
+    },
+    {
+      "id": 92057,
+      "query": "select NON EMPTY {Hierarchize({[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:36:51,864",
+      "duration": 250
+    },
+    {
+      "id": 92403,
+      "query": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube4Chauffage]",
+      "datetime": "2016-09-25 22:37:56,254",
+      "duration": 203
+    }
+  ]
+}

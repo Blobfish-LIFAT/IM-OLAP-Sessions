@@ -1,0 +1,84 @@
+{
+  "user": {
+    "id": "dibstudent03",
+    "name": "Ophelie",
+    "group": "groupe1"
+  },
+  "cube": "Cube mobpro",
+  "title": "Analyse des individus par type de menage",
+  "comment": null,
+  "queries": [
+    {
+      "id": 68855,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:37:39,725",
+      "duration": 16
+    },
+    {
+      "id": 68898,
+      "query": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Nombre de personnes scolarisees de plus de 14 ans (max)]}) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:37:52,803",
+      "duration": 156
+    },
+    {
+      "id": 68923,
+      "query": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:38:11,319",
+      "duration": 15
+    },
+    {
+      "id": 68966,
+      "query": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:38:22,303",
+      "duration": 250
+    },
+    {
+      "id": 68999,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}), Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Duree trajet domicile - travail (moyenne)]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:40:04,022",
+      "duration": 250
+    },
+    {
+      "id": 69033,
+      "query": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:40:21,381",
+      "duration": 47
+    },
+    {
+      "id": 69065,
+      "query": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}) ON COLUMNS, NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:40:29,522",
+      "duration": 453
+    },
+    {
+      "id": 69138,
+      "query": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]})) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:40:34,491",
+      "duration": 203
+    },
+    {
+      "id": 69212,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]})), Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Nombre total d'individus]})))) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:41:03,272",
+      "duration": 156
+    },
+    {
+      "id": 69330,
+      "query": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Nombre total d'individus]})) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:41:04,866",
+      "duration": 62
+    },
+    {
+      "id": 69353,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Nombre total d'individus]})), Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]})))) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:41:14,709",
+      "duration": 94
+    },
+    {
+      "id": 69471,
+      "query": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Nombre total d'individus]})) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 17:41:48,631",
+      "duration": 63
+    }
+  ]
+}

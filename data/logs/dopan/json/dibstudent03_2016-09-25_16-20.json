@@ -1,0 +1,300 @@
+{
+  "user": {
+    "id": "dibstudent03",
+    "name": "Ophelie",
+    "group": "groupe1"
+  },
+  "cube": "Cube mobpro",
+  "title": "Temps d'emploi en fonction du sexe et de la categorie socio-prof",
+  "comment": "Analyse 3 listé par l'étudiant",
+  "queries": [
+    {
+      "id": 66242,
+      "query": "select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:09,484",
+      "duration": 94
+    },
+    {
+      "id": 66278,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:12,124",
+      "duration": 32
+    },
+    {
+      "id": 66291,
+      "query": "select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:14,171",
+      "duration": 16
+    },
+    {
+      "id": 66308,
+      "query": "select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:29,531",
+      "duration": 47
+    },
+    {
+      "id": 66324,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:31,687",
+      "duration": 94
+    },
+    {
+      "id": 66340,
+      "query": "select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Measures].[Nombre total d'individus]}, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:33,140",
+      "duration": 109
+    },
+    {
+      "id": 66360,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[tous les temps confondus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:51,562",
+      "duration": 16
+    },
+    {
+      "id": 66378,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({{[Temps d'emploi.TEMPSEMP_Hierarchie].[tous les temps confondus]}, {[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:53,999",
+      "duration": 16
+    },
+    {
+      "id": 66394,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:55,124",
+      "duration": 16
+    },
+    {
+      "id": 66412,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:20:56,999",
+      "duration": 141
+    },
+    {
+      "id": 66440,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:21:03,640",
+      "duration": 422
+    },
+    {
+      "id": 66520,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:21:07,828",
+      "duration": 125
+    },
+    {
+      "id": 66536,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:21:13,015",
+      "duration": 0
+    },
+    {
+      "id": 66616,
+      "query": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, {[Measures].[Nombre total d'individus]})) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:21:17,499",
+      "duration": 125
+    },
+    {
+      "id": 66632,
+      "query": "select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:21:19,015",
+      "duration": 188
+    },
+    {
+      "id": 66648,
+      "query": "select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:21:21,296",
+      "duration": 235
+    },
+    {
+      "id": 66728,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:21:24,421",
+      "duration": 16
+    },
+    {
+      "id": 66808,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:22:00,531",
+      "duration": 218
+    },
+    {
+      "id": 66824,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:22:33,515",
+      "duration": 234
+    },
+    {
+      "id": 66904,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:22:47,531",
+      "duration": 203
+    },
+    {
+      "id": 66920,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:22:58,156",
+      "duration": 15
+    },
+    {
+      "id": 66933,
+      "query": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:22:59,968",
+      "duration": 16
+    },
+    {
+      "id": 66946,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:01,312",
+      "duration": 0
+    },
+    {
+      "id": 66974,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:19,390",
+      "duration": 125
+    },
+    {
+      "id": 66990,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:21,953",
+      "duration": 406
+    },
+    {
+      "id": 67122,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:25,921",
+      "duration": 203
+    },
+    {
+      "id": 67141,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 3].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:27,390",
+      "duration": 625
+    },
+    {
+      "id": 67765,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:30,093",
+      "duration": 313
+    },
+    {
+      "id": 67845,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:37,062",
+      "duration": 16
+    },
+    {
+      "id": 67925,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:37,953",
+      "duration": 15
+    },
+    {
+      "id": 68005,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:39,046",
+      "duration": 16
+    },
+    {
+      "id": 68085,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:41,624",
+      "duration": 47
+    },
+    {
+      "id": 68101,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:23:44,546",
+      "duration": 16
+    },
+    {
+      "id": 68181,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:24:07,374",
+      "duration": 125
+    },
+    {
+      "id": 68217,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:24:13,343",
+      "duration": 16
+    },
+    {
+      "id": 68253,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:24:14,828",
+      "duration": 31
+    },
+    {
+      "id": 68289,
+      "query": "select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:24:16,812",
+      "duration": 31
+    },
+    {
+      "id": 68302,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:24:18,703",
+      "duration": 203
+    },
+    {
+      "id": 68338,
+      "query": "select NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:24:20,015",
+      "duration": 47
+    },
+    {
+      "id": 68351,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:24:21,921",
+      "duration": 16
+    },
+    {
+      "id": 68387,
+      "query": "select NON EMPTY {Hierarchize({[Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members})} ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:24:48,156",
+      "duration": 15
+    },
+    {
+      "id": 68400,
+      "query": "select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:24:49,531",
+      "duration": 15
+    },
+    {
+      "id": 68440,
+      "query": "select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:25:00,906",
+      "duration": 172
+    },
+    {
+      "id": 68456,
+      "query": "select NON EMPTY Crossjoin([Nature l'activite economique.NATACTECO_Hierarchie].[Nature de l'activite].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:25:02,281",
+      "duration": 15
+    },
+    {
+      "id": 68575,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)), Union(Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)), Union(Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)), Union(Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Construction]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)), Crossjoin({[Nature l'activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members))))))) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:25:30,562",
+      "duration": 406
+    },
+    {
+      "id": 68655,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:27:08,687",
+      "duration": 172
+    },
+    {
+      "id": 68683,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members) ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:27:12,093",
+      "duration": 188
+    },
+    {
+      "id": 68699,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, [Temps d'emploi.TEMPSEMP_Hierarchie].[Temps d'emploi].Members)) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-25 16:27:14,093",
+      "duration": 453
+    }
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "user": {
+    "id": "dibstudent04",
+    "name": "Willeme",
+    "group": "groupe1"
+  },
+  "cube": "Cube mobpro",
+  "title": "Analyse des trajets par diverses criteres",
+  "comment": null,
+  "queries": [
+    {
+      "id": 5426,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[tous les sexes confondus]})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:38:48,552",
+      "duration": 79
+    },
+    {
+      "id": 5473,
+      "query": "select NON EMPTY Order({Hierarchize({{[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}, {[Sexe.Sexe_Hierarchie].[Sexe].Members}})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:38:58,021",
+      "duration": 156
+    },
+    {
+      "id": 5517,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:39:03,459",
+      "duration": 15
+    },
+    {
+      "id": 5560,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({{[Type de logement.TYPLOGT_Hierarchie].[Type regroupe].Members}, {[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:39:24,849",
+      "duration": 16
+    },
+    {
+      "id": 5622,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type regroupe].Members, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members))) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:39:36,849",
+      "duration": 453
+    },
+    {
+      "id": 5750,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type regroupe].Members, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:41:22,537",
+      "duration": 31
+    },
+    {
+      "id": 5812,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:41:26,146",
+      "duration": 31
+    },
+    {
+      "id": 5852,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({{[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, [Type de menage.TYPMEN_Hierarchie].[Ménages d'une personne seule sans famille].Children}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:42:02,974",
+      "duration": 63
+    },
+    {
+      "id": 5868,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Ménages d'une personne seule sans famille]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:42:13,756",
+      "duration": 15
+    },
+    {
+      "id": 5888,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({{[Type de menage.TYPMEN_Hierarchie].[Ménages d'une personne seule sans famille]}, Filter({{[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members}}, (Exists({Ancestor([Type de menage.TYPMEN_Hierarchie].CurrentMember, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories])}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d'une personne seule sans famille]}).Count > 0))})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:42:18,959",
+      "duration": 31
+    },
+    {
+      "id": 5906,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({{[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members}, {[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:42:22,271",
+      "duration": 125
+    },
+    {
+      "id": 5932,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({{[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members}, {[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:43:02,037",
+      "duration": 406
+    },
+    {
+      "id": 5957,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({{[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members}, {[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:43:10,146",
+      "duration": 16
+    },
+    {
+      "id": 5981,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:43:24,115",
+      "duration": 16
+    },
+    {
+      "id": 5997,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:43:35,271",
+      "duration": 594
+    },
+    {
+      "id": 6011,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:43:37,412",
+      "duration": 78
+    },
+    {
+      "id": 6035,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:44:13,256",
+      "duration": 15
+    },
+    {
+      "id": 6047,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:44:15,537",
+      "duration": 15
+    },
+    {
+      "id": 6059,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:44:17,271",
+      "duration": 16
+    },
+    {
+      "id": 6077,
+      "query": "select NON EMPTY Order({Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})}, [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:44:51,849",
+      "duration": 16
+    },
+    {
+      "id": 6091,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Sexe.Sexe_Hierarchie].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:45:07,318",
+      "duration": 16
+    },
+    {
+      "id": 6103,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:45:10,506",
+      "duration": 31
+    },
+    {
+      "id": 6115,
+      "query": "select NON EMPTY Order(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:45:12,099",
+      "duration": 16
+    },
+    {
+      "id": 6143,
+      "query": "select NON EMPTY Order(Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BDESC) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:45:28,677",
+      "duration": 141
+    },
+    {
+      "id": 6157,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:46:42,521",
+      "duration": 16
+    },
+    {
+      "id": 6171,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:46:44,146",
+      "duration": 16
+    },
+    {
+      "id": 6193,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:46:58,131",
+      "duration": 15
+    },
+    {
+      "id": 6213,
+      "query": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members)), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members)))) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:47:36,552",
+      "duration": 282
+    },
+    {
+      "id": 6228,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:47:38,771",
+      "duration": 297
+    },
+    {
+      "id": 6246,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:47:56,506",
+      "duration": 15
+    },
+    {
+      "id": 6256,
+      "query": "select NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:48:05,521",
+      "duration": 110
+    },
+    {
+      "id": 6264,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:48:11,693",
+      "duration": 16
+    },
+    {
+      "id": 6276,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:50:32,568",
+      "duration": 516
+    },
+    {
+      "id": 6294,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:51:00,646",
+      "duration": 31
+    },
+    {
+      "id": 6304,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:51:04,615",
+      "duration": 16
+    },
+    {
+      "id": 6316,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:51:06,646",
+      "duration": 781
+    },
+    {
+      "id": 6334,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:51:56,271",
+      "duration": 78
+    },
+    {
+      "id": 6344,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:52:00,256",
+      "duration": 15
+    },
+    {
+      "id": 6356,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 14:52:24,162",
+      "duration": 890
+    },
+    {
+      "id": 6375,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:02:50,568",
+      "duration": 94
+    },
+    {
+      "id": 6402,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Pays].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:13:18,277",
+      "duration": 172
+    },
+    {
+      "id": 6412,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:13:43,777",
+      "duration": 16
+    },
+    {
+      "id": 6423,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd] where {[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members}",
+      "datetime": "2016-09-20 15:14:48,105",
+      "duration": 156
+    },
+    {
+      "id": 6433,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:15:18,418",
+      "duration": 46
+    },
+    {
+      "id": 6443,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd] where {[Measures].[Nombre total d'individus]}",
+      "datetime": "2016-09-20 15:15:20,261",
+      "duration": 16
+    },
+    {
+      "id": 6464,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd] where {[Measures].[Nombre total d'individus]}",
+      "datetime": "2016-09-20 15:15:48,496",
+      "duration": 15
+    },
+    {
+      "id": 6474,
+      "query": "select NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:17:14,668",
+      "duration": 31
+    },
+    {
+      "id": 6484,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd] where {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}",
+      "datetime": "2016-09-20 15:17:18,011",
+      "duration": 47
+    },
+    {
+      "id": 6494,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})} ON ROWS from [Cube1MobProInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members}",
+      "datetime": "2016-09-20 15:17:21,386",
+      "duration": 32
+    },
+    {
+      "id": 6504,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:18:45,199",
+      "duration": 47
+    },
+    {
+      "id": 6514,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd] where {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}",
+      "datetime": "2016-09-20 15:18:47,746",
+      "duration": 15
+    },
+    {
+      "id": 6524,
+      "query": "select NON EMPTY Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:18:57,214",
+      "duration": 16
+    },
+    {
+      "id": 6534,
+      "query": "select NON EMPTY Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:19:00,136",
+      "duration": 32
+    },
+    {
+      "id": 6544,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})} ON COLUMNS, NON EMPTY Crossjoin({[Measures].[Nombre total d'individus]}, [Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:19:01,793",
+      "duration": 15
+    },
+    {
+      "id": 6554,
+      "query": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})} ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd] where {[Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members}",
+      "datetime": "2016-09-20 15:19:03,199",
+      "duration": 0
+    },
+    {
+      "id": 6564,
+      "query": "select NON EMPTY Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:19:09,511",
+      "duration": 16
+    },
+    {
+      "id": 6576,
+      "query": "select NON EMPTY Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:24:39,486",
+      "duration": 16
+    },
+    {
+      "id": 6586,
+      "query": "select NON EMPTY Crossjoin([Niveau d'instruction.Niveau_Instruction_Hierarchie].[Niveau d'instruction].Members, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-20 15:24:42,206",
+      "duration": 15
+    }
+  ]
+}

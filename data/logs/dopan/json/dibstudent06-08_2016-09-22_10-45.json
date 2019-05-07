@@ -1,0 +1,96 @@
+{
+  "user": {
+    "id": "dibstudent06 et dibstudent08",
+    "name": "Clement et Christopher",
+    "group": "groupe2"
+  },
+  "cube": "Cube mobpro",
+  "title": "Analyse du nombre d'individus par sexe",
+  "comment": "Obs: Il s'agit d'un seul analyse, les étudiants ayant probablement travaillé ensemble",
+  "queries": [
+    {
+      "id": 19720,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[tous les sexes confondus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:45:55,651",
+      "duration": 31
+    },
+    {
+      "id": 19741,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({{[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}, {[Sexe.Sexe_Hierarchie].[Sexe].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:45:59,714",
+      "duration": 46
+    },
+    {
+      "id": 19768,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({{[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}, {[Sexe.Sexe_Hierarchie].[Sexe].Members}})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:46:03,948",
+      "duration": 31
+    },
+    {
+      "id": 19783,
+      "query": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d'individus]}) ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:46:06,307",
+      "duration": 32
+    },
+    {
+      "id": 19796,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:46:14,714",
+      "duration": 0
+    },
+    {
+      "id": 19814,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:46:25,542",
+      "duration": 78
+    },
+    {
+      "id": 19842,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:46:56,448",
+      "duration": 484
+    },
+    {
+      "id": 23201,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:47:01,120",
+      "duration": 15
+    },
+    {
+      "id": 23229,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:47:04,120",
+      "duration": 375
+    },
+    {
+      "id": 23453,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:47:28,464",
+      "duration": 31
+    },
+    {
+      "id": 23677,
+      "query": "select Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS, {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:47:35,573",
+      "duration": 156
+    },
+    {
+      "id": 25953,
+      "query": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS, NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:47:41,698",
+      "duration": 16
+    },
+    {
+      "id": 26177,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:47:43,901",
+      "duration": 16
+    },
+    {
+      "id": 26412,
+      "query": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d'individus]})} ON COLUMNS, NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d'emploi.STATEMPL_Hierarchie].[Statut d'emploi de niveau 1].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})) ON ROWS from [Cube1MobProInd]",
+      "datetime": "2016-09-22 10:48:12,448",
+      "duration": 344
+    }
+  ]
+}

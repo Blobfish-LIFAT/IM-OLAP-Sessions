@@ -1,0 +1,1443 @@
+{
+  "user": "dibstudent07",
+  "id": "dibstudent07--2016-09-24--22-42.log",
+  "cubeFile": "res/cubeSchemas/DOPAN_DW3.xml",
+  "len": 47,
+  "queries": [
+    {
+      "id": 25,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 26,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre de personnes scolarisees des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 27,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 28,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 29,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 30,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 31,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 32,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 33,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre de personnes des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 34,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre de personnes des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": [
+        {
+          "level": "[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence]",
+          "value": "BLOIS"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre de personnes des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": [
+        {
+          "level": "[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence]",
+          "value": "BLOIS"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Nombre de personnes des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Classe d\u0027ages revolus]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": [
+        {
+          "level": "[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+          "value": "Employés"
+        },
+        {
+          "level": "[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence]",
+          "value": "BLOIS"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Sexe]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 38,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Sexe]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 39,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Sexe]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 40,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Sexe]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 41,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[CSP1]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 42,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 43,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 44,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": [
+        {
+          "level": "[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+          "value": "Ménages d\u0027une personne seule sans famille"
+        },
+        {
+          "level": "[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+          "value": "Ménages de plusieurs personnes sans famille"
+        },
+        {
+          "level": "[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+          "value": "Ménages avec famille principale composée d\u0027un couple"
+        },
+        {
+          "level": "[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+          "value": "Ménages avec famille principale monoparentale"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": [
+        {
+          "level": "[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+          "value": "Ménages d\u0027une personne seule sans famille"
+        },
+        {
+          "level": "[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+          "value": "Ménages de plusieurs personnes sans famille"
+        },
+        {
+          "level": "[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+          "value": "Ménages avec famille principale composée d\u0027un couple"
+        },
+        {
+          "level": "[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories]",
+          "value": "Ménages avec famille principale monoparentale"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 47,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Categorie]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 48,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Categorie]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 49,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 50,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 51,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 52,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 53,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 54,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Sexe]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 55,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Sexe]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 56,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 57,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 58,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": [
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Logé gratuitement"
+        },
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Locataire ou sous-locataire d\u0027un logement loué meublé ou d\u0027une chambre d\u0027hôtel"
+        },
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Locataire ou sous-locataire d\u0027un logement loué vide non HLM"
+        },
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Propriétaire"
+        },
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Locataire ou sous-locataire d\u0027un logement loué vide HLM"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": [
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Logé gratuitement"
+        },
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Locataire ou sous-locataire d\u0027un logement loué meublé ou d\u0027une chambre d\u0027hôtel"
+        },
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Locataire ou sous-locataire d\u0027un logement loué vide non HLM"
+        },
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Propriétaire"
+        },
+        {
+          "level": "[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation]",
+          "value": "Locataire ou sous-locataire d\u0027un logement loué vide HLM"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 61,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 62,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 63,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre total d\u0027individus]",
+        "[Measures].[Nombre de voitures des menages (moyenne)]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 64,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 65,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 66,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 67,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 68,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Departement]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 69,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Departement]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 70,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Departement]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Departement]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    },
+    {
+      "id": 71,
+      "cubeName": "Cube2MobScoInd",
+      "measures": [
+        "[Measures].[Distance trajet domicile - etudes (moyenne)]",
+        "[Measures].[Nombre total d\u0027individus]"
+      ],
+      "groupBySet": [
+        "[Mode de transport].[Mode de transport.MODTRANS_Hierarchie].[Mode de transport.MODTRANS_Hierarchie].[Tout]",
+        "[Motif de deplacement].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence.CNERES_Hierarchie_administrative].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence.CNERES_Hierarchie_intercommunale].[Tout]",
+        "[Sexe].[Sexe.Sexe_Hierarchie].[Sexe.Sexe_Hierarchie].[Tout]",
+        "[Type de menage].[Type de menage.TYPMEN_Hierarchie].[Type de menage.TYPMEN_Hierarchie].[Tout]",
+        "[Commune de residence].[Commune de residence.CNERES_Hierarchie_depense].[Commune de residence.CNERES_Hierarchie_depense].[Tout]",
+        "[Statut d\u0027occupation du logement].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Tout]",
+        "[Lien avec la personne de reference].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Lien avec la personne de reference.LPRM_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027etudes.CNELOCC_Hierarchie_intercommunale].[Tout]",
+        "[Annee du recensement].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee du recensement.Annee_rencesement_Hierarchie_1].[Tout]",
+        "[Indicateur de lieu d\u0027etudes].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Indicateur de lieu d\u0027etudes.ILOCC_Hierarchie_1].[Tout]",
+        "[Age revolu en 10 classes].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Age revolu en 10 classes.AgeRev10_Hierarchie_1].[Tout]",
+        "[Niveau de motorisation du menage].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Tout]",
+        "[Categorie socioprofessionnelle de la personne de reference].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Categorie socioprofessionnelle de la personne de reference.CSP_Hierarchie_1].[Tout]",
+        "[Commune d\u0027etudes].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Commune d\u0027etudes.CNELOCC_Hierarchie_administrative].[Departement]",
+        "[Niveau d\u0027instruction].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Tout]"
+      ],
+      "selection": []
+    }
+  ]
+}
