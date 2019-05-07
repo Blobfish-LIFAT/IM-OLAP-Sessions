@@ -1,5 +1,7 @@
 package fr.univ_tours.info.im_olap.graph;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -82,6 +84,11 @@ public class NOGraph<E extends Comparable<E>, N extends Comparable<N>> implement
 		}
 
 		this.hashMap.put(new CPair<>(node1, node2), value);
+	}
+
+	@Override
+	public void removeNodeEdgesKeepNode(N node) {
+		throw new NotImplementedException();
 	}
 
 	@Override
