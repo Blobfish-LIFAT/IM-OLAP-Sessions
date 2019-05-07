@@ -1,12 +1,16 @@
 package fr.univ_tours.info.im_olap;
 
+import com.alexsxode.utilities.collection.Pair;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
+import fr.univ_tours.info.im_olap.graph.Graph;
+import fr.univ_tours.info.im_olap.graph.OGraph;
+import fr.univ_tours.info.im_olap.model.GraphUpdate;
+import fr.univ_tours.info.im_olap.model.QueryPart;
 import fr.univ_tours.info.im_olap.model.Session;
-import org.olap4j.mdx.ParseTreeNode;
-import org.olap4j.mdx.parser.*;
-import org.olap4j.mdx.parser.impl.DefaultMdxParserImpl;
+import fr.univ_tours.info.im_olap.model.SessionGraph;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Proto1 {
     // I know you don't like static variables but it's easier for now since type are not set yet
@@ -23,9 +27,17 @@ public class Proto1 {
 
         //Session test = DopanLoader.loadFile("/home/alex/IdeaProjects/IM-OLAP-Sessions/data/logs/dopan_converted/dibstudent03--2016-09-25--15-56.log.json");
 
-        String qex = "SELECT NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Type d'activite du referent.REF_TYPACT_Hierarchie_1].[Type d'actvite].Members})} ON ROWS from [Cube4Chauffage];";
-
         List<Session> sessions = DopanLoader.loadDir(dataDir);
+
+        Session s1 = sessions.get(0);
+        List<Session> thisUser = sessions.stream().filter(s -> s.getUserName().equals(s1.getUserName())).collect(Collectors.toList());
+        thisUser.remove(s1);
+
+        Graph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
+
+
+        List<Pair<Graph<Double, QueryPart>, Double>> liste =  GraphUpdate.SIMPLE_GRAPH_UPDATE.evaluateSession(base, s1);
+        System.out.println(liste);
 
     }
 
