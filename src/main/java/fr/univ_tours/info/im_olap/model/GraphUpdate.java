@@ -119,4 +119,23 @@ public class GraphUpdate {
     }
 
 
+    public static double absoluteDiff(Graph<Double, QueryPart> g1, Graph<Double, QueryPart> g2) {
+
+        Pair<INDArray, HashMap<QueryPart, Integer>> p1 = Graphs.toINDMatrix(g1);
+        Pair<INDArray, HashMap<QueryPart, Integer>> p2 = Graphs.toINDMatrix(g2);
+
+        HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(p1);
+        HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(p2);
+
+        double diff = 0;
+        for (Map.Entry<QueryPart, Double> entry : m1.entrySet()) {
+
+            diff += Math.abs(entry.getValue() - m2.get(entry.getKey()));
+
+        }
+
+        return diff;
+    }
+
+
 }
