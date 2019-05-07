@@ -84,9 +84,16 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     @Override
     public Graph<E, N> clone() {
 
-        OGraph<E,N> graph = new OGraph();
+        OGraph<E,N> graph = new OGraph<>();
 
-        graph.nodes = new TreeMap<>(this.nodes);
+        graph.nodes = new TreeMap<>();
+
+        // deepcopy
+
+        this.nodes.forEach((key, value) -> {
+            graph.nodes.put(key, new Pair<>(new TreeSet<>(value.left), new TreeSet<>(value.right)));
+        });
+
         graph.edges = new HashMap<>(this.edges);
 
         return graph;
