@@ -11,6 +11,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class DopanLoader {
@@ -22,6 +24,7 @@ public class DopanLoader {
             DopanSession in = gson.fromJson(src, DopanSession.class);
             Session out = new Session(new ArrayList<>(), "USER", Paths.get(path).getFileName().toString());
             out.setCubeName(in.getQueries().get(0).getCubeName());
+            out.setUserName(in.getUser());
 
             for (DopanQuery q : in.getQueries()){
                 Query qnew = new Query();
@@ -33,6 +36,18 @@ public class DopanLoader {
             return out;
         } catch (IOException e) {
             return new Session(new ArrayList<>(), "ERROR", "NOT FOUND");
+        }
+    }
+
+    public static List<Session> loadDir(String path){
+        if (!Files.isDirectory(Paths.get(path))){
+            System.err.printf("Warning '%s' is not a valid directory !", path);
+        }
+        try {
+            return Files.walk(Paths.get(path)).filter(p -> p.toFile().isFile()).map(LoadSessionsLegacy::loadSession).sorted(Comparator.comparing(Session::getFilename)).collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 }
