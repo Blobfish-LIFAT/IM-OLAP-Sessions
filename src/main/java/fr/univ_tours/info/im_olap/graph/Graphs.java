@@ -108,6 +108,30 @@ public final class Graphs {
         return graph.toNode(n).stream().mapToDouble(x -> x.getB()).sum();
     }
 
+    /**
+     * /!\ Mutates input graph
+     * Normalize weights on all outgoing edges for each node
+     * @param graph graph to be normalized
+     * @param <N> type of nodes
+     * @return reference to the input graph
+     */
+    public static <N extends Comparable<N>> Graph<Double, N> normalizeWeightsi(Graph<Double, N> graph) {
+
+        for (N node : graph.getNodes()) {
+
+            List<CPair<N, Double>> targets = graph.fromNode(node);
+
+            double weightSum = targets.stream().mapToDouble(x -> x.right).sum();
+
+            for (CPair<N, Double> cPair : targets) {
+                graph.setEdge(node, cPair.left, cPair.right/weightSum);
+            }
+
+        }
+
+        return graph;
+    }
+
     public static <N extends Comparable<N>> INDArray toDegreeMatrix(Graph<Double, N> graph){
         List<N> nodes = new ArrayList<>();
         nodes.addAll(graph.getNodes());
