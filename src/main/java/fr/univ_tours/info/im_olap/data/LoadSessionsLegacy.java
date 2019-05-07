@@ -1,6 +1,9 @@
-package fr.univ_tours.info.im_olap.model;
+package fr.univ_tours.info.im_olap.data;
 
+import fr.univ_tours.info.im_olap.model.Query;
+import fr.univ_tours.info.im_olap.model.QueryPart;
 import fr.univ_tours.info.im_olap.model.QueryPart.Type;
+import fr.univ_tours.info.im_olap.model.Session;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,7 +22,7 @@ public class LoadSessionsLegacy {
             System.err.printf("Warning '%s' is not a valid directory !", path);
         }
         try {
-            return Files.walk(Paths.get(path)).filter(p -> p.toFile().isFile()).map(LoadSessionsLegacy::loadSession).sorted(Comparator.comparing(a -> a.filename)).collect(Collectors.toList());
+            return Files.walk(Paths.get(path)).filter(p -> p.toFile().isFile()).map(LoadSessionsLegacy::loadSession).sorted(Comparator.comparing(a -> a.getFilename())).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
@@ -48,15 +51,15 @@ public class LoadSessionsLegacy {
                     q = new Query();
                 } else if (n == 2){
                     for (String dimension : line.split(", "))
-                        q.dimensions.add(new QueryPart(Type.DIMENSION, dimension));
+                        q.getDimensions().add(new QueryPart(Type.DIMENSION, dimension));
                 } else if (n == 3){
                     for (String filter : line.split(", ")) {
                         if (!filter.equals(""))
-                            q.filters.add(new QueryPart(Type.FILTER, filter));
+                            q.getFilters().add(new QueryPart(Type.FILTER, filter));
                     }
                 } else if (n == 4){
                     for (String measure : line.split(", "))
-                        q.measures.add(new QueryPart(Type.MEASURE, measure));
+                        q.getMeasures().add(new QueryPart(Type.MEASURE, measure));
                 } else if (n == 5){
                     if (current == null)
                         System.out.println("debug");

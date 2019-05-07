@@ -1,5 +1,7 @@
 package fr.univ_tours.info.im_olap;
 
+import fr.univ_tours.info.im_olap.data.DopanLoader;
+import fr.univ_tours.info.im_olap.model.Session;
 import org.olap4j.mdx.ParseTreeNode;
 import org.olap4j.mdx.parser.*;
 import org.olap4j.mdx.parser.impl.DefaultMdxParserImpl;
@@ -15,6 +17,8 @@ public class Proto1 {
 
         String path = "data/";
         loadSessions(path);
+
+        Session test = DopanLoader.loadFile("/home/alex/IdeaProjects/IM-OLAP-Sessions/data/logs/dopan_converted/dibstudent03--2016-09-25--15-56.log.json");
 
         String qex = "SELECT NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS, NON EMPTY {Hierarchize({[Type d'activite du referent.REF_TYPACT_Hierarchie_1].[Type d'actvite].Members})} ON ROWS from [Cube4Chauffage];";
 

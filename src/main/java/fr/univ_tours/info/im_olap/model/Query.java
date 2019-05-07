@@ -7,7 +7,7 @@ public class Query {
     Set<QueryPart> filters;
     Set<QueryPart> measures;
 
-    Query(){
+    public Query(){
         dimensions = new HashSet<>();
         filters = new HashSet<>();
         measures = new HashSet<>();
@@ -29,6 +29,30 @@ public class Query {
             result[i++] = p;
         }
         return result;
+    }
+
+    public Set<QueryPart> getDimensions() {
+        return dimensions;
+    }
+
+    public void setDimensions(Set<QueryPart> dimensions) {
+        this.dimensions = dimensions;
+    }
+
+    public Set<QueryPart> getFilters() {
+        return filters;
+    }
+
+    public void setFilters(Set<QueryPart> filters) {
+        this.filters = filters;
+    }
+
+    public Set<QueryPart> getMeasures() {
+        return measures;
+    }
+
+    public void setMeasures(Set<QueryPart> measures) {
+        this.measures = measures;
     }
 
     @Override

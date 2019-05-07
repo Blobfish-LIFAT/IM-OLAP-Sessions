@@ -8,6 +8,7 @@ public class Session {
     public List<Query> queries;
     String type;
     String filename; //this is needed to keep consistent ordering of sessions accross systems
+    String cubeName = "UNKNOWN";
 
     public Session(List<Query> queries, String type, String filename) {
         this.queries = queries;
@@ -25,6 +26,14 @@ public class Session {
 
     public String getFilename() {
         return filename;
+    }
+
+    public String getCubeName() {
+        return cubeName;
+    }
+
+    public void setCubeName(String cubeName) {
+        this.cubeName = cubeName;
     }
 
     public List<QueryPart> allParts(){

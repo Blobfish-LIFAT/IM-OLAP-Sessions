@@ -1,5 +1,6 @@
 package fr.univ_tours.info.im_olap.compute;
 
+import fr.univ_tours.info.im_olap.data.LoadSessionsLegacy;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.model.*;
