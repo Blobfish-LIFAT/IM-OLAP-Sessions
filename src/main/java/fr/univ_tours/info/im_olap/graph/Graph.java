@@ -69,6 +69,8 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
         }
     }
 
+    Graph<E,N> clone();
+
     /**
      * Count the number of edges in the graph
      * @return the edge count
@@ -87,7 +89,7 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
 
     /**
      *
-     * @return
+     * @return the set of nodes of the graph, even nodes that are not connected with other nodes
      */
     Set<N> getNodes();
 
@@ -98,14 +100,30 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
      */
     boolean addNode(N node);
 
+    /**
+     *
+     * @return the set of edges with the 2 connected nodes and the edge value
+     */
     Set<Edge<N,E>> getEdges();
 
+    /**
+     *
+     * @param from source node
+     * @param to target node
+     * @param value new value of the edge
+     */
     void setEdge(N from, N to, E value);
 
     default void removeEdge(N from, N to){
         this.safeComputeEdge(from, to, ignored -> Optional.empty());
     }
 
+    /**
+     * Tell if a node is present in the graph
+     * override this function for better performances
+     * @param node
+     * @return true if the node exists else false
+     */
     default boolean nodeExists(N node){
         return getNodes().stream().anyMatch(n -> n.equals(node));
     }
@@ -140,10 +158,23 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
 
     <F extends Comparable<F>> Graph<F,N> mapEdges(Function<Edge<N, E>, F> edgeFunction);
 
+    /**
+     * Get the string representation of the graph
+     * @param name
+     * @return
+     */
     default String toPrettyString(String name) {
         StringBuilder sb = new StringBuilder();
 
         sb.append(name+":");
+        sb.append("Nodes:");
+
+        for (N node: this.getNodes()) {
+            sb.append(", ");
+            sb.append(node.toString());
+        }
+
+        sb.append("\nEdges:");
 
         for (Edge<N,E> edge : this.getEdges()) {
             sb.append("\n\t");
@@ -153,7 +184,10 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
         return sb.toString();
     }
 
+
+
     default boolean equal(Graph<E,N> other) {
-        return this.getEdges().equals(other.getEdges());
+        return this.getEdges().equals(other.getEdges())
+                && this.getNodes().equals(other.getNodes());
     }
 }

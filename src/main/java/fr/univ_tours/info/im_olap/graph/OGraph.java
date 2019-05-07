@@ -20,6 +20,17 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     }
 
     @Override
+    public Graph<E, N> clone() {
+
+        OGraph<E,N> graph = new OGraph();
+
+        graph.nodes = new TreeMap<>(this.nodes);
+        graph.edges = new HashMap<>(this.edges);
+
+        return graph;
+    }
+
+    @Override
     public int edgeCount() {
         return edges.size();
     }

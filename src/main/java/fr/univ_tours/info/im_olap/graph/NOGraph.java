@@ -25,6 +25,17 @@ public class NOGraph<E extends Comparable<E>, N extends Comparable<N>> implement
 	    this.nodes = new TreeSet<>();
 	}
 
+	@Override
+	public Graph<E, N> clone() {
+
+		NOGraph<E, N> graph = new NOGraph<>();
+
+		graph.hashMap = new HashMap<>(this.hashMap);
+		graph.nodes = new TreeSet<>(this.nodes);
+
+		return graph;
+	}
+
 	/**
 	 * Return the number of edges of the non oriented graph (double the result
 	 * to get the number of edges that would be counted in an oriented graph)
