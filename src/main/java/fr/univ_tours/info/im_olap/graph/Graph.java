@@ -122,6 +122,8 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
         this.safeComputeEdge(from, to, ignored -> Optional.empty());
     }
 
+    void removeNodeEdgesKeepNode(N node);
+
     /**
      * Tell if a node is present in the graph
      * override this function for better performances

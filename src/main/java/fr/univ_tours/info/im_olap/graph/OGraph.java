@@ -19,6 +19,62 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
         edges = new HashMap<>();
     }
 
+    public void checkSync() throws IllegalStateException {
+
+        for (Map.Entry<N, Pair<TreeSet<N>, TreeSet<N>>> entry : nodes.entrySet()) {
+
+            for (N from : entry.getValue().left ) {
+                Pair<N,N> pair1 = new Pair<>(from, entry.getKey());
+
+                if (!edges.containsKey(pair1)) {
+                    throw new IllegalStateException();
+                }
+
+                if (edges.get(pair1) == null) {
+                    throw new IllegalStateException();
+                }
+
+            }
+
+            for (N to : entry.getValue().right) {
+                Pair<N,N> pair2 = new Pair<>(entry.getKey(), to);
+
+                if (!edges.containsKey(pair2)) {
+                    throw new IllegalStateException();
+                }
+
+                if (edges.get(pair2) == null) {
+                    throw new IllegalStateException();
+                }
+            }
+
+        }
+
+        for (Map.Entry<Pair<N,N>, E> entry : edges.entrySet()) {
+
+            if (entry.getValue() == null) {
+                throw new IllegalStateException();
+            }
+
+            if (!nodes.containsKey(entry.getKey().left)) {
+                throw new IllegalStateException();
+            }
+            if (!nodes.containsKey(entry.getKey().right)) {
+                throw new IllegalStateException();
+            }
+
+            if (!nodes.get(entry.getKey().left).right.contains(entry.getKey().right)) {
+                throw new IllegalStateException();
+            }
+
+            if (!nodes.get(entry.getKey().right).left.contains(entry.getKey().left)) {
+                throw new IllegalStateException();
+            }
+
+        }
+
+    }
+
     @Override
     public Graph<E, N> clone() {
 
@@ -97,16 +153,26 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     }
 
     @Override
-    public void deleteNodeAndItsEdges(N node) {
+    public void removeNodeEdgesKeepNode(N node){
+
+        Pair<TreeSet<N>, TreeSet<N>> pair = this.nodes.get(node);
+
         Pair<TreeSet<N>,TreeSet<N>> p = nodes.get(node);
         p.getA().forEach(from -> {
             edges.remove(new Pair<>(from, node));
+            pair.left.remove(from);
         });
         p.getB().forEach(to -> {
             edges.remove(new Pair<>(node, to));
+            pair.right.remove(to);
         });
-        nodes.remove(node);
 
+    }
+
+    @Override
+    public void deleteNodeAndItsEdges(N node) {
+        removeNodeEdgesKeepNode(node);
+        nodes.remove(node);
     }
 
     @Override
@@ -116,12 +182,7 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
         edges.compute(new Pair<>(from, to), (k,v) -> {
             E res = f.apply(Optional.ofNullable(v)).orElse(null);
 
-            if (res == null){
-                unsafeRemoveEdgeInNodes(from, to);
-            }
-            else {
-                unsafeAddEdgeInNodes(from, to);
-            }
+            this.setEdge(from, to, res);
 
             return res;
         });
