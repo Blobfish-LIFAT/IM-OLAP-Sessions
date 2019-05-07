@@ -3,6 +3,7 @@ package fr.univ_tours.info.im_olap.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Session {
     public List<Query> queries;
@@ -37,8 +38,8 @@ public class Session {
         this.cubeName = cubeName;
     }
 
-    public String getUserName() {
-        return userName;
+    public Optional<String> getUserName() {
+        return Optional.ofNullable(userName);
     }
 
     public void setUserName(String userName) {
