@@ -121,7 +121,10 @@ public final class Graphs {
 
             List<CPair<N, Double>> targets = graph.fromNode(node);
 
-            double weightSum = targets.stream().mapToDouble(x -> x.right).sum();
+            double weightSum = targets
+                    .stream()
+                    .mapToDouble(x -> x.right)
+                    .sum();
 
             for (CPair<N, Double> cPair : targets) {
                 graph.setEdge(node, cPair.left, cPair.right/weightSum);
