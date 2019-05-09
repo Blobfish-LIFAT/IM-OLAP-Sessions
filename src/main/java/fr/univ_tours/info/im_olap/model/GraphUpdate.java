@@ -1,5 +1,6 @@
 package fr.univ_tours.info.im_olap.model;
 
+import com.alexsxode.utilities.Logger;
 import com.alexsxode.utilities.Nd4jUtils;
 import com.alexsxode.utilities.collection.Pair;
 import fr.univ_tours.info.im_olap.compute.PageRank;
@@ -127,7 +128,7 @@ public class GraphUpdate {
             HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(pair2);
 
 
-            System.out.printf("m1 size: %d \t m2 size: %d%n", m1.size(), m2.size());
+            Logger.logInfo("KLForGraphs","m1 size: ",m1.size()," \t m2 size: ", m2.size());
             HashSet<QueryPart> test = new HashSet<>(m2.keySet());
             test.removeAll(m1.keySet());
             System.out.println(test.size());
@@ -145,18 +146,18 @@ public class GraphUpdate {
                 //System.out.println("i=" + i + ": "+entry.getValue());
                 s += entry.getValue();
 
-                diff += Math.abs(entry.getValue()-m1.get(entry.getKey()));
+                //diff += Math.abs(entry.getValue()-m1.get(entry.getKey()));
 
                 i++;
             }
 
 
-            System.out.println("sum: " + s);
-            System.out.println("abs diff = "+diff);
+            Logger.logInfo("KLForGraphs", "sum: " , s);
+            Logger.logInfo("KLForGraphs","abs diff = ",diff);
 
             double res = Nd4jUtils.kullbackLeibler(m1, m2);
 
-            System.out.println("KL = "+res);
+            Logger.logInfo("KLForGraphs","KL = ",res);
 
             return res;
         };
