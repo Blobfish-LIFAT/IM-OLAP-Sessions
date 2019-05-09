@@ -40,7 +40,7 @@ public class Logger {
         }
     }
 
-    private static class LogEvent {
+    public static class LogEvent {
         public final Object emitter;
         public final LogLevel logLevel;
         public final Object[] objects;
@@ -82,7 +82,7 @@ public class Logger {
     }
 
     public static ArrayList<LogEvent> getLogs() {
-        if (!Logger.activeWarningIssued) {
+        if (!Logger.ACTIVE && !Logger.activeWarningIssued) {
             System.err.println("Warning: logger deactivated!");
             Logger.activeWarningIssued = true;
         }
@@ -121,7 +121,7 @@ public class Logger {
         }
     }
 
-    public static void print_logs(ArrayList<LogEvent> logs) {
+    public static void printLogs(ArrayList<LogEvent> logs) {
         for (LogEvent logEvent : logs) {
             logEvent.print();
         }
