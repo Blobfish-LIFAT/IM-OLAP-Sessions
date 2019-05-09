@@ -126,7 +126,7 @@ public class GraphUpdate {
             HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(pair1);
             HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(pair2);
 
-
+            /* Old test code
             System.out.printf("m1 size: %d \t m2 size: %d%n", m1.size(), m2.size());
             HashSet<QueryPart> test = new HashSet<>(m2.keySet());
             test.removeAll(m1.keySet());
@@ -136,7 +136,7 @@ public class GraphUpdate {
             int t = (int) test.stream().filter(QueryPart::isDimension).filter(queryPart -> queryPart.value.contains("[Tout]")).count();
             System.out.println(t);
             System.out.println(test.stream().filter(QueryPart::isDimension).filter(queryPart -> !queryPart.value.contains("[Tout]")).collect(Collectors.toList()));
-
+            */
 
             int i = 0;
             double s = 0.0;
