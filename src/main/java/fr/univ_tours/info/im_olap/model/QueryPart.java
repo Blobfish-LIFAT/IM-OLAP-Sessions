@@ -45,7 +45,7 @@ public class QueryPart implements Comparable<QueryPart>{
         }
     };
 
-    private static BiFunction<QueryPart, QueryPart, Boolean> filterMatchPolicy = levelOnly;
+    private static BiFunction<QueryPart, QueryPart, Boolean> filterMatchPolicy = strict;
 
     /* Instance variables */
     Type t;

@@ -4,10 +4,7 @@ import com.alexsxode.utilities.collection.Pair;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.Graph;
 import fr.univ_tours.info.im_olap.graph.OGraph;
-import fr.univ_tours.info.im_olap.model.GraphUpdate;
-import fr.univ_tours.info.im_olap.model.QueryPart;
-import fr.univ_tours.info.im_olap.model.Session;
-import fr.univ_tours.info.im_olap.model.SessionGraph;
+import fr.univ_tours.info.im_olap.model.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,13 +33,22 @@ public class Proto1 {
 
         Graph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
 
+
+        for (Query query : s1.queries) {
+            for (QueryPart qp : query.getAllParts()) {
+                base.addNode(qp);
+            }
+        }
+
         GraphUpdate graphUpdate = new GraphUpdate(GraphUpdate::simpleInterconnections,
                 GraphUpdate::replaceEdges,
                 GraphUpdate.KLForGraphs());
 
 
-        List<Pair<Graph<Double, QueryPart>, Double>> liste =  graphUpdate.evaluateSession(base, s1);
+        List<Pair<Query, Double>> liste =  graphUpdate.evaluateSession(base, s1);
         liste.stream().forEach(p -> {
+            System.out.println();
+            System.out.println(p.left);
             System.out.println("value : " + p.right);
         });
 

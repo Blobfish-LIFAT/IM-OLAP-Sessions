@@ -33,21 +33,30 @@ public class GraphUpdate {
         this.infoGainFormula = infoGainFormula;
     }
 
-    public ArrayList<Pair<Graph<Double, QueryPart>, Double>> evaluateSession(Graph<Double, QueryPart> baseGraph, Session session) {
+    public ArrayList<Pair<Query, Double>> evaluateSession(Graph<Double, QueryPart> baseGraph, Session session) {
 
-        ArrayList<Pair<Graph<Double, QueryPart>, Double>> gains = new ArrayList<>();
+        ArrayList<Pair<Query, Double>> gains = new ArrayList<>();
 
-        gains.add(new Pair<>(baseGraph, 0.0));
+        ArrayList<Graph<Double, QueryPart>> sessionGraphs = new ArrayList<>();
 
-        for (int i = 0; i < session.length(); i++) {
+        for (int i = 0; i < session.length() ; i++) {
+            sessionGraphs.add(this.queryGraphBuilder.apply(session, i)); // create query graph from truncated session
+        }
 
-            Graph<Double, QueryPart> queryGraph = this.queryGraphBuilder.apply(session, i); // create query graph from truncated session
+        //gains.add(new Pair<>(session.queries.get(0), 0.0));
+
+        for (int i = 1; i < session.length(); i++) {
+
+            Logger.logInfo("evaluateSession", "iteration i = ", i);
+
+            Graph<Double, QueryPart> previousGraph = sessionGraphs.get(i-1);
+            Graph<Double, QueryPart> queryGraph = sessionGraphs.get(i);
 
             Graph<Double, QueryPart> interpolated = this.graphInterpolator.apply(baseGraph, queryGraph); // interpolate base graph to session graph
 
-            double gain = this.infoGainFormula.apply(gains.get(i).left, interpolated); // compute information gain
+            double gain = this.infoGainFormula.apply(previousGraph, interpolated); // compute information gain
 
-            gains.add(new Pair<>(interpolated, gain));
+            gains.add(new Pair<>(session.queries.get(i), gain));
         }
 
         return gains;
