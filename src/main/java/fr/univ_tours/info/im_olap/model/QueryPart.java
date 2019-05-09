@@ -41,6 +41,10 @@ public class QueryPart implements Comparable<QueryPart>{
         return t == Type.FILTER;
     }
 
+    public boolean isMeasure() { return t == Type.MEASURE;}
+
+    public boolean isDimension() {return t == Type.DIMENSION;}
+
     @Override
     public String toString() {
         return "QueryPart{" +

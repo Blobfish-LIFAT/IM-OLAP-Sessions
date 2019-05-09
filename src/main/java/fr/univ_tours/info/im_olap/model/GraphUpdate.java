@@ -10,6 +10,7 @@ import org.nd4j.linalg.api.ndarray.INDArray;
 
 import java.util.*;
 import java.util.function.BiFunction;
+import java.util.stream.Collectors;
 
 public class GraphUpdate {
 
@@ -129,7 +130,13 @@ public class GraphUpdate {
             System.out.printf("m1 size: %d \t m2 size: %d%n", m1.size(), m2.size());
             HashSet<QueryPart> test = new HashSet<>(m2.keySet());
             test.removeAll(m1.keySet());
+            System.out.println(test.size());
             System.out.println(test);
+            test.stream().collect(Collectors.groupingBy(q -> q.t)).forEach((t, l) -> System.out.println(t + "   " + l.size()));
+            int t = (int) test.stream().filter(QueryPart::isDimension).filter(queryPart -> queryPart.value.contains("[Tout]")).count();
+            System.out.println(t);
+            System.out.println(test.stream().filter(QueryPart::isDimension).filter(queryPart -> !queryPart.value.contains("[Tout]")).collect(Collectors.toList()));
+
 
             int i = 0;
             double s = 0.0;
