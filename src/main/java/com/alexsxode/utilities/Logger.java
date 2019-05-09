@@ -3,6 +3,7 @@ package com.alexsxode.utilities;
 import com.alexsxode.utilities.collection.Pair;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -50,6 +51,16 @@ public class Logger {
             this.objects = objects;
         }
 
+        public String subjectToString() {
+            StringBuilder sb = new StringBuilder();
+
+            for (Object arg_obj : this.objects ) {
+                sb.append(arg_obj.toString());
+            }
+
+            return sb.toString();
+        }
+
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
@@ -57,13 +68,15 @@ public class Logger {
             sb.append(this.logLevel.toString());
             sb.append(":\t");
             sb.append(this.emitter.toString());
-            sb.append(" : \n");
+            sb.append(" : \t");
 
-            for (Object arg_obj : this.objects ) {
-                sb.append(arg_obj.toString());
-            }
+            sb.append(this.subjectToString());
 
             return sb.toString();
+        }
+
+        public void print() {
+            System.out.println(this.toString());
         }
 
     }
@@ -92,13 +105,13 @@ public class Logger {
 
     public static void printLogs() {
         for (LogEvent logEvent : Logger.getLogs()) {
-            System.out.println(logEvent);
+            logEvent.print();
         }
     }
 
     public static void print_logs(ArrayList<LogEvent> logs) {
         for (LogEvent logEvent : logs) {
-            System.out.println(logEvent);
+            logEvent.print();
         }
     }
 
@@ -128,4 +141,13 @@ public class Logger {
     public static ArrayList<LogEvent> fromEqualObject(Object obj) {
         return filterLogs(le -> le.emitter.equals(obj));
     }
+
+    public static ArrayList<LogEvent> objectInSubject(Object obj) {
+        return filterLogs(le -> Arrays.asList(le.objects).contains(obj));
+    }
+
+    public static ArrayList<LogEvent> searchSubject(String pattern) {
+        return filterLogs(le -> le.subjectToString().matches(pattern));
+    }
+
 }
