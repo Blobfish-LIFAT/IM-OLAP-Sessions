@@ -103,6 +103,18 @@ public class Logger {
         Logger.log(obj, LogLevel.WARNING, args);
     }
 
+    public static void logImportant(Object obj, Object... args) {
+        Logger.log(obj, LogLevel.IMPORTANT, args);
+    }
+
+    public static void logCritical(Object obj, Object... args) {
+        Logger.log(obj, LogLevel.CRITICAL, args);
+    }
+
+    public static void logError(Object obj, Object... args) {
+        Logger.log(obj, LogLevel.ERROR, args);
+    }
+
     public static void printLogs() {
         for (LogEvent logEvent : Logger.getLogs()) {
             logEvent.print();
