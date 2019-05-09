@@ -72,10 +72,7 @@ public class PageRank {
 
         Pair<INDArray, HashMap<N, Integer>> temp = Graphs.toINDMatrix(graph);
 
-
-        Pair<INDArray, HashMap<N, Integer>> pair = new Pair<>(pageRank(temp.left, iter), temp.right);
-
-        return pair;
+        return new Pair<>(pageRank(temp.left, iter), temp.right);
     }
 
     public static void main(String[] args){
