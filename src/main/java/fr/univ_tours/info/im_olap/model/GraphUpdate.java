@@ -119,21 +119,33 @@ public class GraphUpdate {
             Pair<INDArray, HashMap<QueryPart, Integer>> pair2 = PageRank.pagerank(ng2, 42);
 
 
+            pair1.left.divi(pair1.left.sumNumber());
+            pair2.left.divi(pair2.left.sumNumber());
+
             HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(pair1);
             HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(pair2);
 
 
+            System.out.printf("m1 size: %d \t m2 size: %d%n", m1.size(), m2.size());
+            HashSet<QueryPart> test = new HashSet<>(m2.keySet());
+            test.removeAll(m1.keySet());
+            System.out.println(test);
 
             int i = 0;
             double s = 0.0;
+            double diff = 0.0;
             for (Map.Entry<QueryPart, Double> entry : m2.entrySet()) {
                 //System.out.println("i=" + i + ": "+entry.getValue());
                 s += entry.getValue();
+
+                diff += Math.abs(entry.getValue()-m1.get(entry.getKey()));
+
                 i++;
             }
 
 
             System.out.println("sum: " + s);
+            System.out.println("abs diff = "+diff);
 
             double res = Nd4jUtils.kullbackLeibler(m1, m2);
 

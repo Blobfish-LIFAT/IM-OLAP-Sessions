@@ -16,7 +16,7 @@ import static org.nd4j.linalg.util.MathUtils.log2;
  * Fait par Alexandre le 02/11/2018.
  */
 public final class Nd4jUtils {
-    public static final double root2 = Math.sqrt(2), threshold = 10e-10;
+    public static final double root2 = Math.sqrt(2), threshold = 10e-2;
 
     /**
      * Computes the Hellinger distance between two vectors representing probability distribution
