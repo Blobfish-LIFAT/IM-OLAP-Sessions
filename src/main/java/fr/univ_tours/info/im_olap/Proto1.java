@@ -32,9 +32,9 @@ public class Proto1 {
         Session s1 = sessions.get(0);
         List<Session> thisUser = sessions.stream().filter(s -> s.getUserName().equals(s1.getUserName())).collect(Collectors.toList());
         thisUser.remove(s1);
+        System.out.println(s1.getFilename());
 
         Graph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
-
 
         GraphUpdate graphUpdate = new GraphUpdate(GraphUpdate::simpleInterconnections,
                 GraphUpdate::replaceEdges,

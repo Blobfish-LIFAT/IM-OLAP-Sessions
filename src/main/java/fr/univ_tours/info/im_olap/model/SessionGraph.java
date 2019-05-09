@@ -89,26 +89,33 @@ public class SessionGraph {
 
             //For each dimensions we must add father/child links in the graph
             for (Node dimension : nodes){
-                Element hierarchy = (Element) dimension.selectSingleNode("Hierarchy");
-                String prefix = ((Element)dimension).attributeValue("name");
+                String dimName = ((Element) dimension).attributeValue("name");
+                List<Node> hierarchies = dimension.selectNodes("Hierarchy");
+                System.out.printf("[DEBUG] Found %d hierarchies in %s%n",hierarchies.size(), dimName);
+                for (Node h : hierarchies){
+                    Element hierarchy = (Element) h;
+                    String prefix = "[" + dimName + "].[" + hierarchy.attributeValue("name") + "]";
 
-                List<String> levels = new ArrayList<>();
-                levels.add(hierarchy.attributeValue("allLevelName"));
-                dimension.selectNodes("//Hierarchy/Level").stream().map(o -> (Element) o).forEach(level -> levels.add(((Element) level).attributeValue("name")));
+                    List<String> levels = new ArrayList<>();
+                    levels.add(hierarchy.attributeValue("allLevelName"));
+                    h.selectNodes("./Level").stream().map(o -> (Element) o).forEach(level -> levels.add(((Element) level).attributeValue("name")));
 
-                for (int i = 0; i < levels.size() - 1; i++) {
-                    QueryPart p1 = new QueryPart(QueryPart.Type.DIMENSION, prefix + "." + levels.get(i));
-                    QueryPart p2 = new QueryPart(QueryPart.Type.DIMENSION, prefix + "." + levels.get(i+1));
-                    base.safeComputeEdge(p1, p2, o -> Optional.of(1.0));
-                    base.safeComputeEdge(p2, p1, o -> Optional.of(1.0));
+                    for (int i = 0; i < levels.size() - 1; i++) {
+                        QueryPart p1 = new QueryPart(QueryPart.Type.DIMENSION, prefix + ".[" + levels.get(i) + "]");
+                        QueryPart p2 = new QueryPart(QueryPart.Type.DIMENSION, prefix + ".[" + levels.get(i+1) + "]");
+                        base.safeComputeEdge(p1, p2, o -> Optional.of(1.0));
+                        base.safeComputeEdge(p2, p1, o -> Optional.of(1.0));
+                        System.out.printf("Linking %s | %s%n", p1, p2);
+                    }
                 }
+
 
             }
 
             return base;
 
         } catch (Exception e) {
-            System.err.printf("Could not parse schema in '%s', verify file permission/format.");
+            System.err.printf("Could not parse schema in '%s', verify file permission/format.", mondrianFile);
             return base;
         }
     }
