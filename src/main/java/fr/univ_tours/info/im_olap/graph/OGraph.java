@@ -86,15 +86,13 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
         OGraph<E,N> graph = new OGraph<>();
 
-        graph.nodes = new TreeMap<>();
-
         // deepcopy
 
         this.nodes.forEach((key, value) -> {
             graph.nodes.put(key, new Pair<>(new TreeSet<>(value.left), new TreeSet<>(value.right)));
         });
 
-        graph.edges = new HashMap<>(this.edges);
+        graph.edges.putAll(this.edges);
 
         return graph;
     }
@@ -168,16 +166,12 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     @Override
     public void removeNodeEdgesKeepNode(N node){
 
-        Pair<TreeSet<N>, TreeSet<N>> pair = this.nodes.get(node);
-
         Pair<TreeSet<N>,TreeSet<N>> p = nodes.get(node);
         p.getA().forEach(from -> {
-            edges.remove(new Pair<>(from, node));
-            pair.left.remove(from);
+            removeEdge(from, node);
         });
         p.getB().forEach(to -> {
-            edges.remove(new Pair<>(node, to));
-            pair.right.remove(to);
+            removeEdge(node, to);
         });
 
     }
@@ -214,6 +208,9 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
                 .stream()
                 .map(to -> {
                     E v = edges.get(new Pair<>(node, to));
+                    if (v == null) {
+                        throw new IllegalStateException("Edge value should not be null");
+                    }
                     return new CPair<>(to, v);
                 })
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -226,6 +223,9 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
                 .stream()
                 .map(from -> {
                     E v = edges.get(new Pair<>(from, node));
+                    if (v == null) {
+                        throw new IllegalStateException("Edge value should not be null");
+                    }
                     return new CPair<>(from, v);
                 })
                 .collect(Collectors.toCollection(ArrayList::new));
