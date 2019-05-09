@@ -1,6 +1,9 @@
 package fr.univ_tours.info.im_olap.model;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
 import java.util.Optional;
@@ -87,9 +90,9 @@ public class QueryPart implements Comparable<QueryPart>{
         if (obj.getClass() != this.getClass())
             return false;
         if (this.t == ((QueryPart)obj).t){
-            if (this.t == Type.FILTER && this.isFilterIsJson() && ((QueryPart)obj).isFilterIsJson())
+            if (this.t == Type.FILTER && this.isFilterIsJson() && ((QueryPart)obj).isFilterIsJson()) {
                 return filterMatchPolicy.apply(this, (QueryPart) obj);
-            else
+            } else
                 return ((QueryPart)obj).value.equals(this.value);
         } else
             return false;
@@ -118,7 +121,11 @@ public class QueryPart implements Comparable<QueryPart>{
     }
 }
 class Filter{
+    @SerializedName("level")
+    @Expose
     String level;
+    @SerializedName("value")
+    @Expose
     String value;
 
     public Filter(){}

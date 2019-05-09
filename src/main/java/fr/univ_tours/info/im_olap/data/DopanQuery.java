@@ -20,7 +20,7 @@ class DopanQuery {
     private List<String> groupBySet = null;
     @SerializedName("selection")
     @Expose
-    private List<Object> selection = null;
+    private List<DopanPredicate> selection = null;
 
     public Integer getId() {
         return id;
@@ -54,11 +54,11 @@ class DopanQuery {
         this.groupBySet = groupBySet;
     }
 
-    public List<Object> getSelection() {
+    public List<DopanPredicate> getSelection() {
         return selection;
     }
 
-    public void setSelection(List<Object> selection) {
+    public void setSelection(List<DopanPredicate> selection) {
         this.selection = selection;
     }
 }
