@@ -129,6 +129,7 @@ public class GraphUpdate {
 
 
             Logger.logInfo("KLForGraphs","m1 size: ",m1.size()," \t m2 size: ", m2.size());
+            /*
             HashSet<QueryPart> test = new HashSet<>(m2.keySet());
             test.removeAll(m1.keySet());
             System.out.println(test.size());
@@ -137,7 +138,7 @@ public class GraphUpdate {
             int t = (int) test.stream().filter(QueryPart::isDimension).filter(queryPart -> queryPart.value.contains("[Tout]")).count();
             System.out.println(t);
             System.out.println(test.stream().filter(QueryPart::isDimension).filter(queryPart -> !queryPart.value.contains("[Tout]")).collect(Collectors.toList()));
-
+            */
 
             int i = 0;
             double s = 0.0;
@@ -146,7 +147,7 @@ public class GraphUpdate {
                 //System.out.println("i=" + i + ": "+entry.getValue());
                 s += entry.getValue();
 
-                //diff += Math.abs(entry.getValue()-m1.get(entry.getKey()));
+                diff += Math.abs(entry.getValue()-m1.get(entry.getKey()));
 
                 i++;
             }
