@@ -35,6 +35,8 @@ public final class Nd4jUtils {
      * @return
      */
     public static double kullbackLeibler(INDArray p, INDArray q){
+        if (!isDistibution(p, threshold) || !isDistibution(q, threshold))
+            throw new IllegalArgumentException("p and q must be probability distributions !");
         if (q.rows() != 1 || p.rows() != 1)
             throw new IllegalArgumentException("Distributions should be line vectors !");
         double sum = 0;
