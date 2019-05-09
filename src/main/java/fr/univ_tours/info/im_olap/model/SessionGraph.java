@@ -10,8 +10,13 @@ import org.dom4j.io.SAXReader;
 
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class SessionGraph {
+    static Pattern dimPattern = Pattern.compile("\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]");
+
     private static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
         OGraph<Double, QueryPart> result = new OGraph<>();
         //int  t = 0;
@@ -91,7 +96,7 @@ public class SessionGraph {
             for (Node dimension : nodes){
                 String dimName = ((Element) dimension).attributeValue("name");
                 List<Node> hierarchies = dimension.selectNodes("Hierarchy");
-                System.out.printf("[DEBUG] Found %d hierarchies in %s%n",hierarchies.size(), dimName);
+                //System.out.printf("[DEBUG] Found %d hierarchies in %s%n",hierarchies.size(), dimName);
                 for (Node h : hierarchies){
                     Element hierarchy = (Element) h;
                     String prefix = "[" + dimName + "].[" + hierarchy.attributeValue("name") + "]";
@@ -105,7 +110,7 @@ public class SessionGraph {
                         QueryPart p2 = new QueryPart(QueryPart.Type.DIMENSION, prefix + ".[" + levels.get(i+1) + "]");
                         base.safeComputeEdge(p1, p2, o -> Optional.of(1.0));
                         base.safeComputeEdge(p2, p1, o -> Optional.of(1.0));
-                        System.out.printf("Linking %s | %s%n", p1, p2);
+                        //System.out.printf("Linking %s | %s%n", p1, p2);
                     }
                 }
 
@@ -162,5 +167,41 @@ public class SessionGraph {
         result.getNodes().forEach(n -> result.setEdge(n,n,1.0));
 
         return result;
+    }
+
+    public static Session resolveDimUsage(Session in, String schema){
+        try {
+            SAXReader reader = new SAXReader();
+            Document doc = reader.read(Paths.get(schema).toFile());
+            List<Node> nodes = doc.selectNodes("//Cube[@name='"+in.cubeName+"']/DimensionUsage");
+            HashMap<String, String> aliases = new HashMap<>();
+            nodes.stream().map(n -> (Element) n).forEach(e -> aliases.put(e.attributeValue("name"), e.attributeValue("source")));
+            for (Query q : in.queries){
+                HashSet<QueryPart> fixed = new HashSet<>();
+                for (QueryPart qp : q.dimensions){
+                    Matcher m = dimPattern.matcher(qp.value);
+                    if (m.matches()){
+                        String dim = m.group(1);
+                        if (aliases.containsKey(dim)){
+                            QueryPart correct = new QueryPart(QueryPart.Type.DIMENSION, qp.value.replace(dim, aliases.get(dim)));
+                            fixed.add(correct);
+                        }else
+                            fixed.add(qp);
+                    }else
+                        fixed.add(qp);
+                }
+                q.setDimensions(fixed);
+            }
+
+        } catch (DocumentException e){
+            System.err.printf("Failed to resolve DimensionUsage for session %s and schema %s !%n", in, schema);
+            e.printStackTrace();
+        }
+
+        return in;
+    }
+
+    public static List<Session> fixSessions(List<Session> sessions, String schema){
+        return sessions.stream().map(s -> resolveDimUsage(s, schema)).collect(Collectors.toList());
     }
 }
