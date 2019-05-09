@@ -27,7 +27,7 @@ public class Proto1 {
 
         //Session test = DopanLoader.loadFile("/home/alex/IdeaProjects/IM-OLAP-Sessions/data/logs/dopan_converted/dibstudent03--2016-09-25--15-56.log.json");
 
-        List<Session> sessions = DopanLoader.loadDir(dataDir);
+        List<Session> sessions = SessionGraph.fixSessions(DopanLoader.loadDir(dataDir), "data/cubeSchemas/DOPAN_DW3.xml");
 
         Session s1 = sessions.get(0);
         List<Session> thisUser = sessions.stream().filter(s -> s.getUserName().equals(s1.getUserName())).collect(Collectors.toList());
