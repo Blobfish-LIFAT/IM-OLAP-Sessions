@@ -176,7 +176,6 @@ public class SessionGraph {
             List<Node> nodes = doc.selectNodes("//Cube[@name='"+in.cubeName+"']/DimensionUsage");
             HashMap<String, String> aliases = new HashMap<>();
             nodes.stream().map(n -> (Element) n).forEach(e -> aliases.put(e.attributeValue("name"), e.attributeValue("source")));
-            System.out.println(aliases);
             for (Query q : in.queries){
                 HashSet<QueryPart> fixed = new HashSet<>();
                 for (QueryPart qp : q.dimensions){
