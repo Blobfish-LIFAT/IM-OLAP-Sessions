@@ -115,10 +115,31 @@ public class GraphUpdate {
             Graph<Double, QueryPart> ng2 = g2.clone();
             Graphs.normalizeWeightsi(ng2);
 
-            HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(PageRank.pagerank(ng1, 50));
-            HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(PageRank.pagerank(ng2, 50));;
+            Pair<INDArray, HashMap<QueryPart, Integer>> pair1 = PageRank.pagerank(ng1, 42);
+            Pair<INDArray, HashMap<QueryPart, Integer>> pair2 = PageRank.pagerank(ng2, 42);
 
-            return Nd4jUtils.kullbackLeibler(m1, m2);
+
+            HashMap<QueryPart, Double> m1 = Nd4jUtils.mappedINDarrayToMap(pair1);
+            HashMap<QueryPart, Double> m2 = Nd4jUtils.mappedINDarrayToMap(pair2);
+
+
+
+            int i = 0;
+            double s = 0.0;
+            for (Map.Entry<QueryPart, Double> entry : m2.entrySet()) {
+                //System.out.println("i=" + i + ": "+entry.getValue());
+                s += entry.getValue();
+                i++;
+            }
+
+
+            System.out.println("sum: " + s);
+
+            double res = Nd4jUtils.kullbackLeibler(m1, m2);
+
+            System.out.println("KL = "+res);
+
+            return res;
         };
     }
 
