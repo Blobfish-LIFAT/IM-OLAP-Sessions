@@ -6,6 +6,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiFunction;
 
@@ -15,58 +16,27 @@ public class QueryPart implements Comparable<QueryPart>{
     }
 
     static final HashMap<Type, String> display = new HashMap<>();
-    private static Gson gson;
 
     static {
         display.put(Type.DIMENSION, "Dimension");
         display.put(Type.FILTER, "Filter");
         display.put(Type.MEASURE, "Measure");
-        gson = new Gson();
     }
 
-    /* Matcher for JSON Filters */
-    /**
-     * Match both sides of the filter including values
-     */
-    public static final BiFunction<QueryPart, QueryPart, Boolean> strict = new BiFunction<QueryPart, QueryPart, Boolean>() {
-        @Override
-        public Boolean apply(QueryPart queryPart, QueryPart queryPart2) {
-            Filter f1 = gson.fromJson(queryPart.value, Filter.class);
-            Filter f2 = gson.fromJson(queryPart2.value, Filter.class);
-
-            return f1.level.equals(f2.level) && f1.value.equals(f2.value);
-        }
-    };
-
-    /**
-     * Only match on left of the filter
-     */
-    public static final BiFunction<QueryPart, QueryPart, Boolean> levelOnly = new BiFunction<QueryPart, QueryPart, Boolean>() {
-        @Override
-        public Boolean apply(QueryPart queryPart, QueryPart queryPart2) {
-            Filter f1 = gson.fromJson(queryPart.value, Filter.class);
-            Filter f2 = gson.fromJson(queryPart2.value, Filter.class);
-
-            return f1.level.equals(f2.level);
-        }
-    };
-
-    private static BiFunction<QueryPart, QueryPart, Boolean> filterMatchPolicy = strict;
 
     /* Instance variables */
     Type t;
-    String value;
-    boolean filterIsJson = false;
+    String value, level;
 
     public QueryPart(Type t, String value) {
         this.t = t;
         this.value = value;
     }
 
-    public QueryPart(Type t, String value, boolean json) {
-        this.t = t;
+    public QueryPart(String level, String value) {
+        this.t = Type.FILTER;
         this.value = value;
-        filterIsJson = json;
+        this.level = level;
     }
 
     public Optional<String> getHierarchy(){
@@ -96,11 +66,13 @@ public class QueryPart implements Comparable<QueryPart>{
     public boolean equals(Object obj) {
         if (obj.getClass() != this.getClass())
             return false;
-        if (this.t == ((QueryPart)obj).t){
-            if (this.t == Type.FILTER && this.isFilterIsJson() && ((QueryPart)obj).isFilterIsJson()) {
-                return filterMatchPolicy.apply(this, (QueryPart) obj);
+
+        QueryPart other = (QueryPart) obj;
+        if (this.t == other.t){
+            if (this.t == Type.FILTER) {
+                return other.value.equals(this.value) && other.level.equals(this.level);
             } else
-                return ((QueryPart)obj).value.equals(this.value);
+                return other.value.equals(this.value);
         } else
             return false;
 
@@ -114,13 +86,6 @@ public class QueryPart implements Comparable<QueryPart>{
             return this.value.compareTo(o.value);
     }
 
-    boolean isFilterIsJson(){
-        return filterIsJson;
-    }
-
-    public void setFilterJson() {
-        filterIsJson = true;
-    }
 
     @Override
     public int hashCode() {
@@ -128,34 +93,4 @@ public class QueryPart implements Comparable<QueryPart>{
     }
 }
 
-class Filter{
-    @SerializedName("level")
-    @Expose
-    String level;
-    @SerializedName("value")
-    @Expose
-    String value;
 
-    public Filter(){}
-
-    public Filter(String level, String value) {
-        this.level = level;
-        this.value = value;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-}

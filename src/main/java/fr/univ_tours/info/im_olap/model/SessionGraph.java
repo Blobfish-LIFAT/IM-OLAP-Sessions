@@ -2,6 +2,8 @@ package fr.univ_tours.info.im_olap.model;
 
 
 import fr.univ_tours.info.im_olap.graph.OGraph;
+import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
+import mondrian.olap.*;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -10,6 +12,7 @@ import org.dom4j.io.SAXReader;
 
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -199,6 +202,58 @@ public class SessionGraph {
         }
 
         return in;
+    }
+
+    public static OGraph<Double, QueryPart> injectFilters(OGraph<Double, QueryPart> in, CubeUtils util){
+        SchemaReader schemaReader = util.getCube().getSchemaReader(null).withLocus();
+
+        for (Dimension dimension : util.getCube().getDimensions()){
+            //Skip measures
+            if (dimension.isMeasures())
+                continue;
+
+            System.out.println("Dimension: " + dimension);
+            for (Hierarchy hierarchy : dimension.getHierarchies()){
+                List<Member> topLevel = util.fetchMembers(hierarchy.getLevels()[0]);
+                topLevel.forEach(member -> injectFiltersNode(in, schemaReader, member));
+            }
+        }
+
+
+        return in;
+    }
+
+    private static OGraph<Double, QueryPart> injectFiltersNode(OGraph<Double, QueryPart> in, SchemaReader schemaReader, Member m){
+        List<Member> children = schemaReader.getMemberChildren(m);
+        //Stop condition: reached finest granularity
+        if (children == null || children.size() == 0)
+            return in;
+        QueryPart us = fromMember(m);
+        in.addNode(us);
+        children.forEach(child -> {
+            QueryPart c = fromMember(child);
+            in.setEdge(us, c, 1.0);
+            in.setEdge(c, us, 1.0);
+        });
+
+        return injectFiltersForest(in, schemaReader, children);
+    }
+
+    private static OGraph<Double, QueryPart> injectFiltersForest(OGraph<Double, QueryPart> in, SchemaReader schemaReader, List<Member> list){
+        for (int i = 0; i < list.size() ; i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                QueryPart qp1 = fromMember(list.get(i));
+                QueryPart qp2 = fromMember(list.get(j));
+                in.setEdge(qp1, qp2, 1.0);
+                in.setEdge(qp2, qp1, 1.0);
+            }
+        }
+        list.forEach(member -> injectFiltersNode(in, schemaReader, member));
+        return in;
+    }
+
+    private static QueryPart fromMember(Member m){
+        return new QueryPart(m.getLevel().toString(), m.getName());
     }
 
     public static List<Session> fixSessions(List<Session> sessions, String schema){
