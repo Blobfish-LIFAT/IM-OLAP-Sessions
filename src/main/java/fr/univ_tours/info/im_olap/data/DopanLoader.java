@@ -31,7 +31,7 @@ public class DopanLoader {
                 Query qnew = new Query();
                 qnew.addAll(q.getGroupBySet().stream().map(g -> new QueryPart(DIMENSION, g)).collect(Collectors.toSet()));
                 qnew.addAll(q.getMeasures().stream().map(m -> new QueryPart(MEASURE, m)).collect(Collectors.toSet()));
-                qnew.addAll(q.getSelection().stream().map(s -> new QueryPart(FILTER, s.toString(), true)).collect(Collectors.toSet()));
+                qnew.addAll(q.getSelection().stream().map(s -> new QueryPart(s.getLevel(), s.getValue())).collect(Collectors.toSet()));
                 out.queries.add(qnew);
             }
             return out;

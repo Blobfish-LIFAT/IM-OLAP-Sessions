@@ -1,4 +1,4 @@
-package fr.univ_tours.info.im_olap.data;
+package fr.univ_tours.info.im_olap.mondrian;
 
 import mondrian.olap.Connection;
 
