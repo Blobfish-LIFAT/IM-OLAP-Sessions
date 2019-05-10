@@ -11,6 +11,7 @@ import mondrian.olap.Cube;
 import mondrian.olap.Schema;
 import fr.univ_tours.info.im_olap.model.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,9 @@ public class Proto1 {
         //TODO this is only skeleton for the tests
 
         Connection olap = MondrianConfig.getMondrianConnection();
-
+        MondrianUtils mdutils = new MondrianUtils(olap);
+        Cube cube = mdutils.getCubeByName("Cube1MobProInd");
+        System.out.println(Arrays.toString(cube.getDimensions()));
 
 
         //Session test = DopanLoader.loadFile("/home/alex/IdeaProjects/IM-OLAP-Sessions/data/logs/dopan_converted/dibstudent03--2016-09-25--15-56.log.json");

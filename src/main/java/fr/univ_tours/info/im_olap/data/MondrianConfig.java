@@ -53,4 +53,16 @@ public class MondrianConfig {
 
     }
 
+    public static void close(){
+        mondrianConnection.close();
+        try {
+            jdbcConnection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            jdbcConnection = null;
+            mondrianConnection = null;
+        }
+    }
+
 }
