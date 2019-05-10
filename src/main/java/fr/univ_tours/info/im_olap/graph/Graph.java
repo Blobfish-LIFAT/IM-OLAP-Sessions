@@ -96,9 +96,8 @@ public interface Graph<E extends Comparable<E>,N extends Comparable<N>> {
     /**
      *
      * @param node
-     * @return true if node was added, false if it was already present
      */
-    boolean addNode(N node);
+    void addNode(N node);
 
     /**
      *

@@ -113,12 +113,8 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     }
 
     @Override
-    public boolean addNode(N node) {
-        if (nodes.containsKey(node)){
-            return false;
-        }
-        nodes.put(node, new Pair<>(new TreeSet<>(), new TreeSet<>()));
-        return true;
+    public void addNode(N node) {
+        this.nodes.computeIfAbsent(node, x -> new Pair<>(new TreeSet<>(), new TreeSet<>()));
     }
 
     @Override
@@ -132,8 +128,17 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     private void unsafeAddEdgeInNodes(N from, N to){
         this.addNode(from);
         this.addNode(to);
+        unsafeAddOnlyEdgesInNodes(from, to);
+    }
+
+    private void unsafeAddOnlyEdgesInNodes(N from, N to) {
         nodes.get(from).getB().add(to);
         nodes.get(to).getA().add(from);
+    }
+
+    public void unsafeSetEdge(N from, N to, E value) {
+        unsafeAddEdgeInNodes(from, to);
+        edges.put(new Pair<>(from, to), value);
     }
 
     @Override
