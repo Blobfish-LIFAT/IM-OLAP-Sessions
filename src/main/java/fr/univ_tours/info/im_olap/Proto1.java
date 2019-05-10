@@ -2,8 +2,13 @@ package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.collection.Pair;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
+import fr.univ_tours.info.im_olap.data.MondrianConfig;
+import fr.univ_tours.info.im_olap.data.MondrianUtils;
 import fr.univ_tours.info.im_olap.graph.Graph;
 import fr.univ_tours.info.im_olap.graph.OGraph;
+import mondrian.olap.Connection;
+import mondrian.olap.Cube;
+import mondrian.olap.Schema;
 import fr.univ_tours.info.im_olap.model.*;
 
 import java.util.List;
@@ -19,8 +24,9 @@ public class Proto1 {
 
         //TODO this is only skeleton for the tests
 
-        String path = "data/";
-        loadSessions(path);
+        Connection olap = MondrianConfig.getMondrianConnection();
+
+
 
         //Session test = DopanLoader.loadFile("/home/alex/IdeaProjects/IM-OLAP-Sessions/data/logs/dopan_converted/dibstudent03--2016-09-25--15-56.log.json");
 
@@ -29,7 +35,12 @@ public class Proto1 {
         Session s1 = sessions.get(0);
         List<Session> thisUser = sessions.stream().filter(s -> s.getUserName().equals(s1.getUserName())).collect(Collectors.toList());
         thisUser.remove(s1);
-        System.out.println(s1.getFilename());
+
+        System.exit(0);
+
+        /**
+         * Ben's stuff
+         */
 
         Graph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
 
@@ -54,10 +65,4 @@ public class Proto1 {
 
     }
 
-    /**
-     * Loads sessions into memory
-     */
-    private static void loadSessions(String path) {
-
-    }
 }

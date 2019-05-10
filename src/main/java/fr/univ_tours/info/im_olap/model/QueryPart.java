@@ -25,6 +25,9 @@ public class QueryPart implements Comparable<QueryPart>{
     }
 
     /* Matcher for JSON Filters */
+    /**
+     * Match both sides of the filter including values
+     */
     public static final BiFunction<QueryPart, QueryPart, Boolean> strict = new BiFunction<QueryPart, QueryPart, Boolean>() {
         @Override
         public Boolean apply(QueryPart queryPart, QueryPart queryPart2) {
@@ -35,6 +38,9 @@ public class QueryPart implements Comparable<QueryPart>{
         }
     };
 
+    /**
+     * Only match on left of the filter
+     */
     public static final BiFunction<QueryPart, QueryPart, Boolean> levelOnly = new BiFunction<QueryPart, QueryPart, Boolean>() {
         @Override
         public Boolean apply(QueryPart queryPart, QueryPart queryPart2) {
@@ -85,6 +91,7 @@ public class QueryPart implements Comparable<QueryPart>{
                 '}';
     }
 
+    //FIXME This can be costly when dealing with filters
     @Override
     public boolean equals(Object obj) {
         if (obj.getClass() != this.getClass())
@@ -120,6 +127,7 @@ public class QueryPart implements Comparable<QueryPart>{
         return t.hashCode() * value.hashCode();
     }
 }
+
 class Filter{
     @SerializedName("level")
     @Expose
