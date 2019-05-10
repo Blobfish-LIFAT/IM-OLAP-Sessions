@@ -60,12 +60,8 @@ public class NOGraph<E extends Comparable<E>, N extends Comparable<N>> implement
     }
 
 	@Override
-	public boolean addNode(N node) {
-	    if (this.nodes.contains(node)){
-	        return false;
-        }
-	    nodes.add(node);
-		return true;
+	public void addNode(N node) {
+	    this.nodes.add(node);
 	}
 
 	@Override
