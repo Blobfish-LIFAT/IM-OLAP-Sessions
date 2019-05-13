@@ -109,7 +109,7 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     @Override
     public Set<N> getNodes() {
-        return nodes.keySet();
+        return new TreeSet<>(nodes.keySet());
     }
 
     @Override
@@ -234,8 +234,12 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     @Override
     public <F extends Comparable<F>> Graph<F, N> mapEdges(Function<Edge<N, E>, F> edgeFunction) {
-        Graph<F,N> newGraph = new OGraph<>();
-        newGraph.getNodes().addAll(this.getNodes());
+        OGraph<F,N> newGraph = new OGraph<>();
+
+        for (N node : this.getNodes()) {
+            newGraph.addNode(node);
+        }
+
         this.getEdges().forEach(e -> {
             F newVal = edgeFunction.apply(e);
             newGraph.setEdge(e.from, e.to, newVal);
