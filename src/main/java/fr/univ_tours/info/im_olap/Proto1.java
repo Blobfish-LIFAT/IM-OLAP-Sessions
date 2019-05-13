@@ -1,6 +1,9 @@
 package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.collection.Pair;
+import com.google.common.graph.MutableValueGraph;
+import com.google.common.graph.ValueGraph;
+import com.google.common.graph.ValueGraphBuilder;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
@@ -41,15 +44,19 @@ public class Proto1 {
 
 
 
-        OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
-        SessionGraph.injectFilters(base, mdUtils);
+        //OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
+        //SessionGraph.injectFilters(base, mdUtils);
+
+        MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
+
+        SessionGraph.injectFiltersGuava(graph, mdUtils);
 
         System.exit(0);
 
         /**
          * Ben's stuff
          */
-
+/*
         for (Query query : s1.queries) {
             for (QueryPart qp : query.getAllParts()) {
                 base.addNode(qp);
@@ -67,7 +74,7 @@ public class Proto1 {
             System.out.println(p.left);
             System.out.println("value : " + p.right);
         });
-
+*/
     }
 
 }

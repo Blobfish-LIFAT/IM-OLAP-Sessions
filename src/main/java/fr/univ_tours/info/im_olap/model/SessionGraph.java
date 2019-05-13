@@ -1,6 +1,8 @@
 package fr.univ_tours.info.im_olap.model;
 
 
+import com.google.common.graph.MutableValueGraph;
+import com.google.common.graph.ValueGraph;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
 import mondrian.olap.*;
@@ -226,17 +228,76 @@ public class SessionGraph {
     private static OGraph<Double, QueryPart> injectFiltersNode(OGraph<Double, QueryPart> in, SchemaReader schemaReader, Member m){
         List<Member> children = schemaReader.getMemberChildren(m);
         //Stop condition: reached finest granularity
-        if (children == null || children.size() == 0)
+        if (children == null || children.size() == 0) {
+            //System.out.println("Stopped at " + m);
             return in;
+        }
         QueryPart us = fromMember(m);
         in.addNode(us);
-        children.forEach(child -> {
+        for (int i = 0; i < children.size(); i++) {
+            Member child = children.get(i);
             QueryPart c = fromMember(child);
             in.setEdge(us, c, 1.0);
             in.setEdge(c, us, 1.0);
-        });
 
-        return injectFiltersForest(in, schemaReader, children);
+            for (int j = i + 1; j < children.size(); j++) {
+                QueryPart other = fromMember(children.get(j));
+                in.setEdge(c, other, 1.0);
+                in.setEdge(other, c, 1.0);
+            }
+
+            injectFiltersNode(in , schemaReader, child);
+        }
+
+        return in;
+    }
+
+    public static MutableValueGraph<QueryPart, Double> injectFiltersGuava(MutableValueGraph<QueryPart, Double> in, CubeUtils util){
+        SchemaReader schemaReader = util.getCube().getSchemaReader(null).withLocus();
+
+        for (Dimension dimension : util.getCube().getDimensions()){
+            //Skip measures
+            if (dimension.isMeasures())
+                continue;
+
+            System.out.println("Dimension: " + dimension);
+            for (Hierarchy hierarchy : dimension.getHierarchies()){
+                List<Member> topLevel = util.fetchMembers(hierarchy.getLevels()[0]);
+                topLevel.forEach(member -> injectFiltersNodeGuava(in, schemaReader, member));
+            }
+        }
+
+
+        return in;
+    }
+
+    private static MutableValueGraph<QueryPart, Double> injectFiltersNodeGuava(MutableValueGraph<QueryPart, Double> in, SchemaReader schemaReader, Member m){
+        List<Member> children = schemaReader.getMemberChildren(m);
+        //Stop condition: reached finest granularity
+        if (children == null || children.size() == 0) {
+            //System.out.println("Stopped at " + m);
+            return in;
+        }
+        QueryPart us = fromMember(m);
+        in.addNode(us);
+        for (int i = 0; i < children.size(); i++) {
+            Member child = children.get(i);
+            QueryPart c = fromMember(child);
+            in.addNode(c);
+            in.putEdgeValue(us, c, 1.0);
+            in.putEdgeValue(c, us, 1.0);
+
+            for (int j = i + 1; j < children.size(); j++) {
+                QueryPart other = fromMember(children.get(j));
+                in.addNode(other);
+                in.putEdgeValue(c, other, 1.0);
+                in.putEdgeValue(other, c, 1.0);
+            }
+
+            injectFiltersNodeGuava(in , schemaReader, child);
+        }
+
+        return in;
     }
 
     private static OGraph<Double, QueryPart> injectFiltersForest(OGraph<Double, QueryPart> in, SchemaReader schemaReader, List<Member> list){
