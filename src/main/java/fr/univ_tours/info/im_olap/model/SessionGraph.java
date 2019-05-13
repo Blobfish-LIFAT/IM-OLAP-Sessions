@@ -215,7 +215,11 @@ public class SessionGraph {
             System.out.println("Dimension: " + dimension);
             for (Hierarchy hierarchy : dimension.getHierarchies()){
                 List<Member> topLevel = util.fetchMembers(hierarchy.getLevels()[0]);
-                topLevel.forEach(member -> injectFiltersNode(in, schemaReader, member));
+
+                for (Member member : topLevel) {
+                    injectFiltersNode(in, schemaReader, member);
+                }
+
             }
         }
 
@@ -230,11 +234,13 @@ public class SessionGraph {
             return in;
         QueryPart us = fromMember(m);
         in.addNode(us);
-        children.forEach(child -> {
+
+        for (Member child: children) {
             QueryPart c = fromMember(child);
             in.setEdge(us, c, 1.0);
             in.setEdge(c, us, 1.0);
-        });
+        }
+
 
         return injectFiltersForest(in, schemaReader, children);
     }
@@ -248,7 +254,11 @@ public class SessionGraph {
                 in.setEdge(qp2, qp1, 1.0);
             }
         }
-        list.forEach(member -> injectFiltersNode(in, schemaReader, member));
+
+        for (Member member : list) {
+            injectFiltersNode(in, schemaReader, member);
+        }
+
         return in;
     }
 
