@@ -5,12 +5,88 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.BiFunction;
 
 public class QueryPart implements Comparable<QueryPart>{
+
+    private static TreeMap<Integer, List<QueryPart>> pool = new TreeMap<>();
+
+    private static TreeMap<Integer, List<QueryPart>> dimension_qps = new TreeMap<>();
+    private static TreeMap<Integer, List<QueryPart>> measure_qps = new TreeMap<>();
+    private static TreeMap<Integer, List<QueryPart>> filter_qps = new TreeMap<>();
+
+
+    public static int hashCode(Type t, String value, String level) {
+        return t.hashCode() * value.hashCode() * (level == null ? 1 : level.hashCode());
+    }
+
+    public static QueryPart newDimension(String value) {
+        Type t = Type.DIMENSION;
+
+        List<QueryPart> queryParts = dimension_qps.computeIfAbsent(hashCode(t, value, null), x -> {
+            List<QueryPart> l = new ArrayList<>();
+            l.add(new QueryPart(t, value, null));
+            return l;
+        });
+
+        for (QueryPart queryPart : queryParts) {
+            if (queryPart.value.equals(value)) {
+                return queryPart;
+            }
+        }
+
+        QueryPart queryPart = new QueryPart(t, value, null);
+
+        queryParts.add(queryPart);
+
+        return queryPart;
+    }
+
+    public static QueryPart newMeasure(String value) {
+        Type t = Type.MEASURE;
+
+        List<QueryPart> queryParts = measure_qps.computeIfAbsent(hashCode(t, value, null), x -> {
+            List<QueryPart> l = new ArrayList<>();
+            l.add(new QueryPart(t, value, null));
+            return l;
+        });
+
+        for (QueryPart queryPart : queryParts) {
+            if (queryPart.value.equals(value)) {
+                return queryPart;
+            }
+        }
+
+        QueryPart queryPart = new QueryPart(t, value, null);
+
+        queryParts.add(queryPart);
+
+        return queryPart;
+    }
+
+    public static QueryPart newFilter(String value, String level) {
+        Type t = Type.FILTER;
+
+        List<QueryPart> queryParts = filter_qps.computeIfAbsent(hashCode(t, value, level), x -> {
+            List<QueryPart> l = new ArrayList<>();
+            l.add(new QueryPart(t, value, level));
+            return l;
+        });
+
+        for (QueryPart queryPart : queryParts) {
+            if (queryPart.value.equals(value) && queryPart.level.equals(level)) {
+                return queryPart;
+            }
+        }
+
+        QueryPart queryPart = new QueryPart(t, value, level);
+
+        queryParts.add(queryPart);
+
+        return queryPart;
+    }
+
     public enum Type {
         DIMENSION, FILTER, MEASURE
     }
@@ -28,13 +104,8 @@ public class QueryPart implements Comparable<QueryPart>{
     Type t;
     String value, level;
 
-    public QueryPart(Type t, String value) {
+    private QueryPart(Type t, String value, String level) {
         this.t = t;
-        this.value = value;
-    }
-
-    public QueryPart(String level, String value) {
-        this.t = Type.FILTER;
         this.value = value;
         this.level = level;
     }
@@ -89,7 +160,7 @@ public class QueryPart implements Comparable<QueryPart>{
 
     @Override
     public int hashCode() {
-        return t.hashCode() * value.hashCode();
+        return hashCode(this.t, this.value, this.level);
     }
 }
 

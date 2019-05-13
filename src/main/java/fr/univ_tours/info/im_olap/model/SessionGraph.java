@@ -111,8 +111,8 @@ public class SessionGraph {
                     h.selectNodes("./Level").stream().map(o -> (Element) o).forEach(level -> levels.add(((Element) level).attributeValue("name")));
 
                     for (int i = 0; i < levels.size() - 1; i++) {
-                        QueryPart p1 = new QueryPart(QueryPart.Type.DIMENSION, prefix + ".[" + levels.get(i) + "]");
-                        QueryPart p2 = new QueryPart(QueryPart.Type.DIMENSION, prefix + ".[" + levels.get(i+1) + "]");
+                        QueryPart p1 = QueryPart.newDimension(prefix + ".[" + levels.get(i) + "]");
+                        QueryPart p2 = QueryPart.newDimension(prefix + ".[" + levels.get(i+1) + "]");
                         base.safeComputeEdge(p1, p2, o -> Optional.of(1.0));
                         base.safeComputeEdge(p2, p1, o -> Optional.of(1.0));
                         //System.out.printf("Linking %s | %s%n", p1, p2);
@@ -188,7 +188,7 @@ public class SessionGraph {
                     if (m.matches()){
                         String dim = m.group(1);
                         if (aliases.containsKey(dim)){
-                            QueryPart correct = new QueryPart(QueryPart.Type.DIMENSION, qp.value.replace(dim, aliases.get(dim)));
+                            QueryPart correct = QueryPart.newDimension(qp.value.replace(dim, aliases.get(dim)));
                             fixed.add(correct);
                         }else
                             fixed.add(qp);
@@ -323,7 +323,7 @@ public class SessionGraph {
     }
 
     private static QueryPart fromMember(Member m){
-        return new QueryPart(m.getLevel().toString(), m.getName());
+        return QueryPart.newFilter(m.getName(), m.getLevel().toString());
     }
 
     public static List<Session> fixSessions(List<Session> sessions, String schema){
