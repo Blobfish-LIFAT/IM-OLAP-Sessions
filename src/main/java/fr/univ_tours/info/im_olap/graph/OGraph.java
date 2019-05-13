@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 
 public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements Graph<E,N> {
 
-    private TreeMap<N,Pair<TreeSet<N>,TreeSet<N>>> nodes; // A Pair<X,Y> = Pair<From X to A,From A to Y>
+    private Map<N,Pair<TreeSet<N>,TreeSet<N>>> nodes; // A Pair<X,Y> = Pair<From X to A,From A to Y>
 
-    private HashMap<Pair<N,N>,E> edges;
+    private Map<Pair<N,N>,E> edges;
 
     public OGraph(){
         nodes = new TreeMap<>();
