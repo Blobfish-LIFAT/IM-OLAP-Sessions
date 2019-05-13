@@ -9,10 +9,17 @@ import java.util.stream.Collectors;
 
 public class Logger {
 
-    public static final boolean ACTIVE = true;
+    public static final boolean ACTIVE = false;
+
     private static boolean activeWarningIssued = false;
 
-    private static ArrayList<LogEvent> logs = new ArrayList<>();
+    private static ArrayList<LogEvent> logs;
+
+    static {
+        if (ACTIVE) {
+            logs = new ArrayList<>();
+        }
+    }
 
     public static final String[] LOGLEVEL_STRING = {"Info", "Warning", "Important", "Critical", "Error"};
 
