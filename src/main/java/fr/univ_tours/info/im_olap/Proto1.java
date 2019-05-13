@@ -26,27 +26,33 @@ public class Proto1 {
 
     public static void main(String[] args) {
 
+        System.out.println("Connecting to Mondrian...");
         Connection olap = MondrianConfig.getMondrianConnection();
 
+        System.out.println("\"Fixing\" sessions...");
         List<Session> sessions = SessionGraph.fixSessions(DopanLoader.loadDir(dataDir), cubeSchema);
         Session s1 = sessions.get(0);
 
+        System.out.println("Creating cube utils...");
         CubeUtils mdUtils = new CubeUtils(olap, s1.getCubeName());
+        System.out.println("Doing stuff with hierarchies...");
         List<Hierarchy> allHierarchies = Arrays
                 .stream(mdUtils.getCube().getDimensions())
                 .flatMap(d -> Arrays.stream(d.getHierarchies()))
                 .collect(Collectors.toList());
 
-
+        System.out.println("Collecting user session...");
         List<Session> thisUser = sessions.stream().filter(s -> s.getUserName().equals(s1.getUserName())).collect(Collectors.toList());
         thisUser.remove(s1);
 
 
-
+        System.out.println("Building topology graph...");
         OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
+        System.out.println("Injecting filters...");
         SessionGraph.injectFilters(base, mdUtils);
 
-        System.exit(0);
+        System.out.println("Evaluation starting...");
+        //System.exit(0);
 
         /**
          * Ben's stuff
