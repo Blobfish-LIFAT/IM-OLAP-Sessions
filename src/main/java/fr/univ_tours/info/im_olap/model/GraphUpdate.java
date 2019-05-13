@@ -40,7 +40,10 @@ public class GraphUpdate {
         ArrayList<Graph<Double, QueryPart>> sessionGraphs = new ArrayList<>();
 
         for (int i = 0; i < session.length() ; i++) {
-            sessionGraphs.add(this.queryGraphBuilder.apply(session, i)); // create query graph from truncated session
+            // create query graph from truncated session
+            Graph<Double, QueryPart> sessionGraph = this.queryGraphBuilder.apply(session, i);
+            //((OGraph<Double,QueryPart>) sessionGraph).checkSync();
+            sessionGraphs.add(sessionGraph);
         }
 
         //gains.add(new Pair<>(session.queries.get(0), 0.0));
@@ -52,9 +55,14 @@ public class GraphUpdate {
             Graph<Double, QueryPart> previousGraph = sessionGraphs.get(i-1);
             Graph<Double, QueryPart> queryGraph = sessionGraphs.get(i);
 
-            Graph<Double, QueryPart> interpolated = this.graphInterpolator.apply(baseGraph, queryGraph); // interpolate base graph to session graph
+            // interpolate base graph to session graph
+            Graph<Double, QueryPart> interpolatedPrevious = this.graphInterpolator.apply(baseGraph, previousGraph);
+            Graph<Double, QueryPart> interpolated = this.graphInterpolator.apply(baseGraph, queryGraph);
 
-            double gain = this.infoGainFormula.apply(previousGraph, interpolated); // compute information gain
+
+            //((OGraph<Double, QueryPart>)interpolated).checkSync();
+
+            double gain = this.infoGainFormula.apply(interpolatedPrevious, interpolated); // compute information gain
 
             gains.add(new Pair<>(session.queries.get(i), gain));
         }
@@ -75,7 +83,7 @@ public class GraphUpdate {
         OGraph<Double, QueryPart> graph = new OGraph<>();
 
         for (int i = 0; i < partList.size(); i++) {
-            for (int j = i + 1; j < partList.size(); j++) {
+            for (int j = i; j < partList.size(); j++) {
                 graph.setEdge(partList.get(i), partList.get(j), 1.0);
             }
         }
@@ -104,11 +112,18 @@ public class GraphUpdate {
     public static <E extends Comparable<E>,N extends Comparable<N>> Graph<E, N>
             replaceEdges(Graph<E, N> source, Graph<E, N> new_edges_graph) {
 
+        //((OGraph<Double,QueryPart>) source).checkSync();
+        //((OGraph<Double,QueryPart>) new_edges_graph).checkSync();
+
         Graph<E,N> newGraph = source.clone();
+
+        //((OGraph<Double,QueryPart>) newGraph).checkSync();
 
         for (Graph.Edge<N, E> edge : new_edges_graph.getEdges()) {
             newGraph.setEdge(edge);
         }
+
+        //((OGraph<Double,QueryPart>) newGraph).checkSync();
 
         return newGraph;
     }
@@ -121,10 +136,14 @@ public class GraphUpdate {
 
         return (g1, g2) -> {
             Graph<Double, QueryPart> ng1 = g1.clone();
+            //((OGraph<Double,QueryPart>) ng1).checkSync();
             Graphs.normalizeWeightsi(ng1);
 
+            //((OGraph<Double,QueryPart>) g2).checkSync();
             Graph<Double, QueryPart> ng2 = g2.clone();
+            //((OGraph<Double,QueryPart>) ng2).checkSync();
             Graphs.normalizeWeightsi(ng2);
+
 
             Pair<INDArray, HashMap<QueryPart, Integer>> pair1 = PageRank.pagerank(ng1, 42);
             Pair<INDArray, HashMap<QueryPart, Integer>> pair2 = PageRank.pagerank(ng2, 42);
@@ -138,6 +157,7 @@ public class GraphUpdate {
 
 
             Logger.logInfo("KLForGraphs","m1 size: ",m1.size()," \t m2 size: ", m2.size());
+
             /*
             HashSet<QueryPart> test = new HashSet<>(m2.keySet());
             test.removeAll(m1.keySet());
@@ -148,6 +168,7 @@ public class GraphUpdate {
             System.out.println(t);
             System.out.println(test.stream().filter(QueryPart::isDimension).filter(queryPart -> !queryPart.value.contains("[Tout]")).collect(Collectors.toList()));
             */
+
 
             int i = 0;
             double s = 0.0;
@@ -164,6 +185,9 @@ public class GraphUpdate {
 
             Logger.logInfo("KLForGraphs", "sum: " , s);
             Logger.logInfo("KLForGraphs","abs diff = ",diff);
+
+
+
 
             double res = Nd4jUtils.kullbackLeibler(m1, m2);
 
