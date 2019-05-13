@@ -1,6 +1,9 @@
 package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.collection.Pair;
+import com.google.common.graph.MutableValueGraph;
+import com.google.common.graph.ValueGraph;
+import com.google.common.graph.ValueGraphBuilder;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
@@ -59,6 +62,7 @@ public class Proto1 {
          */
 
         ((OGraph<Double, QueryPart>)base).checkSync();
+
 
         for (Query query : s1.queries) {
             for (QueryPart qp : query.getAllParts()) {

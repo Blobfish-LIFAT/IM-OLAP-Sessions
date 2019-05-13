@@ -132,11 +132,6 @@
             <version>2.2</version>
         </dependency>
 
-        <!--
-                MONDRIAN Dependencies - END
-        -->
-
-
         <dependency>
             <groupId>mondrian</groupId>
             <artifactId>mondrian</artifactId>
@@ -160,6 +155,16 @@
             <groupId>eigenbase</groupId>
             <artifactId>eigenbase-xom</artifactId>
             <version>1.0</version>
+        </dependency>
+
+        <!--
+                MONDRIAN Dependencies - END
+        -->
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.1-jre</version>
         </dependency>
 
     </dependencies>
