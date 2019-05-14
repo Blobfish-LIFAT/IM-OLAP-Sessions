@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 
 public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements Graph<E,N> {
 
-    private TreeMap<N,Pair<TreeSet<N>,TreeSet<N>>> nodes; // A Pair<X,Y> = Pair<From X to A,From A to Y>
+    private Map<N,Pair<TreeSet<N>,TreeSet<N>>> nodes; // A Pair<X,Y> = Pair<From X to A,From A to Y>
 
-    private HashMap<Pair<N,N>,E> edges;
+    private Map<Pair<N,N>,E> edges;
 
     public OGraph(){
         nodes = new TreeMap<>();
@@ -109,12 +109,17 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     @Override
     public Set<N> getNodes() {
-        return nodes.keySet();
+        return new TreeSet<>(nodes.keySet());
     }
 
     @Override
     public void addNode(N node) {
-        this.nodes.computeIfAbsent(node, x -> new Pair<>(new TreeSet<>(), new TreeSet<>()));
+        unsafeAddNode(node);
+    }
+
+    // returns a reference to the internal structure of node keeping
+    private Pair<TreeSet<N>, TreeSet<N>> unsafeAddNode(N node) {
+        return this.nodes.computeIfAbsent(node, x -> new Pair<>(new TreeSet<>(), new TreeSet<>()));
     }
 
     @Override
@@ -126,19 +131,10 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     }
 
     private void unsafeAddEdgeInNodes(N from, N to){
-        this.addNode(from);
-        this.addNode(to);
-        unsafeAddOnlyEdgesInNodes(from, to);
-    }
-
-    private void unsafeAddOnlyEdgesInNodes(N from, N to) {
-        nodes.get(from).getB().add(to);
-        nodes.get(to).getA().add(from);
-    }
-
-    public void unsafeSetEdge(N from, N to, E value) {
-        unsafeAddEdgeInNodes(from, to);
-        edges.put(new Pair<>(from, to), value);
+        TreeSet<N> from_to_treeSet = this.unsafeAddNode(from).getB();
+        TreeSet<N> to_from_treeSet = this.unsafeAddNode(to).getA();
+        from_to_treeSet.add(to);
+        to_from_treeSet.add(from);
     }
 
     @Override
@@ -238,8 +234,12 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     @Override
     public <F extends Comparable<F>> Graph<F, N> mapEdges(Function<Edge<N, E>, F> edgeFunction) {
-        Graph<F,N> newGraph = new OGraph<>();
-        newGraph.getNodes().addAll(this.getNodes());
+        OGraph<F,N> newGraph = new OGraph<>();
+
+        for (N node : this.getNodes()) {
+            newGraph.addNode(node);
+        }
+
         this.getEdges().forEach(e -> {
             F newVal = edgeFunction.apply(e);
             newGraph.setEdge(e.from, e.to, newVal);
