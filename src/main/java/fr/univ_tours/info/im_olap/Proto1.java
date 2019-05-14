@@ -63,7 +63,7 @@ public class Proto1 {
         /**
          * Ben's stuff
          */
-
+/*
         ((OGraph<Double, QueryPart>)base).checkSync();
 
 
@@ -99,7 +99,7 @@ public class Proto1 {
             System.out.println(p.left);
             System.out.println("value : " + p.right);
         });
-        System.out.println("End of evaluation.");
+        System.out.println("End of evaluation.");*/
     }
 
 }
