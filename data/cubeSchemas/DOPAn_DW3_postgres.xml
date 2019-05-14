@@ -1,0 +1,1701 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Schema name="DOPAn_DW3">
+  <!-- Shared dimensions -->
+	<Dimension name="Commune de résidence">
+      <Hierarchy hasAll="true" name="CNERES_Hierarchie_intercommunale" primaryKey="commune_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNERES_Hierarchie_intercommunale">
+        <Table name="commune" />
+		<Level type="String" name="Région" column="region_id" nameColumn="region_nom" ordinalColumn = "region_nom"/>
+        <Level type="String" name="Pays" column="pays_id" nameColumn="pays_nom" ordinalColumn = "pays_nom"/>
+        <Level type="String" name="Communauté de communes" column="communaute_communes_id" nameColumn="communaute_communes_nom" ordinalColumn = "communaute_communes_nom"/>
+		<Level type="String" name="Commune de résidence" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/>
+      </Hierarchy>
+      
+	  <Hierarchy hasAll="true" name="CNERES_Hierarchie_administrative" primaryKey="commune_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNERES_Hierarchie_administrative">
+        <Table name="commune" />
+		<Level type="String" name="Région" column="region_id" nameColumn="region_nom" ordinalColumn = "region_nom"/>
+        <Level type="String" name="Departement" column="departement_id" nameColumn="departement_nom" ordinalColumn = "departement_nom"/>
+        <!-- les valeurs des cantons ne sont pas correctement assignées 
+		<Level type="String" name="Canton" column="canton_id" nameColumn="cant_nom" ordinalColumn = "cant_nom"/>
+		-->
+		<Level type="String" name="Commune de résidence" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/>
+      </Hierarchy>
+	  
+      <Hierarchy hasAll="true" name="CNERES_Hierarchie_vulnerabilite" primaryKey="classe_vulnerabilite_insee_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNERES_Hierarchie_vulnerabilite">
+        <Table name="commune" />
+        <Level type="String" name="Classe de vulnerabilité énergétique Insee" column="classe_vulnerabilite_insee_id" nameColumn="classe_vulnerabilite_insee_nom" ordinalColumn = "classe_vulnerabilite_insee_nom"/>
+        <Level type="String" name="Commune de résidence" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/> 
+      </Hierarchy>
+	  
+      <Hierarchy hasAll="true" name="CNERES_Hierarchie_depense" primaryKey="classe_depense_insee_id"
+	  allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNERES_Hierarchie_depense">
+        <Table name="commune" />
+        <Level type="String" name="Classe de dépense énergétique Insee" column="classe_depense_insee_id" nameColumn="classe_depense_insee_nom" ordinalColumn = "classe_depense_insee_nom"/>
+        <Level type="String" name="Commune de résidence" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/> 
+      </Hierarchy>
+    </Dimension>
+	
+  <Dimension name="Commune du lieu d'occupation" >
+      <Hierarchy hasAll="true" name="CNELOCC_Hierarchie_intercommunale" primaryKey="commune_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNLEOCC_Hierarchie_intercommunale">
+        <Table name="commune" />
+		<Level type="String" name="Région" column="region_id" nameColumn="region_nom" ordinalColumn = "region_nom"/>
+        <Level type="String" name="Pays" column="pays_id" nameColumn="pays_nom" ordinalColumn = "pays_nom"/>
+        <Level type="String" name="Communauté de communes" column="communaute_communes_id" nameColumn="communaute_communes_nom" ordinalColumn = "communaute_communes_nom"/>
+        <Level type="String" name="Commune de travail" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/> 
+      </Hierarchy>
+      <Hierarchy hasAll="true" name="CNELOCC_Hierarchie_administrative" primaryKey="commune_id"
+		allMemberName = "toutes les communes" allLevelName = "Tout" caption ="CNELOCC_Hierarchie_administrative">
+        <Table name="commune" />
+		<Level type="String" name="Région" column="region_id" nameColumn="region_nom" ordinalColumn = "region_nom"/>
+        <Level type="String" name="Departement" column="departement_id" nameColumn="departement_nom" ordinalColumn = "departement_nom"/>
+		<!-- les valeurs des cantons ne sont pas correctement assignées 
+        <Level type="String" name="Canton" column="canton_id" nameColumn="cant_nom" ordinalColumn = "cant_nom"/>
+		-->
+		<Level type="String" name="Commune de travail" column="commune_id" nameColumn="commune_nom" ordinalColumn = "commune_nom"/>
+      </Hierarchy>
+    </Dimension>
+  
+  <Dimension name="Catégorie soçioprofessionnelle">
+      <Hierarchy hasAll="true" name="CSP_Hierarchie_1" primaryKey="csp3_id"
+		allMemberName = "toutes les csp" allLevelName = "Tout" caption ="CSP_Hierarchie_1">
+        <Table name="csp" />
+		<Level type="String" name="CSP1" column="csp1_id" nameColumn="csp1_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (csp.csp1_id != '-9' and csp.csp1_id != 'Z') then CAST (csp1_id as integer) else 
+						case when (csp.csp1_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+  <Dimension name="Année du recensement">
+      <Hierarchy hasAll="true" name="Annee_rencesement_Hierarchie_1" primaryKey="annee"
+		allMemberName = "toutes les années" allLevelName = "Tout" caption ="Annee_rencesement_Hierarchie_1">
+        <Table name="annee_recensement" />
+        <Level type="Integer" name="Année" column="annee" ordinalColumn = "annee"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Indicateur de lieu d'occupation">
+      <Hierarchy hasAll="true" name="ILOCC_Hierarchie_1" primaryKey="indicateur_id"
+		allMemberName = "tous les lieux confondus" allLevelName = "Tout" caption ="ILOCC_Hierarchie_1">
+        <Table name="indicateur_lieu" />
+		<Level type="String" name="Catégorie" column="categorie_id" nameColumn="categorie_nom" ordinalColumn = "categorie_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (indicateur_lieu.categorie_id != '-9' and indicateur_lieu.categorie_id != 'Z') then CAST (categorie_id as integer) else 
+						case when (indicateur_lieu.categorie_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Indicateur de lieu" column="indicateur_id" nameColumn="indicateur_nom" ordinalColumn = "indicateur_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+		
+	<Dimension name="Lien avec la personne de référence">
+      <Hierarchy hasAll="true" name="LPRM_Hierarchie_1" primaryKey="lien_id"
+		allMemberName = "tous les liens confondus" allLevelName = "Tout" caption ="LPRM_Hierarchie_1">
+        <Table name="lien_avec_perrefm" />
+		<Level type="String" name="Catégorie" column="categorie_id" nameColumn="categorie_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (lien_avec_perrefm.categorie_id != '-9' and lien_avec_perrefm.categorie_id != 'Z') then CAST (categorie_id as integer) else 
+						case when (lien_avec_perrefm.categorie_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Lien avec la personne de référence" column="lien_id" nameColumn="lien_nom" ordinalColumn = "lien_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Mode de cohabitation">
+      <Hierarchy hasAll="true" name="MODCOHAB_Hierarchie_1" primaryKey="mode_id"
+		allMemberName = "tous les modes confondus" allLevelName = "Tout" caption ="MODCOHAB_Hierarchie_1">
+        <Table name="mode_cohabitation" />
+        <Level type="String" name="Mode de cohabitation" column="mode_id" nameColumn="mode_nom" ordinalColumn = "mode_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Mode de transport">
+      <Hierarchy hasAll="true" name="MODTRANS_Hierarchie" primaryKey="mode_id"
+		allMemberName = "tous les modes confondus" allLevelName = "Tout" caption ="MODTRANS_Hierarchie">
+        <Table name="mode_transport" />
+        <Level type="String" name="Catégorie" column="categorie_id" nameColumn="categorie_nom" ordinalColumn = "categorie_nom">
+		<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (mode_transport.categorie_id != '-9' and mode_transport.categorie_id != 'Z') then CAST (categorie_id as integer) else 
+						case when (mode_transport.categorie_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Mode de transport" column="mode_id" nameColumn="mode_nom" ordinalColumn = "mode_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+    <Dimension name="Motif de déplacement">
+      <Hierarchy hasAll="true" name="MOTIFDEP_Hierarchie_1" primaryKey="motif_id"
+		allMemberName = "tous les motifs confondus" allLevelName = "Tout" caption ="MOTIFDEP_Hierarchie_1">
+        <Table name="motif_deplacement" />
+		<Level type="String" name="Catégorie 1" column="categorie1_id" nameColumn="categorie1_nom">
+		<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (motif_deplacement.categorie1_id != '-9' and motif_deplacement.categorie1_id != 'Z') then CAST (categorie1_id as integer) else 
+						case when (motif_deplacement.categorie1_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Catégorie 2" column="categorie2_id" nameColumn="categorie2_nom">
+		<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (motif_deplacement.categorie2_id != '-9' and motif_deplacement.categorie2_id != 'Z') then CAST (categorie2_id as integer) else 
+						case when (motif_deplacement.categorie2_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Motif de déplacement" column="motif_id" nameColumn="motif_nom" ordinalColumn = "motif_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Nature l'activité économique">
+      <Hierarchy hasAll="true" name="NATACTECO_Hierarchie" primaryKey="na17_id"
+		allMemberName = "toutes les natures confondues" allLevelName = "Tout" caption ="NATACTECO_Hierarchie" >
+        <Table name="activite_economique" />
+		<Level type="String" name="Nature de l'activité" column="na5_id" nameColumn="na5_lib" ordinalColumn = "na5_lib"/>
+        </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Niveau d'instruction">
+      <Hierarchy hasAll="true" name="Niveau_Instruction_Hierarchie" primaryKey="niveau_id"
+		allMemberName = "tous les niveaux confondus" allLevelName = "Tout" caption ="Niveau_Instruction_Hierarchie">
+        <Table name="niveau_instruction" />
+		<Level type="String" name="Catégorie 1" column="categorie1_id" nameColumn="categorie1_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (niveau_instruction.categorie1_id != '-9' and niveau_instruction.categorie1_id != 'Z') then CAST (categorie1_id as integer) else 
+						case when (niveau_instruction.categorie1_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Catégorie 2" column="categorie2_id" nameColumn="categorie2_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (niveau_instruction.categorie2_id != '-9' and niveau_instruction.categorie2_id != 'Z') then CAST (categorie2_id as integer) else 
+						case when (niveau_instruction.categorie2_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Niveau d'instruction" column="niveau_id" nameColumn="niveau_nom" ordinalColumn = "niveau_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Niveau de motorisation du ménage">
+      <Hierarchy hasAll="true" name="Niveau_motorisation_Hierarchie" primaryKey="niveau_id"
+		allMemberName = "tous les niveaux confondus" allLevelName = "Tout" caption ="Niveau_motorisation_Hierarchie">
+        <Table name="niveau_motorisation" />
+        <Level type="String" name="Niveau de motorisation" column="niveau_id" nameColumn="niveau_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (niveau_motorisation.niveau_id != '-9' and niveau_motorisation.niveau_id != 'Z' and niveau_motorisation.niveau_id != 'X') 
+						then niveau_id 
+						else  case when (niveau_motorisation.niveau_id = '-9') then '999' else niveau_id end 
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Sexe">
+      <Hierarchy hasAll="true" name="Sexe_Hierarchie" primaryKey="sexe_id"
+		allMemberName = "tous les sexes confondus" allLevelName = "Tout" caption ="Sexe_Hierarchie">
+        <Table name="sexe" />
+        <Level type="String" name="Sexe" column="sexe_id" nameColumn="sexe_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (sexe.sexe_id != '-9' and sexe.sexe_id != 'Z') 
+						then sexe.sexe_id
+						else  case when (sexe.sexe_id = '-9') then '999' else sexe.sexe_id end
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Statut d'emploi">
+      <Hierarchy hasAll="true" name="STATEMPL_Hierarchie" primaryKey="stat3_id"
+		allMemberName = "tous les statuts confondus" allLevelName = "Tout" caption ="STATEMPL_Hierarchie">
+        <Table name="statut_emploi" />
+		<Level type="String" name="Statut d'emploi de niveau 1" column="stat1_id" nameColumn="stat1_nom" >
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (statut_emploi.stat1_id != '-9' and statut_emploi.stat1_id != 'Z') 
+						then stat1_id 
+						else  case when (statut_emploi.stat1_id = '-9') then '999' else stat1_id end 
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Statut d'emploi de niveau 2" column="stat2_id" nameColumn="stat2_nom" ordinalColumn = "stat2_nom"/>
+        <Level type="String" name="Statut d'emploi de niveau 3" column="stat3_id" nameColumn="stat3_nom" ordinalColumn = "stat3_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Statut d'occupation du logement">
+      <Hierarchy hasAll="true" name="STOCLOGT_Hierarchie" primaryKey="statut_id"
+		allMemberName = "tous les statuts confondus" allLevelName = "Tout" caption ="STOCLOGT_Hierarchie" >
+        <Table name="statut_occupation_lgt" />
+		<Level type="String" name="Catégorie" column="categorie_id" nameColumn="categorie_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (statut_occupation_lgt.categorie_id = '1' or statut_occupation_lgt.categorie_id = '2' or statut_occupation_lgt.categorie_id = '3') 
+						then categorie_id 
+						else  case when (statut_occupation_lgt.categorie_id = '-9') then '999' 
+							else case when (statut_occupation_lgt.categorie_id = 'Z') then '99999' else '9999' end 
+						end 
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Statut d'occupation" column="statut_id" nameColumn="statut_nom" ordinalColumn = "statut_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Temps d'emploi">
+      <Hierarchy hasAll="true" name="TEMPSEMP_Hierarchie" primaryKey="temps_id"
+		allMemberName = "tous les temps confondus" allLevelName = "Tout" caption ="TEMPSEMP_Hierarchie" >
+        <Table name="temps_emploi" />
+        <Level type="String" name="Temps d'emploi" column="temps_id" nameColumn="temps_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (temps_emploi.temps_id = '-9') then '999'  else  temps_id end 				
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Type de logement">
+      <Hierarchy hasAll="true" name="TYPLOGT_Hierarchie" primaryKey="type_logt_id"
+		allMemberName = "tous les types confondus" allLevelName = "Tout" caption ="TYPLOGT_Hierarchie" >
+        <Table name="type_logt" />
+		<Level type="String" name="Type regroupé">
+			<KeyExpression>
+				<SQL dialect="generic"> (case when type_logt.type_logt_id = '1' then '1'
+					when type_logt.type_logt_id = '2' then '2' else '3' end) 
+				</SQL>
+			</KeyExpression>
+			<NameExpression>
+				<SQL dialect="generic"> (case when type_logt.type_logt_id = '1' then 'Maison'
+					when type_logt.type_logt_id = '2' then 'Appartement' else 'Autres' end) 
+				</SQL>
+			</NameExpression>
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when type_logt.type_logt_id = '1' then '1'
+					when type_logt.type_logt_id = '2' then '2' else '3' end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Type de logement" column="type_logt_id" nameColumn="type_logt_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (type_logt.type_logt_id = '-9') then '999'  else  type_logt_id end 				
+				</SQL>
+			</OrdinalExpression>
+		</Level>		
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension name="Type de ménage">
+      <Hierarchy hasAll="true" name="TYPMEN_Hierarchie" primaryKey="typemr9_id"
+		allMemberName = "tous les types confondus" allLevelName = "Tout" caption ="TYPMEN_Hierarchie" >
+        <Table name="type_menage" />
+		<Level type="String" name="Type regroupé en 4 catégories" column="typemr4_id" nameColumn="typemr4_nom">
+					<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (type_menage.typemr4_id = '-9') then '999'  else  typemr4_id end 				
+				</SQL>
+			</OrdinalExpression>
+		</Level>		
+        <Level type="String" name="Type regroupé en 9 catégories" column="typemr9_id" nameColumn="typemr9_nom" ordinalColumn = "typemr9_nom" />
+      </Hierarchy>
+    </Dimension>
+	
+  <!--The Mondrian Definition Of The Cube1MobProInd data cube -->
+  <Cube name="Cube1MobProInd" caption = "Cube 1 - Mobilité professionnelle des individus">
+    <Table name="mobpro_ind_1" />
+
+    <!--The Cube1MobProInd data cube dimensions -->
+	<Dimension name="Age révolu quinquenal" foreignKey="agerev">
+      <Hierarchy hasAll="true" name="AgeRevQ_Hierarchie_1" primaryKey="agerev_id"
+		allMemberName = "tous les âges révolus" allLevelName = "Tout" caption ="AgeRevQ_Hierarchie_1">
+        <Table name="age_revolu" />
+		<Level type="String" name="Age révolu quinquenal" column="agerevq_id" nameColumn="agerevq_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when age_revolu.agerevq_id != '-9' then CAST (agerevq_id as integer) else 999 end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Commune de résidence" source="Commune de résidence" foreignKey="commune_res"/>
+	<DimensionUsage name="Commune de travail" caption="Commune de travail" source="Commune du lieu d'occupation" foreignKey="commune_t"/>
+	<DimensionUsage name="Catégorie soçioprofessionnelle" source="Catégorie soçioprofessionnelle" foreignKey="csp3_id"/>
+	<DimensionUsage name="Année du recensement" source="Année du recensement" foreignKey="annee_recensement"/>
+	<DimensionUsage name="Indicateur de lieu de travail" source="Indicateur de lieu d'occupation" foreignKey="ilt"/>
+	<DimensionUsage name="Lien avec la personne de référence" source="Lien avec la personne de référence" foreignKey="lien_prm"/>
+	<DimensionUsage name="Mode de cohabitation" source="Mode de cohabitation" foreignKey="modecohab_id"/>
+	<DimensionUsage name="Mode de transport" source="Mode de transport" foreignKey="mode_trans"/>
+	<DimensionUsage name="Motif de déplacement" source="Motif de déplacement" foreignKey="motif_deplacement"/>
+	<DimensionUsage name="Nature l'activité économique" source="Nature l'activité économique" foreignKey="na17_id"/>
+	<DimensionUsage name="Niveau d'instruction" source="Niveau d'instruction" foreignKey="dipl"/>
+	<DimensionUsage name="Niveau de motorisation du ménage" source="Niveau de motorisation du ménage" foreignKey="motorisation_men"/>
+	<DimensionUsage name="Sexe" source="Sexe" foreignKey="sexe_id"/>
+	<DimensionUsage name="Statut d'emploi" source="Statut d'emploi" foreignKey="stat_empl"/>
+	<DimensionUsage name="Statut d'occupation du logement" source="Statut d'occupation du logement" foreignKey="stoc_lgt"/>
+	<DimensionUsage name="Temps d'emploi" source="Temps d'emploi" foreignKey="temps_emploi"/>
+	<DimensionUsage name="Type de logement" source="Type de logement" foreignKey="type_logt"/>
+	<DimensionUsage name="Type de ménage" source="Type de ménage" foreignKey="type_menage"/>
+		
+	<!--The Mondrian Definition Of The Cube1MobProInd Indicators -->
+	<!-- Les indicateurs de base de comptage -->
+	<Measure name="NbTotInd" column="coef_pond" aggregator="sum" visible="true" formatString="0#,###.###" />
+	
+    <measure name="NbTotMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.lien_prm = '1' then mobpro_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	
+	<measure name="NbTotPerScoMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.lien_prm = '1' then mobpro_ind_1.nbperscomen * mobpro_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerScoMen" column="nbperscomen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerScoMen" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.nbperscomen = -9 then 0 else mobpro_ind_1.nbperscomen end) </SQL> </MeasureExpression>
+	</measure>
+	
+	<measure name="NbTotPerSco14Men" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.lien_prm = '1' then mobpro_ind_1.nbpersco14men * mobpro_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerSco14Men" column="nbpersco14men" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerSco14Men" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.nbpersco14men = -9 then 0 else mobpro_ind_1.nbpersco14men end) </SQL> </MeasureExpression>
+	</measure>
+	
+	<!-- la colonne nbperactmen est nulle
+	<measure name="NbTotPerActMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.lien_prm = '1' then mobpro_ind_1.nbperactmen * mobpro_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerActMen" column="nbperactmen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerActMen" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.nbperactmen = -9 then 0 else mobpro_ind_1.nbperactmen end) </SQL> </MeasureExpression>
+	</measure>
+	-->
+	
+	<measure name="NbTotPerActOccMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.lien_prm = '1' then mobpro_ind_1.nbperactoccmen * mobpro_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerActOccMen" column="nbperactoccmen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerActOccMen" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.nbperactoccmen = -9 then 0 else mobpro_ind_1.nbperactoccmen end) </SQL> </MeasureExpression>
+	</measure>
+	
+	<measure name="NbTotPerMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.lien_prm = '1' then mobpro_ind_1.nbpermen * mobpro_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerMen" column="nbpermen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerMen" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.nbpermen = -9 then 0 else mobpro_ind_1.nbpermen end) </SQL> </MeasureExpression>
+	</measure>
+	
+	
+	<measure name="NbTotVoitMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.lien_prm = '1' then mobpro_ind_1.nbvoitmen * mobpro_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxVoitMen" column="nbvoitmen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinVoitMen" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.nbvoitmen = -9 then 0 else mobpro_ind_1.nbvoitmen end) </SQL> </MeasureExpression>
+	</measure>
+		
+	<!-- Les indicateurs de base de distance -->
+	<Measure name="DistMoyW" column="distance_chemin_court" aggregator="avg" visible="true" formatString="0#,###.###" />
+	<Measure name="DistMinW" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.distance_chemin_court = -9 then 0 else mobpro_ind_1.distance_chemin_court end) </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="DistMaxW" column="distance_chemin_court" aggregator="max" visible="true" formatString="0#,###.###" />
+	<measure name="DistP75W" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(distance_chemin_court), 0.75)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="DistQ2W" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(distance_chemin_court), 0.50)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="DistStDevW" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(distance_chemin_court)) </SQL></MeasureExpression>
+	</measure> 
+	
+	<!-- Les indicateurs de base de durée -->
+	<Measure name="DuréeMoyW" column="duree_courtchemin_dep" aggregator="avg" visible="true" formatString="0#,###.###" />
+	<Measure name="DuréeMinW" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.duree_courtchemin_dep = -9 then 0 else mobpro_ind_1.duree_courtchemin_dep end) </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="DuréeMaxW" column="duree_courtchemin_dep" aggregator="max" visible="true" formatString="0#,###.###" />
+	<measure name="DuréeP75W" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(duree_courtchemin_dep), 0.75)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="DuréeQ2W" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(duree_courtchemin_dep), 0.50)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="DuréeStDevW" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(duree_courtchemin_dep)) </SQL></MeasureExpression>
+	</measure> 
+	
+	<!-- Les indicateurs de base de consommation -->
+	<Measure name="ConsoCarbMoyW" column="consocarb_courtchemin_dep" aggregator="avg" visible="true" formatString="0#,###.###" />
+	<Measure name="ConsoCarbMinW" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.consocarb_courtchemin_dep = -9 then 0 else mobpro_ind_1.consocarb_courtchemin_dep end) </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="ConsoCarbMaxW" column="consocarb_courtchemin_dep" aggregator="max" visible="true" formatString="0#,###.###" />
+	<measure name="ConsoCarbP75W" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(consocarb_courtchemin_dep), 0.75)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="ConsoCarbQ2W" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(consocarb_courtchemin_dep), 0.50)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="ConsoCarbStDevW" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(consocarb_courtchemin_dep)) </SQL></MeasureExpression>
+	</measure> 
+	
+	<!-- Les indicateurs de base de dépense -->
+	<Measure name="DepenseMoyW" column="depense_courtchemin_dep" aggregator="avg" visible="true" formatString="0#,###.###" />
+	<Measure name="DepenseMinW" aggregator="min" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> (case when mobpro_ind_1.depense_courtchemin_dep = -9 then 0 else mobpro_ind_1.depense_courtchemin_dep end) </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="DepenseMaxW" column="depense_courtchemin_dep" aggregator="max" visible="true" formatString="0#,###.###" />
+	<measure name="DepenseP75W" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(depense_courtchemin_dep), 0.75)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="DepenseQ2W" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(depense_courtchemin_dep), 0.50)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="DepenseStDevW" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(depense_courtchemin_dep)) </SQL></MeasureExpression>
+	</measure> 
+	
+	<!-- Les indicateurs calculés de comptage -->
+	-- NbMaxMen des fils du membre courant, plusieurs dimensions peuvent être séléctionnées
+	-- 0 peut être remplacé de la même façon par les tests IIF imbriqués des autres dimensions 
+	-- Les conditions des IIF imbirquées peuvent être regroupées en une seule condition de disjonction avec or, 
+	-- mais comme la valeur de NbMaxMen depend du placement de la dimension dans la table de pivot,  
+	-- alors on fait des tests imbriquées pour appliquer l'expression de calcul adéquate à chaque configuration de la table de pivot  
+	<!-- ne fonctionne pas : il faut le redéfinir autrement
+	<CalculatedMember name="NbMaxMen" dimension="Measures" >
+		<Formula> 
+		IIf (cast([Commune de résidence].CurrentMember.Level.Ordinal As Integer) >= 1, 
+			Max([Commune de résidence.Commune_res_Hierarchie_1].currentMember.Children, [Measures].[NbTotMen]),
+			IIf (cast([Age révolu quinquenal].CurrentMember.Level.Ordinal As Integer) >= 1, 
+				Max([Age révolu quinquenal].currentMember.Children, [Measures].[NbTotMen]),
+				0 
+			)
+		)
+		</Formula>
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	-->
+	
+	-- CalculatedMember NbMinMen : même remarques que NbMaxMen
+	<!-- ça ne fonctionne pas
+	<CalculatedMember name="NbMinMen" dimension="Measures" >
+		<Formula> 
+		IIf (cast([Commune de résidence].CurrentMember.Level.Ordinal As Integer) >= 1, 
+			Min([Commune de résidence.CNERES_Hierarchie_administrative].currentMember.Children, [Measures].[NbTotMen]),
+			IIf (cast([Age révolu quinquenal].CurrentMember.Level.Ordinal As Integer) >= 1, 
+				Min([Age révolu quinquenal].currentMember.Children, [Measures].[NbTotMen]),
+				0  
+			)
+		)
+		</Formula>
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	-->
+	
+	-- CalculatedMember NbMoyPerScoMen = NbTotPerScoMen/NbTotMen
+	<CalculatedMember name="NbMoyPerScoMen" dimension="Measures" formula="[Measures].[NbTotPerScoMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	-- CalculatedMember NbMoyPerSco14Men
+	<CalculatedMember name="NbMoyPerSco14Men" dimension="Measures" formula="[Measures].[NbTotPerSco14Men]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	-- CalculatedMember NbMoyPerActMen
+	<!-- la colonne nbperactmen est nulle
+	<CalculatedMember name="NbMoyPerActMen" dimension="Measures" formula="[Measures].[NbTotPerActMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	-->
+	
+	-- CalculatedMember NbMoyPerActOccMen
+	<CalculatedMember name="NbMoyPerActOccMen" dimension="Measures" formula="[Measures].[NbTotPerActOccMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	-- CalculatedMember NbMoyPerMen
+	<CalculatedMember name="NbMoyPerMen" dimension="Measures" formula="[Measures].[NbTotPerMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	-- CalculatedMember NbMoyVoitMen
+	<CalculatedMember name="NbMoyVoitMen" dimension="Measures" formula="[Measures].[NbTotVoitMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	<!-- Les indicateurs calculés de distance -->
+	<!-- un petit problème : Val(&quot;19,011&quot;)  retourne un entier, 15 -->
+	<CalculatedMember name="DistQ3WDept" dimension="Measures" formula="cast(Val(&quot;17,855&quot;) AS  Numeric)" visible="false" >
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+		
+	<CalculatedMember name="DistQ3W" dimension="Measures" formula="[Measures].[DistP75W] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[DistP75W]> [Measures].[DistQ3WDept], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>
+
+	<!-- Les indicateurs calculés de durée -->
+	<CalculatedMember name="DuréeQ3WDept" dimension="Measures" formula="cast(Val(&quot;38&quot;) AS  Numeric)" visible="false" >
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	<CalculatedMember name="DuréeQ3W" dimension="Measures" formula="[Measures].[DuréeP75W] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[DuréeP75W]> [Measures].[DuréeQ3WDept], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>
+	
+	<!-- Les indicateurs calculés de consommation -->
+	<CalculatedMember name="ConsoCarbQ3WDept" dimension="Measures" formula="cast(Val(&quot;1,884&quot;) AS  Numeric)" visible="false" >
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	<CalculatedMember name="ConsoCarbQ3W" dimension="Measures" formula="[Measures].[ConsoCarbP75W] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[ConsoCarbP75W]> [Measures].[ConsoCarbQ3WDept], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>	
+	
+	<!-- Les indicateurs calculés de dépense -->
+	<CalculatedMember name="DepenseQ3WDept" dimension="Measures" formula="cast(Val(&quot;2,287&quot;) AS  Numeric)" visible="false" >
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	<CalculatedMember name="DepenseQ3W" dimension="Measures" formula="[Measures].[DepenseP75W] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[DepenseP75W]> [Measures].[DepenseQ3WDept], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>
+
+  </Cube>
+ 
+  <!-- Cube Cube2MobScoInd -->
+  <Cube name="Cube2MobScoInd" caption = "Cube 2 - Mobilité scolaire des individus">
+	<Table name="mobsco_ind_1" />
+	
+    <!--The Cube2MobScoInd data cube dimensions -->
+	
+	<!-- Non specified dimension in the data source 
+	<DimensionUsage name="Activité économique de personne de référence" source="Nature l'activité économique" foreignKey="na17_prm"/>
+	-->
+	
+	<Dimension name="Age révolu en 10 classes" foreignKey="agerev10">
+      <Hierarchy hasAll="true" name="AgeRev10_Hierarchie_1" primaryKey="agerev10_id"
+		allMemberName = "toutes les classes d'âges révolus" allLevelName = "Tout" caption ="AgeRev10_Hierarchie_1">
+        <Table name="age_revolu_10" />
+        <Level type="String" name="Classe d'âges révolus" column="agerev10_id" nameColumn="agerev10_lib" ordinalColumn = "agerev10_id" />
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Commune de résidence" source="Commune de résidence" foreignKey="commune_res"/>
+	<DimensionUsage name="Commune d'études" source="Commune du lieu d'occupation" foreignKey="commune_etud_fr"/>
+	
+	<Dimension name="CSP de la personne de référence" foreignKey="csp_prm">
+      <Hierarchy hasAll="true" name="CSP_Hierarchie_1" primaryKey="csp3_id"
+		allMemberName = "toutes les csp" allLevelName = "Tout" caption ="CSP_Hierarchie_1">
+        <Table name="csp" />
+		<Level type="String" name="CSP1" column="csp1_id" nameColumn="csp1_lib" ordinalColumn = "csp1_lib"/>
+        <Level type="String" name="CSP2" column="csp2_id" nameColumn="csp2_lib" ordinalColumn = "csp2_lib"/>
+        <Level type="String" name="CSP3" column="csp3_id" nameColumn="csp3_lib" ordinalColumn = "csp3_lib"/>
+      </Hierarchy>
+	</Dimension>
+	
+	<DimensionUsage name="Année du recensement" source="Année du recensement" foreignKey="annee_recensement"/>
+	<DimensionUsage name="Indicateur de lieu d'études" source="Indicateur de lieu d'occupation" foreignKey="iletud"/>
+	<!-- Non specified dimension in the data source 
+	<DimensionUsage name="Indicateur de nationalité" source="Indicateur de nationalité" foreignKey="nationalite_id"/>
+	--> 
+	<DimensionUsage name="Lien avec la personne de référence" source="Lien avec la personne de référence" foreignKey="lien_prm"/>
+	<!-- Non specified dimension in the data source 
+	<DimensionUsage name="Mode de cohabitation" source="Mode de cohabitation" foreignKey="modecohab_id"/>
+	-->
+	<!-- Non specified dimension in the data source 
+	<DimensionUsage name="Mode de transport" source="Mode de transport" foreignKey="mode_trans"/>
+	-->
+	<DimensionUsage name="Motif de déplacement" source="Motif de déplacement" foreignKey="motif_deplacement"/>
+
+	<DimensionUsage name="Niveau d'instruction" source="Niveau d'instruction" foreignKey="dipl"/>
+	<DimensionUsage name="Niveau de motorisation du ménage" source="Niveau de motorisation du ménage" foreignKey="motorisation_men"/>
+	<DimensionUsage name="Sexe" source="Sexe" foreignKey="sexe_id"/>
+	<!-- Non specified dimension in the data source 
+	<DimensionUsage name="Statut d'emploi de la personne de référence" source="Statut d'emploi" foreignKey="stat_empl_prm"/>
+	-->
+	<!-- Non specified dimension in the data source 
+	<DimensionUsage name="Statut d'immigration" source="Statut d'immigration" foreignKey="immigration_id"/>
+	-->
+	<DimensionUsage name="Statut d'occupation du logement" source="Statut d'occupation du logement" foreignKey="stoc_lgt"/>
+	<!-- Non specified dimension in the data source 
+	<DimensionUsage name="Temps d'emploi de la personne de référence" source="Temps d'emploi" foreignKey="temps_emploi_prm"/>
+	-->
+	<!-- Non specified dimension in the data source 
+	<DimensionUsage name="Type de logement" source="Type de logement" foreignKey="type_logt"/>
+	-->
+	
+	<DimensionUsage name="Type de ménage" source="Type de ménage" foreignKey="type_menage"/>
+	<!--
+	<DimensionUsage name="CubeDimName" source="SharedDimName" foreignKey="CubeFactTableFKColumn"/>
+	-->	
+	
+	<!--The Mondrian Definition Of The Cube1MobProInd Indicators -->
+	<!-- Les indicateurs de base de comptage -->
+	<Measure name="NbTotInd" column="coef_pond" aggregator="sum" visible="true" formatString="0#,###.###" />
+	
+    <measure name="NbTotMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobsco_ind_1.lien_prm = '1' then mobsco_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	
+	<measure name="NbTotPerScoMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobsco_ind_1.lien_prm = '1' then mobsco_ind_1.nbperscomen * mobsco_ind_1.coef_pond  else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerScoMen" column="nbperscomen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerScoMen" column="nbperscomen" aggregator="min" visible="true" formatString="0#,###.###"/>
+	
+	<measure name="NbTotPerSco14Men" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobsco_ind_1.lien_prm = '1' then mobsco_ind_1.nbpersco14men * mobsco_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerSco14Men" column="nbpersco14men" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerSco14Men" column="nbpersco14men" aggregator="min" visible="true" formatString="0#,###.###"/>
+	
+	<!-- non specified measure values for these indicators, valid indicators' definitions 
+	<measure name="NbTotPerActMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobsco_ind_1.lien_prm = '1' then mobsco_ind_1.nbperactmen else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerActMen" column="nbperactmen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerActMen" column="nbperactmen" aggregator="min" visible="true" formatString="0#,###.###"/>
+	
+	<measure name="NbTotPerActOccMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobsco_ind_1.lien_prm = '1' then mobsco_ind_1.nbperactoccmen else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerActOccMen" column="nbperactoccmen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerActOccMen" column="nbperactoccmen" aggregator="min" visible="true" formatString="0#,###.###"/>
+	-->
+	
+	<measure name="NbTotPerMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobsco_ind_1.lien_prm = '1' then mobsco_ind_1.nbpermen * mobsco_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxPerMen" column="nbpermen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinPerMen" column="nbpermen" aggregator="min" visible="true" formatString="0#,###.###"/>
+	
+	<measure name="NbTotVoitMen" aggregator="sum" datatype = "Integer" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> (case when mobsco_ind_1.lien_prm = '1' then mobsco_ind_1.nbvehmen * mobsco_ind_1.coef_pond else 0 end) </SQL> </MeasureExpression>
+	</measure> 
+	<measure name="NbMaxVoitMen" column="nbvehmen" aggregator="max" visible="true" formatString="0#,###.###"/>
+	<measure name="NbMinVoitMen" column="nbvehmen" aggregator="min" visible="true" formatString="0#,###.###"/>
+		
+	<!-- Les indicateurs de base de distance -->
+	<Measure name="DistMoy LieuRes-LieuEtud" column="distance_centroid_detud" aggregator="avg" visible="true" formatString="0#,###.###" />
+	<Measure name="DistMin LieuRes-LieuEtud" column="distance_centroid_detud" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="DistMax LieuRes-LieuEtud" column="distance_centroid_detud" aggregator="max" visible="true" formatString="0#,###.###" />
+	<measure name="DistP75 LieuRes-LieuEtud" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(distance_centroid_detud), 0.75)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="DistP50 LieuRes-LieuEtud" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(distance_centroid_detud), 0.50)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="EcartTypeDists LieuRes-LieuEtud" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(distance_centroid_detud)) </SQL></MeasureExpression>
+	</measure> 
+	
+	<!-- Les indicateurs de base de durée -->
+	<Measure name="DuréeMoyVoit LieuRes-LieuEtud" column="duree_courtchemin_depvoit" aggregator="avg" visible="true" formatString="0#,###.###" />
+	<Measure name="DuréeMinVoit LieuRes-LieuEtud" column="duree_courtchemin_depvoit" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="DuréeMaxVoit LieuRes-LieuEtud" column="duree_courtchemin_depvoit" aggregator="max" visible="true" formatString="0#,###.###" />
+	<measure name="DuréeP75Voit LieuRes-LieuEtud" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(duree_courtchemin_depvoit), 0.75)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="DuréeP50Voit LieuRes-LieuEtud" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(duree_courtchemin_depvoit), 0.50)) </SQL></MeasureExpression>
+	</measure>	
+	<measure name="EcartTypeDuréesVoit LieuRes-LieuEtud" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(duree_courtchemin_depvoit)) </SQL></MeasureExpression>
+	</measure> 
+	
+	<!-- Les indicateurs calculés de comptage -->
+	-- NbMaxMen des fils du membre courant, plusieurs dimensions peuvent être séléctionnées
+	-- -9 peut être remplacé de la même façon par les tests IIF imbriqués des autres dimensions 
+	-- Les conditions des IIF imbirquées peuvent être regroupées en une seule condition de disjonction avec or, 
+	-- mais comme la valeur de NbMaxMen depend du placement de la dimension dans la table de pivot,  
+	-- alors on fait des tests imbriquées pour appliquer l'expression de calcul adéquate à chaque configuration de la table de pivot   
+	<CalculatedMember name="NbMaxMen" dimension="Measures" >
+		<Formula> 
+		IIf (cast([Commune de résidence].CurrentMember.Level.Ordinal As Integer) >= 1, 
+			Max([Commune de résidence.CNERES_Hierarchie_administrative].currentMember.Children, [Measures].[NbTotMen]),
+			IIf (cast([Age révolu en 10 classes].CurrentMember.Level.Ordinal As Integer) >= 1, 
+				Max([Age révolu en 10 classes].currentMember.Children, [Measures].[NbTotMen]),
+				-9  
+			)
+		)
+		</Formula>
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	-- CalculatedMember NbMinMen : même remarques que NbMaxMen
+	<CalculatedMember name="NbMinMen" dimension="Measures" >
+		<Formula> 
+		IIf (cast([Commune de résidence].CurrentMember.Level.Ordinal As Integer) >= 1, 
+			Min([Commune de résidence.CNERES_Hierarchie_administrative].currentMember.Children, [Measures].[NbTotMen]),
+			IIf (cast([Age révolu en 10 classes].CurrentMember.Level.Ordinal As Integer) >= 1, 
+				Min([Age révolu en 10 classes].currentMember.Children, [Measures].[NbTotMen]),
+				-9  
+			)
+		)
+		</Formula>
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	-- CalculatedMember NbMoyPerScoMen = NbTotPerScoMen/NbTotMen
+	<CalculatedMember name="NbMoyPerScoMen" dimension="Measures" formula="[Measures].[NbTotPerScoMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	-- CalculatedMember NbMoyPerSco14Men
+	<CalculatedMember name="NbMoyPerSco14Men" dimension="Measures" formula="[Measures].[NbTotPerSco14Men]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	-- CalculatedMember NbMoyPerActMen
+	<!-- non specified measure values for these indicators
+	<CalculatedMember name="NbMoyPerActMen" dimension="Measures" formula="[Measures].[NbTotPerActMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember>
+	-->	
+	
+	-- CalculatedMember NbMoyPerActOccMen
+	<!-- non specified measure values for these indicators
+	<CalculatedMember name="NbMoyPerActOccMen" dimension="Measures" formula="[Measures].[NbTotPerActOccMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	-->
+	
+	-- CalculatedMember NbMoyPerMen
+	<CalculatedMember name="NbMoyPerMen" dimension="Measures" formula="[Measures].[NbTotPerMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	-- CalculatedMember NbMoyVoitMen
+	<CalculatedMember name="NbMoyVoitMen" dimension="Measures" formula="[Measures].[NbTotVoitMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	<!-- Les indicateurs calculés de distance -->
+	<!-- un petit problème : Val(&quot;15,824&quot;)  retourne un entier, 15 -->
+	<CalculatedMember name="DistQ3Dept LieuRes-LieuEtud" visible = "false" dimension="Measures" formula="cast(Val(&quot;10.429&quot;) AS  Numeric)">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+		
+	<CalculatedMember name="DistQ3 LieuRes-LieuEtud" dimension="Measures" formula="[Measures].[DistP75 LieuRes-LieuEtud] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[DistP75 LieuRes-LieuEtud] > [Measures].[DistQ3Dept LieuRes-LieuEtud], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>
+
+	<!-- Les indicateurs calculés de durée -->
+	-- 15,824 est le q3 des distances 
+	<CalculatedMember name="DuréeQ3VoitDept LieuRes-LieuEtud" visible = "false"  dimension="Measures" formula="cast(Val(&quot;15,824&quot;) AS  Numeric)">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+
+	<CalculatedMember name="DuréeQ3Voit LieuRes-LieuEtud" dimension="Measures" formula="[Measures].[DuréeP75Voit LieuRes-LieuEtud] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[DuréeP75Voit LieuRes-LieuEtud]> [Measures].[DuréeQ3VoitDept LieuRes-LieuEtud], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>
+ </Cube>
+  
+ -- Cube 4 Chauffage
+ <Cube name="Cube4Chauffage" caption = "Cube 4 - Chauffage">
+  <Table name="logements" />
+  <!--The Cube4Chauffage data cube dimensions -->
+	-- Dimension 1 : Année du recensement : annee_recensement
+	<DimensionUsage name="Année du recensement" source="Année du recensement" foreignKey="annee_recensement"/>
+	
+	-- Dimensions describing the house hold 
+	 
+	-- Dimension 2 : -- IRIS de résidence non considérée 
+	<DimensionUsage name="Commune de résidence" source="Commune de résidence" foreignKey="commune_residence"/>
+	
+	-- Dimension 3 : table annee_emmenagement : annee_emmenagement
+	<Dimension name="Année d'emménagement" foreignKey="annee_emmenagement">
+      <Hierarchy hasAll="true" name="MENAGE_ANNEE_EMM_Hierarchie_1" primaryKey="annee"
+		allMemberName = "toutes les années" allLevelName = "Tout" caption ="MENAGE_ANNEE_EMM_Hierarchie_1">
+        <Table name="annee_emmenagement" />
+		<Level type="String" name="Année regroupée" column="annee_regroupee" nameColumn="annee_regroupee_libelle" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> 
+					(case when annee_emmenagement.annee_regroupee = '-9' then 99993  
+						when annee_emmenagement.annee_regroupee = 'Z' then 99992 
+						when annee_emmenagement.annee_regroupee = '0' then 99991 
+						else CAST (annee_regroupee as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+		<Level type="String" name="Année" column="annee" nameColumn="annee_libelle" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> 
+					(case when annee_emmenagement.annee = '-9' then 99993 
+					when annee_emmenagement.annee = 'ZZZZ' then 99992 
+					when annee_emmenagement.annee = '0000' then 99991 
+					else CAST (annee as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 4 : table anciennete_emmenagement : anciennete_emmenagement
+	<Dimension name="Ancienneté d'emménagement" foreignKey="anciennete_emmenagement">
+      <Hierarchy hasAll="true" name="MENAGE_ANCIENNETE_EMM_Hierarchie_1" primaryKey="anciennete"
+		allMemberName = "toutes les anciennetés" allLevelName = "Tout" caption ="MENAGE_ANCIENNETE_EMM_Hierarchie_1">
+        <Table name="anciennete_emmenagement" />
+		<Level type="String" name="Ancienneté regroupée" column="anciennete_regroupee" nameColumn="anciennete_regroupee_libelle" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> 
+					(case when anciennete_emmenagement.anciennete_regroupee = '-9'  then 99993 
+					when anciennete_emmenagement.anciennete_regroupee = 'ZZ'  then 99992
+					when anciennete_emmenagement.anciennete_regroupee = '99'  then 99991
+					else CAST (anciennete_regroupee as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+		<Level type="String" name="Ancienneté" column="anciennete" nameColumn="anciennete_libelle" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> 
+					(case when anciennete_emmenagement.anciennete = '-9' then 99993 
+					when anciennete_emmenagement.anciennete = 'ZZZ' then 99992 
+					when anciennete_emmenagement.anciennete = '999' then 99991 
+					else CAST (anciennete as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 5 : table categorie_logement : categorie_logt
+	<Dimension name="Catégorie du logement" foreignKey="categorie_logt">
+      <Hierarchy hasAll="true" name="LOGT_CATEGORIE_Hierarchie_1" primaryKey="categorie_id"
+		allMemberName = "toutes les catégories" allLevelName = "Tout" caption ="LOGT_CATEGORIE_Hierarchie_1">
+        <Table name="categorie_logement" />
+		<Level type="String" name="Catégorie regroupée">
+			<KeyExpression>
+				<SQL dialect="generic"> (case when categorie_logement.categorie_id = '1' then '1' else '2' end) </SQL>
+			</KeyExpression>
+			<NameExpression>
+				<SQL dialect="generic"> (case when categorie_logement.categorie_id = '1' then 'Résidences principales' else 'Autres' end) </SQL>
+			</NameExpression>
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when categorie_logement.categorie_id = '1' then '1' else '2' end) </SQL>
+			</OrdinalExpression>
+		</Level>
+		<Level type="String" name="Catégorie" column="categorie_id" nameColumn="categorie_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> 
+				(case when categorie_logement.categorie_id = '-9' then 992
+				when categorie_logement.categorie_id = 'Z' then 991
+				else CAST (categorie_id as integer)  end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 6 : table stationnnement : stationnement
+	<Dimension name="Stationnement reservé" foreignKey="stationnement">
+      <Hierarchy hasAll="true" name="LOGT_STATIONNEMENT_Hierarchie_1" primaryKey="stationnnement_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_STATIONNEMENT_Hierarchie_1">
+        <Table name="stationnnement" />
+		<Level type="String" name="Stationnement" column="stationnnement_id" nameColumn="stationnnement_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> 
+					(case when stationnnement.stationnnement_id != '-9' then 992
+					when stationnnement.stationnnement_id != 'Z' then 991
+					else  CAST (stationnnement_id as integer)end) 
+					</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 7 : table logement_hlm : logement_hlm
+	<Dimension name="Appartenance du logement à un HLM" foreignKey="logement_hlm">
+      <Hierarchy hasAll="true" name="LOGT_HLM_Hierarchie_1" primaryKey="appartenance_hlm_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_HLM_Hierarchie_1">
+        <Table name="logement_hlm" />
+		<Level type="String" name="Appartenance à un HLM" column="appartenance_hlm_id" nameColumn="appartenance_hlm_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when logement_hlm.appartenance_hlm_id = '-9' then 992
+					when logement_hlm.appartenance_hlm_id = 'Z' then 991
+					else  CAST (appartenance_hlm_id as integer) end) </SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 8 : table nombre_pieces : nombre_pieces
+	<Dimension name="Nombre de pièces du logement" foreignKey="nombre_pieces">
+      <Hierarchy hasAll="true" name="LOGT_NBPIECE_Hierarchie_1" primaryKey="nombre_pieces_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_NBPIECE_Hierarchie_1">
+        <Table name="nombre_pieces" />
+		<Level type="String" name="Nombre de pièces" column="nombre_pieces_id" nameColumn="nombre_pieces_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> 
+					(case when nombre_pieces.nombre_pieces_id = '-9' then 992
+					when nombre_pieces.nombre_pieces_id = 'ZZ' then 991 					
+					else CAST (nombre_pieces_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 9 : table statut_occupation_lgt : statut_occup_logt
+	<DimensionUsage name="Statut d'occupation du logement" source="Statut d'occupation du logement" foreignKey="statut_occup_logt"/>
+	
+	-- Dimension 10 : table surface_logt : surface_logt	
+	<Dimension name="Surface du logement" foreignKey="surface_logt">
+      <Hierarchy hasAll="true" name="LOGT_SURFACE_Hierarchie_1" primaryKey="surface_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_SURFACE_Hierarchie_1">
+        <Table name="surface_logt" />
+		<Level type="String" name="Surface" column="surface_id" nameColumn="surface_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when surface_logt.surface_id = '-9' then 992 
+					when surface_logt.surface_id = 'Z' then 991 
+					else CAST (surface_id as integer)   end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 11 : table type_construction_logt : type_construction
+	<Dimension name="Type de construction du logement" foreignKey="type_construction">
+      <Hierarchy hasAll="true" name="LOGT_TYPECONSTR_Hierarchie_1" primaryKey="type_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_TYPECONSTR_Hierarchie_1">
+        <Table name="type_construction_logt" />
+		<Level type="String" name="Type de construction" column="type_id" nameColumn="type_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when type_construction_logt.type_id = '-9' then 992 
+					when type_construction_logt.type_id = 'Z' then 991 
+					else CAST (type_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	
+	-- Dimension 12 : table type_logt : type_logt
+	<DimensionUsage name="Type de logement" source="Type de logement" foreignKey="type_logt"/>
+	
+	
+	-- Dimension 13 : table niveau_motorisation : niveau_nbvoit_menage
+	<DimensionUsage name="Niveau de motorisation du ménage" source="Niveau de motorisation du ménage" foreignKey="niveau_nbvoit_menage"/>
+	
+	-- Dimension 27 : Période de construction du logement
+	<Dimension name="Période de construction du logement" foreignKey="periode_construction">
+      <Hierarchy hasAll="true" name="LOGT_PERIODECONSTR_Hierarchie_1" primaryKey="periode_id"
+		allMemberName = "toutes les périodes confondues" allLevelName = "Tout" caption ="LOGT_PERIODECONSTR_Hierarchie_1" >
+        <Table name="periode_construction" />
+        <Level type="String" name="Période de construction" column="periode_id" nameColumn="periode_lib">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (periode_construction.periode_id = '-9') then '99'  else  periode_id end 				
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	-- Dimensions describing the heating system of the house 
+	-- Dimension 14 : table type_chauffage : type_chauffage
+	<Dimension name="Type de chauffage du logement" foreignKey="type_chauffage">
+      <Hierarchy hasAll="true" name="LOGT_TYPECHAUF_Hierarchie_1" primaryKey="type_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_TYPECHAUF_Hierarchie_1">
+        <Table name="type_chauffage" />
+		<Level type="String" name="Type" column="type_id" nameColumn="type_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when type_chauffage.type_id = 'Z' then 993 
+					when type_chauffage.type_id = '-9' then 992 
+					when type_chauffage.type_id = 'X' then 991 
+					else CAST (type_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	
+	-- Dimension 15 : table energie_chauffage : energie_chauffage
+	<Dimension name="Energie de chauffage du logement" foreignKey="energie_chauffage">
+      <Hierarchy hasAll="true" name="LOGT_ENERGIECHAUF_Hierarchie_1" primaryKey="type_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="LOGT_ENERGIECHAUF_Hierarchie_1">
+        <Table name="energie_chauffage" />
+		<Level type="String" name="Energie" column="energie_id" nameColumn="energie_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when energie_chauffage.energie_id = 'Z' then 993 
+					when energie_chauffage.energie_id = '-9' then 992 
+					when energie_chauffage.energie_id = 'X' then 992 
+					else CAST (energie_id as integer)  end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	
+	-- Dimensions describing the reference person of the house hold
+	
+	-- Dimension 16 Age de la personne de référence : table age_regroupe : ref_age_regroupe
+	<Dimension name="Age du référent" foreignKey="ref_age_regroupe">
+      <Hierarchy hasAll="true" name="REF_AGE_Hierarchie_1" primaryKey="age_regroupe_id"
+		allMemberName = "tous les âges regroupés" allLevelName = "Tout" caption ="REF_AGE_Hierarchie_1">
+        <Table name="age_regroupe" />
+		<Level type="String" name="Age regroupé" column="age_regroupe_id" nameColumn="age_regroupe_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when age_regroupe.age_regroupe_id = '-9' then 993
+					when age_regroupe.age_regroupe_id = 'ZZ' then 992
+					when age_regroupe.age_regroupe_id = 'YY' then 991
+					else CAST (age_regroupe_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 17 : Niveau d'instruction de la personne de référence : table niveau_instruction : ref_niveau_instruction
+	<!-- <DimensionUsage name="Niveau d'instruction du référent" source="Niveau d'instruction" foreignKey="ref_niveau_instruction"/> -->
+	<Dimension name="Niveau d'instruction du référent" foreignKey="ref_niveau_instruction">
+      <Hierarchy hasAll="true" name="REF_DIPLOME_Hierarchie_1" primaryKey="niveau_id"
+		allMemberName = "tous les niveaux confondus" allLevelName = "Tout" caption ="REF_DIPLOME_Hierarchie_1">
+        <Table name="niveau_instruction" />
+		<Level type="String" name="Catégorie 1" column="categorie1_id" nameColumn="categorie1_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (niveau_instruction.categorie1_id != '-9' and niveau_instruction.categorie1_id != 'Z') then CAST (categorie1_id as integer) else 
+						case when (niveau_instruction.categorie1_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Catégorie 2" column="categorie2_id" nameColumn="categorie2_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (niveau_instruction.categorie2_id != '-9' and niveau_instruction.categorie2_id != 'Z') then CAST (categorie2_id as integer) else 
+						case when (niveau_instruction.categorie2_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Niveau d'instruction" column="niveau_id" nameColumn="niveau_nom" ordinalColumn = "niveau_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	-- Dimension 18 : Statut d'emploi de la personne de référence : table statut_emploi : ref_statut_emploi
+	<!-- <DimensionUsage name="Statut d'emploi du référent" source="Statut d'emploi" foreignKey="ref_statut_emploi"/> -->
+	<Dimension name="Statut d'emploi du référent" foreignKey="ref_statut_emploi">
+      <Hierarchy hasAll="true" name="REF_STATUTEMPL_Hierarchie_1" primaryKey="stat3_id"
+		allMemberName = "tous les statuts confondus" allLevelName = "Tout" caption ="REF_STATUTEMPL_Hierarchie_1">
+        <Table name="statut_emploi" />
+		<Level type="String" name="Statut d'emploi de niveau 1" column="stat1_id" nameColumn="stat1_nom" >
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (statut_emploi.stat1_id != '-9' and statut_emploi.stat1_id != 'Z') 
+						then stat1_id 
+						else  case when (statut_emploi.stat1_id = '-9') then '999' else stat1_id end 
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Statut d'emploi de niveau 2" column="stat2_id" nameColumn="stat2_nom" ordinalColumn = "stat2_nom"/>
+        <Level type="String" name="Statut d'emploi de niveau 3" column="stat3_id" nameColumn="stat3_nom" ordinalColumn = "stat3_nom"/>
+      </Hierarchy>
+    </Dimension>
+	
+	-- Dimension 19 : Indicateur du lieu d'études de la personne de référence : table indicateur_lieu : ref_indicateur_lieu_etud
+	<Dimension name="Indicateur du lieu d'études du référent" foreignKey="ref_indicateur_lieu_etud">
+      <Hierarchy hasAll="true" name="REF_INDLIEUETUD_Hierarchie_1" primaryKey="indicateur_id"
+		allMemberName = "tous les lieux confondus" allLevelName = "Tout" caption ="REF_INDLIEUETUD_Hierarchie_1">
+        <Table name="indicateur_lieu" />
+		<Level type="String" name="Catégorie" column="categorie_id" nameColumn="categorie_nom" ordinalColumn = "categorie_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (indicateur_lieu.categorie_id = '-9') then 993  
+					when (indicateur_lieu.categorie_id = 'Y') then 992
+					when (indicateur_lieu.categorie_id = 'Z') then 991
+					else CAST (categorie_id as integer)	end )			
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Indicateur de lieu" column="indicateur_id" nameColumn="indicateur_nom" ordinalColumn = "indicateur_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (indicateur_lieu.indicateur_id = '-9') then  993
+					when (indicateur_lieu.indicateur_id = 'Y') then  992 
+					when (indicateur_lieu.indicateur_id = 'Z') then  991
+					else CAST (indicateur_id as integer) end )				
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	
+	-- Dimension 20 : Indicateur du lieu de travail de la personne de référence : ref_indicateur_lieu_trav
+	<Dimension name="Indicateur du lieu de travail du référent" foreignKey="ref_indicateur_lieu_trav">
+      <Hierarchy hasAll="true" name="REF_INDLIEUTRAV_Hierarchie_1" primaryKey="indicateur_id"
+		allMemberName = "tous les lieux confondus" allLevelName = "Tout" caption ="REF_INDLIEUTRAV_Hierarchie_1">
+        <Table name="indicateur_lieu" />
+		<Level type="String" name="Catégorie" column="categorie_id" nameColumn="categorie_nom" ordinalColumn = "categorie_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (indicateur_lieu.categorie_id = '-9') then 993  
+					when (indicateur_lieu.categorie_id = 'Y') then 992
+					when (indicateur_lieu.categorie_id = 'Z') then 991
+					else CAST (indicateur_lieu.categorie_id as integer) end )					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Indicateur de lieu" column="indicateur_id" nameColumn="indicateur_nom" ordinalColumn = "indicateur_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (indicateur_lieu.indicateur_id = '-9') then  993
+					when (indicateur_lieu.indicateur_id = 'Y') then  992 
+					when (indicateur_lieu.indicateur_id = 'Z') then  991
+					else CAST (indicateur_lieu.indicateur_id as integer) end )				
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	-- Dimension 21 : État matrimonial de la personne de référence du ménage : table etat_matrimonial : ref_etat_matrimonial
+	<Dimension name="État matrimonial du référent" foreignKey="ref_etat_matrimonial">
+      <Hierarchy hasAll="true" name="REF_ETATMATRIMONIAL_Hierarchie_1" primaryKey="etat_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="REF_ETATMATRIMONIAL_Hierarchie_1">
+        <Table name="etat_matrimonial" />
+		<Level type="String" name="Etat matrimonial" column="etat_id" nameColumn="etat_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when etat_matrimonial.etat_id = '-9'  then 993
+					when etat_matrimonial.etat_id = 'Z'  then 992 
+					when etat_matrimonial.etat_id = 'Y'  then 991 
+					else CAST (etat_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 22 : Ancienneté de recherche d'emploi de la personne de référence du ménage : table anciennete_recherche_emploi : ref_anciennete_recherche_emploi
+	<Dimension name="Ancienneté de recherche d'emploi du référent" foreignKey="ref_anciennete_recherche_emploi">
+      <Hierarchy hasAll="true" name="REF_RECHEMPLOI_Hierarchie_1" primaryKey="anciennete_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="REF_RECHEMPLOI_Hierarchie_1">
+        <Table name="anciennete_recherche_emploi" />
+		<Level type="String" name="Ancienneté" column="anciennete_id" nameColumn="anciennete_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when anciennete_recherche_emploi.anciennete_id = '-9' then 993  
+					when anciennete_recherche_emploi.anciennete_id = 'Y' then 992
+					when anciennete_recherche_emploi.anciennete_id = 'Z' then 991
+					else CAST (anciennete_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 23 : Sexe de la personne de référence du ménage : table sexe : ref_sexe
+	<Dimension name="Sexe du référent" foreignKey="ref_sexe">
+      <Hierarchy hasAll="true" name="REF_SEXE_Hierarchie_1" primaryKey="sexe_id"
+		allMemberName = "tous les sexes confondus" allLevelName = "Tout" caption ="REF_SEXE_Hierarchie_1">
+        <Table name="sexe" />
+        <Level type="String" name="Sexe" column="sexe_id" nameColumn="sexe_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (sexe.sexe_id != '-9' and sexe.sexe_id != 'Z') 
+						then sexe_id 
+						else  case when (sexe.sexe_id = '-9') then '999' else sexe_id end 
+					end					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	-- Dimension 24 : Type d'activité de la personne de référence du ménage : table type_activite : ref_type_activite
+	<Dimension name="Type d'activité du référent" foreignKey="ref_type_activite">
+      <Hierarchy hasAll="true" name="REF_TYPACT_Hierarchie_1" primaryKey="type_id"
+		allMemberName = "tous" allLevelName = "Tout" caption ="REF_TYPACT_Hierarchie_1">
+        <Table name="type_activite" />
+		<Level type="String" name="Type d'actvité" column="type_id" nameColumn="type_lib" >
+			<OrdinalExpression>
+				<SQL dialect="generic"> (case when type_activite.type_id = '-9' then 993  
+					when type_activite.type_id = 'ZZ' then 992
+					when type_activite.type_id = 'YY' then 991
+					else CAST (type_id as integer) end) 
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+	</Dimension>
+	
+	-- Dimension 25 : Temps de travail de la personne de référence du ménage : table temps_emploi : ref_temps_emploi
+	<Dimension name="Temps d'emploi du référent" foreignKey="ref_temps_emploi">
+      <Hierarchy hasAll="true" name="REF_TEMPSEMP_Hierarchie_1" primaryKey="temps_id"
+		allMemberName = "tous les temps confondus" allLevelName = "Tout" caption ="REF_TEMPSEMP_Hierarchie_1" >
+        <Table name="temps_emploi" />
+        <Level type="String" name="Temps d'emploi" column="temps_id" nameColumn="temps_nom">
+			<OrdinalExpression>
+				<SQL dialect="generic">
+					case when (temps_emploi.temps_id = '-9') then '999'  else  temps_id end 				
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+      </Hierarchy>
+    </Dimension>
+	
+	-- Dimension 26-1 : Mode de transport principal le plus souvent utilisé par la personne de référence du ménage pour aller travailler : table mode_transport : ref_transport_domicile_trav
+	<!-- <DimensionUsage name="Mode de transport domcile-travail du référent" source="Mode de transport" foreignKey="ref_transport_domicile_trav"/> -->
+	<Dimension name="Mode de transport domcile-travail du référent" foreignKey="ref_transport_domicile_trav">
+      <Hierarchy hasAll="true" name="REF_TRANSDOMICILETRAV_Hierarchie_1" primaryKey="mode_id"
+		allMemberName = "tous les modes confondus" allLevelName = "Tout" caption ="REF_TRANSDOMICILETRAV_Hierarchie_1">
+        <Table name="mode_transport" />
+        <Level type="String" name="Catégorie" column="categorie_id" nameColumn="categorie_nom" ordinalColumn = "categorie_nom">
+		<OrdinalExpression>
+				<SQL dialect="generic">
+					(case when (mode_transport.categorie_id != '-9' and mode_transport.categorie_id != 'Z') then CAST (categorie_id as integer) else 
+						case when (mode_transport.categorie_id = '-9') then 999 else 99999 end end)					
+				</SQL>
+			</OrdinalExpression>
+		</Level>
+        <Level type="String" name="Mode de transport" column="mode_id" nameColumn="mode_nom" ordinalColumn = "mode_nom"/>
+      </Hierarchy>
+    </Dimension>
+	-- Dimension 26-2 : Mode de transport principal le plus souvent utilisé par la personne de référence du ménage pour aller travailler : table mode_transport_2 : ref_transport_domicile_trav_affine
+	
+		
+	<!--The Mondrian Definition Of The Cube4Chauffage Indicators -->
+	<!-- Les indicateurs de base -->
+	<!-- Les indicateurs de base de comptage -->
+	-- les indicateurs associés à la mesure nbmen : complet
+	<Measure name="NbTotMen" column="nbmen" aggregator="sum" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMoyMen" column="nbmen" aggregator="avg" visible="true" formatString="0#,###.###" />
+	<Measure name="NbStDevMen" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbmen)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinMen" column="nbmen" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxMen" column="nbmen" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbpermen : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotPerMen" aggregator="sum" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbpermen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="NbStDevPerMen" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbpermen)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinPerMen" column="nbpermen" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxPerMen" column="nbpermen" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbperactmen : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotPerActMen" aggregator="sum" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbperactmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="NbStDevPerActMen" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbperactmen)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinPerActMen" column="nbperactmen" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxPerActMen" column="nbperactmen" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbperactoccmen : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotPerActOccMen" aggregator="sum" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbperactoccmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="NbStDevPerActOccMen" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbperactoccmen)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinPerActOccMen" column="nbperactoccmen" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxPerActOccMen" column="nbperactoccmen" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbperscomen : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotPerScoMen" aggregator="sum" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbperscomen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="NbStDevPerScoMen" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbperscomen)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinPerScoMen" column="nbperscomen" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxPerScoMen" column="nbperscomen" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbpersco14men : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotPerSco14Men" aggregator="sum" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbpersco14men </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="NbStDevPerSco14Men" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbpersco14men)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinPerSco14Men" column="nbpersco14men" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxPerSco14Men" column="nbpersco14men" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbpersexmasmen : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotPerSexMasMen" aggregator="sum" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbpersexmasmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="NbStDevPerSexMasMen" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbpersexmasmen)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinPerSexMasMen" column="nbpersexmasmen" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxPerSexMasMen" column="nbpersexmasmen" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbpersexfemmen : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotPerSexFemMen" aggregator="sum" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbpersexfemmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="NbStDevPerSexFemMen" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbpersexfemmen)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinPerSexFemMen" column="nbpersexfemmen" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxPerSexFemMen" column="nbpersexfemmen" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbucmen : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotUCMen" aggregator="sum" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbucmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="NbStDevUCMen" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbucmen)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinUCMen" column="nbucmen" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxUCMen" column="nbucmen" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbvoitmen : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotVoitMen" aggregator="sum" visible="true" formatString="0#,###.###" >
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbvoitmen </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="NbStDevVoitMen" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbvoitmen)) </SQL></MeasureExpression>
+	</Measure> 	
+	<Measure name="NbMinVoitMen" column="nbvoitmen" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxVoitMen" column="nbvoitmen" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure surfacelogt : reste 1 calculé : moyenne pondérée
+	<Measure name="SurfaceTotLogt" aggregator="sum" visible="false" formatString="0#,###.###" > 
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.surfacelogt </SQL> </MeasureExpression>
+	</Measure> -- cet indicateur n'a pas trop de sens, il est utilisé dans le calcul de l'indicateur moyenne
+	<Measure name="SurfaceStDevLogt" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(surfacelogt)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="SurfaceMinLogt" column="surfacelogt" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="SurfaceMaxLogt" column="surfacelogt" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	-- les indicateurs associés à la mesure nbpiecelogt : reste 1 calculé : moyenne pondérée
+	<Measure name="NbTotPieceLogt" aggregator="sum" visible="false" formatString="0#,###.###" > 
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.nbpiecelogt </SQL> </MeasureExpression>
+	</Measure> -- cet indicateur n'a pas trop de sens, il est utilisé dans le calcul de l'indicateur moyenne
+	<Measure name="NbStDevPieceLogt" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(nbpiecelogt)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="NbMinPieceLogt" column="nbpiecelogt" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="NbMaxPieceLogt" column="nbpiecelogt" aggregator="max" visible="true" formatString="0#,###.###" />
+	
+	<!-- Les indicateurs de base de chauffage -->
+	-- les indicateurs associés à la mesure consoannuelchauf : reste 2 calculés : moyenne pondérée, Quartile 3
+	<Measure name="ConsoChaufAnTot" aggregator="sum" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.consoannuelchauf </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="ConsoChaufAnStDev" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(consoannuelchauf)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="ConsoChaufAnMin" column="consoannuelchauf" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="ConsoChaufAnMax" column="consoannuelchauf" aggregator="max" visible="true" formatString="0#,###.###" />
+	<Measure name="ConsoChaufAnMediane" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(consoannuelchauf), 0.50)) </SQL></MeasureExpression>
+	</Measure>
+	<Measure name="ConsoChaufAnP75" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(consoannuelchauf), 0.75)) </SQL></MeasureExpression>
+	</Measure>	-- Utilisé pour définir l'indicateur calculé ConsoChaufAnQuartile3
+
+	
+	-- les indicateurs associés à la mesure depenseannuelchauf : reste 2 calculés : moyenne pondérée, Quartile 3
+	<Measure name="DepenseChaufAnTot" aggregator="sum" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.depenseannuelchauf </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="DepenseChaufAnStDev" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(depenseannuelchauf)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="DepenseChaufAnMin" column="depenseannuelchauf" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="DepenseChaufAnMax" column="depenseannuelchauf" aggregator="max" visible="true" formatString="0#,###.###" />
+	<Measure name="DepenseChaufAnMediane" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(depenseannuelchauf), 0.50)) </SQL></MeasureExpression>
+	</Measure>
+	<Measure name="DepenseChaufAnP75" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(depenseannuelchauf), 0.75)) </SQL></MeasureExpression>
+	</Measure>	-- Utilisé pour définir l'indicateur calculé DepenseChaufAnQuartile3
+	
+	-- les indicateurs associés à la mesure consoannuelchaufparuc : reste 2 calculés : moyenne pondérée, Quartile 3
+	<Measure name="ConsoChaufAnTotParUC" aggregator="sum" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.consoannuelchaufparuc </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="ConsoChaufAnStDevParUC" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(consoannuelchaufparuc)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="ConsoChaufAnMinParUC" column="consoannuelchaufparuc" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="ConsoChaufAnMaxParUC" column="consoannuelchaufparuc" aggregator="max" visible="true" formatString="0#,###.###" />
+	<Measure name="ConsoChaufAnMedianeParUC" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(consoannuelchaufparuc), 0.50)) </SQL></MeasureExpression>
+	</Measure>
+	<Measure name="ConsoChaufAnP75ParUC" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(consoannuelchaufparuc), 0.75)) </SQL></MeasureExpression>
+	</Measure>	-- Utilisé pour définir l'indicateur calculé ConsoChaufAnQuartile3ParUC
+	
+	-- les indicateurs associés à la mesure depenseannuelchaufparuc : reste 2 calculés : moyenne pondérée, Quartile 3
+	<Measure name="DepenseChaufAnTotParUC" aggregator="sum" visible="true" formatString="0#,###.###">
+		<MeasureExpression> <SQL dialect="generic"> logements.poids_statistique_logt * logements.depenseannuelchaufparuc </SQL> </MeasureExpression>
+	</Measure>
+	<Measure name="DepenseChaufAnStDevParUC" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(stddev(depenseannuelchaufparuc)) </SQL></MeasureExpression>
+	</Measure> 
+	<Measure name="DepenseChaufAnMinParUC" column="depenseannuelchaufparuc" aggregator="min" visible="true" formatString="0#,###.###" />
+	<Measure name="DepenseChaufAnMaxParUC" column="depenseannuelchaufparuc" aggregator="max" visible="true" formatString="0#,###.###" />
+	<Measure name="DepenseChaufAnMedianeParUC" aggregator="count" visible="true" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(depenseannuelchaufparuc), 0.50)) </SQL></MeasureExpression>
+	</Measure>
+	<Measure name="DepenseChaufAnP75ParUC" aggregator="count" visible="false" type="Numeric" formatString="0#,###.###" >
+		<MeasureExpression><SQL dialect="postgres"> make_dpcust(percentile_cont(array_agg(depenseannuelchaufparuc), 0.75)) </SQL></MeasureExpression>
+	</Measure>	-- Utilisé pour définir l'indicateur calculé DepenseChaufAnQuartile3ParUC
+
+	<!-- Les indicateurs calculés -->
+	<!-- Les indicateurs calculés de comptage -->
+	-- les indicateurs associés à la mesure nbpermen : complet
+	<CalculatedMember name="NbMoyPerMen" dimension="Measures" formula="[Measures].[NbTotPerMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	-- les indicateurs associés à la mesure nbperactmen : complet
+	<CalculatedMember name="NbMoyPerActMen" dimension="Measures" formula="[Measures].[NbTotPerActMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	-- les indicateurs associés à la mesure nbperactoccmen : complet
+	<CalculatedMember name="NbMoyPerActOccMen" dimension="Measures" formula="[Measures].[NbTotPerActOccMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	
+	-- les indicateurs associés à la mesure nbperscomen : complet
+	<CalculatedMember name="NbMoyPerScoMen" dimension="Measures" formula="[Measures].[NbTotPerScoMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	
+	-- les indicateurs associés à la mesure nbpersco14men : complet
+	<CalculatedMember name="NbMoyPerSco14Men" dimension="Measures" formula="[Measures].[NbTotPerSco14Men]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	-- les indicateurs associés à la mesure nbpersexmasmen : complet
+	<CalculatedMember name="NbMoyPerSexMasMen" dimension="Measures" formula="[Measures].[NbTotPerSexMasMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	-- les indicateurs associés à la mesure nbpersexfemmen : complet
+	<CalculatedMember name="NbMoyPerSexFemMen" dimension="Measures" formula="[Measures].[NbTotPerSexFemMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	-- les indicateurs associés à la mesure nbucmen : complet
+	<CalculatedMember name="NbMoyUCMen" dimension="Measures" formula="[Measures].[NbTotUCMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	-- les indicateurs associés à la mesure nbvoitmen : complet
+	<CalculatedMember name="NbMoyVoitMen" dimension="Measures" formula="[Measures].[NbTotVoitMen]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	-- les indicateurs associés à la mesure surfacelogt : complet
+	<CalculatedMember name="SurfaceMoyLogt" dimension="Measures" formula="[Measures].[SurfaceTotLogt]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	-- les indicateurs associés à la mesure nbpiecelogt : complet
+	<CalculatedMember name="NbMoyPieceLogt" dimension="Measures" formula="[Measures].[NbTotPieceLogt]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	<!-- Les indicateurs calculés de chauffage -->
+	-- les indicateurs associés à la mesure consoannuelchauf : reste 2 calculés : moyenne pondérée, Quartile 3
+	<CalculatedMember name="ConsoChaufAnMoy" dimension="Measures" formula="[Measures].[ConsoChaufAnTot]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	<CalculatedMember name="ConsoChaufAnP75ZoneEtude" dimension="Measures" formula="cast(Val(&quot;1,884&quot;) AS  Numeric)" visible="false" >
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	<CalculatedMember name="ConsoChaufAnQuartile3" dimension="Measures" formula="[Measures].[ConsoChaufAnP75] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[ConsoChaufAnP75]> [Measures].[ConsoChaufAnP75ZoneEtude], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>	
+	
+	
+	-- les indicateurs associés à la mesure depenseannuelchauf : reste 2 calculés : moyenne pondérée, Quartile 3
+	<CalculatedMember name="DepenseChaufAnMoy" dimension="Measures" formula="[Measures].[DepenseChaufAnTot]/[Measures].[NbTotMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	<CalculatedMember name="DepenseChaufAnP75ZoneEtude" dimension="Measures" formula="cast(Val(&quot;1,884&quot;) AS  Numeric)" visible="false" >
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	<CalculatedMember name="DepenseChaufAnQuartile3" dimension="Measures" formula="[Measures].[DepenseChaufAnP75] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[DepenseChaufAnP75]> [Measures].[DepenseChaufAnP75ZoneEtude], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>	
+	
+	-- les indicateurs associés à la mesure consoannuelchaufparuc : reste 2 calculés : moyenne pondérée, Quartile 3
+	<CalculatedMember name="ConsoChaufAnMoyParUC" dimension="Measures" formula="[Measures].[ConsoChaufAnTotParUC]/[Measures].[NbTotUCMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	<CalculatedMember name="ConsoChaufAnP75ZoneEtudeParUC" dimension="Measures" formula="cast(Val(&quot;1,884&quot;) AS  Numeric)" visible="false" >
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	<CalculatedMember name="ConsoChaufAnQuartile3ParUC" dimension="Measures" formula="[Measures].[ConsoChaufAnP75ParUC] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[ConsoChaufAnP75ParUC]> [Measures].[ConsoChaufAnP75ZoneEtudeParUC], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>	
+	
+	-- les indicateurs associés à la mesure depenseannuelchaufparuc : reste 2 calculés : moyenne pondérée, Quartile 3
+	<CalculatedMember name="DepenseChaufAnMoyParUC" dimension="Measures" formula="[Measures].[NbTotPerActMen]/[Measures].[NbTotUCMen]">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 	
+	
+	<CalculatedMember name="DepenseChaufAnP75ZoneEtudeParUC" dimension="Measures" formula="cast(Val(&quot;1,884&quot;) AS  Numeric)" visible="false" >
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###" />
+	</CalculatedMember> 
+	
+	<CalculatedMember name="DepenseChaufAnQuartile3ParUC" dimension="Measures" formula="[Measures].[DepenseChaufAnP75ParUC] + 0">
+		<CalculatedMemberProperty name="DATATYPE" value="Numeric"/> 
+		<CalculatedMemberProperty name="FORMAT_STRING" expression="IIf([Measures].[DepenseChaufAnP75ParUC]> [Measures].[DepenseChaufAnP75ZoneEtudeParUC], &quot;|#,###.###|style=red&quot;, &quot;|#,###.###|style=green&quot;)" />
+    </CalculatedMember>	
+
+	
+	
+  </Cube>
+ 
+  <!--
+  <VirtualCube name="Cube 3 : Deplacements et Chauffage">
+	<CubeUsages>
+		<CubeUsage cubeName="Cube 2 : Chauffage"/>
+		<CubeUsage cubeName="Cube 1 : Deplacements" />
+	</CubeUsages>
+	<VirtualCubeDimension cubeName="Cube 1 : Deplacements" name="Commune"/>
+	<VirtualCubeDimension cubeName="Cube 2 : Chauffage" name="Dates d'évaluation"/>
+
+	<VirtualCubeMeasure cubeName="Cube 2 : Chauffage" name="[Measures].[Nb total de logements]" visible="true" />
+	<VirtualCubeMeasure cubeName="Cube 2 : Chauffage" name="[Measures].[Nb moyen de logements]" visible="true" />
+	<VirtualCubeMeasure cubeName="Cube 2 : Chauffage" name="[Measures].[Nb min de logements]" visible="true" />
+	<VirtualCubeMeasure cubeName="Cube 2 : Chauffage" name="[Measures].[Nb max de logements]" visible="true" />
+	
+	<VirtualCubeMeasure cubeName="Cube 1 : Deplacements" name="[Measures].[Tot_nb_actifs]" visible="false" />
+	<VirtualCubeMeasure cubeName="Cube 1 : Deplacements" name="[Measures].[Tot_nb_actifs_occupes]" visible="false" />
+	<VirtualCubeMeasure cubeName="Cube 1 : Deplacements" name="[Measures].[Tot_nb_scolarises]" visible="false" />
+	
+	<CalculatedMember name="Nb total d'actifs" dimension="Measures" visible="true" >
+		<Formula>[Measures].[Tot_nb_actifs]/2 </Formula>
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###"/>
+	</CalculatedMember>	
+	
+	<CalculatedMember name="Nb total de scolarisés" dimension="Measures" visible="true" >
+		<Formula>[Measures].[Tot_nb_scolarises]/2 </Formula>
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###"/>
+	</CalculatedMember>	
+	
+   <CalculatedMember name="Nb total d'actifs occupés" dimension="Measures" visible="true" >
+		<Formula>[Measures].[Tot_nb_actifs_occupes]/2 </Formula>
+		<CalculatedMemberProperty name="FORMAT_STRING" value="#,###.###"/>
+	</CalculatedMember>	
+	
+	<CalculatedMember name="Nb moyen d'actifs par logement" dimension="Measures" visible="true" >
+		<Formula>[Measures].[Nb total d'actifs]/[Measures].[Nb total de logements]</Formula> 
+	</CalculatedMember>
+	
+	<CalculatedMember name="Nb moyen d'actifs occupés par logement" dimension="Measures" visible="true" >
+		<Formula>[Measures].[Nb total d'actifs occupés]/[Measures].[Nb total de logements]</Formula> 
+	</CalculatedMember>
+	
+	<CalculatedMember name="Nb moyen de scolarisés par logement" dimension="Measures" visible="true" >
+		<Formula>[Measures].[Nb total de scolarisés]/[Measures].[Nb total de logements]</Formula> 
+	</CalculatedMember>
+
+  </VirtualCube>
+  -->
+ 
+  	
+  
+</Schema>
+
