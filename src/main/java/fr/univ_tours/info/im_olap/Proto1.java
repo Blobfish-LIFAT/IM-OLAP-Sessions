@@ -15,6 +15,7 @@ import mondrian.olap.*;
 import fr.univ_tours.info.im_olap.model.*;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,6 +51,8 @@ public class Proto1 {
         MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
 
         SessionGraph.injectFiltersGuava(graph, mdUtils);
+
+        HashSet<QueryPart> test = new HashSet<>();
 
         System.exit(0);
 

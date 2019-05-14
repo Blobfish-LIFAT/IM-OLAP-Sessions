@@ -1,6 +1,7 @@
 package fr.univ_tours.info.im_olap.model;
 
 
+import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraph;
 import fr.univ_tours.info.im_olap.graph.OGraph;
@@ -12,6 +13,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
+import java.math.BigInteger;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
@@ -21,6 +23,8 @@ import java.util.stream.Collectors;
 
 public class SessionGraph {
     static Pattern dimPattern = Pattern.compile("\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]");
+    static BigInteger count = new BigInteger("0");
+    static final BigInteger two = new BigInteger("2");
 
     private static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
         OGraph<Double, QueryPart> result = new OGraph<>();
@@ -267,7 +271,7 @@ public class SessionGraph {
             }
         }
 
-
+        System.out.println(count);
         return in;
     }
 
@@ -279,19 +283,21 @@ public class SessionGraph {
             return in;
         }
         QueryPart us = fromMember(m);
-        in.addNode(us);
+        //in.addNode(us);
         for (int i = 0; i < children.size(); i++) {
             Member child = children.get(i);
             QueryPart c = fromMember(child);
-            in.addNode(c);
-            in.putEdgeValue(us, c, 1.0);
-            in.putEdgeValue(c, us, 1.0);
+            //in.addNode(c);
+            //in.putEdgeValue(us, c, 1.0);
+            //in.putEdgeValue(c, us, 1.0);
+            count = count.add(two);
 
             for (int j = i + 1; j < children.size(); j++) {
                 QueryPart other = fromMember(children.get(j));
-                in.addNode(other);
-                in.putEdgeValue(c, other, 1.0);
-                in.putEdgeValue(other, c, 1.0);
+                //in.addNode(other);
+                //in.putEdgeValue(c, other, 1.0);
+                //in.putEdgeValue(other, c, 1.0);
+                count = count.add(two);
             }
 
             injectFiltersNodeGuava(in , schemaReader, child);
