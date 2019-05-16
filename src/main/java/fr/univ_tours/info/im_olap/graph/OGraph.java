@@ -3,7 +3,6 @@ package fr.univ_tours.info.im_olap.graph;
 
 
 import com.alexsxode.utilities.collection.Pair;
-import fr.univ_tours.info.im_olap.model.QueryPart;
 
 import java.util.*;
 import java.util.function.Function;
@@ -13,7 +12,7 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     private Map<N,Pair<TreeSet<N>,TreeSet<N>>> nodes; // A Pair<X,Y> = Pair<From X to A,From A to Y>
 
-    private Map<Pair<N,N>,E> edges;
+    private Map<CPair<N,N>,E> edges;
 
     public OGraph(){
         nodes = new TreeMap<>();
@@ -27,24 +26,16 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
         for (Map.Entry<N, Pair<TreeSet<N>, TreeSet<N>>> entry : nodes.entrySet()) {
 
             for (N from : entry.getValue().left ) {
-                Pair<N,N> pair1 = new Pair<>(from, entry.getKey());
-
-                if (!edges.containsKey(pair1)) {
-                    throw new IllegalStateException();
-                }
+                CPair<N,N> pair1 = new CPair<>(from, entry.getKey());
 
                 if (edges.get(pair1) == null) {
-                    throw new IllegalStateException();
+                    throw new IllegalStateException("Pair is not found: "+pair1.toString());
                 }
 
             }
 
             for (N to : entry.getValue().right) {
-                Pair<N,N> pair2 = new Pair<>(entry.getKey(), to);
-
-                if (!edges.containsKey(pair2)) {
-                    throw new IllegalStateException();
-                }
+                CPair<N,N> pair2 = new CPair<>(entry.getKey(), to);
 
                 if (edges.get(pair2) == null) {
                     throw new IllegalStateException();
@@ -55,7 +46,7 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
         // check if all of the edges have values and their nodes are correctly set in nodes
 
-        for (Map.Entry<Pair<N,N>, E> entry : edges.entrySet()) {
+        for (Map.Entry<CPair<N,N>, E> entry : edges.entrySet()) {
 
             if (entry.getValue() == null) {
                 System.err.println("An edge value is null");
@@ -134,6 +125,7 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     private void unsafeAddEdgeInNodes(N from, N to){
         Set<N> from_to_treeSet = this.unsafeAddNode(from).getB();
         Set<N> to_from_treeSet = this.unsafeAddNode(to).getA();
+
         from_to_treeSet.add(to);
         to_from_treeSet.add(from);
     }
@@ -141,11 +133,12 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     @Override
     public void setEdge(N from, N to, E value) {
         if (value == null){
-            removeEdge(from, to);
+            throw new IllegalArgumentException("value cannot be null");
         }
         else {
             unsafeAddEdgeInNodes(from, to);
-            edges.put(new Pair<>(from, to), value);
+            CPair<N, N> key = new CPair<>(from, to);
+            edges.put(key, value);
         }
     }
 
@@ -156,7 +149,7 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     @Override
     public void removeEdge(N from, N to) {
-        edges.remove(new Pair<>(from,to));
+        edges.remove(new CPair<>(from,to));
         unsafeRemoveEdgeInNodes(from, to);
     }
 
@@ -186,13 +179,11 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
 
     @Override
     public void safeComputeEdge(N from, N to, Function<Optional<E>, Optional<E>> f) {
-        addNode(from);
-        addNode(to);
-        edges.compute(new Pair<>(from, to), (k,v) -> {
+        edges.compute(new CPair<>(from, to), (k,v) -> {
             E res = f.apply(Optional.ofNullable(v)).orElse(null);
-
-            this.setEdge(from, to, res);
-
+            if (res != null) {
+                this.setEdge(from, to, res);
+            }
             return res;
         });
     }
