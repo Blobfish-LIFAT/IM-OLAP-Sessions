@@ -53,13 +53,15 @@ public class Proto1 {
 
         //System.out.println("Building topology graph...");
         OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
-        System.out.println("Injecting filters...");
 
+        System.out.println("Checking sync...");
         base.checkSync();
 
+        System.out.println("Injecting filters...");
         SessionGraph.injectFilters(base, mdUtils);
 
-        ((OGraph<Double, QueryPart>)base).checkSync();
+        System.out.println("Checking sync...");
+        base.checkSync();
 
         //MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
 
@@ -81,13 +83,20 @@ public class Proto1 {
             }
         }
 
+        ((OGraph<Double, QueryPart>)base).checkSync();
+
         for (QueryPart queryPart : base.getNodes()) {
             base.setEdge(queryPart, queryPart, 1.0);
         }
 
+        ((OGraph<Double, QueryPart>)base).checkSync();
+
+
         Set<QueryPart> queryParts = base.getNodes();
 
         queryParts.removeAll(s1.queries.stream().flatMap(x -> x.getAllParts().stream()).collect(Collectors.toSet()));
+
+        ((OGraph<Double, QueryPart>)base).checkSync();
 
         if (queryParts.isEmpty()) {
             System.err.println("Error: some query parts are in session but not in the base graph!");
