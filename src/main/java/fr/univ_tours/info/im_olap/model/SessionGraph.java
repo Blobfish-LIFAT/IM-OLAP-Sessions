@@ -248,13 +248,13 @@ public class SessionGraph {
             QueryPart c = fromMember(child);
             in.setEdge(us, c, 1.0);
             in.setEdge(c, us, 1.0);
-
+/*
             for (int j = i + 1; j < children.size(); j++) {
                 QueryPart other = fromMember(children.get(j));
                 in.setEdge(c, other, 1.0);
                 in.setEdge(other, c, 1.0);
             }
-
+*/
             injectFiltersNode(in, schemaReader, child);
         }
 

@@ -50,20 +50,20 @@ public class Proto1 {
 
 
         //System.out.println("Building topology graph...");
-        //OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
+        OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
         System.out.println("Injecting filters...");
-        //SessionGraph.injectFilters(base, mdUtils);
+        SessionGraph.injectFilters(base, mdUtils);
 
-        MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
+        //MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
 
-        SessionGraph.injectFiltersGuava(graph, mdUtils);
+        //SessionGraph.injectFiltersGuava(graph, mdUtils);
 
 
 
         /**
          * Ben's stuff
          */
-/*
+
         ((OGraph<Double, QueryPart>)base).checkSync();
 
 
@@ -99,7 +99,7 @@ public class Proto1 {
             System.out.println(p.left);
             System.out.println("value : " + p.right);
         });
-        System.out.println("End of evaluation.");*/
+        System.out.println("End of evaluation.");
     }
 
 }
