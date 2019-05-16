@@ -241,11 +241,22 @@ public class SessionGraph {
             return in;
         }
         QueryPart us = fromMember(m);
-        in.addNode(us);
+
+        if (us == null) {
+            throw new IllegalStateException();
+        }
+
+        //in.addNode(us);
 
         for (int i = 0; i < children.size(); i++) {
             Member child = children.get(i);
             QueryPart c = fromMember(child);
+            //in.addNode(c);
+
+            if (c == null) {
+                throw new IllegalStateException();
+            }
+
             in.setEdge(us, c, 1.0);
             in.setEdge(c, us, 1.0);
 /*

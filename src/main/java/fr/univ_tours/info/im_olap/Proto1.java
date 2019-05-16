@@ -5,6 +5,7 @@ import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
+import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
@@ -13,6 +14,7 @@ import fr.univ_tours.info.im_olap.model.Query;
 import fr.univ_tours.info.im_olap.model.QueryPart;
 import mondrian.olap.*;
 import fr.univ_tours.info.im_olap.model.*;
+import org.nd4j.linalg.eigen.Eigen;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -52,11 +54,17 @@ public class Proto1 {
         //System.out.println("Building topology graph...");
         OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
         System.out.println("Injecting filters...");
+
+        base.checkSync();
+
         SessionGraph.injectFilters(base, mdUtils);
+
+        ((OGraph<Double, QueryPart>)base).checkSync();
 
         //MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
 
         //SessionGraph.injectFiltersGuava(graph, mdUtils);
+        System.out.println(Eigen.eigenvalues(Graphs.toINDMatrix(base).left));
 
 
 

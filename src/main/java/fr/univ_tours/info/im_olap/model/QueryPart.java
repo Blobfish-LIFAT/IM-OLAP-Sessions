@@ -128,8 +128,15 @@ public class QueryPart implements Comparable<QueryPart>{
     public String toString() {
         return "QueryPart{" +
                 "" + display.get(t) +
-                ", '" + value + '\'' +
+                ", '" + this.contentDisplay() + '\'' +
                 '}';
+    }
+
+    public String contentDisplay(){
+        if (t == Type.FILTER)
+            return level + "=" + value;
+        else
+            return value;
     }
 
     //FIXME This can be costly when dealing with filters
