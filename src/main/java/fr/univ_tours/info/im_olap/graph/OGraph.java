@@ -3,6 +3,7 @@ package fr.univ_tours.info.im_olap.graph;
 
 
 import com.alexsxode.utilities.collection.Pair;
+import fr.univ_tours.info.im_olap.model.QueryPart;
 
 import java.util.*;
 import java.util.function.Function;
@@ -131,8 +132,8 @@ public class OGraph<E extends Comparable<E>,N extends Comparable<N>> implements 
     }
 
     private void unsafeAddEdgeInNodes(N from, N to){
-        TreeSet<N> from_to_treeSet = this.unsafeAddNode(from).getB();
-        TreeSet<N> to_from_treeSet = this.unsafeAddNode(to).getA();
+        Set<N> from_to_treeSet = this.unsafeAddNode(from).getB();
+        Set<N> to_from_treeSet = this.unsafeAddNode(to).getA();
         from_to_treeSet.add(to);
         to_from_treeSet.add(from);
     }
