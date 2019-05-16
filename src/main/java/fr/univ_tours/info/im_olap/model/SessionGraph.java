@@ -1,9 +1,7 @@
 package fr.univ_tours.info.im_olap.model;
 
 
-import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
-import com.google.common.graph.ValueGraph;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
 import mondrian.olap.*;
@@ -23,8 +21,6 @@ import java.util.stream.Collectors;
 
 public class SessionGraph {
     static Pattern dimPattern = Pattern.compile("\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]");
-    static BigInteger count = new BigInteger("0");
-    static final BigInteger two = new BigInteger("2");
 
     private static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
         OGraph<Double, QueryPart> result = new OGraph<>();
@@ -58,35 +54,6 @@ public class SessionGraph {
         return result;
     }
 
-    public static OGraph<Double, QueryPart> injectCousins(OGraph<Double, QueryPart> base, List<Session> sessions){
-        Set<QueryPart> filters = new HashSet<>();
-
-        for (Session session : sessions){
-            for (Query q : session.queries){
-                QueryPart[] q1parts = q.flat();
-                for (QueryPart q1part : q1parts) {
-                    if (q1part.isFilter())
-                        filters.add(q1part);
-                }
-            }
-        }
-
-        //we will link filters with different filter value but on same attribute
-        List<QueryPart> filtersList = new ArrayList<>(filters);
-        for (int i = 0; i < filtersList.size(); i++) {
-            for (int j = i + 1; j < filtersList.size(); j++) {
-                QueryPart f1 = filtersList.get(i);
-                QueryPart f2 = filtersList.get(j);
-                if (f1.value.split(" = ")[0].equals(f2.value.split(" = ")[0])){
-                    base.safeComputeEdge(f1, f2, o -> Optional.of(1.0));
-                    base.safeComputeEdge(f2, f1, o -> Optional.of(1.0));
-                    //System.out.println(f1 + " | " + f2);
-                    //System.out.println(f1 + " | " + f1.t.hashCode());
-                }
-            }
-        }
-        return base;
-    }
 
     /**
      * This will inject edges in the graph based on a XML mondrian (v3) Schema, this is probably not compatible with complex schemas
@@ -237,25 +204,13 @@ public class SessionGraph {
         List<Member> children = schemaReader.getMemberChildren(m);
         //Stop condition: reached finest granularity
         if (children == null || children.size() == 0) {
-            //System.out.println("Stopped at " + m);
             return in;
         }
-        QueryPart us = fromMember(m);
-
-        if (us == null) {
-            throw new IllegalStateException();
-        }
-
-        //in.addNode(us);
+        QueryPart us = QueryPart.newFilter(m.getName(), m.getLevel().toString());
 
         for (int i = 0; i < children.size(); i++) {
             Member child = children.get(i);
-            QueryPart c = fromMember(child);
-            //in.addNode(c);
-
-            if (c == null) {
-                throw new IllegalStateException();
-            }
+            QueryPart c = QueryPart.newFilter(child.getName(), child.getLevel().toString());
 
             in.setEdge(us, c, 1.0);
             in.setEdge(c, us, 1.0);
@@ -272,76 +227,6 @@ public class SessionGraph {
         return in;
     }
 
-    public static MutableValueGraph<QueryPart, Double> injectFiltersGuava(MutableValueGraph<QueryPart, Double> in, CubeUtils util){
-        SchemaReader schemaReader = util.getCube().getSchemaReader(null).withLocus();
-
-        for (Dimension dimension : util.getCube().getDimensions()){
-            //Skip measures
-            if (dimension.isMeasures())
-                continue;
-
-            System.out.println("Dimension: " + dimension);
-            for (Hierarchy hierarchy : dimension.getHierarchies()){
-                List<Member> topLevel = util.fetchMembers(hierarchy.getLevels()[0]);
-                topLevel.forEach(member -> injectFiltersNodeGuava(in, schemaReader, member));
-            }
-        }
-
-        System.out.println(count);
-        return in;
-    }
-
-    private static MutableValueGraph<QueryPart, Double> injectFiltersNodeGuava(MutableValueGraph<QueryPart, Double> in, SchemaReader schemaReader, Member m){
-        List<Member> children = schemaReader.getMemberChildren(m);
-        //Stop condition: reached finest granularity
-        if (children == null || children.size() == 0) {
-            //System.out.println("Stopped at " + m);
-            return in;
-        }
-        QueryPart us = fromMember(m);
-        //in.addNode(us);
-        for (int i = 0; i < children.size(); i++) {
-            Member child = children.get(i);
-            QueryPart c = fromMember(child);
-            //in.addNode(c);
-            //in.putEdgeValue(us, c, 1.0);
-            //in.putEdgeValue(c, us, 1.0);
-            count = count.add(two);
-
-            for (int j = i + 1; j < children.size(); j++) {
-                QueryPart other = fromMember(children.get(j));
-                //in.addNode(other);
-                //in.putEdgeValue(c, other, 1.0);
-                //in.putEdgeValue(other, c, 1.0);
-                count = count.add(two);
-            }
-
-            injectFiltersNodeGuava(in , schemaReader, child);
-        }
-
-        return in;
-    }
-
-    private static OGraph<Double, QueryPart> injectFiltersForest(OGraph<Double, QueryPart> in, SchemaReader schemaReader, List<Member> list){
-        for (int i = 0; i < list.size() ; i++) {
-            for (int j = i + 1; j < list.size(); j++) {
-                QueryPart qp1 = fromMember(list.get(i));
-                QueryPart qp2 = fromMember(list.get(j));
-                in.setEdge(qp1, qp2, 1.0);
-                in.setEdge(qp2, qp1, 1.0);
-            }
-        }
-
-        for (Member member : list) {
-            injectFiltersNode(in, schemaReader, member);
-        }
-
-        return in;
-    }
-
-    private static QueryPart fromMember(Member m){
-        return QueryPart.newFilter(m.getName(), m.getLevel().toString());
-    }
 
     public static List<Session> fixSessions(List<Session> sessions, String schema){
         return sessions.stream().map(s -> resolveDimUsage(s, schema)).collect(Collectors.toList());
