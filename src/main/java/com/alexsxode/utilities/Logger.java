@@ -43,7 +43,7 @@ public class Logger {
 
         @Override
         public String toString() {
-            return Logger.LOGLEVEL_STRING[this.getLevel()];
+            return Logger.LOGLEVEL_STRING[this.getLevel()-1];
         }
     }
 
@@ -62,7 +62,7 @@ public class Logger {
             StringBuilder sb = new StringBuilder();
 
             for (Object arg_obj : this.objects ) {
-                sb.append(arg_obj.toString());
+                sb.append(arg_obj == null ? "null" : arg_obj.toString());
             }
 
             return sb.toString();
