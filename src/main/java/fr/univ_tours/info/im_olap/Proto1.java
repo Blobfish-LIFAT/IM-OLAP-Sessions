@@ -58,7 +58,7 @@ public class Proto1 {
         //System.out.println(Eigen.symmetricGeneralizedEigenvalues(toINDArray(base)));
         System.out.printf("Graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
-        INDArray test = toINDArray(base);
+        INDArray test = (base);
         System.out.println(Arrays.toString(test.shape()));
 
         System.exit(0);
@@ -66,7 +66,7 @@ public class Proto1 {
          * Ben's stuff
          */
 
-        
+
 
 
         for (Query query : s1.queries) {
@@ -75,27 +75,27 @@ public class Proto1 {
             }
         }
 
-        
+
 
         for (QueryPart queryPart : base.nodes()) {
             base.putEdgeValue(queryPart, queryPart, 1.0);
         }
 
-        
+
 
 
         Set<QueryPart> queryParts = new HashSet<>(base.nodes());
 
         queryParts.removeAll(s1.queries.stream().flatMap(x -> x.getAllParts().stream()).collect(Collectors.toSet()));
 
-        
+
 
         if (queryParts.isEmpty()) {
             System.err.println("Error: some query parts are in session but not in the base graph!");
             System.out.println(queryParts);
         }
 
-        
+
 
         GraphUpdate graphUpdate = new GraphUpdate(GraphUpdate::simpleInterconnections,
                 GraphUpdate::replaceEdges,
@@ -112,32 +112,6 @@ public class Proto1 {
         System.out.println("End of evaluation.");
     }
 
-    public static <V> INDArray toINDArray(ValueGraph<V, ? extends Number> in){
-        //Nd4j.setDataType(DataBuffer.Type.FLOAT);
-        System.out.println(in.nodes().size());
-        try {
-            StringBuilder sb = new StringBuilder();
-            in.nodes().stream().forEach(t -> sb.append(t.toString() + "\n"));
-            Files.write(Paths.get("/tmp/truc.log"), sb.toString().getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        INDArray out = Nd4j.create(in.nodes().size(), in.nodes().size());
-        int i = 0;
-        for (V u : in.nodes()){
-            int j = 0;
-            for (V v : in.nodes()){
-                Optional<? extends Number> val = in.edgeValue(u, v);
-                double n = val.map(Number::doubleValue).orElse(0d);
-                out.putScalar(i, j, n);
-                j++;
-            }
-            i++;
-        }
-        return out;
-    }
-
-    @Deprecated
     public static <V> INDArray toSparseINDArray(ValueGraph<V, ? extends Number> in){
         NDArrayFactory factory = Nd4j.sparseFactory();
         INDArray out = factory.createSparseCOO(new float[]{0f},new int[][]{{0},{0}}, new long[]{in.nodes().size(), in.nodes().size()});

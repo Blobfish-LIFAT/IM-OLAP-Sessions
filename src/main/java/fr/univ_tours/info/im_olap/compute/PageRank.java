@@ -1,6 +1,7 @@
 package fr.univ_tours.info.im_olap.compute;
 
 import com.alexsxode.utilities.collection.Pair;
+import com.google.common.graph.MutableValueGraph;
 import fr.univ_tours.info.im_olap.graph.Graph;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.graph.NOGraph;
@@ -74,6 +75,23 @@ public class PageRank {
 
         return new Pair<>(pageRank(temp.left, iter), temp.right);
     }
+
+    /**
+     * Compute pageRank results for a compatible graph object
+     * @param graph
+     * @param iter number of page rank iterations (for convergence)
+     * @param <N> type of graph node, used for node mapping
+     * @return distribution vector with node to index mapping
+     */
+    public static <N> Pair<INDArray, HashMap<N, Integer>> pagerank(
+            MutableValueGraph<N, Double> graph,
+            int iter) {
+
+        Pair<INDArray, HashMap<N, Integer>> temp = Graphs.toINDMatrix(graph);
+
+        return new Pair<>(pageRank(temp.left, iter), temp.right);
+    }
+
 
     public static void main(String[] args){
 

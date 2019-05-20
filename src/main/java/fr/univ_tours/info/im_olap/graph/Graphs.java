@@ -1,6 +1,8 @@
 package fr.univ_tours.info.im_olap.graph;
 
 import com.alexsxode.utilities.collection.Pair;
+import com.google.common.graph.MutableValueGraph;
+import com.google.common.graph.ValueGraph;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
@@ -39,6 +41,39 @@ public final class Graphs {
 
         return new Pair<>(matrix, indexes);
     }
+
+    /**
+     * Get the corresponding matrix representation of a Graph
+     * @param in graph to be converted
+     * @param <V> type of vertices
+     * @param <E> type of the edges, must be a Number
+     * @return transition matrix representation of the graph
+     */
+    public static <V, E extends Number> Pair<INDArray, HashMap<V, Integer>> toINDMatrix(ValueGraph<V,E> in){
+        List<V> nodes = new ArrayList<>();
+        nodes.addAll(in.nodes());
+
+        HashMap<V, Integer> indexes = new HashMap<>();
+
+        for (int i = 0; i < nodes.size(); i++) {
+            indexes.put(nodes.get(i), i);
+        }
+
+        int size = nodes.size();
+
+        INDArray matrix = Nd4j.zeros(size,size);
+
+        for (int i = 0; i < size; i++) {
+            V from = nodes.get(i);
+            for (V to : in.successors(from)){
+                int toIndex = indexes.get(to);
+                matrix.put(i, toIndex, in.edgeValue(from, to).get());
+            }
+        }
+
+        return new Pair<>(matrix, indexes);
+    }
+
 
     /**
      * Create graph from a transition matrix
@@ -134,6 +169,34 @@ public final class Graphs {
 
         return graph;
     }
+
+    /**
+     * /!\ Mutates input graph
+     * Normalize weights on all outgoing edges for each node
+     * @param graph graph to be normalized
+     * @param <N> type of nodes
+     * @return reference to the input graph
+     */
+    public static <N> MutableValueGraph<N, Double> normalizeWeightsi(MutableValueGraph<N, Double> graph) {
+
+        for (N node : graph.nodes()) {
+
+            Set<N> targets = graph.successors(node);
+
+            double weightSum = targets
+                    .stream()
+                    .mapToDouble(x -> graph.edgeValue(node, x).get())
+                    .sum();
+
+            for (N target : targets) {
+                graph.putEdgeValue(node, target, graph.edgeValue(node, target).get()/weightSum);
+            }
+
+        }
+
+        return graph;
+    }
+
 
     public static <N extends Comparable<N>> INDArray toDegreeMatrix(Graph<Double, N> graph){
         List<N> nodes = new ArrayList<>();
