@@ -113,12 +113,8 @@ public class SessionGraph {
         return base;
     }
 
-    public static OGraph<Double, QueryPart> buildUsageGraph(Set<QueryPart> previousQPs, List<Session> sessions){
-        OGraph<Double, QueryPart> result = new OGraph<>();
-
-        for (QueryPart qp : previousQPs){
-            result.addNode(qp);
-        }
+    public static MutableValueGraph<QueryPart, Double> buildUsageGraph(List<Session> sessions){
+        MutableValueGraph<QueryPart, Double> result = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
 
         for (Session session : sessions){
             for (int i = 0; i < session.length(); i++) {
@@ -128,8 +124,8 @@ public class SessionGraph {
 
                 for (int j = 0; j < q1parts.length; j++) {
                     for (int k = j + 1; k < q1parts.length; k++) {
-                        result.safeComputeEdge(q1parts[j], q1parts[k], o -> Optional.of(o.map(n -> n+1).orElse(1.0)));
-                        result.safeComputeEdge(q1parts[k], q1parts[j], o -> Optional.of(o.map(n -> n+1).orElse(1.0)));
+                        result.putEdgeValue(q1parts[j], q1parts[k], result.edgeValue(q1parts[j], q1parts[k]).map(n -> n + 1).orElse(1d));
+                        result.putEdgeValue(q1parts[k], q1parts[j], result.edgeValue(q1parts[k], q1parts[j]).map(n -> n + 1).orElse(1d));
                     }
                 }
 
@@ -138,14 +134,12 @@ public class SessionGraph {
                     QueryPart[] q2parts = q2.flat();
                     for (int j = 0; j < q1parts.length; j++) {
                         for (QueryPart q2part : q2parts) {
-                            result.safeComputeEdge(q1parts[j], q2part, o -> Optional.of(o.map(n -> n+1).orElse(1.0)));
+                            result.putEdgeValue(q1parts[j], q2part, result.edgeValue(q1parts[j], q2part).map(n -> n + 1).orElse(1d));
                         }
                     }
                 }
             }
         }
-
-        result.getNodes().forEach(n -> result.setEdge(n,n,1.0));
 
         return result;
     }
@@ -160,8 +154,8 @@ public class SessionGraph {
 
                 for (int j = 0; j < q1parts.length; j++) {
                     for (int k = j ; k < q1parts.length; k++) {
-                        graph.putEdgeValue(q1parts[j], q1parts[k], 1.0);
-                        graph.putEdgeValue(q1parts[k], q1parts[j], 1.0);
+                        graph.putEdgeValue(q1parts[j], q1parts[k], graph.edgeValue(q1parts[j], q1parts[k]).map(n -> n + 1).orElse(1d));
+                        graph.putEdgeValue(q1parts[k], q1parts[j], graph.edgeValue(q1parts[k], q1parts[j]).map(n -> n + 1).orElse(1d));
                     }
                 }
 
@@ -170,7 +164,7 @@ public class SessionGraph {
                     QueryPart[] q2parts = q2.flat();
                     for (int j = 0; j < q1parts.length; j++) {
                         for (QueryPart q2part : q2parts) {
-                            graph.putEdgeValue(q1parts[j], q2part, 1.0);
+                            graph.putEdgeValue(q1parts[j], q2part, graph.edgeValue(q1parts[j], q2part).map(n -> n + 1).orElse(1d));
                         }
                     }
                 }
