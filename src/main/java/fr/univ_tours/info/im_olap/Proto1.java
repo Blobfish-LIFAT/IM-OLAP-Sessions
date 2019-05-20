@@ -125,31 +125,6 @@ public class Proto1 {
         System.out.println("End of evaluation.");
     }
 
-    public static <V> INDArray toINDArray(ValueGraph<V, ? extends Number> in){
-        //Nd4j.setDataType(DataBuffer.Type.FLOAT);
-        System.out.println(in.nodes().size());
-        try {
-            StringBuilder sb = new StringBuilder();
-            in.nodes().stream().forEach(t -> sb.append(t.toString() + "\n"));
-            Files.write(Paths.get("/tmp/truc.log"), sb.toString().getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        INDArray out = Nd4j.create(in.nodes().size(), in.nodes().size());
-        int i = 0;
-        for (V u : in.nodes()){
-            int j = 0;
-            for (V v : in.nodes()){
-                Optional<? extends Number> val = in.edgeValue(u, v);
-                double n = val.map(Number::doubleValue).orElse(0d);
-                out.putScalar(i, j, n);
-                j++;
-            }
-            i++;
-        }
-        return out;
-    }
-
     public static <V> INDArray toSparseINDArray(ValueGraph<V, ? extends Number> in){
         NDArrayFactory factory = Nd4j.sparseFactory();
         INDArray out = factory.createSparseCOO(new float[]{0f},new int[][]{{0},{0}}, new long[]{in.nodes().size(), in.nodes().size()});

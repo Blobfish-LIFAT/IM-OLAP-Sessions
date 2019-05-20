@@ -3,6 +3,7 @@ package fr.univ_tours.info.im_olap.model;
 import com.alexsxode.utilities.Logger;
 import com.alexsxode.utilities.Nd4jUtils;
 import com.alexsxode.utilities.collection.Pair;
+import com.google.common.graph.*;
 import fr.univ_tours.info.im_olap.compute.PageRank;
 import fr.univ_tours.info.im_olap.graph.Graph;
 import fr.univ_tours.info.im_olap.graph.Graphs;
@@ -21,27 +22,28 @@ public class GraphUpdate {
             GraphUpdate.KLForGraphs()
             );
 
-    private BiFunction<Session, Integer, Graph<Double, QueryPart>> queryGraphBuilder;
-    private BiFunction<Graph<Double, QueryPart>,Graph<Double, QueryPart>,Graph<Double, QueryPart>> graphInterpolator;
-    private BiFunction<Graph<Double, QueryPart>,Graph<Double, QueryPart>, Double> infoGainFormula;
+    private BiFunction<Session, Integer, MutableValueGraph<QueryPart, Double>> queryGraphBuilder;
+    private BiFunction<MutableValueGraph<QueryPart, Double>,MutableValueGraph<QueryPart, Double>,MutableValueGraph<QueryPart, Double>> graphInterpolator;
+    private BiFunction<MutableValueGraph<QueryPart, Double>,MutableValueGraph<QueryPart, Double>, Double> infoGainFormula;
 
-    public GraphUpdate(BiFunction<Session, Integer, Graph<Double, QueryPart>> queryGraphBuilder,
-                       BiFunction<Graph<Double, QueryPart>, Graph<Double, QueryPart>, Graph<Double, QueryPart>> graphInterpolator,
-                       BiFunction<Graph<Double, QueryPart>, Graph<Double, QueryPart>, Double> infoGainFormula) {
+    public GraphUpdate(BiFunction<Session, Integer, MutableValueGraph<QueryPart, Double>> queryGraphBuilder,
+                       BiFunction<MutableValueGraph<QueryPart, Double>, MutableValueGraph<QueryPart, Double>,
+                                  MutableValueGraph<QueryPart, Double>> graphInterpolator,
+                       BiFunction<MutableValueGraph<QueryPart, Double>, MutableValueGraph<QueryPart, Double>, Double> infoGainFormula) {
         this.queryGraphBuilder = queryGraphBuilder;
         this.graphInterpolator = graphInterpolator;
         this.infoGainFormula = infoGainFormula;
     }
 
-    public ArrayList<Pair<Query, Double>> evaluateSession(Graph<Double, QueryPart> baseGraph, Session session) {
+    public ArrayList<Pair<Query, Double>> evaluateSession(MutableValueGraph<QueryPart, Double> baseGraph, Session session) {
 
         ArrayList<Pair<Query, Double>> gains = new ArrayList<>();
 
-        ArrayList<Graph<Double, QueryPart>> sessionGraphs = new ArrayList<>();
+        ArrayList<MutableValueGraph<QueryPart, Double>> sessionGraphs = new ArrayList<>();
 
         for (int i = 0; i < session.length() ; i++) {
             // create query graph from truncated session
-            Graph<Double, QueryPart> sessionGraph = this.queryGraphBuilder.apply(session, i);
+            MutableValueGraph<QueryPart, Double> sessionGraph = this.queryGraphBuilder.apply(session, i);
             //((OGraph<Double,QueryPart>) sessionGraph).checkSync();
             sessionGraphs.add(sessionGraph);
         }
@@ -52,12 +54,12 @@ public class GraphUpdate {
 
             Logger.logInfo("evaluateSession", "iteration i = ", i);
 
-            Graph<Double, QueryPart> previousGraph = sessionGraphs.get(i-1);
-            Graph<Double, QueryPart> queryGraph = sessionGraphs.get(i);
+            MutableValueGraph<QueryPart, Double> previousGraph = sessionGraphs.get(i-1);
+            MutableValueGraph<QueryPart, Double> queryGraph = sessionGraphs.get(i);
 
             // interpolate base graph to session graph
-            Graph<Double, QueryPart> interpolatedPrevious = this.graphInterpolator.apply(baseGraph, previousGraph);
-            Graph<Double, QueryPart> interpolated = this.graphInterpolator.apply(baseGraph, queryGraph);
+            MutableValueGraph<QueryPart, Double> interpolatedPrevious = this.graphInterpolator.apply(baseGraph, previousGraph);
+            MutableValueGraph<QueryPart, Double> interpolated = this.graphInterpolator.apply(baseGraph, queryGraph);
 
 
             //((OGraph<Double, QueryPart>)interpolated).checkSync();
@@ -72,7 +74,7 @@ public class GraphUpdate {
 
     // New query graph construction
 
-    public static Graph<Double, QueryPart> simpleInterconnections(Session session, int actualQueryIndex) {
+    public static MutableValueGraph<QueryPart, Double> simpleInterconnections(Session session, int actualQueryIndex) {
 
         List<Query> queries = session.queries.subList(0, actualQueryIndex+1);
 
@@ -80,11 +82,11 @@ public class GraphUpdate {
 
         ArrayList<QueryPart> partList = new ArrayList<>(parts);
 
-        OGraph<Double, QueryPart> graph = new OGraph<>();
+        MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
 
         for (int i = 0; i < partList.size(); i++) {
             for (int j = i; j < partList.size(); j++) {
-                graph.setEdge(partList.get(i), partList.get(j), 1.0);
+                graph.putEdgeValue(partList.get(i), partList.get(j), 1.0);
             }
         }
 
@@ -92,7 +94,9 @@ public class GraphUpdate {
         return graph;
     }
 
-    public static BiFunction<Session, Integer, Graph<Double, QueryPart>> alsoUseSchema(Graph<Double, QueryPart> schema, double schemaWeight) {
+    public static BiFunction<Session, Integer, MutableValueGraph<QueryPart, Double>>
+            alsoUseSchema(MutableValueGraph<QueryPart, Double> schema,
+                          double schemaWeight) {
         return ((session, index) -> {
             return null;
         });
@@ -101,7 +105,7 @@ public class GraphUpdate {
 
     // Interpolation update
 
-    public static BiFunction<Graph<Double, QueryPart>,Graph<Double, QueryPart>,Graph<Double, QueryPart>>
+    public static BiFunction<MutableValueGraph<QueryPart, Double>,MutableValueGraph<QueryPart, Double>,MutableValueGraph<QueryPart, Double>>
         linearInterpolation(double alpha) {
         return (baseGraph, queryGraph) -> {
 
@@ -109,21 +113,14 @@ public class GraphUpdate {
         };
     }
 
-    public static <E extends Comparable<E>,N extends Comparable<N>> Graph<E, N>
-            replaceEdges(Graph<E, N> source, Graph<E, N> new_edges_graph) {
+    public static <N,E> MutableValueGraph<N, E>
+            replaceEdges(MutableValueGraph<N, E> source, MutableValueGraph<N, E> new_edges_graph) {
 
-        //((OGraph<Double,QueryPart>) source).checkSync();
-        //((OGraph<Double,QueryPart>) new_edges_graph).checkSync();
+        MutableValueGraph<N, E> newGraph = com.google.common.graph.Graphs.copyOf(source);
 
-        Graph<E,N> newGraph = source.clone();
-
-        //((OGraph<Double,QueryPart>) newGraph).checkSync();
-
-        for (Graph.Edge<N, E> edge : new_edges_graph.getEdges()) {
-            newGraph.setEdge(edge);
+        for (EndpointPair<N> edge : new_edges_graph.edges()) {
+            newGraph.putEdgeValue(edge, new_edges_graph.edgeValue(edge).get());
         }
-
-        //((OGraph<Double,QueryPart>) newGraph).checkSync();
 
         return newGraph;
     }
@@ -132,16 +129,16 @@ public class GraphUpdate {
     // utility
 
 
-    public static BiFunction<Graph<Double, QueryPart>, Graph<Double, QueryPart>, Double> KLForGraphs() {
+    public static BiFunction<MutableValueGraph<QueryPart, Double>, MutableValueGraph<QueryPart, Double>, Double> KLForGraphs() {
 
         return (g1, g2) -> {
-            Graph<Double, QueryPart> ng1 = g1.clone();
-            //((OGraph<Double,QueryPart>) ng1).checkSync();
+            MutableValueGraph<QueryPart, Double> ng1 = com.google.common.graph.Graphs.copyOf(g1);
+
             Graphs.normalizeWeightsi(ng1);
 
-            //((OGraph<Double,QueryPart>) g2).checkSync();
-            Graph<Double, QueryPart> ng2 = g2.clone();
-            //((OGraph<Double,QueryPart>) ng2).checkSync();
+
+            MutableValueGraph<QueryPart, Double> ng2 = com.google.common.graph.Graphs.copyOf(g2);
+
             Graphs.normalizeWeightsi(ng2);
 
 
@@ -157,17 +154,6 @@ public class GraphUpdate {
 
 
             Logger.logInfo("KLForGraphs","m1 size: ",m1.size()," \t m2 size: ", m2.size());
-
-            /*
-            HashSet<QueryPart> test = new HashSet<>(m2.keySet());
-            test.removeAll(m1.keySet());
-            System.out.println(test.size());
-            System.out.println(test);
-            test.stream().collect(Collectors.groupingBy(q -> q.t)).forEach((t, l) -> System.out.println(t + "   " + l.size()));
-            int t = (int) test.stream().filter(QueryPart::isDimension).filter(queryPart -> queryPart.value.contains("[Tout]")).count();
-            System.out.println(t);
-            System.out.println(test.stream().filter(QueryPart::isDimension).filter(queryPart -> !queryPart.value.contains("[Tout]")).collect(Collectors.toList()));
-            */
 
 
             int i = 0;
