@@ -21,9 +21,6 @@ import java.util.stream.Collectors;
 
 public class SessionGraph {
     static Pattern dimPattern = Pattern.compile("\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]");
-    static int count = 0;
-    static HashSet<QueryPart> truc = new HashSet<>();
-    static HashSet<String> str = new HashSet<>();
 
     private static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
         OGraph<Double, QueryPart> result = new OGraph<>();
@@ -175,62 +172,6 @@ public class SessionGraph {
         } catch (DocumentException e){
             System.err.printf("Failed to resolve DimensionUsage for session %s and schema %s !%n", in, schema);
             e.printStackTrace();
-        }
-
-        return in;
-    }
-
-    public static MutableValueGraph<QueryPart, Double> injectFilters(MutableValueGraph<QueryPart, Double> in, CubeUtils util){
-        SchemaReader schemaReader = util.getCube().getSchemaReader(null).withLocus();
-
-        for (Dimension dimension : util.getCube().getDimensions()){
-            //Skip measures
-            if (dimension.isMeasures())
-                continue;
-
-            System.out.println("Dimension: " + dimension);
-            for (Hierarchy hierarchy : dimension.getHierarchies()){
-                List<Member> topLevel = util.fetchMembers(hierarchy.getLevels()[0]);
-
-                for (Member member : topLevel) {
-                    injectFiltersNode(in, schemaReader, member);
-                }
-
-            }
-        }
-
-        System.out.println(count);
-        System.out.println(truc.size());
-        System.out.println(str.size());
-        return in;
-    }
-
-    private static MutableValueGraph<QueryPart, Double> injectFiltersNode(MutableValueGraph<QueryPart, Double> in, SchemaReader schemaReader, Member m) {
-        List<Member> children = schemaReader.getMemberChildren(m);
-        //Stop condition: reached finest granularity
-        if (children == null || children.size() == 0) {
-            return in;
-        }
-        QueryPart us = QueryPart.newFilter(m.getName(), m.getLevel().toString());
-        //in.addNode(us);
-
-        for (int i = 0; i < children.size(); i++) {
-            Member child = children.get(i);
-            QueryPart c = QueryPart.newFilter(child.getName(), child.getLevel().toString());
-            count++;
-            truc.add(c);
-            str.add(c.toString());
-            //in.addNode(c);
-            in.putEdgeValue(us, c, 1.0);
-            in.putEdgeValue(c, us, 1.0);
-/*
-            for (int j = i + 1; j < children.size(); j++) {
-                QueryPart other = fromMember(children.get(j));
-                in.setEdge(c, other, 1.0);
-                in.setEdge(other, c, 1.0);
-            }
-*/
-            injectFiltersNode(in, schemaReader, child);
         }
 
         return in;
