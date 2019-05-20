@@ -1,5 +1,6 @@
 package fr.univ_tours.info.im_olap;
 
+import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
@@ -51,19 +52,13 @@ public class Proto1 {
         System.out.println("Injecting filters...");
         FiltersGraph.injectCompressedFilters(base, mdUtils);
 
-        //System.out.println(Eigen.symmetricGeneralizedEigenvalues(toINDArray(base)));
-        System.out.printf("Graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
+        System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
-        INDArray test = Graphs.toINDMatrix(base).left;
-        System.out.println(Arrays.toString(test.shape()));
-
-        System.exit(0);
         /**
          * Ben's stuff
          */
 
-
-
+        System.out.println("Adding session query parts...");
 
         for (Query query : s1.queries) {
             for (QueryPart qp : query.getAllParts()) {
@@ -71,27 +66,37 @@ public class Proto1 {
             }
         }
 
-
+        System.out.println("Ensuring all nodes have self edges...");
 
         for (QueryPart queryPart : base.nodes()) {
             base.putEdgeValue(queryPart, queryPart, 1.0);
         }
 
 
+        //System.out.println(Eigen.symmetricGeneralizedEigenvalues(toINDArray(base)));
+        System.out.printf("Graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
+
+        System.out.println("Normalizing edges weights...");
+
+        Graphs.normalizeWeightsi(base);
+
+        System.out.println("Converting graph to matrix...");
+
+        Pair<INDArray, HashMap<QueryPart, Integer>> pair = Graphs.toINDMatrix(base);
+        System.out.println(Arrays.toString(pair.left.shape()));
 
 
-        Set<QueryPart> queryParts = new HashSet<>(base.nodes());
+        System.out.println("Checking matrix validity...");
 
-        queryParts.removeAll(s1.queries.stream().flatMap(x -> x.getAllParts().stream()).collect(Collectors.toSet()));
+        System.out.println("Sum on first row: "+pair.left.getRow(0).sumNumber());
 
+        System.out.println("Sum on last row: "+pair.left.getRow(pair.left.rows()-1).sumNumber());
 
+        System.out.println("Dereferencing INDArray...");
 
-        if (queryParts.isEmpty()) {
-            System.err.println("Error: some query parts are in session but not in the base graph!");
-            System.out.println(queryParts);
-        }
+        pair = null;
 
-
+        System.out.println("Creating GraphUpdate evaluator...");
 
         GraphUpdate graphUpdate = new GraphUpdate(GraphUpdate::simpleInterconnections,
                 GraphUpdate::replaceEdges,
@@ -99,12 +104,12 @@ public class Proto1 {
 
 
         System.out.println("Evaluating session...");
-        /*List<Pair<Query, Double>> liste =  graphUpdate.evaluateSession(base, s1);
+        List<Pair<Query, Double>> liste =  graphUpdate.evaluateSession(base, s1);
         liste.stream().forEach(p -> {
             System.out.println();
             System.out.println(p.left);
             System.out.println("value : " + p.right);
-        });*/
+        });
         System.out.println("End of evaluation.");
     }
 

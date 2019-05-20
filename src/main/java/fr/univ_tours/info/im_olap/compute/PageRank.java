@@ -48,7 +48,7 @@ public class PageRank {
             INDArray weights,
             int iter){
 
-        INDArray matrix = weights.dup();
+        INDArray matrix = weights; //weights.dup();
 
         INDArray vector = Nd4j.ones(1, matrix.size(0));
         vector.divi(matrix.size(0));
