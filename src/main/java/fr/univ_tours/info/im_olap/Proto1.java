@@ -31,7 +31,7 @@ public class Proto1 {
         System.out.println("Connecting to Mondrian...");
         Connection olap = MondrianConfig.getMondrianConnection();
 
-        System.out.println("\"Fixing\" sessions...");
+        System.out.println("Loading sessions...");
         List<Session> sessions = SessionGraph.fixSessions(DopanLoader.loadDir(dataDir), cubeSchema);
         Session s1 = sessions.get(0);
 
@@ -42,11 +42,11 @@ public class Proto1 {
         System.out.println("Collecting user session...");
         List<Session> thisUser = sessions.stream().filter(s -> s.getUserName().equals(s1.getUserName())).collect(Collectors.toList());
         thisUser.remove(s1);
+        sessions.removeAll(thisUser);
 
 
         System.out.println("Building topology graph...");
-        //OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
-        MutableValueGraph<QueryPart, Double> base = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
+        MutableValueGraph<QueryPart, Double> base = SessionGraph.buildFromLog(sessions);
         DimensionsGraph.injectSchema(base, "data/cubeSchemas/DOPAN_DW3.xml");
 
         System.out.println("Injecting filters...");
@@ -54,6 +54,11 @@ public class Proto1 {
 
         System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
+        //INDArray test = Graphs.toINDMatrix(base).left;
+
+
+
+        //System.exit(0);
         /**
          * Ben's stuff
          */
@@ -113,6 +118,7 @@ public class Proto1 {
         System.out.println("End of evaluation.");
     }
 
+    @Deprecated
     public static <V> INDArray toSparseINDArray(ValueGraph<V, ? extends Number> in){
         NDArrayFactory factory = Nd4j.sparseFactory();
         INDArray out = factory.createSparseCOO(new float[]{0f},new int[][]{{0},{0}}, new long[]{in.nodes().size(), in.nodes().size()});
