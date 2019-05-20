@@ -3,7 +3,6 @@ package fr.univ_tours.info.im_olap;
 import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraph;
-import com.google.common.graph.ValueGraphBuilder;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
@@ -15,7 +14,6 @@ import mondrian.olap.*;
 import fr.univ_tours.info.im_olap.model.*;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.eigen.Eigen;
 import org.nd4j.linalg.factory.NDArrayFactory;
 import org.nd4j.linalg.factory.Nd4j;
 import java.util.*;
@@ -104,15 +102,15 @@ public class Proto1 {
         System.out.println("Dereferencing INDArray...");
         pair = null;
 
-        System.out.println("Creating GraphUpdate evaluator...");
+        System.out.println("Creating SessionEvaluator evaluator...");
 
-        GraphUpdate graphUpdate = new GraphUpdate(GraphUpdate::simpleInterconnections,
-                GraphUpdate::replaceEdges,
-                GraphUpdate.KLForGraphs());
+        SessionEvaluator<QueryPart, Double, Pair<INDArray, HashMap<QueryPart, Integer>>> sessionEvaluator = new SessionEvaluator<>(SessionEvaluator::simpleInterconnections,
+                SessionEvaluator::replaceEdges,
+                SessionEvaluator::pageRank);
 
 
         System.out.println("Evaluating session...");
-        List<Pair<Query, Double>> liste =  graphUpdate.evaluateSession(base, s1);
+        List<Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>>> liste = sessionEvaluator.evaluateSession(base, s1);
         liste.stream().forEach(p -> {
             System.out.println();
             System.out.println(p.left);
