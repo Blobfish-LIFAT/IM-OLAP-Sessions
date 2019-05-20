@@ -13,6 +13,7 @@ import fr.univ_tours.info.im_olap.model.Query;
 import fr.univ_tours.info.im_olap.model.QueryPart;
 import mondrian.olap.*;
 import fr.univ_tours.info.im_olap.model.*;
+import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.eigen.Eigen;
 import org.nd4j.linalg.factory.NDArrayFactory;
@@ -28,6 +29,7 @@ public class Proto1 {
 
 
     public static void main(String[] args) {
+        Nd4j.setDefaultDataTypes(DataType.DOUBLE, DataType.DOUBLE);
 
         System.out.println("Connecting to Mondrian...");
         Connection olap = MondrianConfig.getMondrianConnection();
@@ -96,11 +98,10 @@ public class Proto1 {
         System.out.println("Sum on last row: "+pair.left.getRow(pair.left.rows()-1).sumNumber());
 
         System.out.println("Computing Eigen...");
-        System.out.println(Eigen.symmetricGeneralizedEigenvalues(pair.left));
+        //System.out.println(Eigen.symmetricGeneralizedEigenvalues(pair.left));
 
 
         System.out.println("Dereferencing INDArray...");
-
         pair = null;
 
         System.out.println("Creating GraphUpdate evaluator...");
