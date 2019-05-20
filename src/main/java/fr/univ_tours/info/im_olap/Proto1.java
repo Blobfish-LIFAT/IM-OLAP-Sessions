@@ -4,6 +4,7 @@ import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
+import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
 
@@ -12,13 +13,8 @@ import fr.univ_tours.info.im_olap.model.QueryPart;
 import mondrian.olap.*;
 import fr.univ_tours.info.im_olap.model.*;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.eigen.Eigen;
 import org.nd4j.linalg.factory.NDArrayFactory;
 import org.nd4j.linalg.factory.Nd4j;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -58,7 +54,7 @@ public class Proto1 {
         //System.out.println(Eigen.symmetricGeneralizedEigenvalues(toINDArray(base)));
         System.out.printf("Graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
-        INDArray test = (base);
+        INDArray test = Graphs.toINDMatrix(base).left;
         System.out.println(Arrays.toString(test.shape()));
 
         System.exit(0);
