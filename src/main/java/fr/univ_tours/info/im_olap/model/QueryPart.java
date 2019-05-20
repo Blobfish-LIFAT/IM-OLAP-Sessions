@@ -1,16 +1,9 @@
 package fr.univ_tours.info.im_olap.model;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.*;
-import java.util.function.BiFunction;
 
 public class QueryPart implements Comparable<QueryPart>{
-
-    private static TreeMap<Integer, List<QueryPart>> pool = new TreeMap<>();
 
     private static TreeMap<Integer, List<QueryPart>> dimension_qps = new TreeMap<>();
     private static TreeMap<Integer, List<QueryPart>> measure_qps = new TreeMap<>();
