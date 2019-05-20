@@ -1,5 +1,6 @@
 package fr.univ_tours.info.im_olap;
 
+import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
@@ -30,7 +31,7 @@ public class Proto1 {
         System.out.println("Connecting to Mondrian...");
         Connection olap = MondrianConfig.getMondrianConnection();
 
-        System.out.println("\"Fixing\" sessions...");
+        System.out.println("Loading sessions...");
         List<Session> sessions = SessionGraph.fixSessions(DopanLoader.loadDir(dataDir), cubeSchema);
         Session s1 = sessions.get(0);
 
@@ -41,11 +42,11 @@ public class Proto1 {
         System.out.println("Collecting user session...");
         List<Session> thisUser = sessions.stream().filter(s -> s.getUserName().equals(s1.getUserName())).collect(Collectors.toList());
         thisUser.remove(s1);
+        sessions.removeAll(thisUser);
 
 
         System.out.println("Building topology graph...");
-        //OGraph<Double, QueryPart> base = SessionGraph.buildTopologyGraph(thisUser, "data/cubeSchemas/DOPAN_DW3.xml");
-        MutableValueGraph<QueryPart, Double> base = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
+        MutableValueGraph<QueryPart, Double> base = SessionGraph.buildFromLog(sessions);
         DimensionsGraph.injectSchema(base, "data/cubeSchemas/DOPAN_DW3.xml");
 
         System.out.println("Injecting filters...");
@@ -54,10 +55,11 @@ public class Proto1 {
         //System.out.println(Eigen.symmetricGeneralizedEigenvalues(toINDArray(base)));
         System.out.printf("Graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
-        INDArray test = Graphs.toINDMatrix(base).left;
-        System.out.println(Arrays.toString(test.shape()));
+        //INDArray test = Graphs.toINDMatrix(base).left;
 
-        System.exit(0);
+
+
+        //System.exit(0);
         /**
          * Ben's stuff
          */
@@ -99,15 +101,16 @@ public class Proto1 {
 
 
         System.out.println("Evaluating session...");
-        /*List<Pair<Query, Double>> liste =  graphUpdate.evaluateSession(base, s1);
+        List<Pair<Query, Double>> liste =  graphUpdate.evaluateSession(base, s1);
         liste.stream().forEach(p -> {
             System.out.println();
             System.out.println(p.left);
             System.out.println("value : " + p.right);
-        });*/
+        });
         System.out.println("End of evaluation.");
     }
 
+    @Deprecated
     public static <V> INDArray toSparseINDArray(ValueGraph<V, ? extends Number> in){
         NDArrayFactory factory = Nd4j.sparseFactory();
         INDArray out = factory.createSparseCOO(new float[]{0f},new int[][]{{0},{0}}, new long[]{in.nodes().size(), in.nodes().size()});

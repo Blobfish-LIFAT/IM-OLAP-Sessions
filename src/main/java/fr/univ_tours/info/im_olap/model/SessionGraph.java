@@ -2,6 +2,8 @@ package fr.univ_tours.info.im_olap.model;
 
 
 import com.google.common.graph.MutableValueGraph;
+import com.google.common.graph.ValueGraph;
+import com.google.common.graph.ValueGraphBuilder;
 import fr.univ_tours.info.im_olap.graph.OGraph;
 import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
 import mondrian.olap.*;
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 public class SessionGraph {
     static Pattern dimPattern = Pattern.compile("\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]\\.\\[([^\\[\\]]*)\\]");
 
+    @Deprecated
     private static OGraph<Double, QueryPart> buildBaseGraph(List<Session> sessions){
         OGraph<Double, QueryPart> result = new OGraph<>();
         //int  t = 0;
@@ -62,6 +65,7 @@ public class SessionGraph {
      * @param mondrianFile
      * @return
      */
+    @Deprecated
     private static OGraph<Double, QueryPart> injectSchema(OGraph<Double, QueryPart> base, String mondrianFile){
         SAXReader reader = new SAXReader();
         try {
@@ -101,6 +105,7 @@ public class SessionGraph {
         }
     }
 
+    @Deprecated
     public static OGraph<Double, QueryPart> buildTopologyGraph(List<Session> sessions, String schemaPath){
         OGraph<Double, QueryPart> base = buildBaseGraph(sessions);
         injectSchema(base, schemaPath);
@@ -143,6 +148,36 @@ public class SessionGraph {
         result.getNodes().forEach(n -> result.setEdge(n,n,1.0));
 
         return result;
+    }
+
+    public static MutableValueGraph<QueryPart, Double> buildFromLog(List<Session> sessions){
+        MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
+
+        for (Session session : sessions){
+            for (int i = 0; i < session.length(); i++) {
+                Query q1 = session.queries.get(i);
+                QueryPart[] q1parts = q1.flat();
+
+                for (int j = 0; j < q1parts.length; j++) {
+                    for (int k = j ; k < q1parts.length; k++) {
+                        graph.putEdgeValue(q1parts[j], q1parts[k], 1.0);
+                        graph.putEdgeValue(q1parts[k], q1parts[j], 1.0);
+                    }
+                }
+
+                if (i < session.length() - 1){
+                    Query q2 = session.queries.get(i + 1);
+                    QueryPart[] q2parts = q2.flat();
+                    for (int j = 0; j < q1parts.length; j++) {
+                        for (QueryPart q2part : q2parts) {
+                            graph.putEdgeValue(q1parts[j], q2part, 1.0);
+                        }
+                    }
+                }
+            }
+        }
+
+        return graph;
     }
 
     public static Session resolveDimUsage(Session in, String schema){
