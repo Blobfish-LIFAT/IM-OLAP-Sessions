@@ -14,6 +14,7 @@ import fr.univ_tours.info.im_olap.model.QueryPart;
 import mondrian.olap.*;
 import fr.univ_tours.info.im_olap.model.*;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.eigen.Eigen;
 import org.nd4j.linalg.factory.NDArrayFactory;
 import org.nd4j.linalg.factory.Nd4j;
 import java.util.*;
@@ -54,9 +55,6 @@ public class Proto1 {
 
         System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
-        //INDArray test = Graphs.toINDMatrix(base).left;
-
-
 
         //System.exit(0);
         /**
@@ -77,8 +75,6 @@ public class Proto1 {
             base.putEdgeValue(queryPart, queryPart, 1.0);
         }
 
-
-        //System.out.println(Eigen.symmetricGeneralizedEigenvalues(toINDArray(base)));
         System.out.printf("Graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
         System.out.println("Normalizing edges weights...");
@@ -88,6 +84,8 @@ public class Proto1 {
         System.out.println("Converting graph to matrix...");
 
         Pair<INDArray, HashMap<QueryPart, Integer>> pair = Graphs.toINDMatrix(base);
+
+        System.out.println("Matrix shape:");
         System.out.println(Arrays.toString(pair.left.shape()));
 
 
@@ -96,6 +94,10 @@ public class Proto1 {
         System.out.println("Sum on first row: "+pair.left.getRow(0).sumNumber());
 
         System.out.println("Sum on last row: "+pair.left.getRow(pair.left.rows()-1).sumNumber());
+
+        System.out.println("Computing Eigen...");
+        System.out.println(Eigen.symmetricGeneralizedEigenvalues(pair.left));
+
 
         System.out.println("Dereferencing INDArray...");
 
