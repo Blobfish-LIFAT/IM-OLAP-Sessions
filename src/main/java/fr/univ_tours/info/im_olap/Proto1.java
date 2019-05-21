@@ -2,20 +2,16 @@ package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
-import com.google.common.graph.ValueGraph;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.Graphs;
-import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
-import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
-
-import fr.univ_tours.info.im_olap.model.Query;
-import fr.univ_tours.info.im_olap.model.QueryPart;
-import mondrian.olap.*;
 import fr.univ_tours.info.im_olap.model.*;
-import org.nd4j.linalg.api.buffer.DataType;
+import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
+import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
+import mondrian.olap.Connection;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.factory.NDArrayFactory;
 import org.nd4j.linalg.factory.Nd4j;
+
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,7 +23,7 @@ public class Proto1 {
 
 
     public static void main(String[] args) {
-        Nd4j.setDefaultDataTypes(DataType.DOUBLE, DataType.DOUBLE);
+        //Nd4j.setDefaultDataTypes(DataType.DOUBLE, DataType.DOUBLE);
 
         System.out.println("Connecting to Mondrian...");
         Connection olap = MondrianConfig.getMondrianConnection();
@@ -48,15 +44,24 @@ public class Proto1 {
 
         System.out.println("Building topology graph...");
         MutableValueGraph<QueryPart, Double> base = SessionGraph.buildFromLog(sessions);
+        Set<QueryPart> baseNodes = new HashSet<>(base.nodes());
         DimensionsGraph.injectSchema(base, "data/cubeSchemas/DOPAN_DW3.xml");
 
         System.out.println("Injecting filters...");
         FiltersGraph.injectCompressedFilters(base, mdUtils);
 
+        (new HashSet<>(base.nodes())).stream().filter(n -> !baseNodes.contains(n)).forEach(base::removeNode);
+
         System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
+/*
+        SparseStore demo = toMatrixNorm(base);
+        System.out.println("Matrix filled");
 
-
-        //System.exit(0);
+        for (int i = 0; i < 42; i++) {
+            System.out.printf("Matrix multiplication iteration n°%s%n", i);
+            demo.multiply(demo, demo);
+        }
+*/
         /**
          * Ben's stuff
          */
@@ -100,6 +105,7 @@ public class Proto1 {
 
 
         System.out.println("Dereferencing INDArray...");
+        Nd4j.getMemoryManager().collect(pair.left);
         pair = null;
 
         System.out.println("Creating SessionEvaluator evaluator...");
@@ -181,24 +187,32 @@ public class Proto1 {
         System.out.println("End of evaluation.");
     }
 
-    @Deprecated
-    public static <V> INDArray toSparseINDArray(ValueGraph<V, ? extends Number> in){
-        NDArrayFactory factory = Nd4j.sparseFactory();
-        INDArray out = factory.createSparseCOO(new float[]{0f},new int[][]{{0},{0}}, new long[]{in.nodes().size(), in.nodes().size()});
-        System.out.println(Arrays.toString(out.shape()));
-        int i = 0;
-        for (V u : in.nodes()){
-            int j = 0;
-            for (V v : in.nodes()){
-                Optional<? extends Number> val = in.edgeValue(u, v);
-                double n = val.map(Number::doubleValue).orElse(0d);
-                out.put(i, j, n);
-                j++;
-            }
-            i++;
+/*
+    public static <V> SparseStore<Double> toMatrixNorm(ValueGraph<V, ? extends Number> in) {
+        List<V> nodes = new ArrayList<>(in.nodes());
+        HashMap<V, Integer> indexes = new HashMap<>();
+
+        for (int i = 0; i < nodes.size(); i++) {
+            indexes.put(nodes.get(i), i);
         }
+
+        int size = nodes.size();
+        final SparseStore<Double> out = SparseStore.PRIMITIVE.make(size, size);
+
+        for (int i = 0; i < size; i++) {
+            V from = nodes.get(i);
+            double sum = 0;
+            for (V to : in.successors(from))
+                sum += in.edgeValue(from, to).get().doubleValue();
+            for (V to : in.successors(from)){
+                int toIndex = indexes.get(to);
+                out.set(i, toIndex, in.edgeValue(from, to).get().doubleValue()/sum);
+            }
+        }
+
         return out;
     }
-
+*/
 
 }
+
