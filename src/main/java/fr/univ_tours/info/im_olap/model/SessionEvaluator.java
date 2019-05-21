@@ -108,6 +108,8 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
             double gain = gainEvaluator.evaluate(evaluatedSession.get(i-1).right, pair.right);
             
             Pair<Query, Double> resPair = new Pair<>(pair.left, gain);
+
+            ret.add(resPair);
         }
         
         return ret;

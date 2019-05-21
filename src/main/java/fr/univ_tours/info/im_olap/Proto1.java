@@ -114,13 +114,19 @@ public class Proto1 {
         liste.stream().forEach(p -> {
             System.out.println();
             System.out.println(p.left);
-            System.out.println("value : " + p.right);
+            System.out.println("value : " + p.right.left);
         });
 
         // helps to infer evaluator
         SessionEvaluator.GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> kullbackLeibler = SessionEvaluator::KullbackLeibler;
 
+        System.out.println();
+        System.out.println("-------------------------------------------------------------------------------");
+        System.out.println();
+
         System.out.println("Computing gains...");
+        System.out.println();
+
         ArrayList<Pair<Query, Double>> gains = SessionEvaluator.computeGains(liste, kullbackLeibler);
 
         for (Pair<Query, Double> pair1 : gains) {
