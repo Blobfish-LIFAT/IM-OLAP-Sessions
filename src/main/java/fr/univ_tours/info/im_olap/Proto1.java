@@ -2,6 +2,7 @@ package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
+import fr.univ_tours.info.im_olap.compute.PageRank;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.model.*;
@@ -9,6 +10,7 @@ import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import mondrian.olap.Connection;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.eigen.Eigen;
 import org.nd4j.linalg.factory.Nd4j;
 
 
@@ -100,12 +102,25 @@ public class Proto1 {
 
         System.out.println("Sum on last row: "+pair.left.getRow(pair.left.rows()-1).sumNumber());
 
+        for (int i = 1; i < pair.left.rows() - 1 ; i++) {
+            System.out.print(pair.left.getRow(i).sumNumber()+", ");
+        }
+
+        Pair<INDArray, HashMap<QueryPart, Integer>> pgRes = PageRank.pagerank(base, 500);
+
+        System.out.println();
+
+        System.out.print("Sum of the stationary distribution: ");
+        System.out.println(pgRes.left.sumNumber());
+
+        System.out.println();
+
         System.out.println("Computing Eigen...");
-        //System.out.println(Eigen.symmetricGeneralizedEigenvalues(pair.left));
+        System.out.println(Eigen.symmetricGeneralizedEigenvalues(pair.left));
 
 
         System.out.println("Dereferencing INDArray...");
-        Nd4j.getMemoryManager().collect(pair.left);
+        //Nd4j.getMemoryManager().collect(pair.left);
         pair = null;
 
         System.out.println("Creating SessionEvaluator evaluator...");
