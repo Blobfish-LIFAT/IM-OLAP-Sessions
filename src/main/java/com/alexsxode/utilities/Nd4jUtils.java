@@ -46,7 +46,7 @@ public final class Nd4jUtils {
                 throw new IllegalArgumentException("Absolute continuity is required ! If q((i) = 0 then p(i) must be 0. i="+i);
             else if (isZero(qi) && isZero(pi))
                 continue;
-            sum += p.getDouble(i)*log2(pi/qi);
+            sum += pi*log2(pi/qi);
         }
         return sum;
     }
