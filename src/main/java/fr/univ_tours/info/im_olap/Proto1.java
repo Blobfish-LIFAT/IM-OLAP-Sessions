@@ -104,17 +104,32 @@ public class Proto1 {
 
         System.out.println("Creating SessionEvaluator evaluator...");
 
-        SessionEvaluator<QueryPart, Double, Pair<INDArray, HashMap<QueryPart, Integer>>> sessionEvaluator = new SessionEvaluator<>(SessionEvaluator::simpleInterconnections,
-                SessionEvaluator::replaceEdges,
-                SessionEvaluator::pageRank);
+        SessionEvaluator<QueryPart, Double, Pair<INDArray, HashMap<QueryPart, Integer>>> sessionEvaluator =
+                new SessionEvaluator<>(SessionEvaluator::simpleInterconnections,
+                                        SessionEvaluator::replaceEdges,
+                                        SessionEvaluator::pageRank);
 
 
         System.out.println("Evaluating session...");
         ArrayList<Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>>> liste = sessionEvaluator.evaluateSession(base, s1);
         liste.stream().forEach(p -> {
             System.out.println();
-            System.out.println(p.left);
-            System.out.println("value : " + p.right.left);
+
+            ArrayList<Pair<QueryPart, Double>> displayList = new ArrayList<>();
+
+            for (Map.Entry<QueryPart, Integer> entry : p.right.right.entrySet()) {
+                displayList.add(new Pair<>(entry.getKey(), p.right.left.getDouble(entry.getValue())));
+            }
+
+            displayList.sort(Comparator.comparing(x -> x.left.toString()));
+
+            for (Pair<QueryPart, Double> pair1 : displayList) {
+                System.out.println(pair1.left);
+                System.out.println("value : " + pair1.right);
+
+                System.out.println();
+            }
+
         });
 
         // helps to infer evaluator
