@@ -117,6 +117,8 @@ public class Proto1 {
         for (Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>> p : liste ) {
             System.out.println();
             System.out.println("Query number "+i);
+
+            /*
             ArrayList<Pair<QueryPart, Double>> displayList = new ArrayList<>();
 
             for (Map.Entry<QueryPart, Integer> entry : p.right.right.entrySet()) {
@@ -129,6 +131,10 @@ public class Proto1 {
                 System.out.print(pair1.right.toString() + ",");
             }
             System.out.println();
+
+            */
+
+
             i++;
         }
 
@@ -143,6 +149,26 @@ public class Proto1 {
         System.out.println();
 
         ArrayList<Pair<Query, Double>> gains = SessionEvaluator.computeGains(liste, kullbackLeibler);
+
+        for (Pair<Query, Double> pair1 : gains) {
+
+            System.out.println();
+            System.out.println("Query:");
+            System.out.println(pair1.left);
+            System.out.println("Gain: "+pair1.right);
+        }
+
+        // helps to infer evaluator
+        SessionEvaluator.GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> absoluteDiff = SessionEvaluator::AbsoluteDiff;
+
+        System.out.println();
+        System.out.println("-------------------------------------------------------------------------------");
+        System.out.println();
+
+        System.out.println("Computing gains in absolute diff...");
+        System.out.println();
+
+        gains = SessionEvaluator.computeGains(liste, absoluteDiff);
 
         for (Pair<Query, Double> pair1 : gains) {
 

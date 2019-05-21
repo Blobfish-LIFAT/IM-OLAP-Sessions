@@ -126,7 +126,7 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
 
         ArrayList<QueryPart> partList = new ArrayList<>(parts);
 
-        MutableValueGraph<QueryPart, Double> graph = com.google.common.graph.Graphs.copyOf(baseGraph);
+        MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
 
         for (int i = 0; i < partList.size(); i++) {
             for (int j = i; j < partList.size(); j++) {
@@ -138,33 +138,18 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
         return graph;
     }
 
-    public static <N,E> MutableValueGraph<N,E> onlyBaseGraph() {
-        return null;
-    }
-
 
     // Interpolation update
-
-    public static BiFunction<MutableValueGraph<QueryPart, Double>,MutableValueGraph<QueryPart, Double>,MutableValueGraph<QueryPart, Double>>
-        linearInterpolation(double alpha) {
-        return (baseGraph, queryGraph) -> {
-
-            return null;
-        };
-    }
-
-    public static <N,E> MutableValueGraph<N,E> returnNew(MutableValueGraph<N, E> baseGraph,
-                                                         MutableValueGraph<N, E> source,
-                                                         MutableValueGraph<N, E> new_edges_graph) {
-        return new_edges_graph;
-    }
 
     public static <N,E> MutableValueGraph<N, E> replaceEdges(MutableValueGraph<N, E> baseGraph,
                                                              MutableValueGraph<N, E> source,
                                                              MutableValueGraph<N, E> new_edges_graph) {
 
-        MutableValueGraph<N, E> newGraph = com.google.common.graph.Graphs.copyOf(source);
+        MutableValueGraph<N, E> newGraph = com.google.common.graph.Graphs.copyOf(baseGraph);
 
+        for (EndpointPair<N> edge : source.edges()) {
+            newGraph.putEdgeValue(edge, source.edgeValue(edge).get());
+        }
         for (EndpointPair<N> edge : new_edges_graph.edges()) {
             newGraph.putEdgeValue(edge, new_edges_graph.edgeValue(edge).get());
         }
