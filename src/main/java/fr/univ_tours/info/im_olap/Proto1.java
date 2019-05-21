@@ -47,6 +47,8 @@ public class Proto1 {
         System.out.println("Building topology graph...");
         MutableValueGraph<QueryPart, Double> base = SessionGraph.buildFromLog(sessions);
         Set<QueryPart> baseNodes = new HashSet<>(base.nodes());
+        baseNodes.addAll(s1.allParts());
+        baseNodes.addAll(thisUser.stream().flatMap(s -> s.allParts().stream()).collect(Collectors.toList()));
         DimensionsGraph.injectSchema(base, "data/cubeSchemas/DOPAN_DW3.xml");
 
         System.out.println("Injecting filters...");

@@ -5,7 +5,9 @@ import org.apache.commons.math3.exception.MathIllegalArgumentException;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.nd4j.linalg.ops.transforms.Transforms.relu;
@@ -16,7 +18,7 @@ import static org.nd4j.linalg.util.MathUtils.log2;
  * Fait par Alexandre le 02/11/2018.
  */
 public final class Nd4jUtils {
-    public static final double root2 = Math.sqrt(2), threshold = 10e-4;
+    private static final double root2 = Math.sqrt(2), threshold = 10e-10;
 
     /**
      * Computes the Hellinger distance between two vectors representing probability distribution
@@ -35,16 +37,18 @@ public final class Nd4jUtils {
      * @return
      */
     public static double kullbackLeibler(INDArray p, INDArray q){
-        if (!isDistibution(p, threshold) || !isDistibution(q, threshold))
+        //10e-3 is for reasonable errors in the computations
+        if (!isDistibution(p, 10e-3) || !isDistibution(q, 10e-3))
             throw new IllegalArgumentException("p and q must be probability distributions !");
         if (q.rows() != 1 || p.rows() != 1)
             throw new IllegalArgumentException("Distributions should be line vectors !");
         double sum = 0;
         for (int i = 0; i < p.columns(); i++) {
             double qi = q.getDouble(i), pi = p.getDouble(i);
-            if (isZero(qi) && ! isZero(pi))
+            if (isZero(qi) && ! isZero(pi)) {
+                //continue;
                 throw new IllegalArgumentException("Absolute continuity is required ! If q((i) = 0 then p(i) must be 0. i="+i);
-            else if (isZero(qi) && isZero(pi))
+            } else if (isZero(qi) && isZero(pi))
                 continue;
             sum += pi*log2(pi/qi);
         }
@@ -71,13 +75,24 @@ public final class Nd4jUtils {
         INDArray pArr = Nd4j.create(mapper.size());
 
         INDArray qArr = pArr.dup();
-
+        List<N> debug = new ArrayList<>(mapper.size());
         for (Map.Entry<N, Integer> entry : mapper.entrySet()) {
             pArr.putScalar(entry.getValue(), p.get(entry.getKey()));
             qArr.putScalar(entry.getValue(), q.get(entry.getKey()));
+            debug.add(entry.getKey());
         }
 
-        return kullbackLeibler(pArr, qArr);
+
+        try {
+            return kullbackLeibler(pArr, qArr);
+        } catch (IllegalArgumentException e){
+            int pos = Integer.parseInt(e.getMessage().split("=")[2]);
+            System.out.println(debug.get(pos));
+            System.out.println(p.get(debug.get(pos)));
+            System.out.println(q.get(debug.get(pos)));
+            throw new IllegalStateException(e);
+        }
+
     }
 
     public static double normalizedEntropy(INDArray p){
