@@ -126,7 +126,7 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
 
         ArrayList<QueryPart> partList = new ArrayList<>(parts);
 
-        MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
+        MutableValueGraph<QueryPart, Double> graph = com.google.common.graph.Graphs.copyOf(baseGraph);
 
         for (int i = 0; i < partList.size(); i++) {
             for (int j = i; j < partList.size(); j++) {
@@ -151,6 +151,12 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
 
             return null;
         };
+    }
+
+    public static <N,E> MutableValueGraph<N,E> returnNew(MutableValueGraph<N, E> baseGraph,
+                                                         MutableValueGraph<N, E> source,
+                                                         MutableValueGraph<N, E> new_edges_graph) {
+        return new_edges_graph;
     }
 
     public static <N,E> MutableValueGraph<N, E> replaceEdges(MutableValueGraph<N, E> baseGraph,
