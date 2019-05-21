@@ -110,12 +110,27 @@ public class Proto1 {
 
 
         System.out.println("Evaluating session...");
-        List<Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>>> liste = sessionEvaluator.evaluateSession(base, s1);
+        ArrayList<Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>>> liste = sessionEvaluator.evaluateSession(base, s1);
         liste.stream().forEach(p -> {
             System.out.println();
             System.out.println(p.left);
             System.out.println("value : " + p.right);
         });
+
+        // helps to infer evaluator
+        SessionEvaluator.GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> kullbackLeibler = SessionEvaluator::KullbackLeibler;
+
+        System.out.println("Computing gains...");
+        ArrayList<Pair<Query, Double>> gains = SessionEvaluator.computeGains(liste, kullbackLeibler);
+
+        for (Pair<Query, Double> pair1 : gains) {
+
+            System.out.println();
+            System.out.println("Query:");
+            System.out.println(pair1.left);
+            System.out.println("Gain: "+pair1.right);
+        }
+
         System.out.println("End of evaluation.");
     }
 

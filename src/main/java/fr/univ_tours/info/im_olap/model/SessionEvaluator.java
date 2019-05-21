@@ -45,11 +45,6 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
     }
 
 
-    public static Pair<INDArray, HashMap<QueryPart, Integer>> ExecPageRank(MutableValueGraph<QueryPart, Double> graph){
-        return null;
-    }
-
-
     private IntermediateSessionBuilder<NodeT, EdgeT> queryGraphBuilder;
     private GraphInterpolator<NodeT, EdgeT> graphInterpolator;
     private Evaluator<NodeT, EdgeT, EvalT> graphEvaluator;
@@ -94,6 +89,30 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
 
         return evals;
     }
+
+    /**
+     * Computes the gain between a query and the following query. The gain is associated with the new query only in a pair
+     * @param evaluatedSession
+     * @param gainEvaluator method for computing the gain as a double from two EvalT values
+     * @param <T> type of the input arguments, usually numeric or vector like
+     * @return the list of new query, gain pairs in the same order
+     */
+    public static <T> ArrayList<Pair<Query, Double>> computeGains(List<Pair<Query, T>> evaluatedSession, GainEvaluator<T> gainEvaluator) {
+        
+        ArrayList<Pair<Query, Double>> ret = new ArrayList<>(evaluatedSession.size());
+        
+        for (int i = 1; i < evaluatedSession.size(); i++) {
+
+            Pair<Query, T> pair = evaluatedSession.get(i);
+
+            double gain = gainEvaluator.evaluate(evaluatedSession.get(i-1).right, pair.right);
+            
+            Pair<Query, Double> resPair = new Pair<>(pair.left, gain);
+        }
+        
+        return ret;
+    }
+
 
     // New query graph construction
 
@@ -153,6 +172,7 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
         return PageRank.pagerank(graph, 50);
     }
 
+    // Gain computation
 
     public static <N extends Comparable<N>> Double KullbackLeibler(Pair<INDArray, HashMap<N,Integer>> pair1, Pair<INDArray, HashMap<N,Integer>> pair2) {
 
