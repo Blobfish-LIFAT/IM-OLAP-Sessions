@@ -48,9 +48,22 @@ public final class Nd4jUtils {
         BigDecimal[] pd = new BigDecimal[p.columns()];
         BigDecimal[] qd = new BigDecimal[q.columns()];
 
+        BigDecimal s1 = new BigDecimal(0.0);
+        BigDecimal s2 = new BigDecimal(0.0);
+
         for (int i = 0; i < pd.length; i++) {
             pd[i] = new BigDecimal(p.getDouble(i), context);
             qd[i] = new BigDecimal(q.getDouble(i), context);
+
+            // summing over both distributions for normalization
+            s1 = s1.add(pd[i]);
+            s2 = s2.add(qd[i]);
+        }
+
+        // normalizing as BigDecimals for precision
+        for (int i = 0; i < pd.length; i++) {
+            pd[i] = pd[i].divide(s1, context);
+            qd[i] = qd[i].divide(s2, context);
         }
 
         BigDecimal sum = new BigDecimal(0, context);
