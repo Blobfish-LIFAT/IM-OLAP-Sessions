@@ -1,14 +1,15 @@
 package com.alexsxode.utilities;
 
+import ch.obermuhlner.math.big.BigDecimalMath;
 import com.alexsxode.utilities.collection.Pair;
 import org.apache.commons.math3.exception.MathIllegalArgumentException;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.*;
 
 import static org.nd4j.linalg.ops.transforms.Transforms.relu;
 import static org.nd4j.linalg.ops.transforms.Transforms.sqrt;
@@ -18,7 +19,7 @@ import static org.nd4j.linalg.util.MathUtils.log2;
  * Fait par Alexandre le 02/11/2018.
  */
 public final class Nd4jUtils {
-    private static final double root2 = Math.sqrt(2), threshold = 10e-10;
+    private static final double root2 = Math.sqrt(2), threshold = 10e-30;
 
     /**
      * Computes the Hellinger distance between two vectors representing probability distribution
@@ -42,17 +43,56 @@ public final class Nd4jUtils {
             throw new IllegalArgumentException("p and q must be probability distributions !");
         if (q.rows() != 1 || p.rows() != 1)
             throw new IllegalArgumentException("Distributions should be line vectors !");
+
+        MathContext context = new MathContext(100);
+        BigDecimal[] pd = new BigDecimal[p.columns()];
+        BigDecimal[] qd = new BigDecimal[q.columns()];
+
+        for (int i = 0; i < pd.length; i++) {
+            pd[i] = new BigDecimal(p.getDouble(i), context);
+            qd[i] = new BigDecimal(q.getDouble(i), context);
+        }
+
+        BigDecimal sum = new BigDecimal(0, context);
+        for (int i = 0; i < p.columns(); i++) {
+            BigDecimal qi = qd[i], pi = pd[i];
+            if (BigDecimal.ZERO.equals(qi) && ! BigDecimal.ZERO.equals(pi)) {
+                throw new IllegalArgumentException("Absolute continuity is required ! If q((i) = 0 then p(i) must be 0. i="+i);
+            } else if (BigDecimal.ZERO.equals(qi) && BigDecimal.ZERO.equals(pi))
+                continue;
+            sum = sum.add( pi.multiply(BigDecimalMath.log2(pi.divide(qi, RoundingMode.HALF_DOWN), context)) );
+        }
+        return sum.doubleValue();
+
+        /*
         double sum = 0;
         for (int i = 0; i < p.columns(); i++) {
             double qi = q.getDouble(i), pi = p.getDouble(i);
             if (isZero(qi) && ! isZero(pi)) {
-                //continue;
                 throw new IllegalArgumentException("Absolute continuity is required ! If q((i) = 0 then p(i) must be 0. i="+i);
             } else if (isZero(qi) && isZero(pi))
                 continue;
             sum += pi*log2(pi/qi);
         }
-        return sum;
+        return sum;*/
+    }
+
+    public static double KullbackLeiblerDivergence(double[] x, double[] y) {
+        boolean intersection = false;
+        double kl = 0.0;
+
+        for (int i = 0; i < x.length; i++) {
+            if (x[i] != 0.0 && y[i] != 0.0) {
+                intersection = true;
+                kl += x[i] * Math.log(x[i] / y[i]);
+            }
+        }
+
+        if (intersection) {
+            return kl;
+        } else {
+            return Double.POSITIVE_INFINITY;
+        }
     }
 
     /**
