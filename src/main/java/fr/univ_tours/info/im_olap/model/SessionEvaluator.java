@@ -70,9 +70,12 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
             sessionGraphs.add(sessionGraph);
         }
 
-        //gains.add(new Pair<>(session.queries.get(0), 0.0));
 
-        for (int i = 1; i < session.length(); i++) {
+        // Add the base graph with no query in order to be able to compute gain for the first query
+        EvalT newEval = this.graphEvaluator.transform(baseGraph);
+        evals.add(new Pair<>(null, newEval));
+
+        for (int i = 1; i < session.length(); i++) { // start at index 1 because we compute for a query and the previous
 
             Logger.logInfo("evaluateSession", "iteration i = ", i);
 
@@ -82,7 +85,7 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
             // interpolate base graph to session graph
             MutableValueGraph<NodeT, EdgeT> interpolated = this.graphInterpolator.interpolate(baseGraph, previousGraph, queryGraph);
 
-            EvalT newEval = this.graphEvaluator.transform(interpolated);
+            newEval = this.graphEvaluator.transform(interpolated);
 
             evals.add(new Pair<>(session.queries.get(i), newEval));
         }
@@ -106,7 +109,7 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
             Pair<Query, T> pair = evaluatedSession.get(i);
 
             double gain = gainEvaluator.evaluate(evaluatedSession.get(i-1).right, pair.right);
-            
+
             Pair<Query, Double> resPair = new Pair<>(pair.left, gain);
 
             ret.add(resPair);

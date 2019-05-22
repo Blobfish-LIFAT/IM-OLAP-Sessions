@@ -28,15 +28,15 @@ public class Proto1 {
     private static String cubeSchema = "data/cubeSchemas/DOPAN_DW3.xml";
 
 
-    public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, int session) throws IOException {
+    public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, String sessionName) throws IOException {
 
-        File file = new File("test_"+session+".csv");
+        File file = new File("test_"+sessionName+".csv");
         FileWriter fileWriter = new FileWriter(file);
         CSVFormat format = CSVFormat.DEFAULT.withHeader("session", "query", "query_index", "gain");
         try (CSVPrinter csvPrinter = new CSVPrinter(fileWriter, format)) {
             for (int i = 0; i < results.size(); i++) {
                 Pair<Query, Double> pair = results.get(i);
-                csvPrinter.printRecord(session, pair.left, i+1, pair.right);
+                csvPrinter.printRecord(sessionName, pair.left, i, pair.right);
             }
         }
     }
@@ -136,8 +136,14 @@ public class Proto1 {
         System.out.println();
 
         System.out.println("Computing Eigen...");
-        System.out.println(Eigen.symmetricGeneralizedEigenvalues(pair.left.transpose()));
 
+        // we need to duplicate the matrix because the input matrix is mutated
+        INDArray weights = pair.left.dup().transpose();
+
+        INDArray eigen = Eigen.symmetricGeneralizedEigenvalues(weights);
+
+        System.out.println(eigen);
+        System.out.println(weights);
 
         System.out.println("Dereferencing INDArray...");
         //Nd4j.getMemoryManager().collect(pair.left);
@@ -221,9 +227,8 @@ public class Proto1 {
         System.out.println("End of evaluation.");
 
         System.out.println("Writing results to CSV...");
-
         try {
-            gainsToCSVFile(gains, 0);
+            gainsToCSVFile(gains, sessions.get(0).getFilename().replace(".log.json", ""));
         } catch (IOException e) {
             e.printStackTrace();
         }
