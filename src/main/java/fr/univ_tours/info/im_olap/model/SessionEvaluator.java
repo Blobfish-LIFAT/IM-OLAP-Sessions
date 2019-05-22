@@ -118,6 +118,23 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
         return ret;
     }
 
+    public static <T> ArrayList<Pair<Query, Double>> computeGainsFromFirstElement(List<Pair<Query, T>> evaluatedSession, GainEvaluator<T> gainEvaluator) {
+
+        ArrayList<Pair<Query, Double>> ret = new ArrayList<>(evaluatedSession.size());
+
+        for (int i = 1; i < evaluatedSession.size(); i++) {
+
+            Pair<Query, T> pair = evaluatedSession.get(i);
+
+            double gain = gainEvaluator.evaluate(evaluatedSession.get(0).right, pair.right);
+
+            Pair<Query, Double> resPair = new Pair<>(pair.left, gain);
+
+            ret.add(resPair);
+        }
+
+        return ret;
+    }
 
     // New query graph construction
 
