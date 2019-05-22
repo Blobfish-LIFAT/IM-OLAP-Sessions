@@ -6,11 +6,13 @@ public class Query {
     Set<QueryPart> dimensions;
     Set<QueryPart> filters;
     Set<QueryPart> measures;
+    HashMap<String, Object> properties;
 
     public Query(){
         dimensions = new HashSet<>();
         filters = new HashSet<>();
         measures = new HashSet<>();
+        properties = new HashMap<>();
     }
 
     public Query(Collection<QueryPart> parts){
@@ -85,5 +87,9 @@ public class Query {
                     break;
             }
         });
+    }
+
+    public HashMap<String, Object> getProperties() {
+        return properties;
     }
 }
