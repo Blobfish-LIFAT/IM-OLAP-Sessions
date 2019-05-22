@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Labels {
-    public static List<Session> addLabels(List<Session> toLabel, String labelFile){
+    public static List<Session> addLabels(List<Session> toLabel, String labelFile, String... columnsLabels){
         HashMap<String, List<String[]>> map = new HashMap<>();
         List<String> prop;
 
@@ -39,7 +39,13 @@ public class Labels {
                         for (int i = 0; i < session.queries.size(); i++) {
                             Query current = session.queries.get(i);
                             String[] properties = map.get(session.getFilename()).get(i);
-                            current.getProperties().put("veroLabel", Integer.parseInt(properties[prop.indexOf("veronikaLabel")]));
+                            for (String col : columnsLabels){
+                                try {
+                                    current.getProperties().put(col, Integer.parseInt(properties[prop.indexOf(col)]));
+                                }catch (NumberFormatException e){
+                                    current.getProperties().put(col, -1);
+                                }
+                            }
                         }
                     } catch (IndexOutOfBoundsException e){
                         System.err.printf("Error in '%s' session length missmatch us=%s vero=%s%n", session.getFilename(), session.length(), map.get(session.getFilename()).size());

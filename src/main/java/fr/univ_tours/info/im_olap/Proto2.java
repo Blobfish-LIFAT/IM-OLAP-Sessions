@@ -28,9 +28,8 @@ public class Proto2 {
 */
 
         List<Session> sessions = SessionGraph.fixSessions(DopanLoader.loadDir(dataDir), "data/cubeSchemas/DOPAN_DW3.xml");
-        Labels.addLabels(sessions, "data/labels/dopanCleanLogWithVeronikaLabels-FOCUS.csv");
-
-
+        Labels.addLabels(sessions, "data/labels/dopanCleanLogWithVeronikaLabels-FOCUS.csv", "veronikaLabel");
+        Labels.addLabels(sessions, "data/labels/metricScoresWithSalimAndIandryLabels.csv", "salimLabel", "iandryLabel");
 
     }
 }
