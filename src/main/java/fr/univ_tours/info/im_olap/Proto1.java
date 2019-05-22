@@ -9,11 +9,15 @@ import fr.univ_tours.info.im_olap.model.*;
 import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import mondrian.olap.Connection;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.eigen.Eigen;
-import org.nd4j.linalg.factory.Nd4j;
 
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -22,6 +26,20 @@ public class Proto1 {
     // just use function arguments
     static String dataDir = "data/logs/dopan_converted";
     private static String cubeSchema = "data/cubeSchemas/DOPAN_DW3.xml";
+
+
+    public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, int session) throws IOException {
+
+        File file = new File("test_"+session+".csv");
+        FileWriter fileWriter = new FileWriter(file);
+        CSVFormat format = CSVFormat.DEFAULT.withHeader("session", "query", "query_index", "gain");
+        try (CSVPrinter csvPrinter = new CSVPrinter(fileWriter, format)) {
+            for (int i = 0; i < results.size(); i++) {
+                Pair<Query, Double> pair = results.get(i);
+                csvPrinter.printRecord(session, pair.left, i+1, pair.right);
+            }
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -118,7 +136,7 @@ public class Proto1 {
         System.out.println();
 
         System.out.println("Computing Eigen...");
-        System.out.println(Eigen.symmetricGeneralizedEigenvalues(pair.left));
+        System.out.println(Eigen.symmetricGeneralizedEigenvalues(pair.left.transpose()));
 
 
         System.out.println("Dereferencing INDArray...");
@@ -138,7 +156,6 @@ public class Proto1 {
 
         int i = 0;
         for (Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>> p : liste ) {
-            System.out.println();
             System.out.println("Query number "+i);
 
             /*
@@ -191,9 +208,9 @@ public class Proto1 {
         System.out.println("Computing gains in absolute diff...");
         System.out.println();
 
-        gains = SessionEvaluator.computeGains(liste, absoluteDiff);
+        ArrayList<Pair<Query, Double>> gains_abs = SessionEvaluator.computeGains(liste, absoluteDiff);
 
-        for (Pair<Query, Double> pair1 : gains) {
+        for (Pair<Query, Double> pair1 : gains_abs) {
 
             System.out.println();
             System.out.println("Query:");
@@ -202,6 +219,15 @@ public class Proto1 {
         }
 
         System.out.println("End of evaluation.");
+
+        System.out.println("Writing results to CSV...");
+
+        try {
+            gainsToCSVFile(gains, 0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 /*
