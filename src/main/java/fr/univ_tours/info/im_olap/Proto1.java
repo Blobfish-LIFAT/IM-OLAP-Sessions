@@ -18,6 +18,7 @@ import org.nd4j.linalg.eigen.Eigen;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,10 +28,11 @@ public class Proto1 {
     static String dataDir = "data/logs/dopan_converted";
     private static String cubeSchema = "data/cubeSchemas/DOPAN_DW3.xml";
 
+    static String session_eval_folder = "data/eval_results/";
 
     public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, String sessionName) throws IOException {
 
-        File file = new File("test_"+sessionName+".csv");
+        File file = Paths.get(session_eval_folder + "result_" + sessionName + ".csv").toFile();
         FileWriter fileWriter = new FileWriter(file);
         CSVFormat format = CSVFormat.DEFAULT.withHeader("session", "query", "query_index", "gain");
         try (CSVPrinter csvPrinter = new CSVPrinter(fileWriter, format)) {
@@ -50,31 +52,56 @@ public class Proto1 {
 
         System.out.println("Loading sessions...");
         List<Session> sessions = SessionGraph.fixSessions(DopanLoader.loadDir(dataDir), cubeSchema);
-        Session s1 = sessions.get(0);
 
-        System.out.println("Creating cube utils...");
-        CubeUtils mdUtils = new CubeUtils(olap, s1.getCubeName());
+        System.out.println("Creating SessionEvaluator evaluator...");
 
-
-        System.out.println("Collecting user session...");
-        List<Session> thisUser = sessions.stream().filter(s -> s.getUserName().equals(s1.getUserName())).collect(Collectors.toList());
-        thisUser.remove(s1);
-        sessions.removeAll(thisUser);
+        SessionEvaluator<QueryPart, Double, Pair<INDArray, HashMap<QueryPart, Integer>>> sessionEvaluator =
+                new SessionEvaluator<>(SessionEvaluator::simpleInterconnections,
+                        SessionEvaluator::replaceEdges,
+                        SessionEvaluator::pageRank);
 
 
-        System.out.println("Building topology graph...");
-        MutableValueGraph<QueryPart, Double> base = SessionGraph.buildFromLog(sessions);
-        Set<QueryPart> baseNodes = new HashSet<>(base.nodes());
-        baseNodes.addAll(s1.allParts());
-        baseNodes.addAll(thisUser.stream().flatMap(s -> s.allParts().stream()).collect(Collectors.toList()));
-        DimensionsGraph.injectSchema(base, "data/cubeSchemas/DOPAN_DW3.xml");
+        // helps to infer evaluator
+        SessionEvaluator.GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> kullbackLeibler = SessionEvaluator::KullbackLeibler;
 
-        System.out.println("Injecting filters...");
-        FiltersGraph.injectCompressedFilters(base, mdUtils);
+        System.out.println("Started processing sessions...");
 
-        (new HashSet<>(base.nodes())).stream().filter(n -> !baseNodes.contains(n)).forEach(base::removeNode);
+        for (int session_index = 0; session_index < sessions.size(); session_index++) {
+            Session session = sessions.get(session_index);
 
-        System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
+            System.out.println();
+            System.out.println("-------------------------------------------------------------------------");
+            System.out.println("                     SESSION "+session_index);
+            System.out.println("-------------------------------------------------------------------------");
+            System.out.println();
+
+            System.out.println("Creating cube utils...");
+            CubeUtils mdUtils = new CubeUtils(olap, session.getCubeName());
+
+
+            System.out.println("Collecting user session...");
+            List<Session> thisUser = sessions
+                    .stream()
+                    .filter(s -> s.getUserName().equals(session.getUserName()))
+                    .collect(Collectors.toList());
+
+            thisUser.remove(session);
+            sessions.removeAll(thisUser);
+
+
+            System.out.println("Building topology graph...");
+            MutableValueGraph<QueryPart, Double> base = SessionGraph.buildFromLog(sessions);
+            Set<QueryPart> baseNodes = new HashSet<>(base.nodes());
+            baseNodes.addAll(session.allParts());
+            baseNodes.addAll(thisUser.stream().flatMap(s -> s.allParts().stream()).collect(Collectors.toList()));
+            DimensionsGraph.injectSchema(base, "data/cubeSchemas/DOPAN_DW3.xml");
+
+            System.out.println("Injecting filters...");
+            FiltersGraph.injectCompressedFilters(base, mdUtils);
+
+            (new HashSet<>(base.nodes())).stream().filter(n -> !baseNodes.contains(n)).forEach(base::removeNode);
+
+            System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 /*
         SparseStore demo = toMatrixNorm(base);
         System.out.println("Matrix filled");
@@ -84,85 +111,51 @@ public class Proto1 {
             demo.multiply(demo, demo);
         }
 */
-        /**
-         * Ben's stuff
-         */
+            /**
+             * Ben's stuff
+             */
 
-        System.out.println("Adding session query parts...");
+            System.out.println("Adding session query parts...");
 
-        for (Query query : s1.queries) {
-            for (QueryPart qp : query.getAllParts()) {
-                base.addNode(qp);
+            for (Query query : session.queries) {
+                for (QueryPart qp : query.getAllParts()) {
+                    base.addNode(qp);
+                }
             }
-        }
 
-        System.out.println("Ensuring all nodes have self edges...");
+            System.out.println("Ensuring all nodes have self edges...");
 
-        for (QueryPart queryPart : base.nodes()) {
-            base.putEdgeValue(queryPart, queryPart, 1.0);
-        }
+            for (QueryPart queryPart : base.nodes()) {
+                base.putEdgeValue(queryPart, queryPart, 1.0);
+            }
 
-        System.out.printf("Graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
+            System.out.printf("Graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
-        System.out.println("Normalizing edges weights...");
+            System.out.println("Normalizing edges weights...");
 
-        Graphs.normalizeWeightsi(base);
+            Graphs.normalizeWeightsi(base);
 
-        System.out.println("Converting graph to matrix...");
+            System.out.println("Converting graph to matrix...");
 
-        Pair<INDArray, HashMap<QueryPart, Integer>> pair = Graphs.toINDMatrix(base);
+            Pair<INDArray, HashMap<QueryPart, Integer>> pair = Graphs.toINDMatrix(base);
 
-        System.out.println("Matrix shape:");
-        System.out.println(Arrays.toString(pair.left.shape()));
+            System.out.println("Matrix shape:");
+            System.out.println(Arrays.toString(pair.left.shape()));
 
-
-        System.out.println("Checking matrix validity...");
-
-        System.out.println("Sum on first row: "+pair.left.getRow(0).sumNumber());
-
-        System.out.println("Sum on last row: "+pair.left.getRow(pair.left.rows()-1).sumNumber());
-
-        for (int i = 1; i < pair.left.rows() - 1 ; i++) {
-            System.out.print(pair.left.getRow(i).sumNumber()+", ");
-        }
-
-        Pair<INDArray, HashMap<QueryPart, Integer>> pgRes = PageRank.pagerank(base, 500);
-
-        System.out.println();
-
-        System.out.print("Sum of the stationary distribution: ");
-        System.out.println(pgRes.left.sumNumber());
-
-        System.out.println();
-
-        System.out.println("Computing Eigen...");
-
-        // we need to duplicate the matrix because the input matrix is mutated
-        INDArray weights = pair.left.dup().transpose();
-
-        INDArray eigen = Eigen.symmetricGeneralizedEigenvalues(weights);
-
-        System.out.println(eigen);
-        System.out.println(weights);
-
-        System.out.println("Dereferencing INDArray...");
-        //Nd4j.getMemoryManager().collect(pair.left);
-        pair = null;
-
-        System.out.println("Creating SessionEvaluator evaluator...");
-
-        SessionEvaluator<QueryPart, Double, Pair<INDArray, HashMap<QueryPart, Integer>>> sessionEvaluator =
-                new SessionEvaluator<>(SessionEvaluator::simpleInterconnections,
-                                        SessionEvaluator::replaceEdges,
-                                        SessionEvaluator::pageRank);
+            System.out.println();
 
 
-        System.out.println("Evaluating session...");
-        ArrayList<Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>>> liste = sessionEvaluator.evaluateSession(base, s1);
 
-        int i = 0;
-        for (Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>> p : liste ) {
-            System.out.println("Query number "+i);
+
+
+            System.out.println("Evaluating session...");
+            ArrayList<Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>>> liste = sessionEvaluator.evaluateSession(base, session);
+
+            System.out.print("Handling query ");
+
+            int i = 0;
+            for (Pair<Query, Pair<INDArray, HashMap<QueryPart, Integer>>> p : liste ) {
+                System.out.print(i + ", ");
 
             /*
             ArrayList<Pair<QueryPart, Double>> displayList = new ArrayList<>();
@@ -179,59 +172,32 @@ public class Proto1 {
             System.out.println();
 
             */
+                i++;
+            }
 
-
-            i++;
-        }
-
-        // helps to infer evaluator
-        SessionEvaluator.GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> kullbackLeibler = SessionEvaluator::KullbackLeibler;
-
-        System.out.println();
-        System.out.println("-------------------------------------------------------------------------------");
-        System.out.println();
-
-        System.out.println("Computing gains...");
-        System.out.println();
-
-        ArrayList<Pair<Query, Double>> gains = SessionEvaluator.computeGains(liste, kullbackLeibler);
-
-        for (Pair<Query, Double> pair1 : gains) {
 
             System.out.println();
-            System.out.println("Query:");
-            System.out.println(pair1.left);
-            System.out.println("Gain: "+pair1.right);
-        }
-
-        // helps to infer evaluator
-        SessionEvaluator.GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> absoluteDiff = SessionEvaluator::AbsoluteDiff;
-
-        System.out.println();
-        System.out.println("-------------------------------------------------------------------------------");
-        System.out.println();
-
-        System.out.println("Computing gains in absolute diff...");
-        System.out.println();
-
-        ArrayList<Pair<Query, Double>> gains_abs = SessionEvaluator.computeGains(liste, absoluteDiff);
-
-        for (Pair<Query, Double> pair1 : gains_abs) {
-
+            System.out.println("-------------------------------------------------------------------------------");
             System.out.println();
-            System.out.println("Query:");
-            System.out.println(pair1.left);
-            System.out.println("Gain: "+pair1.right);
+
+            System.out.println("Computing gains...");
+            System.out.println();
+
+            ArrayList<Pair<Query, Double>> gains = SessionEvaluator.computeGains(liste, kullbackLeibler);
+
+            System.out.println("End of evaluation.");
+
+            System.out.println("Writing results to CSV...");
+            try {
+                gainsToCSVFile(gains, session.getFilename().replace(".log.json", ""));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
 
-        System.out.println("End of evaluation.");
 
-        System.out.println("Writing results to CSV...");
-        try {
-            gainsToCSVFile(gains, sessions.get(0).getFilename().replace(".log.json", ""));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
     }
 
