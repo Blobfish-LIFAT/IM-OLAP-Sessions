@@ -1,0 +1,201 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="NumberOfProfiles">
+        <xs:complexType>
+            <xs:attribute type="xs:integer" name="value"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="MaxMeasures">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:integer" name="value"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="MinReportSize">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:integer" name="value"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="MaxReportSize">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:integer" name="value"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SurprisingQueries">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:integer" name="value"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Name">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:string" name="value"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SeedQueries">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:integer" name="value"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="MinSessionLength">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:integer" name="value"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="MaxSessionLength">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:integer" name="value"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="NumberOfSessions">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:integer" name="value"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="YearPrompt">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:string" name="value" use="optional"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SegregationPredicate">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:string" name="value" use="optional"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Name"/>
+                <xs:element ref="SeedQueries"/>
+                <xs:element ref="MinSessionLength"/>
+                <xs:element ref="MaxSessionLength"/>
+                <xs:element ref="NumberOfSessions"/>
+                <xs:element ref="YearPrompt"/>
+                <xs:element ref="SegregationPredicate"/>
+            </xs:sequence>
+            <xs:attribute type="xs:integer" name="progressive"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Hierarchy">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:string" name="value" use="optional"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Level">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:string" name="value" use="optional"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Element">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="Hierarchy" minOccurs="0"/>
+                <xs:element ref="Level" minOccurs="0"/>
+                <xs:element ref="Predicate" minOccurs="0"/>
+                <xs:element ref="YearPrompt" minOccurs="0"/>
+                <xs:element ref="SegregationPredicate" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="value" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Predicate">
+        <xs:complexType>
+
+                    <xs:attribute type="xs:string" name="value" use="optional"/>
+
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GroupBy">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Element" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Measures">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Element" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SelectionPredicates">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="Element" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Query">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="GroupBy"/>
+                <xs:element ref="Measures"/>
+                <xs:element ref="SelectionPredicates"/>
+            </xs:sequence>
+            <xs:attribute type="xs:integer" name="progressive" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Date-Time" type="xs:string"/>
+    <xs:element name="GlobalParameters">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="NumberOfProfiles"/>
+                <xs:element ref="MaxMeasures"/>
+                <xs:element ref="MinReportSize"/>
+                <xs:element ref="MaxReportSize"/>
+                <xs:element ref="SurprisingQueries"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ProfileParameters">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Profile"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Session">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Query" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="profile" use="optional"/>
+            <xs:attribute type="xs:short" name="progressive" use="optional"/>
+            <xs:attribute type="xs:string" name="template" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Benchmark">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Date-Time"/>
+                <xs:element ref="GlobalParameters"/>
+                <xs:element ref="ProfileParameters"/>
+                <xs:element ref="Session" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -45,6 +45,23 @@ public class MondrianConfig {
         return mondrianConnection;
     }
 
+    public static Connection getSeparateConnection(String confFilePath) throws IOException, ClassNotFoundException, SQLException{
+        Properties config = new Properties();
+        config.load(new FileInputStream(new File(confFilePath)));
+        Class.forName(config.getProperty("driver"));
+        Class.forName("mondrian.olap4j.MondrianOlap4jDriver");
+
+        String mondrianString =
+                "Provider=" + config.getProperty("Provider")
+                        + ";Jdbc=" + config.getProperty("jdbcUrl")
+                        + ";Catalog=" + config.getProperty("schemaFile")
+                        + ";JdbcDrivers=" + config.getProperty("driver")
+                        + ";JdbcUser=" + config.getProperty("jdbcUser")
+                        + ";JdbcPassword=" + config.getProperty("jdbcPassword");
+
+        return mondrian.olap.DriverManager.getConnection(mondrianString, null);
+    }
+
     private static void loadConfig() throws IOException {
         String path = System.getProperty("olapConfig");
         if (path == null) path = defaultConfigFile;
