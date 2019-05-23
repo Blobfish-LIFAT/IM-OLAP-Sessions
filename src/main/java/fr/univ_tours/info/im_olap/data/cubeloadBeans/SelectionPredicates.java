@@ -42,7 +42,7 @@ public class SelectionPredicates {
     @XmlElementRef(name = "Element", type = Element.class, required = false)
     @XmlMixed
     @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-05-23T01:58:24+02:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    protected List<Object> content;
+    protected List<Element> content;
 
     /**
      * Gets the value of the content property.
@@ -68,9 +68,9 @@ public class SelectionPredicates {
      * 
      */
     @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-05-23T01:58:24+02:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public List<Object> getContent() {
+    public List<Element> getContent() {
         if (content == null) {
-            content = new ArrayList<Object>();
+            content = new ArrayList<Element>();
         }
         return this.content;
     }
