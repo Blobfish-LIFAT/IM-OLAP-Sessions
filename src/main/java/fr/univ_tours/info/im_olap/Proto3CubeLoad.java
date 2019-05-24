@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Proto3CubeLoad {
-    static String dataDir = "data/logs/dopan_converted";
+    private static String dataDir = "data/logs/ssb_converted";
     private static String cubeSchema = "data/cubeSchemas/ssb.xml";
 
     public static void main(String[] args) throws Exception{
@@ -58,7 +58,7 @@ public class Proto3CubeLoad {
                         Dimension mdDim = reader.getCubeDimensions(cube.getCube()).stream()
                                 .filter(dimension -> Arrays.stream(dimension.getHierarchies()).anyMatch(h -> h.toString().equals(tmp)))
                                 .findFirst().get();
-                        parts.add(QueryPart.newDimension(mdDim.getName() + ".[" + hName + "].[" + levelName + "]"));
+                        parts.add(QueryPart.newDimension("[" + mdDim.getName() + "].[" + hName + "].[" + levelName + "]"));
                     }
 
                     //Load Filters
@@ -73,7 +73,7 @@ public class Proto3CubeLoad {
                         Dimension mdDim = reader.getCubeDimensions(cube.getCube()).stream()
                                 .filter(dimension -> Arrays.stream(dimension.getHierarchies()).anyMatch(h -> h.toString().equals(tmp)))
                                 .findFirst().get();
-                        parts.add(QueryPart.newFilter(mdDim.getName() + ".[" + hName + "].[" + levelName + "]", predicate));
+                        parts.add(QueryPart.newFilter("[" + mdDim.getName() + "].[" + hName + "].[" + levelName + "]", predicate));
                     }
 
                     //Load Measures
