@@ -54,7 +54,7 @@ public class Proto1 {
 
         SessionEvaluator<QueryPart, Double, Pair<INDArray, HashMap<QueryPart, Integer>>> sessionEvaluator =
                 new SessionEvaluator<>(SessionEvaluator::simpleInterconnections,
-                        SessionEvaluator::replaceEdges,
+                        SessionEvaluator.linearInterpolation(0.9, true),
                         SessionEvaluator::pageRank);
 
 

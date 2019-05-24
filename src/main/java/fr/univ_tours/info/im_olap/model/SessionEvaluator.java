@@ -177,6 +177,14 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
         return newGraph;
     }
 
+    /**
+     * interpolate between the base graph and the full session graph (which is source + new_edges_graph)
+     * @param alpha between 0 and 1, 0 is schema only and 1 is session only
+     * @param normalizeBeforeMixing if true, normalization is issued on the schema and session graphs before interpolating
+     *                              in any case, interpolation is issued on the returned graph
+     * @param <N>
+     * @return a GraphInterpolator function
+     */
     public static <N> GraphInterpolator<N,Double> linearInterpolation(double alpha, boolean normalizeBeforeMixing) {
         return (base, source, new_edge_graph) -> {
             MutableValueGraph<N, Double> schema = com.google.common.graph.Graphs.copyOf(base);
