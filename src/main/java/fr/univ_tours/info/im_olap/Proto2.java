@@ -7,9 +7,10 @@ import fr.univ_tours.info.im_olap.model.Session;
 import fr.univ_tours.info.im_olap.model.SessionGraph;
 import java.util.List;
 
-import static fr.univ_tours.info.im_olap.Proto1.dataDir;
+
 
 public class Proto2 {
+    static String dataDir = "data/logs/dopan_converted";
     public static void main(String[] args) {
 /*
         NDArrayFactory factory = Nd4j.sparseFactory();
