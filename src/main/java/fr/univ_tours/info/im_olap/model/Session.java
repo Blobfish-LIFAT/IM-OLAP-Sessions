@@ -18,6 +18,13 @@ public class Session {
         this.filename = filename;
     }
 
+    public Session(List<Query> queries, String type, String filename, String cubeName) {
+        this.queries = queries;
+        this.type = type;
+        this.filename = filename;
+        this.cubeName = cubeName;
+    }
+
     public int length() {
         return queries.size();
     }

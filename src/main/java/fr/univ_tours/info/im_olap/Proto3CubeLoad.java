@@ -85,7 +85,7 @@ public class Proto3CubeLoad {
                     queries.add(new Query(parts));
                 }
 
-                sessions.add(new Session(queries, s.getProfile(), filePath + "_" + count++));
+                sessions.add(new Session(queries, s.getTemplate(), filePath + "_" + count++, cubeName));
             }
 
         } catch (JAXBException e) {
