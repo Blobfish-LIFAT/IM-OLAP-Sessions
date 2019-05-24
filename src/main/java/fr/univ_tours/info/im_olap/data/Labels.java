@@ -48,13 +48,14 @@ public class Labels {
                             }
                         }
                     } catch (IndexOutOfBoundsException e){
-                        System.err.printf("Error in '%s' session length missmatch us=%s vero=%s%n", session.getFilename(), session.length(), map.get(session.getFilename()).size());
+                        System.err.printf("Error in '%s' session, length missmatch us=%s file=%s%n", session.getFilename(), session.length(), map.get(session.getFilename()).size());
                     }
 
                 }
             }
 
         } catch (IOException e) {
+            System.err.println("--- Error reading CSV ---");
             e.printStackTrace();
         }
         return toLabel;

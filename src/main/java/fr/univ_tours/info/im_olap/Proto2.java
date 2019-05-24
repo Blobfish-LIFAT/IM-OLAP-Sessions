@@ -1,22 +1,16 @@
 package fr.univ_tours.info.im_olap;
 
-import ch.obermuhlner.math.big.BigDecimalMath;
+
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.data.Labels;
 import fr.univ_tours.info.im_olap.model.Session;
 import fr.univ_tours.info.im_olap.model.SessionGraph;
-import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.factory.NDArrayFactory;
-import org.nd4j.linalg.factory.Nd4j;
-
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.List;
 
-import static fr.univ_tours.info.im_olap.Proto1.dataDir;
-import static org.nd4j.linalg.util.MathUtils.log2;
+
 
 public class Proto2 {
+    static String dataDir = "data/logs/dopan_converted";
     public static void main(String[] args) {
 /*
         NDArrayFactory factory = Nd4j.sparseFactory();

@@ -2,7 +2,6 @@ package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
-import fr.univ_tours.info.im_olap.compute.PageRank;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.model.*;
@@ -12,21 +11,24 @@ import mondrian.olap.Connection;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.eigen.Eigen;
 
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static fr.univ_tours.info.im_olap.Proto3CubeLoad.loadCubeloadXML;
 
 public class Proto1 {
     // I know you don't like static variables but it's easier for now since type are not set yet
     // just use function arguments
-    static String dataDir = "data/logs/dopan_converted";
-    private static String cubeSchema = "data/cubeSchemas/DOPAN_DW3.xml";
+
+    private static String cubeSchema;
+    private static Connection olap;
 
     static String session_eval_folder = "data/eval_results/";
 
@@ -45,13 +47,8 @@ public class Proto1 {
 
 
     public static void main(String[] args) {
-        //Nd4j.setDefaultDataTypes(DataType.DOUBLE, DataType.DOUBLE);
-
-        System.out.println("Connecting to Mondrian...");
-        Connection olap = MondrianConfig.getMondrianConnection();
-
         System.out.println("Loading sessions...");
-        List<Session> sessions = SessionGraph.fixSessions(DopanLoader.loadDir(dataDir), cubeSchema);
+        List<Session> sessions = loadCubeloadSessions();
 
         System.out.println("Creating SessionEvaluator evaluator...");
 
@@ -94,7 +91,7 @@ public class Proto1 {
             Set<QueryPart> baseNodes = new HashSet<>(base.nodes());
             baseNodes.addAll(session.allParts());
             baseNodes.addAll(thisUser.stream().flatMap(s -> s.allParts().stream()).collect(Collectors.toList()));
-            DimensionsGraph.injectSchema(base, "data/cubeSchemas/DOPAN_DW3.xml");
+            DimensionsGraph.injectSchema(base, cubeSchema);
 
             System.out.println("Injecting filters...");
             FiltersGraph.injectCompressedFilters(base, mdUtils);
@@ -102,15 +99,7 @@ public class Proto1 {
             (new HashSet<>(base.nodes())).stream().filter(n -> !baseNodes.contains(n)).forEach(base::removeNode);
 
             System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
-/*
-        SparseStore demo = toMatrixNorm(base);
-        System.out.println("Matrix filled");
 
-        for (int i = 0; i < 42; i++) {
-            System.out.printf("Matrix multiplication iteration n°%s%n", i);
-            demo.multiply(demo, demo);
-        }
-*/
             /**
              * Ben's stuff
              */
@@ -201,32 +190,36 @@ public class Proto1 {
 
     }
 
-/*
-    public static <V> SparseStore<Double> toMatrixNorm(ValueGraph<V, ? extends Number> in) {
-        List<V> nodes = new ArrayList<>(in.nodes());
-        HashMap<V, Integer> indexes = new HashMap<>();
-
-        for (int i = 0; i < nodes.size(); i++) {
-            indexes.put(nodes.get(i), i);
-        }
-
-        int size = nodes.size();
-        final SparseStore<Double> out = SparseStore.PRIMITIVE.make(size, size);
-
-        for (int i = 0; i < size; i++) {
-            V from = nodes.get(i);
-            double sum = 0;
-            for (V to : in.successors(from))
-                sum += in.edgeValue(from, to).get().doubleValue();
-            for (V to : in.successors(from)){
-                int toIndex = indexes.get(to);
-                out.set(i, toIndex, in.edgeValue(from, to).get().doubleValue()/sum);
-            }
-        }
-
-        return out;
+    public static List<Session> loadDopanSessions(){
+        System.out.println("Connecting to Mondrian...");
+        olap = MondrianConfig.getMondrianConnection();
+        cubeSchema = "data/cubeSchemas/DOPAN_DW3.xml";
+        return SessionGraph.fixSessions(DopanLoader.loadDir("data/logs/dopan_converted"), cubeSchema);
     }
-*/
+
+    public static List<Session> loadCubeloadSessions(){
+        cubeSchema = "data/cubeSchemas/ssb.xml";
+        String paths[] = new String[]{"data/logs/ssb_converted/explorative.xml", "data/logs/ssb_converted/goal_oriented.xml", "data/logs/ssb_converted/slice_all.xml", "data/logs/ssb_converted/slice_and_drill.xml"};
+        System.out.println("--- Establishing Mondrian Connection ---");
+        try {
+            olap = MondrianConfig.getSeparateConnection("data/ssb.properties");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("--- Connected ---");
+        List<Session> testStuff = new ArrayList<>();
+        for (String path : paths)
+            testStuff.addAll(loadCubeloadXML(path, olap, "SSB"));
+
+        System.out.println("--- Loaded Cubeload Sessions ---");
+
+        return testStuff;
+    }
+
 
 }
 
