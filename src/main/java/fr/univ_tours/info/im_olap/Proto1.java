@@ -62,7 +62,7 @@ public class Proto1 {
         SessionEvaluator.GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> kullbackLeibler = SessionEvaluator::KullbackLeibler;
 
         System.out.println("Started processing sessions...");
-
+        System.out.println("coucou tu veux voir mes sessions taille=" + sessions.size());
         for (int session_index = 0; session_index < sessions.size(); session_index++) {
             Session session = sessions.get(session_index);
 
@@ -83,11 +83,12 @@ public class Proto1 {
                     .collect(Collectors.toList());
 
             thisUser.remove(session);
-            sessions.removeAll(thisUser);
+            List<Session> sessionsModif = new ArrayList<>(sessions);
+            sessionsModif.removeAll(thisUser);
 
 
             System.out.println("Building topology graph...");
-            MutableValueGraph<QueryPart, Double> base = SessionGraph.buildFromLog(sessions);
+            MutableValueGraph<QueryPart, Double> base = SessionGraph.buildFromLog(sessionsModif);
             Set<QueryPart> baseNodes = new HashSet<>(base.nodes());
             baseNodes.addAll(session.allParts());
             baseNodes.addAll(thisUser.stream().flatMap(s -> s.allParts().stream()).collect(Collectors.toList()));
@@ -182,6 +183,7 @@ public class Proto1 {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println("coucou tu veux voir mon csv ? index=" + session_index);
 
         }
 
