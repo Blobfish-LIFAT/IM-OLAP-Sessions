@@ -177,6 +177,40 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
         return newGraph;
     }
 
+    public static <N> GraphInterpolator<N,Double> linearInterpolation(double alpha, boolean normalizeBeforeMixing) {
+        return (base, source, new_edge_graph) -> {
+            MutableValueGraph<N, Double> schema = com.google.common.graph.Graphs.copyOf(base);
+
+            if (normalizeBeforeMixing){
+                Graphs.normalizeWeightsi(schema);
+            }
+
+            MutableValueGraph<N, Double> queryGraph = com.google.common.graph.Graphs.copyOf(source);
+
+            for (EndpointPair<N> edge : new_edge_graph.edges()) {
+                queryGraph.putEdgeValue(edge, queryGraph.edgeValue(edge).get() + queryGraph.edgeValue(edge).orElse(0.0));
+            }
+
+
+            if (normalizeBeforeMixing) {
+                Graphs.normalizeWeightsi(queryGraph);
+            }
+
+
+            Set<EndpointPair<N>> allEdges = new HashSet<>(schema.edges());
+            allEdges.addAll(queryGraph.edges());
+
+            for (EndpointPair<N> endpointPair : allEdges) {
+                queryGraph.putEdgeValue(endpointPair, queryGraph.edgeValue(endpointPair).orElse(0.0) * alpha +
+                        schema.edgeValue(endpointPair).orElse(0.0) * (1-alpha));
+            }
+
+            Graphs.normalizeWeightsi(queryGraph);
+
+            return queryGraph;
+        };
+    }
+
 
     // utility
 
