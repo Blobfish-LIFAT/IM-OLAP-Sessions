@@ -196,7 +196,7 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
             MutableValueGraph<N, Double> queryGraph = com.google.common.graph.Graphs.copyOf(source);
 
             for (EndpointPair<N> edge : new_edge_graph.edges()) {
-                queryGraph.putEdgeValue(edge, queryGraph.edgeValue(edge).get() + queryGraph.edgeValue(edge).orElse(0.0));
+                queryGraph.putEdgeValue(edge, new_edge_graph.edgeValue(edge).get() + queryGraph.edgeValue(edge).orElse(0.0));
             }
 
 
