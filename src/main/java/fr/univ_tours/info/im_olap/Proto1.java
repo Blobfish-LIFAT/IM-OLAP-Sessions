@@ -30,7 +30,7 @@ public class Proto1 {
     private static String cubeSchema;
     private static Connection olap;
 
-    static String session_eval_folder = "data/eval_results/";
+    static String session_eval_folder = "data/interp_results_KL_schema/";
 
     public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, String sessionName) throws IOException {
 
@@ -173,7 +173,7 @@ public class Proto1 {
             System.out.println("Computing gains...");
             System.out.println();
 
-            ArrayList<Pair<Query, Double>> gains = SessionEvaluator.computeGains(liste, kullbackLeibler);
+            ArrayList<Pair<Query, Double>> gains = SessionEvaluator.computeGainsFromFirstElement(liste, kullbackLeibler);
 
             System.out.println("End of evaluation.");
 

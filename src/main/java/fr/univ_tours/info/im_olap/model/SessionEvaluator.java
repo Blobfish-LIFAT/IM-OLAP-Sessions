@@ -41,7 +41,7 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
 
     @FunctionalInterface
     public interface GainEvaluator<R> {
-        Double evaluate(R previous, R next);
+        Double evaluate(Query previousQuery, R previous, Query nextQuery, R next);
     }
 
 
@@ -108,7 +108,9 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
 
             Pair<Query, T> pair = evaluatedSession.get(i);
 
-            double gain = gainEvaluator.evaluate(evaluatedSession.get(i-1).right, pair.right);
+            Pair<Query, T> previous = evaluatedSession.get(i-1);
+
+            double gain = gainEvaluator.evaluate(previous.left, previous.right, pair.left, pair.right);
 
             Pair<Query, Double> resPair = new Pair<>(pair.left, gain);
 
@@ -126,7 +128,9 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
 
             Pair<Query, T> pair = evaluatedSession.get(i);
 
-            double gain = gainEvaluator.evaluate(evaluatedSession.get(0).right, pair.right);
+            Pair<Query, T> base = evaluatedSession.get(0);
+
+            double gain = gainEvaluator.evaluate(base.left, base.right, pair.left, pair.right);
 
             Pair<Query, Double> resPair = new Pair<>(pair.left, gain);
 
@@ -229,7 +233,10 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
 
     // Gain computation
 
-    public static <N extends Comparable<N>> Double KullbackLeibler(Pair<INDArray, HashMap<N,Integer>> pair1, Pair<INDArray, HashMap<N,Integer>> pair2) {
+    public static <N extends Comparable<N>> Double KullbackLeibler(Query query1,
+                                                                   Pair<INDArray, HashMap<N,Integer>> pair1,
+                                                                   Query query2,
+                                                                   Pair<INDArray, HashMap<N,Integer>> pair2) {
 
         pair1.left.divi(pair1.left.sumNumber());
         pair2.left.divi(pair2.left.sumNumber());
@@ -246,7 +253,10 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
         return res;
     }
 
-    public static <N extends Comparable<N>> Double AbsoluteDiff(Pair<INDArray, HashMap<N,Integer>> pair1, Pair<INDArray, HashMap<N,Integer>> pair2) {
+    public static <N extends Comparable<N>> Double AbsoluteDiff(Query query1,
+                                                                Pair<INDArray, HashMap<N,Integer>> pair1,
+                                                                Query query2,
+                                                                Pair<INDArray, HashMap<N,Integer>> pair2) {
 
         pair1.left.divi(pair1.left.sumNumber());
         pair2.left.divi(pair2.left.sumNumber());
