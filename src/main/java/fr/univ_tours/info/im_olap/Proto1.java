@@ -2,6 +2,7 @@ package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
+import com.google.common.graph.ValueGraphBuilder;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.model.*;
@@ -53,12 +54,14 @@ public class Proto1 {
                 csvPrinter.printRecord(sessionName, pair.left, i, pair.right);
             }
         }
+        System.out.println("Wrote: " + session_eval_folder + "result_" + sessionName + ".csv");
     }
 
 
     public static void main(String[] args) {
         System.out.println("Loading sessions...");
         List<Session> sessions = loadCubeloadSessions();
+        //List<Session> sessions = loadDopanSessions();
 
         System.out.println("Creating SessionEvaluator evaluator...");
 
@@ -73,7 +76,6 @@ public class Proto1 {
                 SessionEvaluator.QPInterestingness(SessionEvaluator::descriptionLength);
 
         System.out.println("Started processing sessions...");
-        System.out.println("coucou tu veux voir mes sessions taille=" + sessions.size());
         for (int session_index = 0; session_index < sessions.size(); session_index++) {
             Session session = sessions.get(session_index);
 
@@ -99,16 +101,24 @@ public class Proto1 {
 
 
             System.out.println("Building topology graph...");
-            MutableValueGraph<QueryPart, Double> base = SessionGraph.buildFromLog(sessionsModif);
-            Set<QueryPart> baseNodes = new HashSet<>(base.nodes());
-            baseNodes.addAll(session.allParts());
-            baseNodes.addAll(thisUser.stream().flatMap(s -> s.allParts().stream()).collect(Collectors.toList()));
-            DimensionsGraph.injectSchema(base, cubeSchema);
+            MutableValueGraph<QueryPart, Double> topoGraph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
+            DimensionsGraph.injectSchema(topoGraph, cubeSchema);
+            FiltersGraph.injectCompressedFilters(topoGraph, mdUtils);
+            System.out.println("Building Logs graph...");
+            MutableValueGraph<QueryPart, Double> logGraph = SessionGraph.buildFromLog(sessionsModif);
 
-            System.out.println("Injecting filters...");
-            FiltersGraph.injectCompressedFilters(base, mdUtils);
+            HashSet<QueryPart> allNodes = new HashSet<>(topoGraph.nodes());
+            allNodes.addAll(logGraph.nodes());
+            topoGraph.nodes().addAll(allNodes);
+            logGraph.nodes().addAll(allNodes);
 
-            (new HashSet<>(base.nodes())).stream().filter(n -> !baseNodes.contains(n)).forEach(base::removeNode);
+            MutableValueGraph<QueryPart, Double> base = SessionEvaluator
+                    .<QueryPart>linearInterpolation(0.5, true)
+                    .interpolate(topoGraph, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), logGraph);
+
+
+            // Remove nodes not in the log
+            //(new HashSet<>(base.nodes())).stream().filter(n -> !baseNodes.contains(n)).forEach(base::removeNode);
 
             System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
@@ -194,11 +204,9 @@ public class Proto1 {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("coucou tu veux voir mon csv ? index=" + session_index);
+
 
         }
-
-
 
 
     }

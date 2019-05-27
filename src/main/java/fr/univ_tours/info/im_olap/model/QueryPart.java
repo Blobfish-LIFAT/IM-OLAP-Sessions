@@ -93,6 +93,10 @@ public class QueryPart implements Comparable<QueryPart>{
 
     public boolean isDimension() {return t == Type.DIMENSION;}
 
+    public String getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         return "QueryPart{" +

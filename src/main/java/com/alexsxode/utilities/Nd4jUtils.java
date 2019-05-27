@@ -1,8 +1,9 @@
 package com.alexsxode.utilities;
 
+
 import ch.obermuhlner.math.big.BigDecimalMath;
 import com.alexsxode.utilities.collection.Pair;
-import org.apache.commons.math3.exception.MathIllegalArgumentException;
+
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
@@ -11,7 +12,7 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.*;
 
-import static org.nd4j.linalg.ops.transforms.Transforms.relu;
+
 import static org.nd4j.linalg.ops.transforms.Transforms.sqrt;
 import static org.nd4j.linalg.util.MathUtils.log2;
 
