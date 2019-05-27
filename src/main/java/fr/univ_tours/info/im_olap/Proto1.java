@@ -109,8 +109,8 @@ public class Proto1 {
 
             HashSet<QueryPart> allNodes = new HashSet<>(topoGraph.nodes());
             allNodes.addAll(logGraph.nodes());
-            topoGraph.nodes().addAll(allNodes);
-            logGraph.nodes().addAll(allNodes);
+            allNodes.forEach(topoGraph::addNode);
+            allNodes.forEach(logGraph::addNode);
 
             MutableValueGraph<QueryPart, Double> base = SessionEvaluator
                     .<QueryPart>linearInterpolation(0.5, true)
