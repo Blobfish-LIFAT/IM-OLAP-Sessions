@@ -11,6 +11,7 @@ import org.nd4j.linalg.api.ndarray.INDArray;
 
 import java.util.*;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class SessionEvaluator<NodeT, EdgeT, EvalT> {
 
@@ -286,6 +287,29 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
         Logger.logInfo("AbsoluteDiff","KL = ",diff);
 
         return diff;
+    }
+
+
+    public static GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> QPInterestingness(Function<Query, Double> complexityFunction) {
+        return (q1, dist1, q2, dist2) -> {
+
+            double complexity = complexityFunction.apply(q2);
+
+            double infoContent = 0.0;
+
+            for (QueryPart queryPart : q2.getAllParts()) {
+                infoContent -= Math.log(dist1.left.getDouble(dist1.right.get(queryPart)));
+            }
+
+
+            return infoContent/complexity;
+        };
+    }
+
+    // Complexity function
+
+    public static double descriptionLength(Query query) {
+        return query.getAllParts().size();
     }
 
 }
