@@ -34,7 +34,17 @@ public class Proto1 {
 
     public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, String sessionName) throws IOException {
 
-        File file = Paths.get(session_eval_folder + "result_" + sessionName + ".csv").toFile();
+        String fileName;
+
+        int slashIndex = sessionName.indexOf("/");
+        if (slashIndex > -1) {
+            fileName = sessionName.substring(slashIndex+1);
+        }
+        else {
+            fileName = sessionName;
+        }
+
+        File file = Paths.get(session_eval_folder + "result_" + fileName + ".csv").toFile();
         FileWriter fileWriter = new FileWriter(file);
         CSVFormat format = CSVFormat.DEFAULT.withHeader("session", "query", "query_index", "gain");
         try (CSVPrinter csvPrinter = new CSVPrinter(fileWriter, format)) {
