@@ -30,7 +30,7 @@ public class Proto1 {
     private static String cubeSchema;
     private static Connection olap;
 
-    static String session_eval_folder = "data/interp_results_KL_schema/";
+    static String session_eval_folder = "data/interp_deBie/";
 
     public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, String sessionName) throws IOException {
 
@@ -59,7 +59,8 @@ public class Proto1 {
 
 
         // helps to infer evaluator
-        SessionEvaluator.GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> kullbackLeibler = SessionEvaluator::KullbackLeibler;
+        SessionEvaluator.GainEvaluator<Pair<INDArray, HashMap<QueryPart, Integer>>> gainEvaluator =
+                SessionEvaluator.QPInterestingness(SessionEvaluator::descriptionLength);
 
         System.out.println("Started processing sessions...");
         System.out.println("coucou tu veux voir mes sessions taille=" + sessions.size());
@@ -173,7 +174,7 @@ public class Proto1 {
             System.out.println("Computing gains...");
             System.out.println();
 
-            ArrayList<Pair<Query, Double>> gains = SessionEvaluator.computeGainsFromFirstElement(liste, kullbackLeibler);
+            ArrayList<Pair<Query, Double>> gains = SessionEvaluator.computeGains(liste, gainEvaluator);
 
             System.out.println("End of evaluation.");
 
