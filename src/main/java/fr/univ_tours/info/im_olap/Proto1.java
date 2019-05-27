@@ -36,7 +36,7 @@ public class Proto1 {
 
         String fileName;
 
-        int slashIndex = sessionName.indexOf("/");
+        int slashIndex = sessionName.lastIndexOf("/");
         if (slashIndex > -1) {
             fileName = sessionName.substring(slashIndex+1);
         }
