@@ -106,6 +106,8 @@ public class Proto1 {
             FiltersGraph.injectCompressedFilters(topoGraph, mdUtils);
             System.out.println("Building Logs graph...");
             MutableValueGraph<QueryPart, Double> logGraph = SessionGraph.buildFromLog(sessionsModif);
+            System.out.println("Building user Graph...");
+            MutableValueGraph<QueryPart, Double> userGraph = SessionGraph.buildFromLog(thisUser);
 
             HashSet<QueryPart> allNodes = new HashSet<>(topoGraph.nodes());
             allNodes.addAll(logGraph.nodes());
@@ -115,6 +117,10 @@ public class Proto1 {
             MutableValueGraph<QueryPart, Double> base = SessionEvaluator
                     .<QueryPart>linearInterpolation(0.5, true)
                     .interpolate(topoGraph, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), logGraph);
+
+            base = SessionEvaluator
+                    .<QueryPart>linearInterpolation(0.5, true)
+                    .interpolate(base, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), userGraph);
 
 
             // Remove nodes not in the log
