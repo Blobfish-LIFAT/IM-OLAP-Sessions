@@ -1,8 +1,9 @@
 package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.collection.Pair;
-import com.google.common.graph.MutableValueGraph;
-import com.google.common.graph.ValueGraphBuilder;
+import com.google.common.collect.Sets;
+import com.google.common.collect.Streams;
+import com.google.common.graph.*;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.Graphs;
 import fr.univ_tours.info.im_olap.model.*;
@@ -21,6 +22,7 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static fr.univ_tours.info.im_olap.Proto3CubeLoad.loadCubeloadXML;
 
@@ -61,8 +63,8 @@ public class Proto1 {
 
     public static void main(String[] args) {
         System.out.println("Loading sessions...");
-        List<Session> sessions = loadCubeloadSessions();
-        //List<Session> sessions = loadDopanSessions();
+        //List<Session> sessions = loadCubeloadSessions();
+        List<Session> sessions = loadDopanSessions();
 
         System.out.println("Creating SessionEvaluator evaluator...");
 
@@ -125,7 +127,18 @@ public class Proto1 {
 
 
             // Remove nodes not in the log
-            //(new HashSet<>(base.nodes())).stream().filter(n -> !baseNodes.contains(n)).forEach(base::removeNode);
+            System.out.println("Pruning Graph...");
+            Set<QueryPart> baseNodes = new HashSet<>();
+            baseNodes.addAll(logGraph.nodes());
+            baseNodes.addAll(userGraph.nodes());
+            Set<QueryPart> extension = new HashSet<>();
+            for (QueryPart node : baseNodes){
+                extension.addAll(successorsIfPresent(userGraph.asGraph(), node));
+                extension.addAll(successorsIfPresent(logGraph.asGraph(), node));
+            }
+            baseNodes.addAll(extension);
+            System.out.println(baseNodes.size());
+            (new HashSet<>(base.nodes())).stream().filter(n -> !baseNodes.contains(n)).forEach(base::removeNode);
 
             System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
@@ -217,6 +230,16 @@ public class Proto1 {
         }
 
 
+    }
+
+    private static <T> Set<T> successorsIfPresent(Graph<T> graph, T node) {
+        if (!graph.nodes().contains(node)) return new HashSet<>(0);
+        HashSet<T> out = new HashSet<>();
+        for (EndpointPair<T> pair: graph.incidentEdges(node)){
+            if (pair.nodeV().equals(node))
+                out.add(pair.nodeU());
+        }
+        return out;
     }
 
     public static List<Session> loadDopanSessions(){
