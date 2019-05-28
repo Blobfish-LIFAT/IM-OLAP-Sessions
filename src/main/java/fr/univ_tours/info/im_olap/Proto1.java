@@ -119,7 +119,7 @@ public class Proto1 {
                     .interpolate(topoGraph, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), logGraph);
 
             base = SessionEvaluator
-                    .<QueryPart>linearInterpolation(0.5, true)
+                    .<QueryPart>linearInterpolation(0.8, true)
                     .interpolate(base, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), userGraph);
 
 
