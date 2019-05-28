@@ -209,6 +209,7 @@ public class Proto1 {
                 gainsToCSVFile(gains, session.getFilename().replace(".log.json", ""));
             } catch (IOException e) {
                 e.printStackTrace();
+                System.exit(1);
             }
 
 
