@@ -33,8 +33,9 @@ public class Proto1 {
 
     static String session_eval_folder = "data/interp_deBie/";
 
-    public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, String sessionName) throws IOException {
+    public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, Session session) throws IOException {
 
+        String sessionName = session.getFilename().replace(".log.json", "");
         String fileName;
 
         int slashIndex = sessionName.lastIndexOf("/");
@@ -47,11 +48,11 @@ public class Proto1 {
 
         File file = Paths.get(session_eval_folder + "result_" + fileName + ".csv").toFile();
         FileWriter fileWriter = new FileWriter(file);
-        CSVFormat format = CSVFormat.DEFAULT.withHeader("session", "query", "query_index", "gain");
+        CSVFormat format = CSVFormat.DEFAULT.withHeader("user", "session", "query", "query_index", "gain");
         try (CSVPrinter csvPrinter = new CSVPrinter(fileWriter, format)) {
             for (int i = 0; i < results.size(); i++) {
                 Pair<Query, Double> pair = results.get(i);
-                csvPrinter.printRecord(sessionName, pair.left, i, pair.right);
+                csvPrinter.printRecord(session.getUserName().orElse("UNKNOWN"), sessionName, pair.left, i, pair.right);
             }
         }
         System.out.println("Wrote: " + session_eval_folder + "result_" + sessionName + ".csv");
@@ -206,7 +207,7 @@ public class Proto1 {
 
             System.out.println("Writing results to CSV...");
             try {
-                gainsToCSVFile(gains, session.getFilename().replace(".log.json", ""));
+                gainsToCSVFile(gains, session);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.exit(1);
