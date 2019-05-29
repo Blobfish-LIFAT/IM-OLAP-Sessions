@@ -12,7 +12,10 @@ import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import mondrian.olap.Connection;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.eigen.Eigen;
+import org.nd4j.linalg.factory.Nd4j;
 
 
 import java.io.File;
@@ -142,6 +145,11 @@ public class Proto1 {
 
             System.out.printf("Schema graph size is %s nodes and %s edges.%n", base.nodes().size(), base.edges().size());
 
+            for (QueryPart queryPart : base.nodes()) {
+                base.putEdgeValue(queryPart, queryPart, 1.0);
+            }
+
+            runAdajacencyTest(base);
             /**
              * Ben's stuff
              */
@@ -230,6 +238,37 @@ public class Proto1 {
         }
 
 
+    }
+
+    private static <V> void runAdajacencyTest(ValueGraph<V, Double> graph) {
+        Nd4j.setDefaultDataTypes(DataType.DOUBLE, DataType.DOUBLE);
+        List<V> nodes = new ArrayList<>(graph.nodes());
+
+        HashMap<V, Integer> indexes = new HashMap<>();
+
+        for (int i = 0; i < nodes.size(); i++) {
+            indexes.put(nodes.get(i), i);
+        }
+
+        int size = nodes.size();
+
+        INDArray matrix = Nd4j.zeros(size,size);
+
+        for (int i = 0; i < size; i++) {
+            V from = nodes.get(i);
+            for (V to : graph.successors(from)){
+                int toIndex = indexes.get(to);
+                if (i == toIndex)
+                    matrix.put(i, toIndex, 1);
+                else
+                    matrix.put(i, toIndex, -1.0/Math.sqrt(graph.degree(to)*graph.degree(from)));
+            }
+        }
+
+        INDArray eigenvalues = Eigen.symmetricGeneralizedEigenvalues(matrix, false);
+        Nd4j.writeTxt(eigenvalues, "data/eigentest.txt");
+        System.out.println(eigenvalues);
+        System.exit(0);
     }
 
     private static <T> Set<T> successorsIfPresent(Graph<T> graph, T node) {
