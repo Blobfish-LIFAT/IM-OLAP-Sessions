@@ -66,8 +66,8 @@ public class Proto1 {
 
     public static void main(String[] args) {
         System.out.println("Loading sessions...");
-        //List<Session> sessions = loadCubeloadSessions();
-        List<Session> sessions = loadDopanSessions();
+        List<Session> sessions = loadCubeloadSessions();
+        //List<Session> sessions = loadDopanSessions();
 
         System.out.println("Creating SessionEvaluator evaluator...");
 
@@ -149,7 +149,7 @@ public class Proto1 {
                 base.putEdgeValue(queryPart, queryPart, 1.0);
             }
 
-            runAdajacencyTest(base);
+            //runAdajacencyTest(base);
             /**
              * Ben's stuff
              */
@@ -261,13 +261,17 @@ public class Proto1 {
                 if (i == toIndex)
                     matrix.put(i, toIndex, 1);
                 else
+                    //matrix.put(i, toIndex, 1);
                     matrix.put(i, toIndex, -1.0/Math.sqrt(graph.degree(to)*graph.degree(from)));
             }
         }
 
         INDArray eigenvalues = Eigen.symmetricGeneralizedEigenvalues(matrix, false);
         Nd4j.writeTxt(eigenvalues, "data/eigentest.txt");
-        System.out.println(eigenvalues);
+        List<Double> vals = Arrays.stream(eigenvalues.toDoubleVector()).boxed().collect(Collectors.toList());
+        Collections.sort(vals);
+        for (Double val : vals)
+            System.out.println(val);
         System.exit(0);
     }
 
