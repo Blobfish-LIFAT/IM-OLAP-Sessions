@@ -51,8 +51,9 @@ public class SQLExctractor {
                     if (logID == newID){
                         continue;
                     }else {
-                        if (logID != -1)
-                            map.put(MDX, statements);
+                        if (logID != -1) {
+                            insertOrAppend(map, statements, MDX);
+                        }
 
                         logID = newID;
                         statements = new ArrayList<>();
@@ -82,10 +83,18 @@ public class SQLExctractor {
                 }
             }
 
-            map.put(MDX, statements);
+            insertOrAppend(map, statements, MDX);
         }
 
         Files.write(gson.toJson(map).getBytes(), new File(outFile));
 
+    }
+
+    private static <K, V> void insertOrAppend(HashMap<K, List<V>> map, List<V> statements, K MDX) {
+        if (map.get(MDX) == null)
+            map.put(MDX, statements);
+        else {
+            map.get(MDX).addAll(statements);
+        }
     }
 }
