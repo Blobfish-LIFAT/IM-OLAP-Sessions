@@ -1,5 +1,6 @@
 package fr.univ_tours.info.im_olap.mondrian;
 
+import com.google.common.annotations.Beta;
 import mondrian.olap.CacheControl;
 import mondrian.olap.Connection;
 import mondrian.olap.MondrianProperties;
@@ -73,6 +74,14 @@ public class MondrianConfig {
 
         config.load(new FileInputStream(new File(path)));
 
+    }
+
+    /**
+     * Do not use this if you just need a database connection
+     * @return the underlining dopan connection
+     */
+    public static java.sql.Connection getJdbcConnection() {
+        return jdbcConnection;
     }
 
     public static void close(){
