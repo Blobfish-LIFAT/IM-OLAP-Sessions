@@ -29,8 +29,10 @@ public class Proto2 {
                 String mdx = mdxmap.get(q.getProperties().get("id"));
 
                 List<String> sql = map.get(mdx);
-                if (!sql.isEmpty())
+                if (!sql.isEmpty()) {
                     matches++;
+                    System.out.println(sql.get(0));
+                }
                 total++;
             }
         }

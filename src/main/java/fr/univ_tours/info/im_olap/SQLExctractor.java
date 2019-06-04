@@ -7,8 +7,6 @@ import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.nio.file.OpenOption;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +54,8 @@ public class SQLExctractor {
                     }else {
                         if (logID != -1) {
                             insertOrAppend(map, statements, MDX);
+                            if (statements.isEmpty())
+                                System.err.println(logID);
                         }
 
                         logID = newID;

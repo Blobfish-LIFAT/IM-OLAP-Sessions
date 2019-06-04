@@ -1,6 +1,8 @@
 package fr.univ_tours.info.im_olap.mondrian;
 
+import mondrian.olap.CacheControl;
 import mondrian.olap.Connection;
+import mondrian.olap.MondrianProperties;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,6 +31,9 @@ public class MondrianConfig {
 
         jdbcConnection     = DriverManager.getConnection(config.getProperty("jdbcUrl"), config.getProperty("jdbcUser"), config.getProperty("jdbcPassword"));
         mondrianConnection = mondrian.olap.DriverManager.getConnection(mondrianString, null);
+
+        //Cache disable
+        //MondrianProperties.instance().DisableCaching.set(true);
 
     }
 
