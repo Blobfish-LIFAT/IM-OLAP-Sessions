@@ -12,6 +12,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,9 +37,11 @@ public class SQLExctractor {
             while ((line = file.readLine()) != null){
                 if (filling){
                     if (!line.isEmpty())
-                        MDX += line;
-                    else
+                        MDX += line + "\n";
+                    else {
+                        MDX = MDX.substring(0, MDX.length()-1);
                         filling = false;
+                    }
                     continue;
                 }
 
@@ -59,7 +62,7 @@ public class SQLExctractor {
                         statements = new ArrayList<>();
                         Matcher mdxm = mdxExctract.matcher(line);
                         mdxm.find();
-                        MDX = mdxm.group(2);
+                        MDX = mdxm.group(2) + "\n";
                         filling = true;
                         continue;
                     }
@@ -88,6 +91,17 @@ public class SQLExctractor {
 
         Files.write(gson.toJson(map).getBytes(), new File(outFile));
 
+        debugStats(map);
+
+    }
+
+    private static void debugStats(HashMap<String, List<String>> map) {
+        AtomicInteger c = new AtomicInteger(0);
+        map.forEach((k, v) -> {
+            if (v.isEmpty())
+                c.incrementAndGet();
+        });
+        System.out.printf("Couldn't find SQL for %s queries our of %s !", c.get(), map.keySet().size());
     }
 
     private static <K, V> void insertOrAppend(HashMap<K, List<V>> map, List<V> statements, K MDX) {

@@ -84,7 +84,7 @@ public class Proto1 {
         // Log all MDX and SQL
         // -Dlog4j.debug
         // -Dlog4j.configuration=file:///home/alex/IdeaProjects/IM-OLAP-Sessions/data/log4j.properties
-        //dumpLog(sessions);
+        dumpLog(sessions);
 
         for (int session_index = 0; session_index < sessions.size(); session_index++) {
             Session session = sessions.get(session_index);
@@ -256,6 +256,7 @@ public class Proto1 {
                     olap.execute(olapQuery);
                 } catch (Exception e){
                     LogManager.getLogger(mondrian.rolap.RolapResultShepherd.class).debug("[MARKER][ERROR]");
+                    System.err.println("Error for : " + q.getProperties().get("id"));
                 }
                 LogManager.getLogger(mondrian.rolap.RolapResultShepherd.class).debug("[MARKER][END]");
             }

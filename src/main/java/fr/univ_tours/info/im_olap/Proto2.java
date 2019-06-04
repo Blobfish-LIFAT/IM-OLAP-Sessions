@@ -1,29 +1,41 @@
 package fr.univ_tours.info.im_olap;
 
 
+import com.google.gson.Gson;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.data.Labels;
+import fr.univ_tours.info.im_olap.model.Query;
 import fr.univ_tours.info.im_olap.model.Session;
 import fr.univ_tours.info.im_olap.model.SessionGraph;
-import java.util.List;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+
+import static fr.univ_tours.info.im_olap.Proto1.loadDopanSessions;
 
 
 public class Proto2 {
     static String dataDir = "data/logs/dopan_converted";
-    public static void main(String[] args) {
-/*
-        NDArrayFactory factory = Nd4j.sparseFactory();
-        //INDArray montruc = factory.create(10,10);
-        INDArray montruc = factory.createSparseCOO(new float[]{0f},new int[][]{{0},{0}}, new long[]{20,20});
-        montruc.put(5,5, 2.0);
-        System.out.println(montruc.getDouble(new int[]{1,5}));
-        System.out.println(montruc.toDense());
-*/
+    public static void main(String[] args) throws Exception{
+        List<Session> sessions = loadDopanSessions();
+        Map<Integer, String> mdxmap = DopanLoader.loadMDX("data/logs/dopan_converted");
+        Gson gson = new Gson();
+        Map<String, List<String>> map = gson.fromJson(new String(Files.readAllBytes(Paths.get("data/MDXtoSQL.json"))), Map.class);
+        int total = 0, matches = 0;
+        for (Session s : sessions){
+            for (Query q : s.queries){
+                String mdx = mdxmap.get(q.getProperties().get("id"));
 
-        List<Session> sessions = SessionGraph.fixSessions(DopanLoader.loadDir(dataDir), "data/cubeSchemas/DOPAN_DW3.xml");
-        Labels.addLabels(sessions, "data/labels/dopanCleanLogWithVeronikaLabels-FOCUS.csv", "veronikaLabel");
-        Labels.addLabels(sessions, "data/labels/metricScoresWithSalimAndIandryLabels.csv", "salimLabel", "iandryLabel");
+                List<String> sql = map.get(mdx);
+                if (!sql.isEmpty())
+                    matches++;
+                total++;
+            }
+        }
+
+        System.out.println(matches + "/" + total);
 
     }
 }
