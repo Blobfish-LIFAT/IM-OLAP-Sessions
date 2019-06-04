@@ -66,7 +66,19 @@ public class SQLExctractor {
 
                 Matcher sqlm = sqlPattern.matcher(line);
                 if (sqlm.find()){
-                    statements.add(sqlm.group(1));
+                    statements.add(sqlm.group(1) + ";");
+                    continue;
+                }
+                if (line.contains("executing sql [") && !line.contains("]")){
+                    String tmp = "";
+                    boolean exit = false;
+                    while (!exit){
+                        line = file.readLine();
+                        tmp += line;
+                        if (line.contains("]"))
+                            exit = true;
+                    }
+                    statements.add(tmp.replace(']', ';'));
                 }
             }
 
