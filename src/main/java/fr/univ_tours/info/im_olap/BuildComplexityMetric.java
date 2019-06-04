@@ -7,13 +7,11 @@ import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import org.dom4j.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BuildComplexityMetric {
 
@@ -34,12 +32,21 @@ public class BuildComplexityMetric {
         MondrianConfig.getMondrianConnection();
         Connection con = MondrianConfig.getJdbcConnection();
 
-        setExplainMode(con, true);
-
         Map<String, List<String>> mdxMap = gson.fromJson(new String(Files.readAllBytes(Paths.get(mdxMapFile))), Map.class);
 
-        Map<Integer, List<String>> ops = new HashMap<>();
+        //Map<Integer, List<String>> ops = extractOps(mdxAncIDs, con, mdxMap);
+        //com.google.common.io.Files.write(gson.toJson(ops).getBytes(), new File(outFile));
+        Map<String, List<String>> ops = gson.fromJson(new String(Files.readAllBytes(Paths.get(outFile))), Map.class);
 
+        ops.forEach((id, values) -> {
+            System.out.printf("%s,%s,%s%n", id, values.size(), new HashSet<>(values).size());
+        });
+
+    }
+
+    private static Map<Integer, List<String>> extractOps(Map<Integer, String> mdxAncIDs, Connection con, Map<String, List<String>> mdxMap) throws SQLException, IOException {
+        setExplainMode(con, true);
+        Map<Integer, List<String>> ops = new HashMap<>();
         for (Map.Entry entry : mdxAncIDs.entrySet()){
             int key = (int) entry.getKey();
             String mdxQuery = (String) entry.getValue();
@@ -58,9 +65,7 @@ public class BuildComplexityMetric {
             }
         }
         setExplainMode(con, false);
-
-        com.google.common.io.Files.write(gson.toJson(ops).getBytes(), new File(outFile));
-
+        return ops;
     }
 
     private static List<String> getOps(String xml) {
