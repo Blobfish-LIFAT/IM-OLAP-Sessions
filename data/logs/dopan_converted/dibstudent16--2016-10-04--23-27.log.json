@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 851,
+      "original_id": 23746,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -39,6 +41,8 @@
     },
     {
       "id": 852,
+      "original_id": 23898,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[50 à 54 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[55 à 59 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[60 à 64 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[65 à 69 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[70 à 74 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[75 à 79 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[80 à 84 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[85 à 89 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[90 à 94 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[95 à 99 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[100 à 104 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[105 à 109 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[110 à 114 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[115 à 119 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[120 ans]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -133,6 +137,8 @@
     },
     {
       "id": 853,
+      "original_id": 23961,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[50 à 54 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[55 à 59 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[60 à 64 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[65 à 69 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[70 à 74 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[75 à 79 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[80 à 84 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[85 à 89 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[90 à 94 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[95 à 99 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[100 à 104 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[105 à 109 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[110 à 114 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[115 à 119 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[120 ans]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -227,6 +233,8 @@
     },
     {
       "id": 854,
+      "original_id": 23999,
+      "mdx": "select NON EMPTY {Hierarchize({{[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[50 à 54 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[55 à 59 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[60 à 64 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[65 à 69 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[70 à 74 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[75 à 79 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[80 à 84 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[85 à 89 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[90 à 94 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[95 à 99 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[100 à 104 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[105 à 109 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[110 à 114 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[115 à 119 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[120 ans]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -321,6 +329,8 @@
     },
     {
       "id": 855,
+      "original_id": 24037,
+      "mdx": "select NON EMPTY {Hierarchize({{[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[50 à 54 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[55 à 59 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[60 à 64 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[65 à 69 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[70 à 74 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[75 à 79 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[80 à 84 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[85 à 89 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[90 à 94 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[95 à 99 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[100 à 104 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[105 à 109 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[110 à 114 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[115 à 119 ans], [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[120 ans]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -415,6 +425,8 @@
     },
     {
       "id": 856,
+      "original_id": 24052,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -448,6 +460,8 @@
     },
     {
       "id": 857,
+      "original_id": 24111,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[50 à 54 ans]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -486,6 +500,8 @@
     },
     {
       "id": 858,
+      "original_id": 24121,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[50 à 54 ans]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -524,6 +540,8 @@
     },
     {
       "id": 859,
+      "original_id": 24133,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order({Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[50 à 54 ans]})}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -562,6 +580,8 @@
     },
     {
       "id": 860,
+      "original_id": 24157,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order({Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members})}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -595,6 +615,8 @@
     },
     {
       "id": 861,
+      "original_id": 24188,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order({Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members})}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -628,6 +650,8 @@
     },
     {
       "id": 862,
+      "original_id": 24223,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -661,6 +685,8 @@
     },
     {
       "id": 863,
+      "original_id": 24312,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members), Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members))), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -694,6 +720,8 @@
     },
     {
       "id": 864,
+      "original_id": 24586,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members), Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members), Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members)))), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -727,6 +755,8 @@
     },
     {
       "id": 865,
+      "original_id": 25441,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members), Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members))), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -760,6 +790,8 @@
     },
     {
       "id": 866,
+      "original_id": 25952,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members), Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members), Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})))), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -793,6 +825,8 @@
     },
     {
       "id": 867,
+      "original_id": 26900,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members), Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[tous les statuts confondus]}))), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -826,6 +860,8 @@
     },
     {
       "id": 868,
+      "original_id": 27684,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[tous les statuts confondus]}), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -859,6 +895,8 @@
     },
     {
       "id": 869,
+      "original_id": 27719,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order({Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members})}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -892,6 +930,8 @@
     },
     {
       "id": 870,
+      "original_id": 27754,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -925,6 +965,8 @@
     },
     {
       "id": 871,
+      "original_id": 27836,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order({Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members})}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -958,6 +1000,8 @@
     },
     {
       "id": 872,
+      "original_id": 27871,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -991,6 +1035,8 @@
     },
     {
       "id": 873,
+      "original_id": 27995,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order({Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members})}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1024,6 +1070,8 @@
     },
     {
       "id": 874,
+      "original_id": 28030,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1057,6 +1105,8 @@
     },
     {
       "id": 875,
+      "original_id": 28203,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order({Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members})}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1090,6 +1140,8 @@
     },
     {
       "id": 876,
+      "original_id": 28238,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1123,6 +1175,8 @@
     },
     {
       "id": 877,
+      "original_id": 28451,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order({Hierarchize({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members})}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1156,6 +1210,8 @@
     },
     {
       "id": 878,
+      "original_id": 28486,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1189,6 +1245,8 @@
     },
     {
       "id": 879,
+      "original_id": 28727,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation].[En contrat d\u0027apprentissage]}), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1227,6 +1285,8 @@
     },
     {
       "id": 880,
+      "original_id": 28765,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation].[En contrat d\u0027apprentissage]}), Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members))), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1265,6 +1325,8 @@
     },
     {
       "id": 881,
+      "original_id": 28867,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1298,6 +1360,8 @@
     },
     {
       "id": 882,
+      "original_id": 28997,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members), Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members))), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1331,6 +1395,8 @@
     },
     {
       "id": 883,
+      "original_id": 29501,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members), Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation].[En contrat d\u0027apprentissage]}))), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1369,6 +1435,8 @@
     },
     {
       "id": 884,
+      "original_id": 29603,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation].[En contrat d\u0027apprentissage]}), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1407,6 +1475,8 @@
     },
     {
       "id": 885,
+      "original_id": 29641,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation].[En contrat d\u0027apprentissage]}), Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members))), [Age revolu quinquenal.AgeRevQ_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1445,6 +1515,8 @@
     },
     {
       "id": 886,
+      "original_id": 29734,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation].[En contrat d\u0027apprentissage]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1483,6 +1555,8 @@
     },
     {
       "id": 887,
+      "original_id": 29754,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation].[En contrat d\u0027apprentissage]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1521,6 +1595,8 @@
     },
     {
       "id": 888,
+      "original_id": 29774,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1554,6 +1630,8 @@
     },
     {
       "id": 889,
+      "original_id": 29792,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Categorie].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1587,6 +1665,8 @@
     },
     {
       "id": 890,
+      "original_id": 29813,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Categorie].Members}, {[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1620,6 +1700,8 @@
     },
     {
       "id": 891,
+      "original_id": 29847,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1653,6 +1735,8 @@
     },
     {
       "id": 892,
+      "original_id": 29869,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1686,6 +1770,8 @@
     },
     {
       "id": 893,
+      "original_id": 29907,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)], [Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1728,6 +1814,8 @@
     },
     {
       "id": 894,
+      "original_id": 29925,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1761,6 +1849,8 @@
     },
     {
       "id": 895,
+      "original_id": 29947,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1794,6 +1884,8 @@
     },
     {
       "id": 896,
+      "original_id": 29969,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1827,6 +1919,8 @@
     },
     {
       "id": 897,
+      "original_id": 29991,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1860,6 +1954,8 @@
     },
     {
       "id": 898,
+      "original_id": 30197,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1893,6 +1989,8 @@
     },
     {
       "id": 899,
+      "original_id": 30407,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1926,6 +2024,8 @@
     },
     {
       "id": 900,
+      "original_id": 30625,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Order(Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -1959,6 +2059,8 @@
     },
     {
       "id": 901,
+      "original_id": 30879,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[15 à 19 ans]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), Union(Crossjoin({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[20 à 24 ans]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), Crossjoin({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[25 à 29 ans]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members)))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2005,6 +2107,8 @@
     },
     {
       "id": 902,
+      "original_id": 30904,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[15 à 19 ans]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), Union(Crossjoin({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[20 à 24 ans]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members), Crossjoin({[Age revolu quinquenal.AgeRevQ_Hierarchie_1].[25 à 29 ans]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members)))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2051,6 +2155,8 @@
     },
     {
       "id": 903,
+      "original_id": 30941,
+      "mdx": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2084,6 +2190,8 @@
     },
     {
       "id": 904,
+      "original_id": 30977,
+      "mdx": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2117,6 +2225,8 @@
     },
     {
       "id": 905,
+      "original_id": 31015,
+      "mdx": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2150,6 +2260,8 @@
     },
     {
       "id": 906,
+      "original_id": 31107,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Region].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2183,6 +2295,8 @@
     },
     {
       "id": 907,
+      "original_id": 31184,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2216,6 +2330,8 @@
     },
     {
       "id": 908,
+      "original_id": 31205,
+      "mdx": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2249,6 +2365,8 @@
     },
     {
       "id": 909,
+      "original_id": 31253,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2282,6 +2400,8 @@
     },
     {
       "id": 910,
+      "original_id": 31274,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2315,6 +2435,8 @@
     },
     {
       "id": 911,
+      "original_id": 31304,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2348,6 +2470,8 @@
     },
     {
       "id": 912,
+      "original_id": 31326,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2381,6 +2505,8 @@
     },
     {
       "id": 913,
+      "original_id": 31351,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (max)]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -2415,6 +2541,8 @@
     },
     {
       "id": 914,
+      "original_id": 31374,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -2448,6 +2576,8 @@
     },
     {
       "id": 915,
+      "original_id": 31399,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2481,6 +2611,8 @@
     },
     {
       "id": 916,
+      "original_id": 31449,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2514,6 +2646,8 @@
     },
     {
       "id": 917,
+      "original_id": 31482,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, {[Measures].[Nombre total d\u0027individus]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2547,6 +2681,8 @@
     },
     {
       "id": 918,
+      "original_id": 31514,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2580,6 +2716,8 @@
     },
     {
       "id": 919,
+      "original_id": 31559,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2613,6 +2751,8 @@
     },
     {
       "id": 920,
+      "original_id": 31608,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2646,6 +2786,8 @@
     },
     {
       "id": 921,
+      "original_id": 31656,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2679,6 +2821,8 @@
     },
     {
       "id": 922,
+      "original_id": 31700,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre total d\u0027individus]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2712,6 +2856,8 @@
     },
     {
       "id": 923,
+      "original_id": 31729,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2745,6 +2891,8 @@
     },
     {
       "id": 924,
+      "original_id": 31765,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2778,6 +2926,8 @@
     },
     {
       "id": 925,
+      "original_id": 31809,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -2811,6 +2961,8 @@
     },
     {
       "id": 926,
+      "original_id": 31842,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2845,6 +2997,8 @@
     },
     {
       "id": 927,
+      "original_id": 31879,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Nombre de personnes des menages (moyenne)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2879,6 +3033,8 @@
     },
     {
       "id": 928,
+      "original_id": 31975,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre total d\u0027individus]}))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2913,6 +3069,8 @@
     },
     {
       "id": 929,
+      "original_id": 32014,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre total d\u0027individus]}))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2947,6 +3105,8 @@
     },
     {
       "id": 930,
+      "original_id": 32058,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -2982,6 +3142,8 @@
     },
     {
       "id": 931,
+      "original_id": 32107,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -3017,6 +3179,8 @@
     },
     {
       "id": 932,
+      "original_id": 32160,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -3052,6 +3216,8 @@
     },
     {
       "id": 933,
+      "original_id": 32242,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members)), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members)), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]}, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -3087,6 +3253,8 @@
     },
     {
       "id": 934,
+      "original_id": 32638,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -3122,6 +3290,8 @@
     },
     {
       "id": 935,
+      "original_id": 32899,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members)), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members)), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]}, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -3157,6 +3327,8 @@
     },
     {
       "id": 936,
+      "original_id": 33299,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members)), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members)), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]}, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -3192,6 +3364,8 @@
     },
     {
       "id": 937,
+      "original_id": 33699,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, {[Measures].[Nombre total d\u0027individus]})), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, {[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -3227,6 +3401,8 @@
     },
     {
       "id": 938,
+      "original_id": 34094,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, {[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -3261,6 +3437,8 @@
     },
     {
       "id": 939,
+      "original_id": 34359,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3294,6 +3472,8 @@
     },
     {
       "id": 940,
+      "original_id": 34515,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3327,6 +3507,8 @@
     },
     {
       "id": 941,
+      "original_id": 34821,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3360,6 +3542,8 @@
     },
     {
       "id": 942,
+      "original_id": 35127,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3393,6 +3577,8 @@
     },
     {
       "id": 943,
+      "original_id": 35433,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3426,6 +3612,8 @@
     },
     {
       "id": 944,
+      "original_id": 35739,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3459,6 +3647,8 @@
     },
     {
       "id": 945,
+      "original_id": 36045,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3492,6 +3682,8 @@
     },
     {
       "id": 946,
+      "original_id": 36397,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3550,6 +3742,8 @@
     },
     {
       "id": 947,
+      "original_id": 36650,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3608,6 +3802,8 @@
     },
     {
       "id": 948,
+      "original_id": 36771,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3666,6 +3862,8 @@
     },
     {
       "id": 949,
+      "original_id": 36908,
+      "mdx": "select NON EMPTY Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3724,6 +3922,8 @@
     },
     {
       "id": 950,
+      "original_id": 37075,
+      "mdx": "select NON EMPTY Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3794,6 +3994,8 @@
     },
     {
       "id": 951,
+      "original_id": 37273,
+      "mdx": "select NON EMPTY Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3864,6 +4066,8 @@
     },
     {
       "id": 952,
+      "original_id": 37459,
+      "mdx": "select NON EMPTY Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -3934,6 +4138,8 @@
     },
     {
       "id": 953,
+      "original_id": 37656,
+      "mdx": "select NON EMPTY Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -4008,6 +4214,8 @@
     },
     {
       "id": 954,
+      "original_id": 37815,
+      "mdx": "select NON EMPTY Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}, {[Measures].[Nombre de personnes des menages (moyenne)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}, {[Measures].[Nombre de personnes des menages (moyenne)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}, {[Measures].[Nombre de personnes des menages (moyenne)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}, {[Measures].[Nombre de personnes des menages (moyenne)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}, {[Measures].[Nombre de personnes des menages (moyenne)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}, {[Measures].[Nombre de personnes des menages (moyenne)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}, {[Measures].[Nombre de personnes des menages (moyenne)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}, {[Measures].[Nombre de personnes des menages (moyenne)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]}, {[Measures].[Nombre de personnes des menages (moyenne)]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]}, {[Measures].[Nombre total d\u0027individus]})))))))))))))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -4083,6 +4291,8 @@
     },
     {
       "id": 955,
+      "original_id": 37927,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -4158,6 +4368,8 @@
     },
     {
       "id": 956,
+      "original_id": 38035,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -4233,6 +4445,8 @@
     },
     {
       "id": 957,
+      "original_id": 38143,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre total d\u0027individus]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -4308,6 +4522,8 @@
     },
     {
       "id": 958,
+      "original_id": 38315,
+      "mdx": "select NON EMPTY Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))))))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -4383,6 +4599,8 @@
     },
     {
       "id": 959,
+      "original_id": 38427,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -4458,6 +4676,8 @@
     },
     {
       "id": 960,
+      "original_id": 38535,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin({[Measures].[Nombre de personnes des menages (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -4533,6 +4753,8 @@
     },
     {
       "id": 961,
+      "original_id": 38643,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre de personnes des menages (moyenne)]})), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Nombre total d\u0027individus]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027un homme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale].[Famille principale monoparentale composée d\u0027une femme avec enfant(s)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où l\u0027homme et la femme ont tous les deux le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où ni l\u0027homme ni la femme n\u0027ont le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seul l\u0027homme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple].[Famille principale composée d\u0027un couple où seule la femme a le statut d\u0027actif ayant un emploi\"\"]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Femme vivant seule]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille].[Homme vivant seul]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Type de menage.TYPMEN_Hierarchie].[Ménages de plusieurs personnes sans famille].[Plusieurs personnes sans famille]})))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",

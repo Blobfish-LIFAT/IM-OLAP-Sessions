@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 0,
+      "original_id": 86919,
+      "mdx": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -46,6 +48,8 @@
     },
     {
       "id": 1,
+      "original_id": 86959,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de construction du logement.LOGT_TYPECONSTR_Hierarchie_1].[Type de construction].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -86,6 +90,8 @@
     },
     {
       "id": 2,
+      "original_id": 87003,
+      "mdx": "select NON EMPTY Crossjoin([Type de construction du logement.LOGT_TYPECONSTR_Hierarchie_1].[Type de construction].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -126,6 +132,8 @@
     },
     {
       "id": 3,
+      "original_id": 87103,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -166,6 +174,8 @@
     },
     {
       "id": 4,
+      "original_id": 87202,
+      "mdx": "select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Energie de chauffage du logement.LOGT_ENERGIECHAUF_Hierarchie_1].[Energie].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -206,6 +216,8 @@
     },
     {
       "id": 5,
+      "original_id": 87243,
+      "mdx": "select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -246,6 +258,8 @@
     },
     {
       "id": 6,
+      "original_id": 90891,
+      "mdx": "select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin([Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members, [Sexe du referent.Sexe_Hierarchie].[Sexe].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -286,6 +300,8 @@
     },
     {
       "id": 7,
+      "original_id": 90972,
+      "mdx": "select NON EMPTY {Hierarchize({[Appartenance du logement a un HLM.LOGT_HLM_Hierarchie_1].[Appartenance a un HLM].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -326,6 +342,8 @@
     },
     {
       "id": 8,
+      "original_id": 91946,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -366,6 +384,8 @@
     },
     {
       "id": 9,
+      "original_id": 91985,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -406,6 +426,8 @@
     },
     {
       "id": 10,
+      "original_id": 92057,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -446,6 +468,8 @@
     },
     {
       "id": 11,
+      "original_id": 92403,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"

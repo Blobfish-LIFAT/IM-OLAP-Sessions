@@ -12,6 +12,15 @@ class DopanQuery {
     @SerializedName("cubeName")
     @Expose
     private String cubeName;
+
+    @SerializedName("mdx")
+    @Expose
+    private String mdx;
+
+    @SerializedName("original_id")
+    @Expose
+    private Integer OriginId;
+
     @SerializedName("measures")
     @Expose
     private List<String> measures = null;
@@ -60,5 +69,21 @@ class DopanQuery {
 
     public void setSelection(List<DopanPredicate> selection) {
         this.selection = selection;
+    }
+
+    public String getMdx() {
+        return mdx;
+    }
+
+    public void setMdx(String mdx) {
+        this.mdx = mdx;
+    }
+
+    public Integer getOriginId() {
+        return OriginId;
+    }
+
+    public void setOriginId(Integer originId) {
+        OriginId = originId;
     }
 }

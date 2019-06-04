@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 12,
+      "original_id": 56151,
+      "mdx": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -39,6 +41,8 @@
     },
     {
       "id": 13,
+      "original_id": 56480,
+      "mdx": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -72,6 +76,8 @@
     },
     {
       "id": 14,
+      "original_id": 56809,
+      "mdx": "select NON EMPTY {Hierarchize({{[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]}, {[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -105,6 +111,8 @@
     },
     {
       "id": 15,
+      "original_id": 57139,
+      "mdx": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[toutes les annees]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -138,6 +146,8 @@
     },
     {
       "id": 16,
+      "original_id": 57464,
+      "mdx": "select NON EMPTY {Hierarchize({[Statut d\u0027occupation du logement.STOCLOGT_Hierarchie].[Statut d\u0027occupation].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -171,6 +181,8 @@
     },
     {
       "id": 17,
+      "original_id": 57795,
+      "mdx": "select NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -204,6 +216,8 @@
     },
     {
       "id": 18,
+      "original_id": 58129,
+      "mdx": "select NON EMPTY Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -237,6 +251,8 @@
     },
     {
       "id": 19,
+      "original_id": 58537,
+      "mdx": "select NON EMPTY Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ROTT]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -275,6 +291,8 @@
     },
     {
       "id": 20,
+      "original_id": 58601,
+      "mdx": "select NON EMPTY Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ROTT], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ALTWILLER], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[AMMERZWILLER], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ANDOLSHEIM], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ARTOLSHEIM], [Commune de residence.CNERES_Hierarchie_intercommunale].[ALSACE].[PAYS INCONNU].[CC INCONNUE].[ASPACH], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE].[RAMOUS], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE].[QUINSAC], [Commune de residence.CNERES_Hierarchie_intercommunale].[AQUITAINE].[PAYS INCONNU].[CC INCONNUE].[REIGNAC]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -345,6 +363,8 @@
     },
     {
       "id": 21,
+      "original_id": 58634,
+      "mdx": "select NON EMPTY Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -378,6 +398,8 @@
     },
     {
       "id": 22,
+      "original_id": 58645,
+      "mdx": "select NON EMPTY Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -411,6 +433,8 @@
     },
     {
       "id": 23,
+      "original_id": 59050,
+      "mdx": "select NON EMPTY Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -444,6 +468,8 @@
     },
     {
       "id": 24,
+      "original_id": 59461,
+      "mdx": "select NON EMPTY Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnérabilité énergétique inconnue].[ABAUCOURT-HAUTECOURT], [Commune de residence.CNERES_Hierarchie_vulnerabilite].[Classe de vulnérabilité énergétique inconnue].[ABBARETZ]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"

@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 542,
+      "original_id": 39490,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -39,6 +41,8 @@
     },
     {
       "id": 543,
+      "original_id": 39511,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -73,6 +77,8 @@
     },
     {
       "id": 544,
+      "original_id": 39534,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -108,6 +114,8 @@
     },
     {
       "id": 545,
+      "original_id": 39558,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -143,6 +151,8 @@
     },
     {
       "id": 546,
+      "original_id": 39584,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Region].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -178,6 +188,8 @@
     },
     {
       "id": 547,
+      "original_id": 39616,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -213,6 +225,8 @@
     },
     {
       "id": 548,
+      "original_id": 39642,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -248,6 +262,8 @@
     },
     {
       "id": 549,
+      "original_id": 39870,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Distance trajet domicile - travail (max)]}), Union(Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Duree trajet domicile - travail (min)]}), Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -283,6 +299,8 @@
     },
     {
       "id": 550,
+      "original_id": 39947,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -318,6 +336,8 @@
     },
     {
       "id": 551,
+      "original_id": 40171,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -353,6 +373,8 @@
     },
     {
       "id": 552,
+      "original_id": 40395,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -388,6 +410,8 @@
     },
     {
       "id": 553,
+      "original_id": 40417,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -423,6 +447,8 @@
     },
     {
       "id": 554,
+      "original_id": 40447,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (min)]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -458,6 +484,8 @@
     },
     {
       "id": 555,
+      "original_id": 40488,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -493,6 +521,8 @@
     },
     {
       "id": 556,
+      "original_id": 40568,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -528,6 +558,8 @@
     },
     {
       "id": 557,
+      "original_id": 40598,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1].Members), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (min)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -563,6 +595,8 @@
     },
     {
       "id": 558,
+      "original_id": 40616,
+      "mdx": "select NON EMPTY Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -598,6 +632,8 @@
     },
     {
       "id": 559,
+      "original_id": 40641,
+      "mdx": "select NON EMPTY Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -633,6 +669,8 @@
     },
     {
       "id": 560,
+      "original_id": 40658,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -668,6 +706,8 @@
     },
     {
       "id": 561,
+      "original_id": 40684,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -703,6 +743,8 @@
     },
     {
       "id": 562,
+      "original_id": 40709,
+      "mdx": "select NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -738,6 +780,8 @@
     },
     {
       "id": 563,
+      "original_id": 40733,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (min)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -773,6 +817,8 @@
     },
     {
       "id": 564,
+      "original_id": 40750,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -808,6 +854,8 @@
     },
     {
       "id": 565,
+      "original_id": 40776,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -843,6 +891,8 @@
     },
     {
       "id": 566,
+      "original_id": 40859,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d\u0027individus]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -879,6 +929,8 @@
     },
     {
       "id": 567,
+      "original_id": 40940,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -914,6 +966,8 @@
     },
     {
       "id": 568,
+      "original_id": 41019,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Duree trajet domicile - travail (min)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (min)]",
@@ -948,6 +1002,8 @@
     },
     {
       "id": 569,
+      "original_id": 41096,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -981,6 +1037,8 @@
     },
     {
       "id": 570,
+      "original_id": 41174,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1014,6 +1072,8 @@
     },
     {
       "id": 571,
+      "original_id": 41250,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1047,6 +1107,8 @@
     },
     {
       "id": 572,
+      "original_id": 41277,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1080,6 +1142,8 @@
     },
     {
       "id": 573,
+      "original_id": 41364,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1118,6 +1182,8 @@
     },
     {
       "id": 574,
+      "original_id": 41402,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1151,6 +1217,8 @@
     },
     {
       "id": 575,
+      "original_id": 41494,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1193,6 +1261,8 @@
     },
     {
       "id": 576,
+      "original_id": 41540,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1235,6 +1305,8 @@
     },
     {
       "id": 577,
+      "original_id": 41942,
+      "mdx": "select NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1277,6 +1349,8 @@
     },
     {
       "id": 578,
+      "original_id": 42011,
+      "mdx": "select NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1310,6 +1384,8 @@
     },
     {
       "id": 579,
+      "original_id": 42119,
+      "mdx": "select NON EMPTY Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1348,6 +1424,8 @@
     },
     {
       "id": 580,
+      "original_id": 42166,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1386,6 +1464,8 @@
     },
     {
       "id": 581,
+      "original_id": 42357,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1424,6 +1504,8 @@
     },
     {
       "id": 582,
+      "original_id": 42492,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1462,6 +1544,8 @@
     },
     {
       "id": 583,
+      "original_id": 42539,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1500,6 +1584,8 @@
     },
     {
       "id": 584,
+      "original_id": 42598,
+      "mdx": "select NON EMPTY {Hierarchize({[Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d\u0027individus]})) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1538,6 +1624,8 @@
     },
     {
       "id": 585,
+      "original_id": 42657,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1576,6 +1664,8 @@
     },
     {
       "id": 586,
+      "original_id": 42716,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d\u0027individus]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1614,6 +1704,8 @@
     },
     {
       "id": 587,
+      "original_id": 42851,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS,\n  NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1652,6 +1744,8 @@
     },
     {
       "id": 588,
+      "original_id": 42986,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS,\n  NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre total d\u0027individus]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1690,6 +1784,8 @@
     },
     {
       "id": 589,
+      "original_id": 43121,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1728,6 +1824,8 @@
     },
     {
       "id": 590,
+      "original_id": 43312,
+      "mdx": "select NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON COLUMNS,\n  NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1766,6 +1864,8 @@
     },
     {
       "id": 591,
+      "original_id": 43371,
+      "mdx": "select NON EMPTY {Hierarchize({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, Crossjoin([Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members, {[Measures].[Nombre total d\u0027individus]})) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1804,6 +1904,8 @@
     },
     {
       "id": 592,
+      "original_id": 43506,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1842,6 +1944,8 @@
     },
     {
       "id": 593,
+      "original_id": 43641,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1880,6 +1984,8 @@
     },
     {
       "id": 594,
+      "original_id": 43776,
+      "mdx": "select NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1918,6 +2024,8 @@
     },
     {
       "id": 595,
+      "original_id": 43911,
+      "mdx": "select NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1956,6 +2064,8 @@
     },
     {
       "id": 596,
+      "original_id": 43970,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1989,6 +2099,8 @@
     },
     {
       "id": 597,
+      "original_id": 44071,
+      "mdx": "select NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2022,6 +2134,8 @@
     },
     {
       "id": 598,
+      "original_id": 44456,
+      "mdx": "select NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2060,6 +2174,8 @@
     },
     {
       "id": 599,
+      "original_id": 44743,
+      "mdx": "select NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2098,6 +2214,8 @@
     },
     {
       "id": 600,
+      "original_id": 45033,
+      "mdx": "select NON EMPTY Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2136,6 +2254,8 @@
     },
     {
       "id": 601,
+      "original_id": 45341,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2178,6 +2298,8 @@
     },
     {
       "id": 602,
+      "original_id": 45679,
+      "mdx": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2220,6 +2342,8 @@
     },
     {
       "id": 603,
+      "original_id": 46022,
+      "mdx": "select NON EMPTY Order(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2258,6 +2382,8 @@
     },
     {
       "id": 604,
+      "original_id": 46338,
+      "mdx": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Professions Intermédiaires]}, Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, {[Measures].[Nombre total d\u0027individus]}))))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2304,6 +2430,8 @@
     },
     {
       "id": 605,
+      "original_id": 46699,
+      "mdx": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Professions Intermédiaires]}, {[Measures].[Nombre total d\u0027individus]})))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS,\n  NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2350,6 +2478,8 @@
     },
     {
       "id": 606,
+      "original_id": 48496,
+      "mdx": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Professions Intermédiaires]}, {[Measures].[Nombre total d\u0027individus]})))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2404,6 +2534,8 @@
     },
     {
       "id": 607,
+      "original_id": 49001,
+      "mdx": "select NON EMPTY Order(Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Professions Intermédiaires]}, Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Professions Intermédiaires]}, Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]})))))))), [Categorie socioprofessionnelle.CSP_Hierarchie_1].CurrentMember.Name, BASC) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2458,6 +2590,8 @@
     },
     {
       "id": 608,
+      "original_id": 49214,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Professions Intermédiaires]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2512,6 +2646,8 @@
     },
     {
       "id": 609,
+      "original_id": 49739,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2566,6 +2702,8 @@
     },
     {
       "id": 610,
+      "original_id": 50055,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2620,6 +2758,8 @@
     },
     {
       "id": 611,
+      "original_id": 50396,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Nombre total d\u0027individus]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de residence.CNERES_Hierarchie_administrative].[Commune de residence].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2678,6 +2818,8 @@
     },
     {
       "id": 612,
+      "original_id": 51795,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Nombre total d\u0027individus]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2736,6 +2878,8 @@
     },
     {
       "id": 613,
+      "original_id": 51837,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Nombre total d\u0027individus]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2794,6 +2938,8 @@
     },
     {
       "id": 614,
+      "original_id": 53655,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}))))))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2853,6 +2999,8 @@
     },
     {
       "id": 615,
+      "original_id": 55464,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Distance trajet domicile - travail (moyenne)]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2911,6 +3059,8 @@
     },
     {
       "id": 616,
+      "original_id": 57260,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2969,6 +3119,8 @@
     },
     {
       "id": 617,
+      "original_id": 59080,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Depense trajet domicile - travail (moyenne)]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Depense trajet domicile - travail (moyenne)]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Depense trajet domicile - travail (moyenne)]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]"
@@ -3027,6 +3179,8 @@
     },
     {
       "id": 618,
+      "original_id": 60783,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Depense trajet domicile - travail (moyenne)]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Depense trajet domicile - travail (moyenne)]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Depense trajet domicile - travail (moyenne)]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]"
@@ -3085,6 +3239,8 @@
     },
     {
       "id": 619,
+      "original_id": 62494,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin([Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]"
@@ -3143,6 +3299,8 @@
     },
     {
       "id": 620,
+      "original_id": 64192,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -3201,6 +3359,8 @@
     },
     {
       "id": 621,
+      "original_id": 66012,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Depense trajet domicile - travail (min)]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Depense trajet domicile - travail (min)]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Depense trajet domicile - travail (min)]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (min)]"
@@ -3259,6 +3419,8 @@
     },
     {
       "id": 622,
+      "original_id": 67710,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -3317,6 +3479,8 @@
     },
     {
       "id": 623,
+      "original_id": 69530,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Duree trajet domicile - travail (moyenne)]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Duree trajet domicile - travail (moyenne)]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Duree trajet domicile - travail (moyenne)]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -3375,6 +3539,8 @@
     },
     {
       "id": 624,
+      "original_id": 71233,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members)), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Commune d\u0027occupation].Members))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -3433,6 +3599,8 @@
     },
     {
       "id": 625,
+      "original_id": 72932,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Duree trajet domicile - travail (moyenne)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Duree trajet domicile - travail (moyenne)]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Measures].[Duree trajet domicile - travail (moyenne)]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -3491,6 +3659,8 @@
     },
     {
       "id": 626,
+      "original_id": 72964,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -3549,6 +3719,8 @@
     },
     {
       "id": 627,
+      "original_id": 72996,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -3607,6 +3779,8 @@
     },
     {
       "id": 628,
+      "original_id": 73023,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -3665,6 +3839,8 @@
     },
     {
       "id": 629,
+      "original_id": 73072,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre de voitures des menages (moyenne)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre de voitures des menages (moyenne)]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Measures].[Nombre de voitures des menages (moyenne)]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de voitures des menages (moyenne)]"
@@ -3723,6 +3899,8 @@
     },
     {
       "id": 630,
+      "original_id": 73106,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre de voitures des menages (moyenne)]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre de voitures des menages (moyenne)]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Nombre de voitures des menages (moyenne)]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de voitures des menages (moyenne)]"
@@ -3781,6 +3959,8 @@
     },
     {
       "id": 631,
+      "original_id": 73140,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}), Union(Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin({[Measures].[Nombre de voitures des menages (moyenne)]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de voitures des menages (moyenne)]"
@@ -3839,6 +4019,8 @@
     },
     {
       "id": 632,
+      "original_id": 73174,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre de voitures des menages (moyenne)]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre de voitures des menages (moyenne)]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Measures].[Nombre de voitures des menages (moyenne)]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de voitures des menages (moyenne)]"
@@ -3897,6 +4079,8 @@
     },
     {
       "id": 633,
+      "original_id": 73228,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]})))))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre de voitures des menages (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de voitures des menages (moyenne)]"
@@ -3955,6 +4139,8 @@
     },
     {
       "id": 634,
+      "original_id": 73294,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]})))))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre de voitures des menages (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de voitures des menages (moyenne)]"
@@ -4013,6 +4199,8 @@
     },
     {
       "id": 635,
+      "original_id": 73332,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre de voitures des menages (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de voitures des menages (moyenne)]"
@@ -4059,6 +4247,8 @@
     },
     {
       "id": 636,
+      "original_id": 73354,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4106,6 +4296,8 @@
     },
     {
       "id": 637,
+      "original_id": 73378,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (max)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -4154,6 +4346,8 @@
     },
     {
       "id": 638,
+      "original_id": 73404,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (max)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -4203,6 +4397,8 @@
     },
     {
       "id": 639,
+      "original_id": 73432,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (max)], [Measures].[Depense trajet domicile - travail (max)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -4253,6 +4449,8 @@
     },
     {
       "id": 640,
+      "original_id": 73458,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (max)], [Measures].[Duree trajet domicile - travail (max)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -4302,6 +4500,8 @@
     },
     {
       "id": 641,
+      "original_id": 73482,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (max)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -4350,6 +4550,8 @@
     },
     {
       "id": 642,
+      "original_id": 73504,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4397,6 +4599,8 @@
     },
     {
       "id": 643,
+      "original_id": 73528,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4445,6 +4649,8 @@
     },
     {
       "id": 644,
+      "original_id": 73554,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Nombre de voitures des menages (max)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4494,6 +4700,8 @@
     },
     {
       "id": 645,
+      "original_id": 73578,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4542,6 +4750,8 @@
     },
     {
       "id": 646,
+      "original_id": 73604,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4591,6 +4801,8 @@
     },
     {
       "id": 647,
+      "original_id": 73632,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre de voitures des menages (max)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4641,6 +4853,8 @@
     },
     {
       "id": 648,
+      "original_id": 73662,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de voitures des menages (moyenne)], [Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre de voitures des menages (max)], [Measures].[Nombre de voitures des menages (min)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4692,6 +4906,8 @@
     },
     {
       "id": 649,
+      "original_id": 73690,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre de voitures des menages (max)], [Measures].[Nombre de voitures des menages (min)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4742,6 +4958,8 @@
     },
     {
       "id": 650,
+      "original_id": 73716,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre de voitures des menages (min)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4791,6 +5009,8 @@
     },
     {
       "id": 651,
+      "original_id": 73744,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre de voitures des menages (min)], [Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -4841,6 +5061,8 @@
     },
     {
       "id": 652,
+      "original_id": 73770,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Depense trajet domicile - travail (moyenne)], [Measures].[Consommation carborant trajet domicile - travail (moyenne)], [Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -4890,6 +5112,8 @@
     },
     {
       "id": 653,
+      "original_id": 73805,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Depense trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members), Union(Crossjoin({[Measures].[Consommation carborant trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members), Crossjoin({[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes scolarisees de plus de 14 ans (moyenne)]",
@@ -4939,6 +5163,8 @@
     },
     {
       "id": 654,
+      "original_id": 73839,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Depense trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members), Union(Crossjoin({[Measures].[Consommation carborant trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -4987,6 +5213,8 @@
     },
     {
       "id": 655,
+      "original_id": 73861,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Depense trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members), Crossjoin({[Measures].[Consommation carborant trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]",
@@ -5034,6 +5262,8 @@
     },
     {
       "id": 656,
+      "original_id": 73879,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Measures].[Depense trajet domicile - travail (moyenne)]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Depense trajet domicile - travail (moyenne)]"
@@ -5080,6 +5310,8 @@
     },
     {
       "id": 657,
+      "original_id": 73895,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5126,6 +5358,8 @@
     },
     {
       "id": 658,
+      "original_id": 73928,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, {[Measures].[Nombre total d\u0027individus]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5172,6 +5406,8 @@
     },
     {
       "id": 659,
+      "original_id": 73949,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5218,6 +5454,8 @@
     },
     {
       "id": 660,
+      "original_id": 73970,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5264,6 +5502,8 @@
     },
     {
       "id": 661,
+      "original_id": 73987,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5310,6 +5550,8 @@
     },
     {
       "id": 662,
+      "original_id": 74008,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}), Union(Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5356,6 +5598,8 @@
     },
     {
       "id": 663,
+      "original_id": 74040,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motifs obligatoires].[Travail].[Travail]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}), Union(Crossjoin({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motifs obligatoires].[Travail].[Travail]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motifs obligatoires].[Travail].[Travail]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5406,6 +5650,8 @@
     },
     {
       "id": 664,
+      "original_id": 74056,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motifs obligatoires].[Travail].[Travail]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5456,6 +5702,8 @@
     },
     {
       "id": 665,
+      "original_id": 74098,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5502,6 +5750,8 @@
     },
     {
       "id": 666,
+      "original_id": 74131,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, {[Measures].[Distance trajet domicile - travail (max)]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -5548,6 +5798,8 @@
     },
     {
       "id": 667,
+      "original_id": 74148,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, {[Measures].[Distance trajet domicile - travail (max)]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -5594,6 +5846,8 @@
     },
     {
       "id": 668,
+      "original_id": 74169,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}), Union(Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Crossjoin([Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -5640,6 +5894,8 @@
     },
     {
       "id": 669,
+      "original_id": 74182,
+      "mdx": "select NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motif de deplacement].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -5673,6 +5929,8 @@
     },
     {
       "id": 670,
+      "original_id": 74196,
+      "mdx": "select NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 2].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -5706,6 +5964,8 @@
     },
     {
       "id": 671,
+      "original_id": 74218,
+      "mdx": "select NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 2].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -5739,6 +5999,8 @@
     },
     {
       "id": 672,
+      "original_id": 74232,
+      "mdx": "select NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 2].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5772,6 +6034,8 @@
     },
     {
       "id": 673,
+      "original_id": 74253,
+      "mdx": "select NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Motifs obligatoires].[Travail]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5810,6 +6074,8 @@
     },
     {
       "id": 674,
+      "original_id": 74269,
+      "mdx": "select NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5843,6 +6109,8 @@
     },
     {
       "id": 675,
+      "original_id": 74291,
+      "mdx": "select NON EMPTY {Hierarchize({[Motif de deplacement.MOTIFDEP_Hierarchie_1].[Categorie 1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5876,6 +6144,8 @@
     },
     {
       "id": 676,
+      "original_id": 74307,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5909,6 +6179,8 @@
     },
     {
       "id": 677,
+      "original_id": 74326,
+      "mdx": "select NON EMPTY Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5942,6 +6214,8 @@
     },
     {
       "id": 678,
+      "original_id": 74366,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, {[Measures].[Nombre total d\u0027individus]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -5975,6 +6249,8 @@
     },
     {
       "id": 679,
+      "original_id": 74411,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d\u0027individus]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6021,6 +6297,8 @@
     },
     {
       "id": 680,
+      "original_id": 74436,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6067,6 +6345,8 @@
     },
     {
       "id": 681,
+      "original_id": 74461,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6113,6 +6393,8 @@
     },
     {
       "id": 682,
+      "original_id": 74490,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}), Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6159,6 +6441,8 @@
     },
     {
       "id": 683,
+      "original_id": 74519,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d\u0027individus]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6205,6 +6489,8 @@
     },
     {
       "id": 684,
+      "original_id": 74544,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6251,6 +6537,8 @@
     },
     {
       "id": 685,
+      "original_id": 74569,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6297,6 +6585,8 @@
     },
     {
       "id": 686,
+      "original_id": 74598,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}), Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6343,6 +6633,8 @@
     },
     {
       "id": 687,
+      "original_id": 74627,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}), Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6389,6 +6681,8 @@
     },
     {
       "id": 688,
+      "original_id": 74656,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}), Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6435,6 +6729,8 @@
     },
     {
       "id": 689,
+      "original_id": 74685,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d\u0027individus]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6481,6 +6777,8 @@
     },
     {
       "id": 690,
+      "original_id": 74722,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members)), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members)), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6527,6 +6825,8 @@
     },
     {
       "id": 691,
+      "original_id": 74786,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members)), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members)), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Mode de transport.MODTRANS_Hierarchie].[Mode de transport].Members))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6573,6 +6873,8 @@
     },
     {
       "id": 692,
+      "original_id": 74899,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}))))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6631,6 +6933,8 @@
     },
     {
       "id": 693,
+      "original_id": 74955,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members)))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d\u0027individus]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6689,6 +6993,8 @@
     },
     {
       "id": 694,
+      "original_id": 75006,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members)), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members)), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6747,6 +7053,8 @@
     },
     {
       "id": 695,
+      "original_id": 75057,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members)), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members)), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6805,6 +7113,8 @@
     },
     {
       "id": 696,
+      "original_id": 75108,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Measures].[Nombre total d\u0027individus]})), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Measures].[Nombre total d\u0027individus]}))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6863,6 +7173,8 @@
     },
     {
       "id": 697,
+      "original_id": 75159,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}, {[Measures].[Nombre total d\u0027individus]}), Union(Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}, {[Measures].[Nombre total d\u0027individus]}), Crossjoin({[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}, {[Measures].[Nombre total d\u0027individus]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}), Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6921,6 +7233,8 @@
     },
     {
       "id": 698,
+      "original_id": 75210,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]}), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]}), Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}), Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}), Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]})))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -6979,6 +7293,8 @@
     },
     {
       "id": 699,
+      "original_id": 75261,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]})), Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})), Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -7037,6 +7353,8 @@
     },
     {
       "id": 700,
+      "original_id": 75312,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]})), Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})), Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -7095,6 +7413,8 @@
     },
     {
       "id": 701,
+      "original_id": 75363,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Measures].[Nombre total d\u0027individus]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Measures].[Nombre total d\u0027individus]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -7153,6 +7473,8 @@
     },
     {
       "id": 702,
+      "original_id": 75414,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Measures].[Nombre total d\u0027individus]})), Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Measures].[Nombre total d\u0027individus]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -7211,6 +7533,8 @@
     },
     {
       "id": 703,
+      "original_id": 75465,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]}, {[Measures].[Nombre total d\u0027individus]})), Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]}, {[Measures].[Nombre total d\u0027individus]})), Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}, {[Measures].[Nombre total d\u0027individus]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -7269,6 +7593,8 @@
     },
     {
       "id": 704,
+      "original_id": 75516,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]})), Union(Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})), Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -7327,6 +7653,8 @@
     },
     {
       "id": 705,
+      "original_id": 75567,
+      "mdx": "select NON EMPTY {Hierarchize({{[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues], [Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun], [Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise]})), Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -7385,6 +7713,8 @@
     },
     {
       "id": 706,
+      "original_id": 75618,
+      "mdx": "select NON EMPTY {Hierarchize({{[Categorie socioprofessionnelle.CSP_Hierarchie_1].[Agriculteurs exploitants], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Artisans, commerçants et chefs d\u0027entreprise], [Categorie socioprofessionnelle.CSP_Hierarchie_1].[Cadres et professions intellectuelles supérieures]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Deux roues]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Mode de transport.MODTRANS_Hierarchie].[Transports en commun].[Transports en commun]})), Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Mode de transport.MODTRANS_Hierarchie].[Modes personnels].[Voiture, camion, fourgonnette]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"

@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 834,
+      "original_id": 7347,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -39,6 +41,8 @@
     },
     {
       "id": 835,
+      "original_id": 7454,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -72,6 +76,8 @@
     },
     {
       "id": 836,
+      "original_id": 7514,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Duree trajet domicile - travail (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -105,6 +111,8 @@
     },
     {
       "id": 837,
+      "original_id": 7774,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -138,6 +146,8 @@
     },
     {
       "id": 838,
+      "original_id": 7825,
+      "mdx": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -171,6 +181,8 @@
     },
     {
       "id": 839,
+      "original_id": 7843,
+      "mdx": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 9 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -204,6 +216,8 @@
     },
     {
       "id": 840,
+      "original_id": 7896,
+      "mdx": "select NON EMPTY {Hierarchize({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -237,6 +251,8 @@
     },
     {
       "id": 841,
+      "original_id": 8095,
+      "mdx": "select NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -270,6 +286,8 @@
     },
     {
       "id": 842,
+      "original_id": 8132,
+      "mdx": "select NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -303,6 +321,8 @@
     },
     {
       "id": 843,
+      "original_id": 8172,
+      "mdx": "select NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -336,6 +356,8 @@
     },
     {
       "id": 844,
+      "original_id": 8224,
+      "mdx": "select NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -369,6 +391,8 @@
     },
     {
       "id": 845,
+      "original_id": 8317,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -402,6 +426,8 @@
     },
     {
       "id": 846,
+      "original_id": 8484,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -435,6 +461,8 @@
     },
     {
       "id": 847,
+      "original_id": 8565,
+      "mdx": "select NON EMPTY {Hierarchize({[Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -468,6 +496,8 @@
     },
     {
       "id": 848,
+      "original_id": 8732,
+      "mdx": "select NON EMPTY Crossjoin([Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members, {[Measures].[Nombre de personnes des menages (moyenne)]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -501,6 +531,8 @@
     },
     {
       "id": 849,
+      "original_id": 8840,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"
@@ -534,6 +566,8 @@
     },
     {
       "id": 850,
+      "original_id": 8900,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (moyenne)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre de personnes des menages (moyenne)]"

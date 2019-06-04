@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 232,
+      "original_id": 19720,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[tous les sexes confondus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -39,6 +41,8 @@
     },
     {
       "id": 233,
+      "original_id": 19741,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}, {[Sexe.Sexe_Hierarchie].[Sexe].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -72,6 +76,8 @@
     },
     {
       "id": 234,
+      "original_id": 19768,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}, {[Sexe.Sexe_Hierarchie].[Sexe].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -105,6 +111,8 @@
     },
     {
       "id": 235,
+      "original_id": 19783,
+      "mdx": "select NON EMPTY Crossjoin([Mode de transport.MODTRANS_Hierarchie].[Categorie].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -138,6 +146,8 @@
     },
     {
       "id": 236,
+      "original_id": 19796,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -171,6 +181,8 @@
     },
     {
       "id": 237,
+      "original_id": 19814,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -204,6 +216,8 @@
     },
     {
       "id": 238,
+      "original_id": 19842,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -237,6 +251,8 @@
     },
     {
       "id": 239,
+      "original_id": 23201,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -270,6 +286,8 @@
     },
     {
       "id": 240,
+      "original_id": 23229,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -303,6 +321,8 @@
     },
     {
       "id": 241,
+      "original_id": 23453,
+      "mdx": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -336,6 +356,8 @@
     },
     {
       "id": 242,
+      "original_id": 23677,
+      "mdx": "select Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS,\n  {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -369,6 +391,8 @@
     },
     {
       "id": 243,
+      "original_id": 25953,
+      "mdx": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -402,6 +426,8 @@
     },
     {
       "id": 244,
+      "original_id": 26177,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -435,6 +461,8 @@
     },
     {
       "id": 245,
+      "original_id": 26412,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"

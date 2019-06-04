@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 1421,
+      "original_id": 128576,
+      "mdx": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -46,6 +48,8 @@
     },
     {
       "id": 1422,
+      "original_id": 128631,
+      "mdx": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Hommes], [Sexe du referent.Sexe_Hierarchie].[Femmes]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -95,6 +99,8 @@
     },
     {
       "id": 1423,
+      "original_id": 128673,
+      "mdx": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe du referent.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -135,6 +141,8 @@
     },
     {
       "id": 1424,
+      "original_id": 128727,
+      "mdx": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Femmes], [Sexe du referent.Sexe_Hierarchie].[Hommes]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -184,6 +192,8 @@
     },
     {
       "id": 1425,
+      "original_id": 128781,
+      "mdx": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Femmes], [Sexe du referent.Sexe_Hierarchie].[Hommes]}})} ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -237,6 +247,8 @@
     },
     {
       "id": 1426,
+      "original_id": 128830,
+      "mdx": "select NON EMPTY {Hierarchize({[Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -290,6 +302,8 @@
     },
     {
       "id": 1427,
+      "original_id": 128917,
+      "mdx": "select NON EMPTY Crossjoin([Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Niveau d\u0027instruction].Members, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Femmes], [Sexe du referent.Sexe_Hierarchie].[Hommes]}})} ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -343,6 +357,8 @@
     },
     {
       "id": 1428,
+      "original_id": 129114,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Sexe du referent.Sexe_Hierarchie].[Femmes], [Sexe du referent.Sexe_Hierarchie].[Hommes]}})} ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -400,6 +416,8 @@
     },
     {
       "id": 1429,
+      "original_id": 129168,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -457,6 +475,8 @@
     },
     {
       "id": 1430,
+      "original_id": 129238,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[tous les statuts confondus]})), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[tous les statuts confondus]})))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -514,6 +534,8 @@
     },
     {
       "id": 1431,
+      "original_id": 129302,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[tous les statuts confondus]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members)) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -571,6 +593,8 @@
     },
     {
       "id": 1432,
+      "original_id": 129362,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -628,6 +652,8 @@
     },
     {
       "id": 1433,
+      "original_id": 129424,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, [Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -685,6 +711,8 @@
     },
     {
       "id": 1434,
+      "original_id": 129509,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]})))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -746,6 +774,8 @@
     },
     {
       "id": 1435,
+      "original_id": 129593,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, Filter({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}, (Exists({Ancestor([Statut d\u0027emploi du referent.STATEMPL_Hierarchie].CurrentMember, [Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1])}, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}).Count \u003e 0)))), Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, Filter({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}, (Exists({Ancestor([Statut d\u0027emploi du referent.STATEMPL_Hierarchie].CurrentMember, [Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1])}, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}).Count \u003e 0)))))))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -807,6 +837,8 @@
     },
     {
       "id": 1436,
+      "original_id": 129664,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin([Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]})))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -868,6 +900,8 @@
     },
     {
       "id": 1437,
+      "original_id": 129734,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]})), Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, Filter({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}, (Exists({Ancestor([Statut d\u0027emploi du referent.STATEMPL_Hierarchie].CurrentMember, [Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1])}, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}).Count \u003e 0)))))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -929,6 +963,8 @@
     },
     {
       "id": 1438,
+      "original_id": 129806,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin([Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members, {[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]})) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -990,6 +1026,8 @@
     },
     {
       "id": 1439,
+      "original_id": 129864,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, Crossjoin({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, Crossjoin({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members)))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"
@@ -1051,6 +1089,8 @@
     },
     {
       "id": 1440,
+      "original_id": 129920,
+      "mdx": "select NON EMPTY Crossjoin({[Niveau d\u0027instruction du referent.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé].[Pas de scolarité]}, Crossjoin({[Statut d\u0027emploi du referent.STATEMPL_Hierarchie].[Salariés]}, [Age du referent.REF_AGE_Hierarchie_1].[Age regroupe].Members)) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Femmes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members), Crossjoin({[Sexe du referent.Sexe_Hierarchie].[Hommes]}, [Categorie du logement.LOGT_CATEGORIE_Hierarchie_1].[Categorie].Members))) ON ROWS\nfrom [Cube4Chauffage]\nwhere {[Annee d\u0027emmenagement.MENAGE_ANNEE_EMM_Hierarchie_1].[Emménagement après 1999].[Année  2007]}",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre total de menages]"

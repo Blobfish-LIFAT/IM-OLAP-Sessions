@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 1499,
+      "original_id": 177084,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]})), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -48,6 +50,8 @@
     },
     {
       "id": 1500,
+      "original_id": 177187,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]})), Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]})), Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]})), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]})))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -90,6 +94,8 @@
     },
     {
       "id": 1501,
+      "original_id": 177354,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members)) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}), Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}), Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -132,6 +138,8 @@
     },
     {
       "id": 1502,
+      "original_id": 177445,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members))), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -174,6 +182,8 @@
     },
     {
       "id": 1503,
+      "original_id": 177522,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]})), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -216,6 +226,8 @@
     },
     {
       "id": 1504,
+      "original_id": 177613,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]})), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -258,6 +270,8 @@
     },
     {
       "id": 1505,
+      "original_id": 177698,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -291,6 +305,8 @@
     },
     {
       "id": 1506,
+      "original_id": 177771,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -324,6 +340,8 @@
     },
     {
       "id": 1507,
+      "original_id": 177820,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -357,6 +375,8 @@
     },
     {
       "id": 1508,
+      "original_id": 177872,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Sexe.Sexe_Hierarchie].[Femmes]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -395,6 +415,8 @@
     },
     {
       "id": 1509,
+      "original_id": 177917,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Sexe.Sexe_Hierarchie].[Femmes]})) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -433,6 +455,8 @@
     },
     {
       "id": 1510,
+      "original_id": 177968,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Sexe.Sexe_Hierarchie].[Femmes]})) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -471,6 +495,8 @@
     },
     {
       "id": 1511,
+      "original_id": 178135,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Sexe.Sexe_Hierarchie].[Femmes]})), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Sexe.Sexe_Hierarchie].[Hommes]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Type de menage.TYPMEN_Hierarchie].[Type regroupe en 4 categories].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -513,6 +539,8 @@
     },
     {
       "id": 1512,
+      "original_id": 178318,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Sexe.Sexe_Hierarchie].[Femmes]})), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, {[Sexe.Sexe_Hierarchie].[Hommes]})))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}), Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}), Union(Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}), Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, {[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -563,6 +591,8 @@
     },
     {
       "id": 1513,
+      "original_id": 178425,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, {[Sexe.Sexe_Hierarchie].[Femmes]}))), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, {[Sexe.Sexe_Hierarchie].[Hommes]}))), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, {[Sexe.Sexe_Hierarchie].[Femmes]}))), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin([Temps d\u0027emploi.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, {[Sexe.Sexe_Hierarchie].[Hommes]}))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -613,6 +643,8 @@
     },
     {
       "id": 1514,
+      "original_id": 178512,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, {[Sexe.Sexe_Hierarchie].[Femmes]})), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, {[Sexe.Sexe_Hierarchie].[Hommes]})), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, {[Sexe.Sexe_Hierarchie].[Femmes]})), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, {[Sexe.Sexe_Hierarchie].[Hommes]})))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -663,6 +695,8 @@
     },
     {
       "id": 1515,
+      "original_id": 178604,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, {[Sexe.Sexe_Hierarchie].[Femmes]})), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, {[Sexe.Sexe_Hierarchie].[Hommes]})), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, {[Sexe.Sexe_Hierarchie].[Femmes]})), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, {[Sexe.Sexe_Hierarchie].[Hommes]})), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille]}, {[Sexe.Sexe_Hierarchie].[Femmes]})), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille]}, {[Sexe.Sexe_Hierarchie].[Hommes]})))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -717,6 +751,8 @@
     },
     {
       "id": 1516,
+      "original_id": 178672,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, {[Sexe.Sexe_Hierarchie].[Femmes]})), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, {[Sexe.Sexe_Hierarchie].[Femmes]})), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille]}, {[Sexe.Sexe_Hierarchie].[Femmes]}))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -767,6 +803,8 @@
     },
     {
       "id": 1517,
+      "original_id": 178739,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, Crossjoin({[Sexe.Sexe_Hierarchie].[Femmes]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members))), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, Crossjoin({[Sexe.Sexe_Hierarchie].[Femmes]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members))), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille]}, Crossjoin({[Sexe.Sexe_Hierarchie].[Femmes]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members)))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"
@@ -817,6 +855,8 @@
     },
     {
       "id": 1518,
+      "original_id": 178850,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale monoparentale]}, {[Sexe.Sexe_Hierarchie].[Femmes]})), Union(Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages avec famille principale composée d\u0027un couple]}, {[Sexe.Sexe_Hierarchie].[Femmes]})), Crossjoin({[Measures].[Duree trajet domicile - travail (moyenne)]}, Crossjoin({[Type de menage.TYPMEN_Hierarchie].[Ménages d\u0027une personne seule sans famille]}, {[Sexe.Sexe_Hierarchie].[Femmes]}))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Duree trajet domicile - travail (moyenne)]"

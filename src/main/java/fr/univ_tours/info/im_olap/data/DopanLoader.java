@@ -11,9 +11,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DopanLoader {
@@ -32,6 +30,7 @@ public class DopanLoader {
                 qnew.addAll(q.getGroupBySet().stream().map(QueryPart::newDimension).collect(Collectors.toSet()));
                 qnew.addAll(q.getMeasures().stream().map(QueryPart::newMeasure).collect(Collectors.toSet()));
                 qnew.addAll(q.getSelection().stream().map(s -> QueryPart.newFilter(s.getValue(),s.getLevel())).collect(Collectors.toSet()));
+                qnew.getProperties().put("id", q.getOriginId());
                 out.queries.add(qnew);
             }
             return out;
@@ -50,5 +49,27 @@ public class DopanLoader {
             e.printStackTrace();
             return new ArrayList<>();
         }
+    }
+
+    public static Map<Integer, String> loadMDX(String directory){
+        Map<Integer, String> queries = new TreeMap<>();
+        try {
+            Files.walk(Paths.get(directory)).filter(p -> p.toFile().isFile()).forEach(p -> {
+                String src = null;
+                try {
+                    src = new String(Files.readAllBytes(p));
+                    DopanSession in = gson.fromJson(src, DopanSession.class);
+                    for (DopanQuery dq : in.getQueries()){
+                        queries.put(dq.getOriginId(), dq.getMdx());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return queries;
     }
 }

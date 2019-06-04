@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 1038,
+      "original_id": 26671,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -39,6 +41,8 @@
     },
     {
       "id": 1039,
+      "original_id": 26688,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Distance trajet domicile - travail (min)]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -73,6 +77,8 @@
     },
     {
       "id": 1040,
+      "original_id": 26710,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (min)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -107,6 +113,8 @@
     },
     {
       "id": 1041,
+      "original_id": 26766,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (min)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -141,6 +149,8 @@
     },
     {
       "id": 1042,
+      "original_id": 26819,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -174,6 +184,8 @@
     },
     {
       "id": 1043,
+      "original_id": 26865,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -212,6 +224,8 @@
     },
     {
       "id": 1044,
+      "original_id": 26896,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[Commune de residence].Members}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -250,6 +264,8 @@
     },
     {
       "id": 1045,
+      "original_id": 27150,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAILLES]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAMPIGNY-EN-BEAUCE]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[LANCOME]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[MESLAND]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[RILLY-SUR-LOIRE]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[SAINT-CYR-DU-GAULT]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[SAINT-ETIENNE-DES-GUERETS]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))), Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[VALAIRE]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0)))))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -320,6 +336,8 @@
     },
     {
       "id": 1046,
+      "original_id": 27220,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (max)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Filter({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAILLES], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAMPIGNY-EN-BEAUCE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[LANCOME], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[MESLAND], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[RILLY-SUR-LOIRE], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[SAINT-CYR-DU-GAULT], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[SAINT-ETIENNE-DES-GUERETS], [Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[VALAIRE]}}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -391,6 +409,8 @@
     },
     {
       "id": 1047,
+      "original_id": 27281,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (max)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Filter({{[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAILLES]}}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0))})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -434,6 +454,8 @@
     },
     {
       "id": 1048,
+      "original_id": 27323,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (max)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Commune de travail.CNELOCC_Hierarchie_administrative].[Departement].Members), Crossjoin(Filter({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS].[CHAILLES]}, (Exists({Ancestor([Commune de residence.CNERES_Hierarchie_intercommunale].CurrentMember, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes])}, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}).Count \u003e 0)), [Commune de travail.CNELOCC_Hierarchie_administrative].[Departement].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -477,6 +499,8 @@
     },
     {
       "id": 1049,
+      "original_id": 27426,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre total d\u0027individus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -510,6 +534,8 @@
     },
     {
       "id": 1050,
+      "original_id": 27442,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -543,6 +569,8 @@
     },
     {
       "id": 1051,
+      "original_id": 27459,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -577,6 +605,8 @@
     },
     {
       "id": 1052,
+      "original_id": 27475,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -611,6 +641,8 @@
     },
     {
       "id": 1053,
+      "original_id": 27495,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Commune de residence.CNERES_Hierarchie_intercommunale].[Communaute de communes].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -645,6 +677,8 @@
     },
     {
       "id": 1054,
+      "original_id": 27592,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -684,6 +718,8 @@
     },
     {
       "id": 1055,
+      "original_id": 27620,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members), Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members))) ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -723,6 +759,8 @@
     },
     {
       "id": 1056,
+      "original_id": 27638,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin([Age revolu quinquenal.AgeRevQ_Hierarchie_1].[Age revolu quinquenal].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -762,6 +800,8 @@
     },
     {
       "id": 1057,
+      "original_id": 27656,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -801,6 +841,8 @@
     },
     {
       "id": 1058,
+      "original_id": 27682,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, Crossjoin({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -840,6 +882,8 @@
     },
     {
       "id": 1059,
+      "original_id": 27711,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -879,6 +923,8 @@
     },
     {
       "id": 1060,
+      "original_id": 27733,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de residence.CNERES_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -918,6 +964,8 @@
     },
     {
       "id": 1061,
+      "original_id": 27756,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[tous les statuts confondus]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -952,6 +1000,8 @@
     },
     {
       "id": 1062,
+      "original_id": 27774,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -986,6 +1036,8 @@
     },
     {
       "id": 1063,
+      "original_id": 27802,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1020,6 +1072,8 @@
     },
     {
       "id": 1064,
+      "original_id": 27822,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1054,6 +1108,8 @@
     },
     {
       "id": 1065,
+      "original_id": 27856,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1088,6 +1144,8 @@
     },
     {
       "id": 1066,
+      "original_id": 27889,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1122,6 +1180,8 @@
     },
     {
       "id": 1067,
+      "original_id": 27964,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1156,6 +1216,8 @@
     },
     {
       "id": 1068,
+      "original_id": 28038,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1190,6 +1252,8 @@
     },
     {
       "id": 1069,
+      "original_id": 28088,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members), Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, [Commune de travail.CNELOCC_Hierarchie_intercommunale].[Communaute de communes].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1224,6 +1288,8 @@
     },
     {
       "id": 1070,
+      "original_id": 29042,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1263,6 +1329,8 @@
     },
     {
       "id": 1071,
+      "original_id": 29101,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1302,6 +1370,8 @@
     },
     {
       "id": 1072,
+      "original_id": 29160,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin([Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1341,6 +1411,8 @@
     },
     {
       "id": 1073,
+      "original_id": 29229,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin(Filter({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 3].Members}, (Exists({Ancestor([Statut d\u0027emploi.STATEMPL_Hierarchie].CurrentMember, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 2])}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation]}).Count \u003e 0)), {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}), Crossjoin({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation]}, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1384,6 +1456,8 @@
     },
     {
       "id": 1074,
+      "original_id": 29258,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Statut d\u0027emploi.STATEMPL_Hierarchie].[Salariés].[Salariés en formation]}, {[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1427,6 +1501,8 @@
     },
     {
       "id": 1075,
+      "original_id": 29278,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1466,6 +1542,8 @@
     },
     {
       "id": 1076,
+      "original_id": 29297,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Niveau de motorisation du menage.Niveau_motorisation_Hierarchie].[Niveau de motorisation].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1505,6 +1583,8 @@
     },
     {
       "id": 1077,
+      "original_id": 29326,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1544,6 +1624,8 @@
     },
     {
       "id": 1078,
+      "original_id": 29345,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1583,6 +1665,8 @@
     },
     {
       "id": 1079,
+      "original_id": 29379,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1622,6 +1706,8 @@
     },
     {
       "id": 1080,
+      "original_id": 29445,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Nombre total d\u0027individus]}})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1661,6 +1747,8 @@
     },
     {
       "id": 1081,
+      "original_id": 29505,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1700,6 +1788,8 @@
     },
     {
       "id": 1082,
+      "original_id": 29542,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -1738,6 +1828,8 @@
     },
     {
       "id": 1083,
+      "original_id": 29584,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Categorie socioprofessionnelle.CSP_Hierarchie_1].[CSP1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -1776,6 +1868,8 @@
     },
     {
       "id": 1084,
+      "original_id": 29618,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -1814,6 +1908,8 @@
     },
     {
       "id": 1085,
+      "original_id": 29641,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -1852,6 +1948,8 @@
     },
     {
       "id": 1086,
+      "original_id": 29673,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -1890,6 +1988,8 @@
     },
     {
       "id": 1087,
+      "original_id": 29732,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -1928,6 +2028,8 @@
     },
     {
       "id": 1088,
+      "original_id": 29834,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -1967,6 +2069,8 @@
     },
     {
       "id": 1089,
+      "original_id": 29934,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2005,6 +2109,8 @@
     },
     {
       "id": 1090,
+      "original_id": 30031,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2043,6 +2149,8 @@
     },
     {
       "id": 1091,
+      "original_id": 30114,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2081,6 +2189,8 @@
     },
     {
       "id": 1092,
+      "original_id": 30221,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 2].Members}, (Exists({Ancestor([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count \u003e 0)), [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2123,6 +2233,8 @@
     },
     {
       "id": 1093,
+      "original_id": 30286,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, (Exists({Ancestor([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count \u003e 0)), [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -2169,6 +2281,8 @@
     },
     {
       "id": 1094,
+      "original_id": 30342,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, (Exists({Ancestor([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count \u003e 0)), [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2216,6 +2330,8 @@
     },
     {
       "id": 1095,
+      "original_id": 30400,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, (Exists({Ancestor([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count \u003e 0)), [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2263,6 +2379,8 @@
     },
     {
       "id": 1096,
+      "original_id": 30458,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)), Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin(Filter({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, (Exists({Ancestor([Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].CurrentMember, [Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Categorie 1])}, {[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme]}).Count \u003e 0)), [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2310,6 +2428,8 @@
     },
     {
       "id": 1097,
+      "original_id": 30505,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, Crossjoin({[Niveau d\u0027instruction.Niveau_Instruction_Hierarchie].[Sans diplôme].[Non Scolarisé]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members)) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2353,6 +2473,8 @@
     },
     {
       "id": 1098,
+      "original_id": 30543,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2392,6 +2514,8 @@
     },
     {
       "id": 1099,
+      "original_id": 30580,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre de voitures des menages (moyenne)]})))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2432,6 +2556,8 @@
     },
     {
       "id": 1100,
+      "original_id": 30615,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre de voitures des menages (moyenne)]}))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2471,6 +2597,8 @@
     },
     {
       "id": 1101,
+      "original_id": 30644,
+      "mdx": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2509,6 +2637,8 @@
     },
     {
       "id": 1102,
+      "original_id": 30665,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Depense trajet domicile - travail (moyenne)]}))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2548,6 +2678,8 @@
     },
     {
       "id": 1103,
+      "original_id": 30694,
+      "mdx": "select NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2586,6 +2718,8 @@
     },
     {
       "id": 1104,
+      "original_id": 30715,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2625,6 +2759,8 @@
     },
     {
       "id": 1105,
+      "original_id": 30755,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, [Statut d\u0027emploi.STATEMPL_Hierarchie].[Statut d\u0027emploi de niveau 1].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2664,6 +2800,8 @@
     },
     {
       "id": 1106,
+      "original_id": 30798,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Nombre total d\u0027individus]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}))) ON COLUMNS,\n  NON EMPTY Crossjoin({[Commune de travail.CNELOCC_Hierarchie_intercommunale].[CENTRE].[Pays des Châteaux].[AGGLOPOLYS]}, {[Statut d\u0027emploi.STATEMPL_Hierarchie].[Non salariés]}) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",

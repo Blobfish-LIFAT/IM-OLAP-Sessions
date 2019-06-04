@@ -1,8 +1,6 @@
 package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.collection.Pair;
-import com.google.common.collect.Sets;
-import com.google.common.collect.Streams;
 import com.google.common.graph.*;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.graph.Graphs;
@@ -12,20 +10,19 @@ import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import mondrian.olap.Connection;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.eigen.Eigen;
 import org.nd4j.linalg.factory.Nd4j;
 
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static fr.univ_tours.info.im_olap.Proto3CubeLoad.loadCubeloadXML;
 
@@ -64,10 +61,11 @@ public class Proto1 {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException{
+
         System.out.println("Loading sessions...");
-        List<Session> sessions = loadCubeloadSessions();
-        //List<Session> sessions = loadDopanSessions();
+        //List<Session> sessions = loadCubeloadSessions();
+        List<Session> sessions = loadDopanSessions();
 
         System.out.println("Creating SessionEvaluator evaluator...");
 
@@ -82,6 +80,12 @@ public class Proto1 {
                 SessionEvaluator.QPInterestingness(SessionEvaluator::descriptionLength);
 
         System.out.println("Started processing sessions...");
+
+        // Log all MDX and SQL
+        // -Dlog4j.debug
+        // -Dlog4j.configuration=file:///home/alex/IdeaProjects/IM-OLAP-Sessions/data/log4j.properties
+        //dumpLog(sessions);
+
         for (int session_index = 0; session_index < sessions.size(); session_index++) {
             Session session = sessions.get(session_index);
 
@@ -150,6 +154,7 @@ public class Proto1 {
             }
 
             //runAdajacencyTest(base);
+
             /**
              * Ben's stuff
              */
@@ -238,6 +243,25 @@ public class Proto1 {
         }
 
 
+    }
+
+    private static void dumpLog(List<Session> sessions) {
+        Map<Integer, String> mdxmap = DopanLoader.loadMDX("data/logs/dopan_converted");
+        //LogManager.getRootLogger().setLevel(Level.DEBUG);
+        for (Session session : sessions) {
+            for (Query q : session.queries) {
+                LogManager.getLogger(mondrian.rolap.RolapResultShepherd.class).debug("[MARKER][" + q.getProperties().get("id") + "]");
+                try {
+                    mondrian.olap.Query olapQuery = olap.parseQuery(mdxmap.get(q.getProperties().get("id")));
+                    olap.execute(olapQuery);
+                } catch (Exception e){
+                    LogManager.getLogger(mondrian.rolap.RolapResultShepherd.class).debug("[MARKER][ERROR]");
+                }
+                LogManager.getLogger(mondrian.rolap.RolapResultShepherd.class).debug("[MARKER][END]");
+            }
+        }
+        //LogManager.getRootLogger().setLevel(Level.OFF);
+        System.exit(0);
     }
 
     private static <V> void runAdajacencyTest(ValueGraph<V, Double> graph) {

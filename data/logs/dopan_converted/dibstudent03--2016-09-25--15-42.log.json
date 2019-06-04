@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 1441,
+      "original_id": 59951,
+      "mdx": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -39,6 +41,8 @@
     },
     {
       "id": 1442,
+      "original_id": 59972,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -72,6 +76,8 @@
     },
     {
       "id": 1443,
+      "original_id": 59994,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -105,6 +111,8 @@
     },
     {
       "id": 1444,
+      "original_id": 60016,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, {[Sexe.Sexe_Hierarchie].[tous les sexes confondus]}) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -138,6 +146,8 @@
     },
     {
       "id": 1445,
+      "original_id": 60033,
+      "mdx": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -171,6 +181,8 @@
     },
     {
       "id": 1446,
+      "original_id": 60050,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -204,6 +216,8 @@
     },
     {
       "id": 1447,
+      "original_id": 60070,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -237,6 +251,8 @@
     },
     {
       "id": 1448,
+      "original_id": 60089,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -270,6 +286,8 @@
     },
     {
       "id": 1449,
+      "original_id": 60109,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -303,6 +321,8 @@
     },
     {
       "id": 1450,
+      "original_id": 60128,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Distance trajet domicile - travail (max)]})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]"
@@ -336,6 +356,8 @@
     },
     {
       "id": 1451,
+      "original_id": 60151,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (max)], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -370,6 +392,8 @@
     },
     {
       "id": 1452,
+      "original_id": 60179,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -404,6 +428,8 @@
     },
     {
       "id": 1453,
+      "original_id": 60223,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (max)]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (max)]",
@@ -438,6 +464,8 @@
     },
     {
       "id": 1454,
+      "original_id": 60256,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Distance trajet domicile - travail (moyenne)]"
@@ -471,6 +499,8 @@
     },
     {
       "id": 1455,
+      "original_id": 60289,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Distance trajet domicile - travail (moyenne)]}), Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, {[Measures].[Nombre total d\u0027individus]}))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -505,6 +535,8 @@
     },
     {
       "id": 1456,
+      "original_id": 60326,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d\u0027individus]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -539,6 +571,8 @@
     },
     {
       "id": 1457,
+      "original_id": 60386,
+      "mdx": "select NON EMPTY Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -573,6 +607,8 @@
     },
     {
       "id": 1458,
+      "original_id": 60430,
+      "mdx": "select NON EMPTY {Hierarchize({[Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -607,6 +643,8 @@
     },
     {
       "id": 1459,
+      "original_id": 60495,
+      "mdx": "select NON EMPTY Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -641,6 +679,8 @@
     },
     {
       "id": 1460,
+      "original_id": 60537,
+      "mdx": "select NON EMPTY Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -675,6 +715,8 @@
     },
     {
       "id": 1461,
+      "original_id": 60577,
+      "mdx": "select NON EMPTY Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members)) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d\u0027individus]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -709,6 +751,8 @@
     },
     {
       "id": 1462,
+      "original_id": 60637,
+      "mdx": "select NON EMPTY Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members), Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -743,6 +787,8 @@
     },
     {
       "id": 1463,
+      "original_id": 60685,
+      "mdx": "select NON EMPTY Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, Crossjoin([Annee du recensement.Annee_rencesement_Hierarchie_1].[Annee].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d\u0027individus]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -777,6 +823,8 @@
     },
     {
       "id": 1464,
+      "original_id": 60743,
+      "mdx": "select NON EMPTY Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Distance trajet domicile - travail (moyenne)], [Measures].[Nombre total d\u0027individus]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -811,6 +859,8 @@
     },
     {
       "id": 1465,
+      "original_id": 60787,
+      "mdx": "select NON EMPTY {Hierarchize({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -845,6 +895,8 @@
     },
     {
       "id": 1466,
+      "original_id": 60818,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members), Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -879,6 +931,8 @@
     },
     {
       "id": 1467,
+      "original_id": 60848,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -912,6 +966,8 @@
     },
     {
       "id": 1468,
+      "original_id": 60866,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -946,6 +1002,8 @@
     },
     {
       "id": 1469,
+      "original_id": 60899,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -980,6 +1038,8 @@
     },
     {
       "id": 1470,
+      "original_id": 60928,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Nombre total d\u0027individus], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1014,6 +1074,8 @@
     },
     {
       "id": 1471,
+      "original_id": 60972,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1048,6 +1110,8 @@
     },
     {
       "id": 1472,
+      "original_id": 61003,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Nombre total d\u0027individus], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1082,6 +1146,8 @@
     },
     {
       "id": 1473,
+      "original_id": 61047,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1116,6 +1182,8 @@
     },
     {
       "id": 1474,
+      "original_id": 61075,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -1149,6 +1217,8 @@
     },
     {
       "id": 1475,
+      "original_id": 61093,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[Indicateur de lieu].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1183,6 +1253,8 @@
     },
     {
       "id": 1476,
+      "original_id": 61144,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1234,6 +1306,8 @@
     },
     {
       "id": 1477,
+      "original_id": 61188,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members), Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members), Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members), Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1285,6 +1359,8 @@
     },
     {
       "id": 1478,
+      "original_id": 61265,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin([Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin([Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members, [Sexe.Sexe_Hierarchie].[Sexe].Members)))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1336,6 +1412,8 @@
     },
     {
       "id": 1479,
+      "original_id": 61345,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Crossjoin([Sexe.Sexe_Hierarchie].[Sexe].Members, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1387,6 +1465,8 @@
     },
     {
       "id": 1480,
+      "original_id": 61433,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)))))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1438,6 +1518,8 @@
     },
     {
       "id": 1481,
+      "original_id": 61585,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, [Nature l\u0027activite economique.NATACTECO_Hierarchie].[Nature de l\u0027activite].Members)))))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1489,6 +1571,8 @@
     },
     {
       "id": 1482,
+      "original_id": 61936,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]})), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]})))))))))))))))))))))))))))))))))))))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1560,6 +1644,8 @@
     },
     {
       "id": 1483,
+      "original_id": 62091,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]})))))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1615,6 +1701,8 @@
     },
     {
       "id": 1484,
+      "original_id": 62145,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1670,6 +1758,8 @@
     },
     {
       "id": 1485,
+      "original_id": 62203,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Nombre total d\u0027individus], [Measures].[Distance trajet domicile - travail (moyenne)]}})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1725,6 +1815,8 @@
     },
     {
       "id": 1486,
+      "original_id": 62263,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}), Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}), Union(Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}), Crossjoin({[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}, {[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1780,6 +1872,8 @@
     },
     {
       "id": 1487,
+      "original_id": 62307,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1835,6 +1929,8 @@
     },
     {
       "id": 1488,
+      "original_id": 62359,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1890,6 +1986,8 @@
     },
     {
       "id": 1489,
+      "original_id": 62414,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -1945,6 +2043,8 @@
     },
     {
       "id": 1490,
+      "original_id": 62521,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)))))))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Hors de la région de résidence actuelle : en métropole]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2016,6 +2116,8 @@
     },
     {
       "id": 1491,
+      "original_id": 62656,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Union(Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, [Sexe.Sexe_Hierarchie].[Sexe].Members)))))))))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence], [Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}})} ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2083,6 +2185,8 @@
     },
     {
       "id": 1492,
+      "original_id": 62787,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]})))))))))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2150,6 +2254,8 @@
     },
     {
       "id": 1493,
+      "original_id": 62903,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Nombre total d\u0027individus]}, [Sexe.Sexe_Hierarchie].[Sexe].Members), Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members))) ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]})))))))))))))))), [Measures].[Nombre total d\u0027individus], BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2217,6 +2323,8 @@
     },
     {
       "id": 1494,
+      "original_id": 63016,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]})))))))))))))))), [Measures].[Nombre total d\u0027individus], BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2284,6 +2392,8 @@
     },
     {
       "id": 1495,
+      "original_id": 63134,
+      "mdx": "select NON EMPTY Crossjoin({[Measures].[Distance trajet domicile - travail (moyenne)]}, [Sexe.Sexe_Hierarchie].[Sexe].Members) ON COLUMNS,\n  NON EMPTY Order(Hierarchize(Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]})))))))))))))))), [Measures].[Nombre total d\u0027individus], BASC) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]",
@@ -2351,6 +2461,8 @@
     },
     {
       "id": 1496,
+      "original_id": 63241,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]})))))))))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2417,6 +2529,8 @@
     },
     {
       "id": 1497,
+      "original_id": 63361,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]})))))))))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"
@@ -2483,6 +2597,8 @@
     },
     {
       "id": 1498,
+      "original_id": 63481,
+      "mdx": "select NON EMPTY {Hierarchize({[Sexe.Sexe_Hierarchie].[Sexe].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Commerce, transports et services divers]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Administration publique, enseignement, santé humaine et action sociale]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Agriculture, sylviculture et pêche]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Construction]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans la commune de résidence actuelle]}), Union(Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans un autre département de la région de résidence]}), Crossjoin({[Nature l\u0027activite economique.NATACTECO_Hierarchie].[Industrie manufacturière, industries extractives  et autres]}, {[Indicateur de lieu de travail.ILOCC_Hierarchie_1].[En métropole].[Dans une autre commune du département de résidence]})))))))))))))))) ON ROWS\nfrom [Cube1MobProInd]",
       "cubeName": "Cube1MobProInd",
       "measures": [
         "[Measures].[Nombre total d\u0027individus]"

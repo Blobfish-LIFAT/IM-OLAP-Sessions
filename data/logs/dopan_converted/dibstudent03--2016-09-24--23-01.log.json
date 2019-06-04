@@ -6,6 +6,8 @@
   "queries": [
     {
       "id": 196,
+      "original_id": 53073,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type d\u0027activite du referent.REF_TYPACT_Hierarchie_1].[Type d\u0027actvite].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -48,6 +50,8 @@
     },
     {
       "id": 197,
+      "original_id": 53087,
+      "mdx": "select NON EMPTY {Hierarchize({[Type d\u0027activite du referent.REF_TYPACT_Hierarchie_1].[Type d\u0027actvite].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -90,6 +94,8 @@
     },
     {
       "id": 198,
+      "original_id": 53109,
+      "mdx": "select NON EMPTY {Hierarchize({[Type d\u0027activite du referent.REF_TYPACT_Hierarchie_1].[Type d\u0027actvite].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -132,6 +138,8 @@
     },
     {
       "id": 199,
+      "original_id": 53127,
+      "mdx": "select NON EMPTY {Hierarchize({[Temps d\u0027emploi du referent.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -174,6 +182,8 @@
     },
     {
       "id": 200,
+      "original_id": 53152,
+      "mdx": "select NON EMPTY Crossjoin([Temps d\u0027emploi du referent.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -216,6 +226,8 @@
     },
     {
       "id": 201,
+      "original_id": 53313,
+      "mdx": "select NON EMPTY Crossjoin([Temps d\u0027emploi du referent.TEMPSEMP_Hierarchie].[Temps d\u0027emploi].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -258,6 +270,8 @@
     },
     {
       "id": 202,
+      "original_id": 53473,
+      "mdx": "select NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -300,6 +314,8 @@
     },
     {
       "id": 203,
+      "original_id": 53517,
+      "mdx": "select NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -342,6 +358,8 @@
     },
     {
       "id": 204,
+      "original_id": 53577,
+      "mdx": "select NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON COLUMNS,\n  NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -384,6 +402,8 @@
     },
     {
       "id": 205,
+      "original_id": 53623,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -426,6 +446,8 @@
     },
     {
       "id": 206,
+      "original_id": 53711,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -468,6 +490,8 @@
     },
     {
       "id": 207,
+      "original_id": 53798,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -509,6 +533,8 @@
     },
     {
       "id": 208,
+      "original_id": 53887,
+      "mdx": "select NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -551,6 +577,8 @@
     },
     {
       "id": 209,
+      "original_id": 53979,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members)))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -593,6 +621,8 @@
     },
     {
       "id": 210,
+      "original_id": 54057,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -635,6 +665,8 @@
     },
     {
       "id": 211,
+      "original_id": 54149,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -677,6 +709,8 @@
     },
     {
       "id": 212,
+      "original_id": 54195,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -719,6 +753,8 @@
     },
     {
       "id": 213,
+      "original_id": 54287,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members)))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -761,6 +797,8 @@
     },
     {
       "id": 214,
+      "original_id": 54342,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (max)]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (total)]}))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -804,6 +842,8 @@
     },
     {
       "id": 215,
+      "original_id": 54398,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (max)]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (total)]}))))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -847,6 +887,8 @@
     },
     {
       "id": 216,
+      "original_id": 54451,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Crossjoin([Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members, {[Measures].[Consomattion chauffage annuelle (max)]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -889,6 +931,8 @@
     },
     {
       "id": 217,
+      "original_id": 54497,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -931,6 +975,8 @@
     },
     {
       "id": 218,
+      "original_id": 54589,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin({[Measures].[Surface du logement (moyenne)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members), Union(Crossjoin({[Measures].[Consomattion chauffage annuelle (min)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members), Crossjoin({[Measures].[Consomattion chauffage annuelle (max)]}, [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members)))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -973,6 +1019,8 @@
     },
     {
       "id": 219,
+      "original_id": 54667,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -1015,6 +1063,8 @@
     },
     {
       "id": 220,
+      "original_id": 54759,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Consomattion chauffage annuelle (max)]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -1057,6 +1107,8 @@
     },
     {
       "id": 221,
+      "original_id": 54841,
+      "mdx": "select NON EMPTY Hierarchize(Union(Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Surface du logement (moyenne)]}), Union(Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Consomattion chauffage annuelle (min)]}), Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, {[Measures].[Consomattion chauffage annuelle (max)]})))) ON COLUMNS,\n  NON EMPTY {Hierarchize({[Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -1099,6 +1151,8 @@
     },
     {
       "id": 222,
+      "original_id": 54919,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)], [Measures].[Consomattion chauffage annuelle (max)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -1141,6 +1195,8 @@
     },
     {
       "id": 223,
+      "original_id": 55006,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Surface du logement (moyenne)], [Measures].[Consomattion chauffage annuelle (min)]}})} ON COLUMNS,\n  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Consomattion chauffage annuelle (min)]",
@@ -1182,6 +1238,8 @@
     },
     {
       "id": 224,
+      "original_id": 55091,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Surface du logement (moyenne)]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Surface du logement (moyenne)]"
@@ -1222,6 +1280,8 @@
     },
     {
       "id": 225,
+      "original_id": 55177,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre de personnes des menages (total)]"
@@ -1262,6 +1322,8 @@
     },
     {
       "id": 226,
+      "original_id": 55323,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON COLUMNS,\n  NON EMPTY Crossjoin([Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members, [Type de logement.TYPLOGT_Hierarchie].[Type de logement].Members) ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre de personnes des menages (total)]"
@@ -1302,6 +1364,8 @@
     },
     {
       "id": 227,
+      "original_id": 55461,
+      "mdx": "select NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre de personnes des menages (total)]"
@@ -1342,6 +1406,8 @@
     },
     {
       "id": 228,
+      "original_id": 55493,
+      "mdx": "select NON EMPTY {Hierarchize({[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[Nombre de pieces].Members})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre de personnes des menages (total)]"
@@ -1382,6 +1448,8 @@
     },
     {
       "id": 229,
+      "original_id": 55581,
+      "mdx": "select NON EMPTY {Hierarchize({{[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[1 pièce], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[2 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[3 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[4 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[5 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[6 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[7 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[8 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[9 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[10 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[11 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[12 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[13 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[14 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[15 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[16 pièces]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({[Measures].[Nombre de personnes des menages (total)]})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Nombre de personnes des menages (total)]"
@@ -1487,6 +1555,8 @@
     },
     {
       "id": 230,
+      "original_id": 55642,
+      "mdx": "select NON EMPTY {Hierarchize({{[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[1 pièce], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[2 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[3 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[4 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[5 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[6 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[7 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[8 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[9 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[10 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[11 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[12 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[13 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[14 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[15 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[16 pièces]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Measures].[Nombre de personnes des menages (total)], [Measures].[Depense chauffage annuelle par unite de consommation (total)]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Depense chauffage annuelle par unite de consommation (total)]",
@@ -1593,6 +1663,8 @@
     },
     {
       "id": 231,
+      "original_id": 55702,
+      "mdx": "select NON EMPTY {Hierarchize({{[Measures].[Nombre de personnes des menages (total)], [Measures].[Depense chauffage annuelle par unite de consommation (total)]}})} ON COLUMNS,\n  NON EMPTY {Hierarchize({{[Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[1 pièce], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[2 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[3 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[4 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[5 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[6 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[7 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[8 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[9 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[10 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[11 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[12 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[13 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[14 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[15 pièces], [Nombre de pieces du logement.LOGT_NBPIECE_Hierarchie_1].[16 pièces]}})} ON ROWS\nfrom [Cube4Chauffage]",
       "cubeName": "Cube4Chauffage",
       "measures": [
         "[Measures].[Depense chauffage annuelle par unite de consommation (total)]",
