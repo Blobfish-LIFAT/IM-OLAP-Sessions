@@ -55,7 +55,7 @@ public class DopanLoader {
         Map<Integer, String> queries = new TreeMap<>();
         try {
             Files.walk(Paths.get(directory)).filter(p -> p.toFile().isFile()).forEach(p -> {
-                String src = null;
+                String src;
                 try {
                     src = new String(Files.readAllBytes(p));
                     DopanSession in = gson.fromJson(src, DopanSession.class);
