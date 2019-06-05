@@ -108,7 +108,10 @@ public class SQLExctractor {
         if (map.get(MDX) == null)
             map.put(MDX, statements);
         else {
-            map.get(MDX).addAll(statements);
+            //This means we have probably encountered the same query
+            // We shouldn't "double up" the SQL statements used
+            if (!map.get(MDX).equals(statements))
+                map.get(MDX).addAll(statements);
         }
     }
 }

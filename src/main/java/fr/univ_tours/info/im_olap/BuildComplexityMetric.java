@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BuildComplexityMetric {
 
@@ -34,12 +35,17 @@ public class BuildComplexityMetric {
 
         Map<String, List<String>> mdxMap = gson.fromJson(new String(Files.readAllBytes(Paths.get(mdxMapFile))), Map.class);
 
-        //Map<Integer, List<String>> ops = extractOps(mdxAncIDs, con, mdxMap);
-        //com.google.common.io.Files.write(gson.toJson(ops).getBytes(), new File(outFile));
-        Map<String, List<String>> ops = gson.fromJson(new String(Files.readAllBytes(Paths.get(outFile))), Map.class);
+        Map<Integer, List<String>> ops = extractOps(mdxAncIDs, con, mdxMap);
+        com.google.common.io.Files.write(gson.toJson(ops).getBytes(), new File(outFile));
+        //Map<String, List<String>> ops = gson.fromJson(new String(Files.readAllBytes(Paths.get(outFile))), HashMap.class);
+
+        System.out.println("querry_id,total_operators,distinct_operators,ascii_len");
 
         ops.forEach((id, values) -> {
-            System.out.printf("%s,%s,%s%n", id, values.size(), new HashSet<>(values).size());
+            Integer idI = id;
+            //Integer idI = Integer.parseInt(id);
+            int n1 = new HashSet<>(values).size();
+            System.out.printf("%s,%s,%s,%s%n", idI.toString(), values.size(), n1, mdxAncIDs.get(idI).length());
         });
 
     }
