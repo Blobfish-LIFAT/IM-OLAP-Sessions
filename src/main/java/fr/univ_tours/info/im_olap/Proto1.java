@@ -85,7 +85,7 @@ public class Proto1 {
         // -Dlog4j.debug
         // -Dlog4j.configuration=file:///home/alex/IdeaProjects/IM-OLAP-Sessions/data/log4j.properties
         // -Dmondrian.rolap.star.disableCaching=true
-        dumpLog(sessions);
+        //dumpLog(sessions);
 
         for (int session_index = 0; session_index < sessions.size(); session_index++) {
             Session session = sessions.get(session_index);

@@ -19,7 +19,7 @@ public class FiltersGraph {
             if (dimension.isMeasures())
                 continue;
 
-            System.out.println("Dimension: " + dimension);
+            //System.out.println("Dimension: " + dimension);
             for (Hierarchy hierarchy : dimension.getHierarchies()){
                 List<Member> topLevel = util.fetchMembers(hierarchy.getLevels()[0]);
 
@@ -70,7 +70,7 @@ public class FiltersGraph {
             if (dimension.isMeasures())
                 continue;
 
-            System.out.println("Dimension: " + dimension);
+            //System.out.println("Dimension: " + dimension);
             for (Hierarchy hierarchy : dimension.getHierarchies()){
                 List<Member> topLevel = util.fetchMembers(hierarchy.getLevels()[0]);
 
