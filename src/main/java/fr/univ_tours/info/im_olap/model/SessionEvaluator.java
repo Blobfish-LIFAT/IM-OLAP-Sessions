@@ -156,6 +156,38 @@ public class SessionEvaluator<NodeT, EdgeT, EvalT> {
         for (int i = 0; i < partList.size(); i++) {
             for (int j = i; j < partList.size(); j++) {
                 graph.putEdgeValue(partList.get(i), partList.get(j), 1.0);
+                graph.putEdgeValue(partList.get(j), partList.get(i), 1.0);
+            }
+        }
+
+
+        return graph;
+    }
+
+    public static MutableValueGraph<QueryPart, Double> forwardConnections(MutableValueGraph<QueryPart, Double> baseGraph, Session session, int actualQueryIndex) {
+
+        List<Query> queries = session.queries.subList(0, actualQueryIndex+1);
+
+        MutableValueGraph<QueryPart, Double> graph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
+
+        for (int i = 0; i < queries.size(); i++) {
+            QueryPart[] parts = queries.get(i).flat();
+            for (int j = 0; j < parts.length; j++) {
+                for (int k = j; k < parts.length; k++) {
+                    graph.putEdgeValue(parts[j], parts[k], 1.0);
+                    graph.putEdgeValue(parts[k], parts[j], 1.0);
+                }
+            }
+
+            if (i < queries.size() - 1) {
+                for (int j = i + 1; j < queries.size(); j++) {
+                    QueryPart[] partsAfter = queries.get(j).flat();
+                    for (int k = 0; k < parts.length; k++) {
+                        for (int l = 0; l < partsAfter.length; l++) {
+                            graph.putEdgeValue(parts[k], partsAfter[l], 1d);
+                        }
+                    }
+                }
             }
         }
 
