@@ -1,6 +1,10 @@
 package fr.univ_tours.info.im_olap.model;
 
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.nio.ByteBuffer;
 import java.util.*;
 
 public class QueryPart implements Comparable<QueryPart>{
@@ -10,7 +14,33 @@ public class QueryPart implements Comparable<QueryPart>{
     private static TreeMap<Integer, List<QueryPart>> filter_qps = new TreeMap<>();
 
     public enum Type {
-        DIMENSION, FILTER, MEASURE
+        DIMENSION(0), FILTER(1), MEASURE(2);
+        private int value;
+        private static Map map = new HashMap<>();
+
+        private Type(int value) {
+            this.value = value;
+        }
+
+        static {
+            for (Type pageType : Type.values()) {
+                map.put(pageType.value, pageType);
+            }
+        }
+
+        public static Type valueOf(int pageType) {
+            return (Type) map.get(pageType);
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public byte[] getBytes(){
+            ByteBuffer b = ByteBuffer.allocate(4);
+            b.putInt(value);
+            return b.array();
+        }
     }
 
     private static final HashMap<Type, String> display = new HashMap<>();
@@ -23,7 +53,11 @@ public class QueryPart implements Comparable<QueryPart>{
 
 
     /* Instance variables */
+    @Expose
+    @SerializedName("type")
     Type t;
+    @Expose
+    @SerializedName("value")
     String value;
 
 
@@ -34,6 +68,10 @@ public class QueryPart implements Comparable<QueryPart>{
 
     public static QueryPart newMeasure(String value) {
         return getQueryPart(value, Type.MEASURE, measure_qps);
+    }
+
+    public static QueryPart newFilter(String value) {
+        return getQueryPart(value, Type.FILTER, filter_qps);
     }
 
     public static QueryPart newFilter(String value, String level) {
@@ -92,6 +130,10 @@ public class QueryPart implements Comparable<QueryPart>{
     public boolean isMeasure() { return t == Type.MEASURE;}
 
     public boolean isDimension() {return t == Type.DIMENSION;}
+
+    public Type getType() {
+        return t;
+    }
 
     public String getValue() {
         return value;

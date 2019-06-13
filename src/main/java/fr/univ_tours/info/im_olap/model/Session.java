@@ -1,11 +1,8 @@
 package fr.univ_tours.info.im_olap.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
-public class Session {
+public class Session implements Iterable<Query>{
     public List<Query> queries;
     String type;
     String filename; //this is needed to keep consistent ordering of sessions accross systems
@@ -59,5 +56,10 @@ public class Session {
             parts.addAll(Arrays.asList(q.flat()));
         }
         return parts;
+    }
+
+    @Override
+    public Iterator<Query> iterator() {
+        return queries.iterator();
     }
 }

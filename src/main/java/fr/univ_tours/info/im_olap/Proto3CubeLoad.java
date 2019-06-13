@@ -5,6 +5,10 @@ import com.alexsxode.utilities.Nd4jUtils;
 import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import fr.univ_tours.info.im_olap.compute.PageRank;
 import fr.univ_tours.info.im_olap.data.cubeloadBeans.*;
 
@@ -17,6 +21,7 @@ import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import mondrian.olap.Connection;
 import mondrian.olap.Dimension;
 import mondrian.olap.SchemaReader;
+import org.apache.commons.lang3.ArrayUtils;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
@@ -26,6 +31,8 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -56,10 +63,28 @@ public class Proto3CubeLoad {
 
         PrintWriter out = new PrintWriter(new FileOutputStream("data/result_dolap.csv"));
         //out.printf("user_profile,eval_profile,alpha,hellinger%n");
+        /*
+        HashSet<QueryPart> logParts = new HashSet<>();
+        for (String p : cubeloadProfiles){
+            for (Session session : profiles.get(p)){
+                for (Query q : session){
+                    logParts.addAll(q.getAllParts());
+                }
+            }
+        }
+        List<String> hashes = new ArrayList<>(logParts.size());
+        HashFunction hf = Hashing.md5();
+        for (QueryPart qp : logParts){
+            //hashes.add(qp.toString());
+            hashes.add(hf.hashBytes(ArrayUtils.addAll(qp.getType().getBytes(), qp.getValue().getBytes())).toString());
+        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Files.write(Paths.get("data/cubeload_parts_hash.json"), gson.toJson(hashes).getBytes());
+         */
 
-        double[] alphas = new double[]{0.9, 0.99, 0.999, 0.9999};
+        double[] alphas = new double[]{0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9};
         for (double alpha : alphas) {
-            System.out.printf(" --- Running test for alpha=%s ---%n", alpha);
+            //System.out.printf(" --- Running test for alpha=%s ---%n", alpha);
             for (String userProfile : cubeloadProfiles) {
                 //for (String evalProfile : cubeloadProfiles) {
                 String evalProfile = userProfile;
@@ -89,6 +114,7 @@ public class Proto3CubeLoad {
                         base = SessionEvaluator
                                 .<QueryPart>linearInterpolation(alpha, true)
                                 .interpolate(base, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), userGraph);
+                        //System.out.println("Graph size is " + base.nodes().size());
 
                         Pair<INDArray, HashMap<QueryPart, Integer>> withProfile = PageRank.pagerank(base, 50);
 
@@ -98,7 +124,8 @@ public class Proto3CubeLoad {
                         INDArray profileDist = aligned(original_ref, withProfile);
                         INDArray refDist = aligned(original_ref, ref);
 
-                        //double hellinger = Nd4jUtils.hellinger(profileDist, userDist);
+                        double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
+                        System.out.printf("%s;%s;%s%n", pprint.get(userProfile), alpha, hellinger);
 
                         out.printf("%s;%s;%s%n", pprint.get(userProfile), alpha, printIND(profileDist));
                         out.printf("%s;%s;%s%n", "Page Rank", alpha, printIND(refDist));
@@ -190,7 +217,8 @@ public class Proto3CubeLoad {
                         Dimension mdDim = reader.getCubeDimensions(cube.getCube()).stream()
                                 .filter(dimension -> Arrays.stream(dimension.getHierarchies()).anyMatch(h -> h.toString().equals(tmp)))
                                 .findFirst().get();
-                        parts.add(QueryPart.newFilter("[" + mdDim.getName() + "].[" + hName + "].[" + levelName + "]", predicate));
+                        //parts.add(QueryPart.newFilter("[" + mdDim.getName() + "].[" + hName + "].[" + levelName + "]", predicate));
+                        parts.add(QueryPart.newFilter(predicate));
                     }
 
                     //Load Measures
