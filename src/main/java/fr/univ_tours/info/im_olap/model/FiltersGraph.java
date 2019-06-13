@@ -6,6 +6,7 @@ import mondrian.olap.Dimension;
 import mondrian.olap.Hierarchy;
 import mondrian.olap.Member;
 import mondrian.olap.SchemaReader;
+import mondrian.rolap.RolapCubeHierarchy;
 
 import java.util.List;
 
@@ -88,7 +89,11 @@ public class FiltersGraph {
         List<Member> children = schemaReader.getMemberChildren(m);
 
         QueryPart us = QueryPart.newFilter(m.getName(), m.getLevel().toString());
-        QueryPart dim = QueryPart.newDimension(m.getLevel().toString());
+        RolapCubeHierarchy var = (RolapCubeHierarchy) m.getHierarchy();
+        String tmp = "" + m.getHierarchy().getDimension() +
+                ".[" + var.getSubName() +
+                "].[" + m.getLevel().getName() + "]";
+        QueryPart dim = QueryPart.newDimension(tmp);
         in.addNode(us);
         in.addNode(dim);
         in.putEdgeValue(us, dim, 1.0);

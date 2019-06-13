@@ -1,20 +1,11 @@
 package fr.univ_tours.info.im_olap;
 
-import com.google.common.graph.EndpointPair;
-import com.google.common.graph.GraphBuilder;
-import com.google.common.graph.MutableGraph;
+import com.google.common.collect.ImmutableList;
+import com.google.common.graph.*;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
-import fr.univ_tours.info.im_olap.model.QueryPart;
-import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
-import mondrian.olap.Axis;
-import mondrian.olap.Connection;
-import mondrian.olap.Query;
-import mondrian.olap.Result;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+
+import java.util.*;
 
 public class Dev {
     public static void main(String[] args) {
