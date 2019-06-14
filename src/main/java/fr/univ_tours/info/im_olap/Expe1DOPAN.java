@@ -73,7 +73,7 @@ public class Expe1DOPAN {
                     //System.out.println("Graph size is " + base.nodes().size());
 
                     Pair<INDArray, HashMap<QueryPart, Integer>> withProfile = PageRank.pagerank(base, 50);
-
+/*
                     if (original_ref == null) {
                         original_ref = ref;
                         out.printf("userProfile;alpha;");
@@ -82,13 +82,13 @@ public class Expe1DOPAN {
 
                     INDArray profileDist = aligned(original_ref, withProfile);
                     INDArray refDist = aligned(original_ref, ref);
+*/
+                    //double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
+                    //double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
+                    //System.out.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
 
-                    double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
-                    double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
-                    System.out.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
-
-                    out.printf("%s;%s;%s%n", userProfile, alpha, printIND(profileDist));
-                    out.printf("%s;%s;%s%n", "Page Rank", alpha, printIND(refDist));
+                    out.printf("%s;%s;%s%n", userProfile, alpha, printIND(withProfile.left));
+                    out.printf("%s;%s;%s%n", "Page Rank", alpha, printIND(ref.left));
 
                     out.flush();
                 }
