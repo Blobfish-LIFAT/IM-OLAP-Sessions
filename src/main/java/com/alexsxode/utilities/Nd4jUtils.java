@@ -91,6 +91,11 @@ public final class Nd4jUtils {
         return sum;*/
     }
 
+    public static double JensenShannon(INDArray p, INDArray q){
+        INDArray m = p.mul(0.5).add(q.mul(0.5));
+        return 0.5 * kullbackLeibler(p, m) + 0.5 * kullbackLeibler(q, m);
+    }
+
     public static double KullbackLeiblerDivergence(double[] x, double[] y) {
         boolean intersection = false;
         double kl = 0.0;

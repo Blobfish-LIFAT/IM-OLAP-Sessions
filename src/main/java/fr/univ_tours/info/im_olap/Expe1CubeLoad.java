@@ -36,7 +36,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Proto3CubeLoad {
+public class Expe1CubeLoad {
     private static String dataDir = "data/logs/ssb_converted/";
     private static String[] cubeloadProfiles = new String[]{"explorative", "goal_oriented", "slice_all", "slice_and_drill"};
     private static Map<String ,String> pprint = new HashMap<>();
@@ -128,7 +128,8 @@ public class Proto3CubeLoad {
                         INDArray refDist = aligned(original_ref, ref);
 
                         double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
-                        System.out.printf("%s;%s;%s%n", pprint.get(userProfile), alpha, hellinger);
+                        double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
+                        System.out.printf("%s;%s;%s;%s%n", pprint.get(userProfile), alpha, hellinger, jensen);
 
                         out.printf("%s;%s;%s%n", pprint.get(userProfile), alpha, printIND(profileDist));
                         out.printf("%s;%s;%s%n", "Page Rank", alpha, printIND(refDist));

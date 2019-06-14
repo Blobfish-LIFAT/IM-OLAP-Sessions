@@ -10,7 +10,6 @@ import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import mondrian.olap.Connection;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -24,7 +23,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static fr.univ_tours.info.im_olap.Proto3CubeLoad.loadCubeloadXML;
+import static fr.univ_tours.info.im_olap.Expe1CubeLoad.loadCubeloadXML;
 
 public class Proto1 {
     // I know you don't like static variables but it's easier for now since type are not set yet
