@@ -118,8 +118,11 @@ public class Proto3CubeLoad {
 
                         Pair<INDArray, HashMap<QueryPart, Integer>> withProfile = PageRank.pagerank(base, 50);
 
-                        if (original_ref == null)
+                        if (original_ref == null) {
                             original_ref = ref;
+                            out.printf("userProfile;alpha;");
+                            out.printf("%s%n", printTypes(ref));
+                        }
 
                         INDArray profileDist = aligned(original_ref, withProfile);
                         INDArray refDist = aligned(original_ref, ref);
@@ -137,6 +140,12 @@ public class Proto3CubeLoad {
         }
         out.close();
 
+    }
+
+    private static String printTypes(Pair<INDArray, HashMap<QueryPart, Integer>> ref) {
+        int[] parts = new int[ref.right.size()];
+        ref.right.forEach((k, v) -> parts[v] = k.getType().getValue());
+        return Arrays.toString(parts).replaceAll("[\\[\\] ]", "");
     }
 
     private static INDArray aligned(Pair<INDArray, HashMap<QueryPart, Integer>> ref, Pair<INDArray, HashMap<QueryPart, Integer>> other) {

@@ -16,9 +16,17 @@ colors = {"Explorative": "green", "Slice and Drill": "yellow", "Goal Oriented": 
 index = {"Explorative": 0, "Slice and Drill": 1, "Goal Oriented": 2, "Slice All": 3, "Page Rank": 4}
 matrix = [[], [], [], [], []]
 
+l_count = 0
+types = []
+
 with open("result_dolap.csv") as f:
     for line in f:
         line = line.split(";")
+        if l_count == 0:
+            types = line[2].split(",")
+            l_count += 1
+            continue
+
         if line[1] == selected:
             data = []
 
@@ -31,6 +39,7 @@ with open("result_dolap.csv") as f:
             tmp.reverse()
             data.extend(tmp)
             matrix[index[line[0]]].append(data)
+        l_count += 1
 
 for explo in explos:
     a = np.matrix(matrix[index[explo]])
