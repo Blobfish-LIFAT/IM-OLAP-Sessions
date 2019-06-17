@@ -3,16 +3,18 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import sys
 from typing import List
+from pprint import pprint
 
 if len(sys.argv) <= 1:
     print("Usage: python plot_fig.py alpha [fontsize]")
 selected = sys.argv[1]
+cube = sys.argv[2]
 fontsize = 72
-if len(sys.argv) > 2:
-    fontsize = int(sys.argv[2])
+if len(sys.argv) > 3:
+    fontsize = int(sys.argv[3])
 
 explos = ["dibstudent03", "dibstudent04", "dibstudent05", "dibstudent06", "dibstudent07", "dibstudent06_08",
-          "dibstudent09", "dibstudent10", "dibstudent12", "dibstudent14", "dibstudent16"]#, "Page Rank"]
+          "dibstudent09", "dibstudent10", "dibstudent12", "dibstudent14", "dibstudent16", "Page Rank"]
 
 colors = {"dibstudent03": "green", "dibstudent04": "red", "dibstudent05": "yellow", "dibstudent06": "orange",
           "dibstudent07": "navy", "dibstudent06_08": "gold",
@@ -30,10 +32,10 @@ with open("result_dopan.csv") as f:
     for line in f:
         line = line.split(";")
 
-        if line[1] == selected:
+        if line[2] == selected and line[0] == cube:
             data = []
 
-            p = line[2].split(",")
+            p = line[3].split(",")
             tmp = []
             for i in range(len(p)):
                 tmp.append(float(p[i]))
@@ -41,10 +43,13 @@ with open("result_dopan.csv") as f:
             tmp.sort()
             tmp.reverse()
             data.extend(tmp)
-            matrix[index[line[0]]].append(data)
+            matrix[index[line[1]]].append(data)
 
 for explo in explos:
     mexplo = matrix[index[explo]]
+    #Maybe there is no session for this user in the cube selected
+    if len(mexplo) == 0:
+        continue
     minSize = min(map(len, mexplo))
 
     # pprint(matrix[index[explo]])
@@ -69,6 +74,8 @@ plt.xlabel("Query parts", fontsize=fontsize)
 
 plt.yscale("log")
 
+plt.title("Estimated belief distributions for users on the '" + cube + "' cube. alpha=" + selected, fontdict={"fontsize" : fontsize})
+
 #plt.ylim(0.0, 0.05)
 plt.xlim(0, 2000)
 ax = plt.gca()
@@ -77,6 +84,6 @@ ax.yaxis.set_tick_params(labelsize=fontsize)
 
 fig = plt.gcf()
 fig.set_size_inches(150, 75)
-plt.savefig("fig_dopan.jpeg")
+plt.savefig("fig_dopan_"+cube+".jpeg")
 
 #plt.show()

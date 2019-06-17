@@ -45,7 +45,7 @@ public class Expe1DOPAN {
         for (double alpha : alphas) {
             for (String userProfile : profiles.keySet()) {
                 for (Session test : profiles.get(userProfile)) {
-                    List<Session> user = Expe1CubeLoad.draw(profiles.get(userProfile), 7);
+                    List<Session> user = Expe1CubeLoad.draw(profiles.get(userProfile), 2);
                     Set<Session> all = profiles.values().stream().flatMap(Collection::stream).collect(Collectors.toSet());
                     all.removeAll(user);
                     all.remove(test);
