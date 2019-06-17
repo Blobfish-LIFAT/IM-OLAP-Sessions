@@ -44,35 +44,41 @@ public class Expe1DOPAN {
         double[] alphas = new double[]{0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9};
         for (double alpha : alphas) {
             for (String userProfile : profiles.keySet()) {
-                for (Session test : profiles.get(userProfile)) {
-                    List<Session> user = Expe1CubeLoad.draw(profiles.get(userProfile), 2);
-                    Set<Session> all = profiles.values().stream().flatMap(Collection::stream).collect(Collectors.toSet());
-                    all.removeAll(user);
-                    all.remove(test);
-                    List<Session> log = new ArrayList<>(all);
-                    CubeUtils mdUtils = new CubeUtils(connection, test.getCubeName());
+                HashSet<String> userCubes = new HashSet<>();
+                for (Session test : profiles.get(userProfile)){
+                    userCubes.add(test.getCubeName());
+                }
+                for (String cubeName : userCubes) {
+                    for (int i = 0; i < 5; i++) {
 
-                    //System.out.println("Building topology graph...");
-                    MutableValueGraph<QueryPart, Double> topoGraph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
-                    DimensionsGraph.injectSchema(topoGraph, cubeSchema);
-                    FiltersGraph.injectCompressedFilters(topoGraph, mdUtils);
-                    //System.out.println("Building Logs graph...");
-                    MutableValueGraph<QueryPart, Double> logGraph = SessionGraph.buildFromLog(log);
-                    //System.out.println("Building user Graph...");
-                    MutableValueGraph<QueryPart, Double> userGraph = SessionGraph.buildFromLog(user);
 
-                    MutableValueGraph<QueryPart, Double> base = SessionEvaluator
-                            .<QueryPart>linearInterpolation(0.5, true)
-                            .interpolate(topoGraph, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), logGraph);
+                        List<Session> user = draw(profiles.get(userProfile), 2, cubeName);
+                        Set<Session> all = profiles.values().stream().flatMap(Collection::stream).collect(Collectors.toSet());
+                        all.removeAll(user);
+                        List<Session> log = new ArrayList<>(all);
+                        CubeUtils mdUtils = new CubeUtils(connection, cubeName);
 
-                    Pair<INDArray, HashMap<QueryPart, Integer>> ref = PageRank.pagerank(base, 50);
+                        //System.out.println("Building topology graph...");
+                        MutableValueGraph<QueryPart, Double> topoGraph = ValueGraphBuilder.directed().allowsSelfLoops(true).build();
+                        DimensionsGraph.injectSchema(topoGraph, cubeSchema);
+                        FiltersGraph.injectCompressedFilters(topoGraph, mdUtils);
+                        //System.out.println("Building Logs graph...");
+                        MutableValueGraph<QueryPart, Double> logGraph = SessionGraph.buildFromLog(log);
+                        //System.out.println("Building user Graph...");
+                        MutableValueGraph<QueryPart, Double> userGraph = SessionGraph.buildFromLog(user);
 
-                    base = SessionEvaluator
-                            .<QueryPart>linearInterpolation(alpha, true)
-                            .interpolate(base, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), userGraph);
-                    //System.out.println("Graph size is " + base.nodes().size());
+                        MutableValueGraph<QueryPart, Double> base = SessionEvaluator
+                                .<QueryPart>linearInterpolation(0.5, true)
+                                .interpolate(topoGraph, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), logGraph);
 
-                    Pair<INDArray, HashMap<QueryPart, Integer>> withProfile = PageRank.pagerank(base, 50);
+                        Pair<INDArray, HashMap<QueryPart, Integer>> ref = PageRank.pagerank(base, 50);
+
+                        base = SessionEvaluator
+                                .<QueryPart>linearInterpolation(alpha, true)
+                                .interpolate(base, ValueGraphBuilder.directed().allowsSelfLoops(true).build(), userGraph);
+                        //System.out.println("Graph size is " + base.nodes().size());
+
+                        Pair<INDArray, HashMap<QueryPart, Integer>> withProfile = PageRank.pagerank(base, 50);
 /*
                     if (original_ref == null) {
                         original_ref = ref;
@@ -83,19 +89,42 @@ public class Expe1DOPAN {
                     INDArray profileDist = aligned(original_ref, withProfile);
                     INDArray refDist = aligned(original_ref, ref);
 */
-                    //double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
-                    //double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
-                    //System.out.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
+                        //double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
+                        //double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
+                        //System.out.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
 
-                    out.printf("%s;%s;%s;%s%n", test.getCubeName(), userProfile, alpha, printIND(withProfile.left));
-                    out.printf("%s;%s;%s;%s%n", test.getCubeName(), "Page Rank", alpha, printIND(ref.left));
+                        out.printf("%s;%s;%s;%s%n", cubeName, userProfile, alpha, printIND(withProfile.left));
+                        out.printf("%s;%s;%s;%s%n", cubeName, "Page Rank", alpha, printIND(ref.left));
 
-                    out.flush();
+                        out.flush();
+                    }
                 }
             }
         }
         out.close();
 
+    }
+
+    public static List<Session> draw(List<Session> from, int number, String cubeName){
+        from = from.stream().filter(s -> s.getCubeName().equals(cubeName)).collect(Collectors.toList());
+        if (number >= from.size())
+            return new ArrayList<>(from);
+
+        HashSet<Session> flag = new HashSet<>();
+        List<Session> out = new ArrayList<>(number);
+        Random rd = new Random();
+
+        int count = 0;
+        while (count <= number){
+            Session candidate = from.get(rd.nextInt(from.size()));
+            if (!flag.contains(candidate)) {
+                out.add(candidate);
+                flag.add(candidate);
+                count++;
+            }
+        }
+
+        return out;
     }
 
     private static String printTypes(Pair<INDArray, HashMap<QueryPart, Integer>> ref) {
