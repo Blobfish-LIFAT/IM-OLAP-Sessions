@@ -87,8 +87,8 @@ public class Expe1DOPAN {
                     //double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
                     //System.out.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
 
-                    out.printf("%s;%s;%s%n", userProfile, alpha, printIND(withProfile.left));
-                    out.printf("%s;%s;%s%n", "Page Rank", alpha, printIND(ref.left));
+                    out.printf("%s;%s;%s;%s%n", test.getCubeName(), userProfile, alpha, printIND(withProfile.left));
+                    out.printf("%s;%s;%s;%s%n", test.getCubeName(), "Page Rank", alpha, printIND(ref.left));
 
                     out.flush();
                 }
