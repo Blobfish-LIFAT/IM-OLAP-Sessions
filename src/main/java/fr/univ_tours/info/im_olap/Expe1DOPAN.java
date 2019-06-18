@@ -1,6 +1,7 @@
 package fr.univ_tours.info.im_olap;
 
 import com.alexsxode.utilities.Nd4jUtils;
+import com.alexsxode.utilities.collection.Element;
 import com.alexsxode.utilities.collection.Pair;
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 public class Expe1DOPAN {
     static String cubeSchema = "data/cubeSchemas/DOPAN_DW3.xml";
     private static Pair<INDArray, HashMap<QueryPart, Integer>> original_ref = null;
+    private static HashMap<String, Pair<INDArray, HashMap<QueryPart, Integer>>> original_refs = new HashMap<>();
 
     public static void main(String[] args) throws Exception{
 
@@ -78,9 +80,7 @@ public class Expe1DOPAN {
 
                         Pair<INDArray, HashMap<QueryPart, Integer>> withProfile = PageRank.pagerank(base, 50);
 
-                        if (original_ref == null) {
-                            original_ref = sort(ref);
-                        }
+                        original_refs.computeIfAbsent(cubeName, k -> sort(ref));
 /*
                     INDArray profileDist = aligned(original_ref, withProfile);
                     INDArray refDist = aligned(original_ref, ref);
@@ -89,8 +89,8 @@ public class Expe1DOPAN {
                         //double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
                         //System.out.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
 
-                        out.printf("%s;%s;%s;%s%n", cubeName, userProfile, alpha, printIND(withProfile.left));
-                        out.printf("%s;%s;%s;%s%n", cubeName, "Page Rank", alpha, printIND(ref.left));
+                        out.printf("%s;%s;%s;%s%n", cubeName, userProfile, alpha, printIND(aligned(original_refs.get(cubeName), withProfile)));
+                        out.printf("%s;%s;%s;%s%n", cubeName, "Page Rank", alpha, printIND(aligned(original_refs.get(cubeName), ref)));
 
                         out.flush();
                     }
@@ -101,8 +101,29 @@ public class Expe1DOPAN {
 
     }
 
+    //FIXME this runs in O(n²)
     private static Pair<INDArray, HashMap<QueryPart, Integer>> sort(Pair<INDArray, HashMap<QueryPart, Integer>> ref) {
-        return ref;//TODO
+        List<Element> origin = new ArrayList<>(ref.left.columns());
+        for (int i = 0; i < ref.left.columns(); i++) {
+            origin.add(new Element(i, ref.left.getDouble(0, i)));
+        }
+        Collections.sort(origin);
+        Collections.reverse(origin);
+
+        Map<QueryPart, Integer> indexes = ref.right;
+        for (QueryPart part : indexes.keySet()){
+            int toFetch = indexes.get(part);
+            int newIndex = -1;
+            boolean exit = false;
+            for (int i = 0; i < origin.size() && !exit; i++) {
+                if (origin.get(i).index == toFetch){
+                    newIndex = i;
+                    exit = true;
+                }
+            }
+            indexes.put(part, newIndex);
+        }
+        return ref;
     }
 
     public static List<Session> draw(List<Session> from, int number, String cubeName){
