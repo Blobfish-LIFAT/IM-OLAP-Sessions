@@ -123,6 +123,10 @@ public class Expe1DOPAN {
             }
             indexes.put(part, newIndex);
         }
+
+        for (int i = 0; i < ref.left.columns(); i++) {
+            ref.left.put(0, i, origin.get(i).value);
+        }
         return ref;
     }
 
