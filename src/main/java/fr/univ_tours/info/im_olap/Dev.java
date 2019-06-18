@@ -3,6 +3,12 @@ package fr.univ_tours.info.im_olap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.graph.*;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
+import fr.univ_tours.info.im_olap.model.Session;
+import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
+import mondrian.olap.Axis;
+import mondrian.olap.Connection;
+import mondrian.olap.Query;
+import mondrian.olap.Result;
 
 
 import java.util.*;
@@ -13,7 +19,7 @@ public class Dev {
         Map<Integer, String> mdxAncIDs = DopanLoader.loadMDX("data/logs/dopan_converted");
         int i = 0;
         for (Map.Entry e : mdxAncIDs.entrySet()){
-            System.out.println(e.getValue());
+            //System.out.println(e.getValue());
             if (i++>100)
                 break;
         }
@@ -27,8 +33,10 @@ public class Dev {
         for (Axis ax : result.getAxes()){
             System.out.println(ax.getPositions());
         }
+*/
+        List<Session> sessions = DopanLoader.loadDir("data/logs/dopan_converted");
+        sessions.stream().filter(s -> s.queries.size() > 100).map(Session::getFilename).forEach(System.out::println);
 
-        */
 
 
     }

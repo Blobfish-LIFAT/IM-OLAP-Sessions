@@ -50,8 +50,6 @@ public class Expe1DOPAN {
                 }
                 for (String cubeName : userCubes) {
                     for (int i = 0; i < 5; i++) {
-
-
                         List<Session> user = draw(profiles.get(userProfile), 2, cubeName);
                         Set<Session> all = profiles.values().stream().flatMap(Collection::stream).collect(Collectors.toSet());
                         all.removeAll(user);
@@ -79,13 +77,11 @@ public class Expe1DOPAN {
                         //System.out.println("Graph size is " + base.nodes().size());
 
                         Pair<INDArray, HashMap<QueryPart, Integer>> withProfile = PageRank.pagerank(base, 50);
-/*
-                    if (original_ref == null) {
-                        original_ref = ref;
-                        out.printf("userProfile;alpha;");
-                        out.printf("%s%n", printTypes(ref));
-                    }
 
+                        if (original_ref == null) {
+                            original_ref = sort(ref);
+                        }
+/*
                     INDArray profileDist = aligned(original_ref, withProfile);
                     INDArray refDist = aligned(original_ref, ref);
 */
@@ -103,6 +99,10 @@ public class Expe1DOPAN {
         }
         out.close();
 
+    }
+
+    private static Pair<INDArray, HashMap<QueryPart, Integer>> sort(Pair<INDArray, HashMap<QueryPart, Integer>> ref) {
+        return ref;//TODO
     }
 
     public static List<Session> draw(List<Session> from, int number, String cubeName){

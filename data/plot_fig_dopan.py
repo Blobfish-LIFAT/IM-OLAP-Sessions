@@ -8,10 +8,10 @@ from pprint import pprint
 if len(sys.argv) <= 1:
     print("Usage: python plot_fig.py alpha [fontsize]")
 selected = sys.argv[1]
-cube = sys.argv[2]
+
 fontsize = 72
-if len(sys.argv) > 3:
-    fontsize = int(sys.argv[3])
+if len(sys.argv) > 2:
+    fontsize = int(sys.argv[2])
 
 explos = ["dibstudent03", "dibstudent04", "dibstudent05", "dibstudent06", "dibstudent07", "dibstudent06_08",
           "dibstudent09", "dibstudent10", "dibstudent12", "dibstudent14", "dibstudent16", "Page Rank"]
@@ -26,64 +26,66 @@ index = {"dibstudent03": 0, "dibstudent04": 1, "dibstudent05": 2, "dibstudent06"
          "dibstudent09": 6, "dibstudent10": 7, "dibstudent12": 8, "dibstudent14": 9, "dibstudent16": 10,
          "Page Rank": 11}
 
-matrix: List[List[List[float]]] = [[], [], [], [], [], [], [], [], [], [], [], []]
+cubes = ["Cube1MobProInd", "Cube2MobScoInd", "Cube4Chauffage"]
 
-with open("result_dopan.csv") as f:
-    for line in f:
-        line = line.split(";")
+for cube in cubes:
+    matrix: List[List[List[float]]] = [[], [], [], [], [], [], [], [], [], [], [], []]
+    with open("result_dopan_v4.csv") as f:
+        for line in f:
+            line = line.split(";")
 
-        if line[2] == selected and line[0] == cube:
-            data = []
+            if line[2] == selected and line[0] == cube:
+                data = []
 
-            p = line[3].split(",")
-            tmp = []
-            for i in range(len(p)):
-                tmp.append(float(p[i]))
+                p = line[3].split(",")
+                tmp = []
+                for i in range(len(p)):
+                    tmp.append(float(p[i]))
 
-            tmp.sort()
-            tmp.reverse()
-            data.extend(tmp)
-            matrix[index[line[1]]].append(data)
+                #tmp.sort()
+                tmp.reverse()
+                data.extend(tmp)
+                matrix[index[line[1]]].append(data)
 
-for explo in explos:
-    mexplo = matrix[index[explo]]
-    #Maybe there is no session for this user in the cube selected
-    if len(mexplo) == 0:
-        continue
-    minSize = min(map(len, mexplo))
+    for explo in explos:
+        mexplo = matrix[index[explo]]
+        #Maybe there is no session for this user in the cube selected
+        if len(mexplo) == 0:
+            continue
+        minSize = min(map(len, mexplo))
 
-    # pprint(matrix[index[explo]])
-    cmatrix = [np.array(l[0:minSize]) for l in mexplo]
-    # pprint([arr.shape for arr in cmatrix])
-    a = np.array(cmatrix)
+        # pprint(matrix[index[explo]])
+        cmatrix = [np.array(l[0:minSize]) for l in mexplo]
+        # pprint([arr.shape for arr in cmatrix])
+        a = np.array(cmatrix)
 
-    mean = np.mean(a, axis=0).tolist()
-    # pprint(mean)
-    std = np.std(a, axis=0).tolist()
-    x = list(range(minSize))
-    plt.errorbar(x, mean, yerr=std, marker='.', ls='-', color=colors[explo])
-# plt.errorbar(x, data, yerr=std, fmt=None)
+        mean = np.mean(a, axis=0).tolist()
+        # pprint(mean)
+        std = np.std(a, axis=0).tolist()
+        x = list(range(minSize))
+        plt.errorbar(x, mean, yerr=std, marker='.', ls='-', color=colors[explo])
+    # plt.errorbar(x, data, yerr=std, fmt=None)
 
-patches = []
-for explo in explos:
-    patches.append(mpatches.Patch(color=colors[explo], label=explo))
+    patches = []
+    for explo in explos:
+        patches.append(mpatches.Patch(color=colors[explo], label=explo))
 
-plt.legend(handles=patches, prop={'size': fontsize})
-plt.ylabel("User Belief Probabilities", fontsize=fontsize)
-plt.xlabel("Query parts", fontsize=fontsize)
+    plt.legend(handles=patches, prop={'size': fontsize})
+    plt.ylabel("User Belief Probabilities", fontsize=fontsize)
+    plt.xlabel("Query parts", fontsize=fontsize)
 
-plt.yscale("log")
+    plt.yscale("log")
 
-plt.title("Estimated belief distributions for users on the '" + cube + "' cube. alpha=" + selected, fontdict={"fontsize" : fontsize})
+    plt.title("Estimated belief distributions for users on the '" + cube + "' cube. alpha=" + selected, fontdict={"fontsize" : fontsize})
 
-#plt.ylim(0.0, 0.05)
-plt.xlim(0, 2000)
-ax = plt.gca()
-ax.set_xticklabels([])
-ax.yaxis.set_tick_params(labelsize=fontsize)
+    #plt.ylim(0.0, 0.05)
+    plt.xlim(0, 5000)
+    ax = plt.gca()
+    ax.set_xticklabels([])
+    ax.yaxis.set_tick_params(labelsize=fontsize)
 
-fig = plt.gcf()
-fig.set_size_inches(150, 75)
-plt.savefig("fig_dopan_"+cube+".jpeg")
-
-#plt.show()
+    fig = plt.gcf()
+    fig.set_size_inches(150, 75)
+    plt.savefig("fig_dopan_"+cube+".jpeg")
+    plt.clf()
+    print(cube, "done")

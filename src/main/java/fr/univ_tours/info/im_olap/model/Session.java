@@ -62,4 +62,8 @@ public class Session implements Iterable<Query>{
     public Iterator<Query> iterator() {
         return queries.iterator();
     }
+
+    public List<Query> getQueries() {
+        return queries;
+    }
 }
