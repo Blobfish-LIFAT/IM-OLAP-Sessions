@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 
 public class Expe1DOPAN {
     static String cubeSchema = "data/cubeSchemas/DOPAN_DW3.xml";
-    private static Pair<INDArray, HashMap<QueryPart, Integer>> original_ref = null;
     private static HashMap<String, Pair<INDArray, HashMap<QueryPart, Integer>>> original_refs = new HashMap<>();
 
     public static void main(String[] args) throws Exception{
@@ -83,8 +82,8 @@ public class Expe1DOPAN {
 
                         original_refs.computeIfAbsent(cubeName, k -> sort(ref));
 
-                        INDArray profileDist = aligned(original_ref, withProfile);
-                        INDArray refDist = aligned(original_ref, ref);
+                        INDArray profileDist = aligned(original_refs.get(cubeName), withProfile);
+                        INDArray refDist = aligned(original_refs.get(cubeName), ref);
 
                         double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
                         double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
