@@ -10,6 +10,7 @@ import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.model.*;
 import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
+import lombok.extern.java.Log;
 import mondrian.olap.Connection;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
@@ -19,15 +20,16 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Log
 public class Expe1DOPAN {
     static String cubeSchema = "data/cubeSchemas/DOPAN_DW3.xml";
     private static HashMap<String, Pair<INDArray, HashMap<QueryPart, Integer>>> original_refs = new HashMap<>();
 
     public static void main(String[] args) throws Exception{
 
-        System.out.println("--- Establishing Mondrian Connection ---");
+        log.info("--- Establishing Mondrian Connection ---");
         Connection connection = MondrianConfig.getMondrianConnection();
-        System.out.println("--- Connected ---");
+        log.info("--- Connected ---");
 
         Map<String, List<Session>> profiles = new HashMap<>();
         List<Session> allSessions = DopanLoader.loadDir("data/logs/dopan_converted");
@@ -38,19 +40,22 @@ public class Expe1DOPAN {
         }
 
 
-        System.out.println("--- Loaded DOPAN Sessions ---");
+        log.info("--- Loaded DOPAN Sessions ---");
 
         PrintWriter out = new PrintWriter(new FileOutputStream("data/result_dopan.csv"));
         PrintWriter out2 = new PrintWriter(new FileOutputStream("data/result_dopan_hellinger.csv"));
 
         double[] alphas = new double[]{0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9};
         for (double alpha : alphas) {
+            log.info("Alpha = " + alpha);
             for (String userProfile : profiles.keySet()) {
+                log.info("Current user is " + userProfile);
                 HashSet<String> userCubes = new HashSet<>();
                 for (Session test : profiles.get(userProfile)){
                     userCubes.add(test.getCubeName());
                 }
                 for (String cubeName : userCubes) {
+                    log.info("Cube is " + cubeName);
                     for (int i = 0; i < 5; i++) {
                         List<Session> user = draw(profiles.get(userProfile), 2, cubeName);
                         Set<Session> all = profiles.values().stream().flatMap(Collection::stream).collect(Collectors.toSet());
@@ -159,12 +164,17 @@ public class Expe1DOPAN {
     }
 
     private static INDArray aligned(Pair<INDArray, HashMap<QueryPart, Integer>> ref, Pair<INDArray, HashMap<QueryPart, Integer>> other) {
-        INDArray out = Nd4j.create(ref.left.shape());
         INDArray in = other.left;
-        Map<QueryPart, Integer> pos = ref.right;
-        for (Map.Entry<QueryPart, Integer> e : other.right.entrySet())
-            out.put(0, pos.get(e.getKey()), in.getDouble(0, e.getValue()));
-        return out;
+        try {
+            INDArray out = Nd4j.create(ref.left.shape());
+            Map<QueryPart, Integer> pos = ref.right;
+            for (Map.Entry<QueryPart, Integer> e : other.right.entrySet())
+                out.put(0, pos.get(e.getKey()), in.getDouble(0, e.getValue()));
+            return out;
+        } catch (NullPointerException e){
+            log.warning("Couldn't align !");
+            return in;
+        }
     }
 
     private static String printIND(INDArray in){
