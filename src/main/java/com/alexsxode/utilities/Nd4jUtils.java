@@ -74,7 +74,10 @@ public final class Nd4jUtils {
                 throw new IllegalArgumentException("Absolute continuity is required ! If q((i) = 0 then p(i) must be 0. i="+i);
             } else if (BigDecimal.ZERO.equals(qi) && BigDecimal.ZERO.equals(pi))
                 continue;
-            sum = sum.add( pi.multiply(BigDecimalMath.log2(pi.divide(qi, RoundingMode.HALF_DOWN), context)) );
+            try {
+                sum = sum.add( pi.multiply(BigDecimalMath.log2(pi.divide(qi, RoundingMode.HALF_DOWN), context)) );
+            }catch (ArithmeticException ignored){}
+
         }
         return sum.doubleValue();
 
