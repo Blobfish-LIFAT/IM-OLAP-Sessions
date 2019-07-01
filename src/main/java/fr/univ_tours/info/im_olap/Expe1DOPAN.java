@@ -60,7 +60,7 @@ public class Expe1DOPAN {
                         List<Session> user = draw(profiles.get(userProfile), 2, cubeName);
                         Set<Session> all = profiles.values().stream().flatMap(Collection::stream).collect(Collectors.toSet());
                         all.removeAll(user);
-                        List<Session> log = new ArrayList<>(all);
+                        List<Session> sessionLog = new ArrayList<>(all);
                         CubeUtils mdUtils = new CubeUtils(connection, cubeName);
 
                         //System.out.println("Building topology graph...");
@@ -68,7 +68,7 @@ public class Expe1DOPAN {
                         DimensionsGraph.injectSchema(topoGraph, cubeSchema);
                         FiltersGraph.injectCompressedFilters(topoGraph, mdUtils);
                         //System.out.println("Building Logs graph...");
-                        MutableValueGraph<QueryPart, Double> logGraph = SessionGraph.buildFromLog(log);
+                        MutableValueGraph<QueryPart, Double> logGraph = SessionGraph.buildFromLog(sessionLog);
                         //System.out.println("Building user Graph...");
                         MutableValueGraph<QueryPart, Double> userGraph = SessionGraph.buildFromLog(user);
 
@@ -90,9 +90,28 @@ public class Expe1DOPAN {
                         INDArray profileDist = aligned(original_refs.get(cubeName), withProfile);
                         INDArray refDist = aligned(original_refs.get(cubeName), ref);
 
-                        double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
-                        double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
-                        out2.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
+                        try {
+                            double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
+                            double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
+                            out2.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
+                        } catch (IllegalArgumentException e){
+                            StringBuilder errTxt = new StringBuilder();
+
+                            errTxt.append("USER='" + userProfile + "', CUBE='" + cubeName + "'\n");
+                            HashSet REFqps = new HashSet(original_refs.get(cubeName).right.keySet());
+                            HashSet PROFILEqps = new HashSet(withProfile.right.keySet());
+                            HashSet hs1 = new HashSet(REFqps);
+                            hs1.removeAll(PROFILEqps);
+                            PROFILEqps.removeAll(REFqps);
+
+                            errTxt.append("Ref\\Profile = " + hs1);
+                            errTxt.append("\n");
+                            errTxt.append("Profile\\Ref = " + PROFILEqps);
+                            errTxt.append("\n");
+
+                            log.warning("Error with reference vector : \n" + errTxt.toString());
+                        }
+
 
                         out.printf("%s;%s;%s;%s%n", cubeName, userProfile, alpha, printIND(aligned(original_refs.get(cubeName), withProfile)));
                         out.printf("%s;%s;%s;%s%n", cubeName, "Page Rank", alpha, printIND(aligned(original_refs.get(cubeName), ref)));
