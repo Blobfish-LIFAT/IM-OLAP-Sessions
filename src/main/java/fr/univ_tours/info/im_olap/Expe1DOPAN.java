@@ -81,13 +81,13 @@ public class Expe1DOPAN {
                         Pair<INDArray, HashMap<QueryPart, Integer>> withProfile = PageRank.pagerank(base, 50);
 
                         original_refs.computeIfAbsent(cubeName, k -> sort(ref));
-/*
-                    INDArray profileDist = aligned(original_ref, withProfile);
-                    INDArray refDist = aligned(original_ref, ref);
-*/
-                        //double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
-                        //double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
-                        //System.out.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
+
+                        INDArray profileDist = aligned(original_ref, withProfile);
+                        INDArray refDist = aligned(original_ref, ref);
+
+                        double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
+                        double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
+                        System.out.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
 
                         out.printf("%s;%s;%s;%s%n", cubeName, userProfile, alpha, printIND(aligned(original_refs.get(cubeName), withProfile)));
                         out.printf("%s;%s;%s;%s%n", cubeName, "Page Rank", alpha, printIND(aligned(original_refs.get(cubeName), ref)));
