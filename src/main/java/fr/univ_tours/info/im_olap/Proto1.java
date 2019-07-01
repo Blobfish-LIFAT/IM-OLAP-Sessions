@@ -18,6 +18,7 @@ import org.nd4j.linalg.factory.Nd4j;
 
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.*;
@@ -31,6 +32,7 @@ public class Proto1 {
 
     private static String cubeSchema;
     private static Connection olap;
+    public static Map<Integer, double[]> complexities = new TreeMap<>();
 
     static String session_eval_folder = "data/interp_deBie/";
 
@@ -312,6 +314,21 @@ public class Proto1 {
     }
 
     public static List<Session> loadDopanSessions(){
+        System.out.println("Trying to load complexity measures");
+        try {
+            Files.readAllLines(Paths.get("data/operators.csv")).stream().skip(1).map(l -> l.split(",")).forEach(t -> {
+                int key = Integer.parseInt(t[0]);
+                List<String> left = Arrays.stream(t).skip(1).collect(Collectors.toList());
+                double[] res = new double[left.size()];
+                for (int i = 0; i < left.size(); i++) {
+                    res[i] = Double.parseDouble(left.get(i));
+                }
+                complexities.put(key, res);
+
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("Connecting to Mondrian...");
         olap = MondrianConfig.getMondrianConnection();
         cubeSchema = "data/cubeSchemas/DOPAN_DW3.xml";

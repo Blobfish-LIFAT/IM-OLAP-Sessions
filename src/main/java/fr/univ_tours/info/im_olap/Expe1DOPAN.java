@@ -42,6 +42,7 @@ public class Expe1DOPAN {
         System.out.println("--- Loaded DOPAN Sessions ---");
 
         PrintWriter out = new PrintWriter(new FileOutputStream("data/result_dopan.csv"));
+        PrintWriter out2 = new PrintWriter(new FileOutputStream("data/result_dopan_hellinger.csv"));
 
         double[] alphas = new double[]{0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9};
         for (double alpha : alphas) {
@@ -87,7 +88,7 @@ public class Expe1DOPAN {
 
                         double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
                         double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
-                        System.out.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
+                        out2.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
 
                         out.printf("%s;%s;%s;%s%n", cubeName, userProfile, alpha, printIND(aligned(original_refs.get(cubeName), withProfile)));
                         out.printf("%s;%s;%s;%s%n", cubeName, "Page Rank", alpha, printIND(aligned(original_refs.get(cubeName), ref)));

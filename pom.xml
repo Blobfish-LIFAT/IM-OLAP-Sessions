@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>fr.univ_tours.info.im_olap.Proto1</mainClass>
+                            <mainClass>fr.univ_tours.info.im_olap.Expe1DOPAN</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
