@@ -92,10 +92,9 @@ public class Expe1DOPAN {
 
                         original_refs.computeIfAbsent(cubeName, k -> sort(ref));
 
-                        INDArray profileDist = aligned(original_refs.get(cubeName), withProfile);
-                        INDArray refDist = aligned(original_refs.get(cubeName), ref);
-
                         try {
+                            INDArray profileDist = aligned(original_refs.get(cubeName), withProfile);
+                            INDArray refDist = aligned(original_refs.get(cubeName), ref);
                             double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
                             double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
                             out2.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
