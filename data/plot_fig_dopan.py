@@ -30,7 +30,7 @@ cubes = ["Cube1MobProInd", "Cube2MobScoInd", "Cube4Chauffage"]
 
 for cube in cubes:
     matrix: List[List[List[float]]] = [[], [], [], [], [], [], [], [], [], [], [], []]
-    with open("result_dopan_v5.csv") as f:
+    with open("result_dopan.csv") as f:
         for line in f:
             line = line.split(";")
 
@@ -42,7 +42,7 @@ for cube in cubes:
                 for i in range(len(p)):
                     tmp.append(float(p[i]))
 
-                #tmp.sort()
+                tmp.sort()
                 tmp.reverse()
                 data.extend(tmp)
                 matrix[index[line[1]]].append(data)

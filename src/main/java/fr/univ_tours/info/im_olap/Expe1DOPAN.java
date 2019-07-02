@@ -11,6 +11,7 @@ import fr.univ_tours.info.im_olap.model.*;
 import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
 import lombok.extern.java.Log;
+import lombok.var;
 import mondrian.olap.Connection;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
@@ -45,7 +46,7 @@ public class Expe1DOPAN {
         PrintWriter out = new PrintWriter(new FileOutputStream("data/result_dopan.csv"));
         PrintWriter out2 = new PrintWriter(new FileOutputStream("data/result_dopan_hellinger.csv"));
 
-        double[] alphas = new double[]{0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9};
+        double[] alphas = new double[]{0.2, 0.7, 0.8, 0.9};
         for (double alpha : alphas) {
             log.info("Alpha = " + alpha);
             for (String userProfile : profiles.keySet()) {
@@ -55,10 +56,14 @@ public class Expe1DOPAN {
                     userCubes.add(test.getCubeName());
                 }
                 for (String cubeName : userCubes) {
+                    if (userProfile.equals("dibstudent07") && cubeName.equals("Cube2MobScoInd"))
                     log.info("Cube is " + cubeName);
                     for (int i = 0; i < 5; i++) {
                         List<Session> user = draw(profiles.get(userProfile), 2, cubeName);
-                        Set<Session> all = profiles.values().stream().flatMap(Collection::stream).collect(Collectors.toSet());
+                        Set<Session> all = profiles.values()
+                                .stream().flatMap(Collection::stream)
+                                .filter(s -> s.getCubeName().equals(cubeName))
+                                .collect(Collectors.toSet());
                         all.removeAll(user);
                         List<Session> sessionLog = new ArrayList<>(all);
                         CubeUtils mdUtils = new CubeUtils(connection, cubeName);
@@ -94,7 +99,7 @@ public class Expe1DOPAN {
                             double hellinger = Nd4jUtils.hellinger(refDist, profileDist);
                             double jensen = Nd4jUtils.JensenShannon(refDist, profileDist);
                             out2.printf("%s;%s;%s;%s%n", userProfile, alpha, hellinger, jensen);
-                        } catch (IllegalArgumentException e){
+                        } catch (IllegalArgumentException | NullPointerException e){
                             StringBuilder errTxt = new StringBuilder();
 
                             errTxt.append("USER='" + userProfile + "', CUBE='" + cubeName + "'\n");
@@ -109,12 +114,14 @@ public class Expe1DOPAN {
                             errTxt.append("Profile\\Ref = " + PROFILEqps);
                             errTxt.append("\n");
 
-                            log.warning("Error with reference vector : \n" + errTxt.toString());
+                            log.warning("--- Error with reference vector ---\n"
+                                    + errTxt.toString()
+                                    + "--- END [Error with reference vector] ----");
                         }
 
 
-                        out.printf("%s;%s;%s;%s%n", cubeName, userProfile, alpha, printIND(aligned(original_refs.get(cubeName), withProfile)));
-                        out.printf("%s;%s;%s;%s%n", cubeName, "Page Rank", alpha, printIND(aligned(original_refs.get(cubeName), ref)));
+                        out.printf("%s;%s;%s;%s%n", cubeName, userProfile, alpha, printIND(withProfile.left));
+                        out.printf("%s;%s;%s;%s%n", cubeName, "Page Rank", alpha, printIND(ref.left));
 
                         out.flush();
                     }
@@ -184,16 +191,11 @@ public class Expe1DOPAN {
 
     private static INDArray aligned(Pair<INDArray, HashMap<QueryPart, Integer>> ref, Pair<INDArray, HashMap<QueryPart, Integer>> other) {
         INDArray in = other.left;
-        try {
-            INDArray out = Nd4j.create(ref.left.shape());
-            Map<QueryPart, Integer> pos = ref.right;
-            for (Map.Entry<QueryPart, Integer> e : other.right.entrySet())
-                out.put(0, pos.get(e.getKey()), in.getDouble(0, e.getValue()));
-            return out;
-        } catch (NullPointerException e){
-            log.warning("Couldn't align !");
-            return in;
-        }
+        INDArray out = Nd4j.create(ref.left.shape());
+        Map<QueryPart, Integer> pos = ref.right;
+        for (Map.Entry<QueryPart, Integer> e : other.right.entrySet())
+            out.put(0, pos.get(e.getKey()), in.getDouble(0, e.getValue()));
+        return out;
     }
 
     private static String printIND(INDArray in){
