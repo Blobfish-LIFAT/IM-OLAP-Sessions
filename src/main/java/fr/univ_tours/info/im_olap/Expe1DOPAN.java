@@ -46,7 +46,7 @@ public class Expe1DOPAN {
         PrintWriter out = new PrintWriter(new FileOutputStream("data/result_dopan.csv"));
         PrintWriter out2 = new PrintWriter(new FileOutputStream("data/result_dopan_hellinger.csv"));
 
-        double[] alphas = new double[]{0.2, 0.7, 0.8, 0.9};
+        double[] alphas = new double[]{0.2, 0.8};
         for (double alpha : alphas) {
             log.info("Alpha = " + alpha);
             for (String userProfile : profiles.keySet()) {
@@ -123,12 +123,13 @@ public class Expe1DOPAN {
                         out.printf("%s;%s;%s;%s%n", cubeName, "Page Rank", alpha, printIND(ref.left));
 
                         out.flush();
+                        out2.flush();
                     }
                 }
             }
         }
         out.close();
-
+        out2.close();
     }
 
     //FIXME this runs in O(n²)
