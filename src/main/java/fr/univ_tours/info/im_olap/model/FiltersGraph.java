@@ -112,7 +112,7 @@ public class FiltersGraph {
             in.putEdgeValue(us, c, 1.0);
             in.putEdgeValue(c, us, 1.0);
 
-            injectFiltersNode(in, schemaReader, child);
+            recCall2(in, schemaReader, child);
         }
 
         return in;
