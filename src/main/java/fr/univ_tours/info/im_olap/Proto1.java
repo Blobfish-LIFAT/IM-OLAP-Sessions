@@ -72,7 +72,7 @@ public class Proto1 {
 
         SessionEvaluator<QueryPart, Double, Pair<INDArray, HashMap<QueryPart, Integer>>> sessionEvaluator =
                 new SessionEvaluator<>(SessionEvaluator::simpleInterconnections,
-                        SessionEvaluator.linearInterpolation(0.9, true),
+                        SessionEvaluator.linearInterpolation(0.9, true), // Gamma parameter goes here
                         SessionEvaluator::pageRank);
 
 

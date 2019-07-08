@@ -4,11 +4,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.graph.*;
 import fr.univ_tours.info.im_olap.data.DopanLoader;
 import fr.univ_tours.info.im_olap.model.Session;
+import fr.univ_tours.info.im_olap.mondrian.CubeUtils;
 import fr.univ_tours.info.im_olap.mondrian.MondrianConfig;
-import mondrian.olap.Axis;
-import mondrian.olap.Connection;
-import mondrian.olap.Query;
-import mondrian.olap.Result;
+import mondrian.olap.*;
 
 
 import java.util.*;
@@ -34,10 +32,17 @@ public class Dev {
             System.out.println(ax.getPositions());
         }
 */
-        List<Session> sessions = DopanLoader.loadDir("data/logs/dopan_converted");
-        sessions.stream().filter(s -> s.queries.size() > 100).map(Session::getFilename).forEach(System.out::println);
+        //List<Session> sessions = DopanLoader.loadDir("data/logs/dopan_converted");
+        //sessions.stream().filter(s -> s.queries.size() > 100).map(Session::getFilename).forEach(System.out::println);
 
+        Connection con = MondrianConfig.getMondrianConnection();
+        CubeUtils cb1 = new CubeUtils(con, "Cube1MobProInd");
+        ///Arrays.stream(cb1.getCube().getDimensions()).filter(Dimension::isMeasures).map(d -> d.getHierarchies()[0].getLevels()).flatMap(Arrays::stream).map(level -> level.).forEach(System.out::println);
 
+        CubeUtils cb2 = new CubeUtils(con, "Cube2MobScoInd");
+        System.out.println(Arrays.stream(cb2.getCube().getDimensions()).filter(Dimension::isMeasures).count());
 
+        CubeUtils cb3 = new CubeUtils(con, "Cube4Chauffage");
+        System.out.println(Arrays.stream(cb3.getCube().getDimensions()).filter(Dimension::isMeasures).count());
     }
 }

@@ -6,7 +6,7 @@ import sys
 if len(sys.argv) <= 1:
     print("Usage: python plot_fig.py alpha [fontsize]")
 selected = sys.argv[1]
-fontsize = 100
+fontsize = 115
 if len(sys.argv) > 2:
     fontsize = int(sys.argv[2])
 

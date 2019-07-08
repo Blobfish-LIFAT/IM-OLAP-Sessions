@@ -1,3 +1,0 @@
-rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
-413;F043B57DC27CD5351F4A04F235EF7934EE1AF057E1FE9AB3350C0712A46AA23F;2;I072507;Films;[];[Genre, Country];[Region=>[EQUAL Europe & Central Asia]];61
-414;F043B57DC27CD5351F4A04F235EF7934EE1AF057E1FE9AB3350C0712A46AA23F;2;I072507;Films;[];[Country, Genre];[Region=>[EQUAL Europe & Central Asia]];61

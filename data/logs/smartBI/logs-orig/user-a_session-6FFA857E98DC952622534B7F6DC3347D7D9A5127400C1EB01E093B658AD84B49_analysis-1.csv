@@ -1,2 +1,0 @@
-rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
-170;6FFA857E98DC952622534B7F6DC3347D7D9A5127400C1EB01E093B658AD84B49;1;a;Films;[Sales Revenue];[Media];[Country=>[EQUAL Spain], Year=>[EQUAL 2015]];68

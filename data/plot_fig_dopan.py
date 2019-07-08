@@ -9,22 +9,22 @@ if len(sys.argv) <= 1:
     print("Usage: python plot_fig.py alpha [fontsize]")
 selected = sys.argv[1]
 
-fontsize = 72
+fontsize = 115
 if len(sys.argv) > 2:
     fontsize = int(sys.argv[2])
 
 explos = ["dibstudent03", "dibstudent04", "dibstudent05", "dibstudent06", "dibstudent07", "dibstudent06_08",
-          "dibstudent09", "dibstudent10", "dibstudent12", "dibstudent14", "dibstudent16", "Page Rank"]
+          "dibstudent09", "dibstudent10", "dibstudent12", "dibstudent14", "dibstudent16"]#, "Page Rank"]
 
 colors = {"dibstudent03": "green", "dibstudent04": "red", "dibstudent05": "yellow", "dibstudent06": "orange",
           "dibstudent07": "navy", "dibstudent06_08": "gold",
           "dibstudent09": "pink", "dibstudent10": "purple", "dibstudent12": "lime", "dibstudent14": "teal",
-          "dibstudent16": "darkgoldenrod", "Page Rank": "grey"}
+          "dibstudent16": "darkgoldenrod"}#, "Page Rank": "grey"}
 
 index = {"dibstudent03": 0, "dibstudent04": 1, "dibstudent05": 2, "dibstudent06": 3, "dibstudent07": 4,
          "dibstudent06_08": 5,
-         "dibstudent09": 6, "dibstudent10": 7, "dibstudent12": 8, "dibstudent14": 9, "dibstudent16": 10,
-         "Page Rank": 11}
+         "dibstudent09": 6, "dibstudent10": 7, "dibstudent12": 8, "dibstudent14": 9, "dibstudent16": 10}#,
+#         "Page Rank": 11}
 
 cubes = ["Cube1MobProInd", "Cube2MobScoInd", "Cube4Chauffage"]
 
@@ -33,6 +33,8 @@ for cube in cubes:
     with open("result_dopan.csv") as f:
         for line in f:
             line = line.split(";")
+            if line[1] == "Page Rank" or line[1] == "dibstudent06_08":
+                continue
 
             if line[2] == selected and line[0] == cube:
                 data = []
@@ -46,7 +48,7 @@ for cube in cubes:
                 tmp.reverse()
                 data.extend(tmp)
                 matrix[index[line[1]]].append(data)
-
+    explos.remove("dibstudent06_08")
     for explo in explos:
         mexplo = matrix[index[explo]]
         #Maybe there is no session for this user in the cube selected
@@ -79,7 +81,7 @@ for cube in cubes:
     plt.title("Estimated belief distributions for users on the '" + cube + "' cube. alpha=" + selected, fontdict={"fontsize" : fontsize})
 
     #plt.ylim(0.0, 0.05)
-    plt.xlim(0, 5000)
+    plt.xlim(0, 3000)
     ax = plt.gca()
     ax.set_xticklabels([])
     ax.yaxis.set_tick_params(labelsize=fontsize)

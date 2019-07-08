@@ -1,3 +1,0 @@
-rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
-123;78800BE8CEA61EE809830FA78386B6DFB4DAD39EFEE862E34B966556F0DCF817;2;I050648;Films;[Sales Revenue, Sales Target Revenue];[Country, Genre];[];32
-124;78800BE8CEA61EE809830FA78386B6DFB4DAD39EFEE862E34B966556F0DCF817;2;I050648;Films;[Sales Target Revenue];[Genre, Country];[];41

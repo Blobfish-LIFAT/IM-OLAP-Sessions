@@ -1,2 +1,0 @@
-rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
-196;04783A9FA13A5107A707975156C09CDD483F122F3A844AA3AC925CB6EC0BD0B7;9;I051069;Airports;[Passengers 2010];[Region];[Main airport=>[EQUAL Newark Liberty Intl]];41

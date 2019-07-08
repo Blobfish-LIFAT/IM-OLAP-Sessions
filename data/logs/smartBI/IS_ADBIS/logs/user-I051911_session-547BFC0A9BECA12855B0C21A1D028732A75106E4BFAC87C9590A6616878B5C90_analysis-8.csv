@@ -1,2 +1,0 @@
-rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
-190;547BFC0A9BECA12855B0C21A1D028732A75106E4BFAC87C9590A6616878B5C90;8;I051911;Sales;[Inventory];[Country];[Year=>[EQUAL 2015]];58

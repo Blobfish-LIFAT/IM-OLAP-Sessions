@@ -1,2 +1,0 @@
-rowid;session;analysis;userId;cube;Measures;GroupBy;Filters;nbCells
-164;0001BDAD11490DEA53791D77A9DD35BBD6DDA9EC2E01D78617538C4CBBFE4521;2;I316785;Films;[];[Genre];[Country=>[EQUAL European Union]];0
