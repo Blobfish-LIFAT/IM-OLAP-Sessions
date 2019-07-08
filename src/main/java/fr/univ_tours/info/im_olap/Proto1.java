@@ -71,7 +71,7 @@ public class Proto1 {
         System.out.println("Creating SessionEvaluator evaluator...");
 
         SessionEvaluator<QueryPart, Double, Pair<INDArray, HashMap<QueryPart, Integer>>> sessionEvaluator =
-                new SessionEvaluator<>(SessionEvaluator::simpleInterconnections,
+                new SessionEvaluator<>(SessionEvaluator::forwardConnections,
                         SessionEvaluator.linearInterpolation(0.9, true), // Gamma parameter goes here
                         SessionEvaluator::pageRank);
 
