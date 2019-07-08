@@ -34,7 +34,7 @@ public class Proto1 {
     private static Connection olap;
     public static Map<Integer, double[]> complexities = new TreeMap<>();
 
-    static String session_eval_folder = "data/interp_deBie/";
+    static String session_eval_folder = "data/interp_deBie_forward/";
 
     public static void gainsToCSVFile(ArrayList<Pair<Query,Double>> results, Session session) throws IOException {
 
